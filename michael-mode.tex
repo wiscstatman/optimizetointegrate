@@ -1,0 +1,106 @@
+\documentclass[11pt]{article}%
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[square]{natbib}
+\usepackage{amsmath}%
+\usepackage{amsthm}%
+\setcounter{MaxMatrixCols}{30}
+\usepackage{palatino}
+\usepackage{paralist}
+\usepackage[top=8pc,bottom=8pc,left=8pc,right=8pc]{geometry}
+
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=4.10.0.2363}
+%TCIDATA{CSTFile=LaTeX article.cst}
+%TCIDATA{Created=Fri Dec 03 14:08:36 1999}
+%TCIDATA{LastRevised=Tuesday, April 25, 2006 11:49:43}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Journal Articles\Standard LaTeX Article">}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}{Fact}
+\newtheorem{example}{Example}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+
+
+\newcommand{\what}[1][j]{\hat\omega_{#1}^{-1(g)}}
+\newcommand{\bX}{\bf{X}}
+\newcommand{\Oi}{\Omega^{(g)}}
+\newcommand{\bone}{\bf{1}}
+\def\E{\qopname\relax o{E}}
+\newcommand{\diag}{diag}
+\newcommand{\PG}{ \mathcal{PG}}
+\newcommand{\Ga}{ \mathcal{G} }
+\newcommand{\N}{ \mathcal{N} }
+\newcommand{\DE}{ \mathcal{DE} }
+\newcommand{\Ex}{ \mathcal{E} }
+\newcommand{\prox}{ \mathop{\mathrm{prox}} }
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\Rbar}{ \overline{\R} }
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\enorm}[1]{\Vert #1 \Vert_2}
+
+\newcommand{\vnorm}[1]{\left|\left|#1\right|\right|}
+
+
+\newcommand{\bx}{{\bf x}}
+\newcommand{\by}{{\bf y}}
+\newcommand{\bs}{{\bf s}}
+\newcommand{\bm}{{\bf m}}
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bv}{{\bf v}}
+
+
+
+\begin{document}
+
+\section{Posterior Means and Modes}
+
+Can we find $ \phi$, such that the Bayesian posterior estimator $ \hat{\theta} = E( \theta | y) $ with a pseudo-prior $p(\theta) $ is the same
+as a solution to a $\phi$-regularised problem, namely
+$$
+ \hat{\theta} = E( \theta | y) = {\rm arg min}_\theta \left \{ \vnorm{y - \theta }^2 + \phi( \theta ) \right \}
+$$
+The rhs is known as the proximal operator of $ \phi$.
+
+A useful result for a location problem is Tweedie's-Masreliez's formula. Efron (2011) discusses Tweedie's formula for the posterior mean in a normal location problem.
+$$
+\hat{\theta}(y) = E( \theta | y ) = y + \frac{d}{dy} \log m(y)
+$$
+where $ m(y) = \int \phi( y - \theta ) p( \theta ) d \theta $ and $ p(\theta ) \propto \exp \left ( - \phi( \theta ) \right ) $.
+
+Strawderman et al (2015), Polson and Scott (2015) and Gribonval (2011) all discuss writing posterior means as modes.
+Penalties written as envelopes and the implying mixing distribution found.
+Gribonval (2011) addressed the following problem. Given any $z$, find $ y $, such that $ E(\theta | y ) = z $. 
+
+Hence, if we want to match a mode with a mean, we can ``solve'' for the penalty, $\phi(\theta) $, given a marginal distribution, $m(y)$, via the equation for the proximal operator
+$$
+\nabla \phi \left ( \hat{\theta} (y) \right ) =  \frac{d}{dy} \log m(y) \; .
+$$
+If $ \phi $ is non-differentiable at a point, we replace $ \nabla $ by $ \partial $.
+
+Given $ \hat{\theta}(y) $, we can solve for $ \phi( \theta ) $. Thus the posterior mean under a spike and slab prior is a posterior mode under the induced penalty--which is typically non-convex. 
+
+\end{document}
+

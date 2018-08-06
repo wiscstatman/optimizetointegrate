@@ -1,0 +1,14 @@
+
+Newton is Professor of Statistics and...
+
+
+page 4: on exponential; i.e., each w_j = log(1/u_j) for u_j ~ Uniform(0,1).
+
+page 5: On the `Algorithm`. not sure of the notation `Multi`? Also, I don't think
+  we want to normalize w_i for the sample points (at least, you don't do so in
+  subsequent examples, and that's my preference too )
+
+convergence on page 6 is conditional upon data, a.s. [there is potential for 
+ confusion if you think of the marginal dist of object on left, which is different...]
+
+page 8, above 5...may not want bold w_i's
