@@ -1,0 +1,11 @@
+\IfFileExists{\jobname.mkm}{\input{\jobname.mkm}}{\message{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!} \message{*****Recompile this file for generation of Bookmarks*****} \message{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!} \read-1 to \tempmkmcount}
+
+\newwrite\bookmarkss
+\immediate\openout\bookmarkss=\jobname.mkm
+
+\newcount\calca
+\newcount\calcb
+\newcount\calcc
+\calcc\calcb
+
+\gdef\@lastpage{6}
