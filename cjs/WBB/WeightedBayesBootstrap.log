@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.8)  9 AUG 2018 14:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.8)  9 AUG 2018 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -467,7 +467,7 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 File: omsptm.fd 
 ) [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2]
+] [2] [3]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -476,34 +476,34 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [3] [4] [5]
-[6] [7] (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+) [4] [5] [6]
+[7] (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-[8] [9] [10] <simple.pdf, id=51, 528.97626pt x 508.90125pt>
+) [8]
+[9] [10] <simple.pdf, id=51, 528.97626pt x 508.90125pt>
 File: simple.pdf Graphic file (type pdf)
  <use simple.pdf>
-Package pdftex.def Info: simple.pdf used on input line 218.
+Package pdftex.def Info: simple.pdf used on input line 222.
 (pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
 
 [11] [12 <./simple.pdf>] <diabetes.pdf, id=68, 525.965pt x 508.90125pt>
 File: diabetes.pdf Graphic file (type pdf)
 
 <use diabetes.pdf>
-Package pdftex.def Info: diabetes.pdf used on input line 251.
+Package pdftex.def Info: diabetes.pdf used on input line 255.
 (pdftex.def)             Requested size: 368.17297pt x 356.22844pt.
  [13] [14 <./diabetes.pdf>] [15]
 <filtering.pdf, id=84, 665.48625pt x 448.67625pt>
 File: filtering.pdf Graphic file (type pdf)
  <use filtering.pdf>
-Package pdftex.def Info: filtering.pdf used on input line 298.
+Package pdftex.def Info: filtering.pdf used on input line 302.
 (pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
  [16]
 [17 <./filtering.pdf>] [18] [19] <acc.pdf, id=104, 705.63625pt x 504.88625pt>
 File: acc.pdf Graphic file (type pdf)
 
 <use acc.pdf>
-Package pdftex.def Info: acc.pdf used on input line 353.
+Package pdftex.def Info: acc.pdf used on input line 357.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
  [20 <./acc.pdf>] [21] [22] [23] [24]
 (./WeightedBayesBootstrap.aux) ) 
@@ -539,7 +539,7 @@ texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2016/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on WeightedBayesBootstrap.pdf (24 pages, 426471 bytes).
+Output written on WeightedBayesBootstrap.pdf (24 pages, 426213 bytes).
 PDF statistics:
  203 PDF objects out of 1000 (max. 8388607)
  144 compressed objects within 2 object streams
