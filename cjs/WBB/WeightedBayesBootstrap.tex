@@ -57,22 +57,26 @@ We develop a weighted Bayesian Bootstrap (WBB) for  machine learning and statist
 \newpage
 
 \section{Introduction}
-Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference problems. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessment is still required. Developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD) in TensorFlow can be adapted to 
+Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference problems. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessment is still required. Developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to 
 provide uncertainty quantification of their basic output.
  
 Our work builds on \cite{newton1994approximate} who provide a weighted likelihood Bootstrap (WLB) method for Bayesian inference. They develop a weighted likelihood Bootstrap algorithm together with the appropriate asymptotic analysis to show that such an algorithm 
 provides efficient posterior samples. Their bootstrap procedure exploits the fact that the posterior distribution centered at the maximum likelihood estimate (MLE) has a second order expansion that also depends on the prior
 and its derivative. By contrast, the proposed weighted Bayesian Bootstrap (WBB) calculates a series of
-randomized  posterior modes rather than randomized MLEs. This has the advantage that high dimensional posterior modes are readily available particularly using the regularized estimates are fast to compute from convex optimization methods or stochastic gradient descent (SGD) for neural network architectures such as deep learning. By linking WLB and WBB with modern-day optimization to calibrate estimate, we provide a framework for uncertainty quantification.
+randomized  posterior modes rather than randomized MLEs. A key rationale for this proposal is  that 
+high dimensional posterior modes are now readily computable, thanks to systems such as TensorFlow and Keras
+that deploy stochastic gradiant descent (SGD) and convex optimizaton methods (cites) for large-scale
+problems, such as on neural network architectures used in deep learning (cite).
+By linking WLB and WBB with modern-day optimization to calibrate estimates, we provide a framework for uncertainty quantification.
 
 Quantifying uncertainty is typically unavailable in a purely regularization optimization method. 
 From the proposed Bayesian perspective, UQ is 
 available directly through repeated optimization of randomized objective functions, using the same
-computational tools that produce the primary estimate,  rather through Markov
+computational tools that produce the primary estimate,  rather than through Markov
 chain Monte Carlo, variational methods,  approximate Bayesian computation, or other techniques. 
 Thus, uncertainty estimates are provided at little extra computational cost over the original
 training computations.  Another useful feature is that  it is straightforward to add a regularization path across hyper-parameters, which is usually difficult to compute in traditional Bayesian
-sensitivity analysis.  Rather we use predictive cross-validation techniques.
+sensitivity analysis.  We use predictive cross-validation techniques in this regard.
 
 The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy et al., 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include Bootstrap filters in state-space models (Gordon{,}  Salmond \& Smith, 1993)  and comparison with the resampling-sampling
 perspective to sequential Bayesian inference (Lopes, Polson \& Carvalho, 2012), etc.t
@@ -181,7 +185,7 @@ $$
 $$
 where $\theta^*_n \defeq {\rm arg \; max}_\theta \; p( \theta|y) $ is the posterior mode. 
 
-The use of the posterior mode here is crucially important as it's the mode that is computationally available from TensorFlow and Keras. Approximate normality and second order approximation also holds, see \cite{johnson1970asymptotic}, \cite{Bertail} and \cite{newton1994approximate} for future discussion. Specifically,
+The use of the posterior mode here is crucially important as it's the mode that is computationally available from TensorFlow and Keras (\cite{tensorflow2015-whitepaper,chollet2015keras}). Approximate normality and second order approximation also holds, see \cite{johnson1970asymptotic}, \cite{Bertail} and \cite{newton1994approximate} for future discussion. Specifically,
 $$
 \sqrt{ n I ( \hat{\theta}_n )} \left ( {\theta}^*_n - \hat{\theta}_n \right ) \eqdist Z
 $$
