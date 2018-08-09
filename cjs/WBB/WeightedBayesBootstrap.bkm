@@ -8,3 +8,4 @@
 \newcount\calcc
 \calcc\calcb
 
+\gdef\@lastpage{24}
