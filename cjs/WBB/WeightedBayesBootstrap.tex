@@ -57,32 +57,39 @@ We develop a weighted Bayesian Bootstrap (WBB) for  machine learning and statist
 \newpage
 
 \section{Introduction}
-Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference problems. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessment is still required. Developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to 
-provide uncertainty quantification of their basic output.
+Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference 
+problems. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis
+offers a general approach, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to 
+provide uncertainty assessments.
  
-Our work builds on \cite{newton1994approximate} who provide a weighted likelihood Bootstrap (WLB) method for Bayesian inference. They develop a weighted likelihood Bootstrap algorithm together with the appropriate asymptotic analysis to show that such an algorithm 
-provides efficient posterior samples. Their bootstrap procedure exploits the fact that the posterior distribution centered at the maximum likelihood estimate (MLE) has a second order expansion that also depends on the prior
-and its derivative. By contrast, the proposed weighted Bayesian Bootstrap (WBB) calculates a series of
-randomized  posterior modes rather than randomized MLEs. A key rationale for this proposal is  that 
+Our work builds on \cite{newton1994approximate} who provide a weighted likelihood Bootstrap (WLB) method for Bayesian inference. They develop a sampling algorithm together with asymptotic analysis to show that  the WLB
+provides approximate posterior samples. Their bootstrap procedure exploits tools to maximize likelihoods and 
+theoretical connections between posterior variation and curvature of log-likelihood revealed through
+repeated optimization of randomly weighted likelihoods. 
+ By contrast, the proposed weighted Bayesian Bootstrap (WBB) calculates a series of
+randomized  posterior modes rather than randomized likelihood maximizers. A key rationale for this proposal is  that 
 high dimensional posterior modes are now readily computable, thanks to systems such as TensorFlow and Keras
 that deploy stochastic gradiant descent (SGD) and convex optimizaton methods (cites) for large-scale
 problems, such as on neural network architectures used in deep learning (cite).
-By linking WLB and WBB with modern-day optimization to calibrate estimates, we provide a framework for uncertainty quantification.
+By linking random weighting with modern-day optimization to calibrate estimates, we provide a 
+framework for uncertainty quantification.
 
 Quantifying uncertainty is typically unavailable in a purely regularization optimization method. 
 From the proposed Bayesian perspective, UQ is 
 available directly through repeated optimization of randomized objective functions, using the same
 computational tools that produce the primary estimate,  rather than through Markov
 chain Monte Carlo, variational methods,  approximate Bayesian computation, or other techniques. 
-Thus, uncertainty estimates are provided at little extra computational cost over the original
+Thus, uncertainty assessments are provided at little extra computational cost over the original
 training computations.  Another useful feature is that  it is straightforward to add a regularization path across hyper-parameters, which is usually difficult to compute in traditional Bayesian
 sensitivity analysis.  We use predictive cross-validation techniques in this regard.
 
-The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy et al., 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include Bootstrap filters in state-space models (Gordon{,}  Salmond \& Smith, 1993)  and comparison with the resampling-sampling
-perspective to sequential Bayesian inference (Lopes, Polson \& Carvalho, 2012), etc.t
+The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy et al., 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include bootstrap filters in state-space models (Gordon{,}  Salmond \& Smith, 1993)  and comparison with the resampling-sampling
+perspective to sequential Bayesian inference (Lopes, Polson \& Carvalho, 2012), etc.
 
 \section{Weighted Bayesian Bootstrap}
-Let  $y$ an $n$-vector of outcomes, $\theta$ denotes a $d$-dimensional parameter of interest and $A$ a fixed $n \times d$ matrix whose rows are the design points (or ``features'') $a_i^T$
+Let  $y=(y_1, y_2, \cdots, y_n)$ be an $n$-vector of outcomes and let $\theta$ a $d$-dimensional parameter of interest. 
+Auxiliary data may include a 
+fixed $n \times d$ matrix $A$ whose rows are the design points (or ``features'') $a_i^T$
 where we index  observations by $i$ and parameters by $j$.  
 A large number of machine learning and statistical problems can be expressed in the form
 \begin{equation}
@@ -98,17 +105,17 @@ effects a favorable bias-variance tradeoff.  We allow for the possibility that $
 If we treat the data, $y$, as arising from a probabilistic 
 model parameterized by $\theta$, then the likelihood function $p(y|\theta)$ yields 
 the model-associated measure of fit $l(y| \theta) = -\log p(y|\theta)$.
-We will make use of the following notation:
+We will make use of the following notation: $ \hat{\theta}_n \defeq {\rm arg max}_\theta\; p(y |\theta) $ to
+denote the MLE, and, relative some prior $p(\theta)$,
 \begin{enumerate}[label=(\roman*)]
-\item Let $ \hat{\theta}_n \defeq {\rm arg max}_\theta\; p(y |\theta) $ be the MLE, 
-\item Let $\theta^*_n \defeq {\rm arg max}_\theta \; p( \theta|y) $ be the posterior mode,
-\item Let $ \bar{\theta}_n \defeq E(\theta | y) $ be the posterior mean.
+\item let $\theta^*_n \defeq {\rm arg max}_\theta \; p( \theta|y) $ be the posterior mode,
+\item let $ \bar{\theta}_n \defeq E(\theta | y) $ be the posterior mean.
 \end{enumerate}
 Next, we recall a key duality between regularization and Bayesian analysis.
 
 \subsection{Bayesian Regularization Duality}
 
-From the Bayesian perspective, the measure of fit, $l(y|\theta) = - \log p(y| \theta)$, and the penalty function, $\lambda\phi(\theta)$, correspond to the negative logarithms of the likelihood and prior distribution in the hierarchical model
+From the Bayesian perspective, the measure of fit, $l(y|\theta) = - \log p(y| \theta)$, and the penalty function, $\lambda\phi(\theta)$, correspond to the negative logarithms of the likelihood and prior distribution in the model
 \begin{align*}
  p(y | \theta) \propto \exp & \{-  l(y|\theta)\} \; , \quad p(\theta) \propto \exp\{ - \lambda\phi(\theta) \} \\
 p( \theta | y ) &  \propto \exp\{- ( l(y|\theta) + \lambda\phi(\theta) ) \}.
@@ -261,7 +268,7 @@ The prior on $\beta$, with suitable normalization constant $C_\alpha$, is given 
 \label{diabetes}
 \end{figure}
 
-Figure (\ref{diabetes}) shows the results of all these three methods (the weighted Bayesian Bootstrap with fixed prior / weighted prior and the Bayesian Bridge). Marginal posteriors for $\beta_j$'s are presented. One notable feature is that the weighted Bayesian Bootstrap tends to introduce more sparsity than Bayesian Bridge does. For example, the weighted Bayesian Bootstrap posteriors of {\tt age, ldl} and {\tt tch} have higher spikes located around 0, compared with the Bayesian Bridge ones. For {\tt tc, hdl, tch} and {\tt glu}, multi-modes in the marginal posteriors are observed. In general, the posteriors with fixed priors are more concentrated than those with randomly weighted priors. This difference is naturally attributed to the certainty in the prior weights.
+Figure (\ref{diabetes}) shows the results of all these three methods (the weighted Bayesian Bootstrap with fixed prior / weighted prior and the Bayesian Bridge). Marginal posteriors for $\beta_j$'s are presented. One notable feature is that the weighted Bayesian Bootstrap tends to introduce more sparsity than Bayesian Bridge does. For example, the weighted Bayesian Bootstrap posteriors of {\tt age, ldl} and {\tt tch} have higher spikes located around 0, compared with the Bayesian Bridge ones. For {\tt tc, hdl, tch} and {\tt glu}, multi-modes in the marginal posteriors are observed. In general, the posteriors with fixed priors are more concentrated than those with randomly weighted priors. This difference is naturally attributed to variation in the weight assigned to the log-prior penalty term.
 
 
 \subsection{Trend Filtering}
@@ -298,13 +305,14 @@ To illustrate our method, we simulate data $y_i$ from a Fourier series regressio
 $$
 y_i = \sin\left(\frac{4\pi}{500} i\right)\exp\left({\frac{3}{500} i}\right) + \epsilon_i
 $$
-for $i=1,2,...500$, where $\epsilon_i\sim N(0,2^2)$ are i.i.d. Gaussian noises. The cubic trend filtering result is given in Figure (\ref{filter}). 
+for $i=1,2,...500$, where $\epsilon_i\sim N(0,2^2)$ are i.i.d. Gaussian deviates. The cubic trend filtering result is given in Figure (\ref{filter}). 
 
-For each $i$, the weighted Bayesian Bootstrap gives a group of estimates $\left\{\beta_{\bf w}^*(i) \right\}_{j=1}^T$ where $T$ is the total number of draws. The standard error of $\hat\beta_i$ is easily computed using these weighted bootstrap estimates.
+For each $i$, the WBB gives a group of estimates $\left\{\beta_{\bf w}^*(i) \right\}_{j=1}^T$ where $T$ is the total number of draws. The standard deviation of these weighted solutions consitutes a posterior standard deviation, or
+essentially  a standard error for the estimator $\hat \beta_i$.
 \begin{figure}[!ht]
 \centering 
 \includegraphics[scale=0.55]{filtering.pdf} 
-\caption{Cubic trend filtering: the red line is $\hat\beta_i$ for $i=1,2,...500$; the blue line is $\hat\beta_i \pm 2*se$ where the standard errors are easily computed by WBB. $\lambda = 1000$.}
+\caption{Cubic trend filtering: the red line is $\hat\beta_i$ for $i=1,2,...500$; the blue line is $\hat\beta_i \pm 2*se$ where the standard errors are computed by WBB. $\lambda = 1000$.}
 \label{filter}
 \end{figure}
 
