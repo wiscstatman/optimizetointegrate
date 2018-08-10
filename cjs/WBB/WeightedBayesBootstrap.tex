@@ -68,9 +68,9 @@ theoretical connections between posterior variation and curvature of log-likelih
 repeated optimization of randomly weighted likelihoods. 
  By contrast, the proposed weighted Bayesian Bootstrap (WBB) calculates a series of
 randomized  posterior modes rather than randomized likelihood maximizers. A key rationale for this proposal is  that 
-high dimensional posterior modes are now readily computable, thanks to systems such as TensorFlow and Keras
-that deploy stochastic gradiant descent (SGD) and convex optimizaton methods (cites) for large-scale
-problems, such as on neural network architectures used in deep learning (cite).
+high dimensional posterior modes are now readily computable, thanks to systems such as TensorFlow (Abadi et al., 2015) and Keras (Chollet et al., 2015)
+that deploy stochastic gradient descent (SGD) and convex optimization methods (Boyd \& Vandenberghe, 2004) for large-scale
+problems, such as on neural network architectures used in deep learning (LeCun{,} Bengio \& Hinton, 2015).
 By linking random weighting with modern-day optimization to calibrate estimates, we provide a 
 framework for uncertainty quantification.
 
@@ -133,7 +133,7 @@ Let $\partial$ be the subdifferential operator.  Then a necessary and sufficient
 0 \in \partial \left\{ l(y|\theta) + \lambda\phi(\theta)\right\} = \nabla l(y|\theta) + \lambda\partial \phi(\theta) 
 \end{equation}
 the sum of a point and a set.  The optimization literature  characterizes $\theta^*$ as the fixed point of a proximal operator
-$\theta^* = \prox_{\gamma \phi}\{ \theta^* - \lambda \nabla f(\theta^*) \} $, see \cite{polson2015mixtures} and \cite*{polson2015proximal} for further discussion. 
+$\theta^* = \prox_{\gamma \phi}\{ \theta^* - \lambda \nabla f(\theta^*) \} $, see \cite{polson2015mixtures} and \cite{polson2015proximal} for further discussion. 
 
 A general class of natural exponential family models can be expressed in terms of the Bregman divergence of the dual of the cumulant transform.
 Let $ \phi $ be the conjugate Legendre transform of $\psi$. Hence $ \psi(\theta) = \sup_\mu \; \left ( \mu^\top \theta - \phi(\mu) \right )$. Then we can write
@@ -169,7 +169,7 @@ where $l_i(y_i|\theta) = -\log p(y_i|\theta)$ and $ \lambda\phi(\theta) = -\log 
 \item For each ${\bf{w}}$, solve $\theta^*_{{\bf w},n} = \underset{\theta}{\argmin} \sum_{i=1}^n w_i l_i(\theta) +  \lambda w_p \phi(\theta)$. 
 \end{enumerate}
 
-The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. See Appendix and \cite{polson2017deep} for further discussion. 
+The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and \cite{arnold2014genlasso}. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. See Appendix and \cite{polson2017deep} for further discussion. 
 
 The next section builds on \cite{newton1994approximate} and derives asymptotic properties of the weighted Bayesian Bootstrap. We simply add the regularized factor. To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
 
@@ -192,7 +192,7 @@ $$
 $$
 where $\theta^*_n \defeq {\rm arg \; max}_\theta \; p( \theta|y) $ is the posterior mode. 
 
-The use of the posterior mode here is crucially important as it's the mode that is computationally available from TensorFlow and Keras (\cite{tensorflow2015-whitepaper,chollet2015keras}). Approximate normality and second order approximation also holds, see \cite{johnson1970asymptotic}, \cite{Bertail} and \cite{newton1994approximate} for future discussion. Specifically,
+The use of the posterior mode here is crucially important as it's the mode that is computationally available from TensorFlow and Keras. Approximate normality and second order approximation also holds, see \cite{johnson1970asymptotic}, \cite{Bertail} and \cite{newton1994approximate} for future discussion. Specifically,
 $$
 \sqrt{ n I ( \hat{\theta}_n )} \left ( {\theta}^*_n - \hat{\theta}_n \right ) \eqdist Z
 $$
@@ -237,7 +237,7 @@ where $F(y) = \exp(y)\Phi(-y-\lambda)$ and $\Phi(\cdot)$ is the c.d.f. of standa
 
 
 \subsection{Diabetes Data}
-To illustrate our methodology, we use weighted Bayesian Bootstrap (WBB) on the classic diabetes dataset. The measurements for 442 diabetes patients are obtained ($n=442$), with 10 baseline variables ($p=10$), such as age, sex, body mass index, average blood pressure, and six blood serum measurements. 
+To illustrate our methodology, we use weighted Bayesian Bootstrap (WBB) on the classic diabetes dataset (Efron et al., 2004). The measurements for 442 diabetes patients are obtained ($n=442$), with 10 baseline variables ($p=10$), such as age, sex, body mass index, average blood pressure, and six blood serum measurements. 
 
 The likelihood function is given by
 $$
@@ -268,7 +268,7 @@ The prior on $\beta$, with suitable normalization constant $C_\alpha$, is given 
 \label{diabetes}
 \end{figure}
 
-Figure (\ref{diabetes}) shows the results of all these three methods (the weighted Bayesian Bootstrap with fixed prior / weighted prior and the Bayesian Bridge). Marginal posteriors for $\beta_j$'s are presented. One notable feature is that the weighted Bayesian Bootstrap tends to introduce more sparsity than Bayesian Bridge does. For example, the weighted Bayesian Bootstrap posteriors of {\tt age, ldl} and {\tt tch} have higher spikes located around 0, compared with the Bayesian Bridge ones. For {\tt tc, hdl, tch} and {\tt glu}, multi-modes in the marginal posteriors are observed. In general, the posteriors with fixed priors are more concentrated than those with randomly weighted priors. This difference is naturally attributed to variation in the weight assigned to the log-prior penalty term.
+Figure (\ref{diabetes}) shows the results of all these three methods (the weighted Bayesian Bootstrap with fixed prior/weighted prior and the Bayesian Bridge). Marginal posteriors for $\beta_j$'s are presented. One notable feature is that the weighted Bayesian Bootstrap tends to introduce more sparsity than Bayesian Bridge does. For example, the weighted Bayesian Bootstrap posteriors of {\tt age, ldl} and {\tt tch} have higher spikes located around 0, compared with the Bayesian Bridge ones. For {\tt tc, hdl, tch} and {\tt glu}, multi-modes in the marginal posteriors are observed. In general, the posteriors with fixed priors are more concentrated than those with randomly weighted priors. This difference is naturally attributed to variation in the weight assigned to the log-prior penalty term.
 
 
 \subsection{Trend Filtering}
@@ -348,7 +348,7 @@ $$
 (W^*_{\bf w}, b^*_{\bf w}) = \argmin_{W, b} \sum_{i=1}^{n}w_i l_i(y_i|x_i, W, b) + \lambda w_p\phi(W, b)
 $$
 
-We take the classic MNIST example to illustrate the application of WBB in deep learning. The MNIST database of handwritten digits, available from Yann LeCun's website, has 60,000 training examples and 10,000 test examples. Here the high-dimensional $x$ is a normalized and centered fixed-size ($28\times 28$) image and the output $\hat{y}$ is a 10-dimensional vector, where $i$-th coordinate corresponds to the probability of that image being the $i$-th digit.
+We take the classic MNIST example (LeCun \& Cortes, 2010) to illustrate the application of WBB in deep learning. The MNIST database of handwritten digits, available from Yann LeCun's website, has 60,000 training examples and 10,000 test examples. Here the high-dimensional $x$ is a normalized and centered fixed-size ($28\times 28$) image and the output $\hat{y}$ is a 10-dimensional vector, where $i$-th coordinate corresponds to the probability of that image being the $i$-th digit.
 
 For simplicity, we build a 2-layer neural network with layer sizes 128 and 64 respectively. Therefore, the dimensions of parameters are
 \begin{align*}
@@ -380,11 +380,23 @@ to provide  sparsity in high dimensional statistical problems. With a similar ea
 
 \begin{thebibliography}{}
 
+\bibitem[Abadi et al., 2015]{tensorflow2015-whitepaper}
+Abadi, M., Agarwal, A., Barham, P., Brevdo, E., Chen, Z., Citro, C., Corrado, G. S., Davis, A., Dean, J., Devin, M., Ghemawat, S., Goodfellow, I., Harp, A., Irving, G., Isard, M., Jia, Y., Jozefowicz, R., Kaiser, L., Kudlur, M., Levenberg, J., Man?e, D., Monga, R., Moore, S., Murray, D., Olah, C., Schuster, M., Shlens, J., Steiner, B., Sutskever, I., Talwar, K., Tucker, P., Vanhoucke, V., Vasudevan, V., Vi?egas, F., Vinyals, O., Warden, P., Wattenberg, M., Wicke, M., Yu, Y., \& Zheng, X. (2015) TensorFlow: Large-scale machine learning on heterogeneous systems. {\it Software available from tensorflow.org}.
+
+\bibitem[Arnold \& Tibshirani, 2014]{arnold2014genlasso}
+Arnold, T. B., \& Tibshirani, R. J. (2014). genlasso: Path algorithm for generalized lasso problems. {\it R package version 1.3}.
+
 \bibitem[Beaumont et al., 2009]{beaumont2009adaptive}
 Beaumont, M. A.,  Cornuet, J.M.,  Marin,J.M. \& Robert, C. P. (2009). Adaptive approximate bayesian computation. {\it Biometrika}, 96(4), 983--990.
 
 \bibitem[Bertail \& Lo, 1991]{Bertail}
 Bertail, P. \& Lo,  A. Y.  (1991). On Johnson's asymptotic expansion for a posterior distribution. {\it Centre de Recherche en Economie et Statistique}.
+
+\bibitem[Boyd \& Vandenberghe, 2004]{boyd2004convex}
+Boyd, S. \& Vandenberghe, L. (2004) {\it Convex optimization}. Cambridge university press.
+
+\bibitem[Chollet et al., 2015]{chollet2015keras}
+Chollet, Fran\c{c}ois \& others. (2015) Keras {\it https://keras.io}
 
 \bibitem[Daniels \& Young, 1991]{daniels1991saddlepoint}
 Daniels, H. \& Young, G.  (1991). Saddlepoint approximation for the studentized mean, with an application to the bootstrap. {\it Biometrika},78(1), 169--179.
@@ -394,6 +406,12 @@ Efron, B. (1981). Nonparametric standard errors and confidence intervals. {\it C
 
 \bibitem[Efron, 2012]{efron2012bayesian}
 Efron, B. (2012). Bayesian inference and the parametric bootstrap. {\it The Annals of Applied Statistics}, 6(4), 1971.
+
+\bibitem[Efron et al., 2004]{efron2004least}
+Efron, B., Hastie, T., Johnstone, I. \& Tibshirani, R. J. (2004).  Diabetes dataset. Available from R package {\it lars}.
+
+\bibitem[Friedman{,} Hastie \& Tibshirani, 2010]{friedman2010regularization} 
+Friedman, J.,  Hastie, T. \&  Tibshirani, R. J. (2010). Regularization Paths for Generalized Linear Models via Coordinate Descent. {\it Journal of Statistical Software}, 33(1),1--22.
 
 \bibitem[Gelman \& Meng, 1998]{gelman1998simulating}
 Gelman, A. \& Meng, X.L. (1998). Simulating normalizing constants: From importance sampling to bridge sampling to path sampling. {\it Statistical Science}, 163--185.
@@ -410,6 +428,12 @@ Hans, C. (2009). Bayesian lasso regression. {\it Biometrika}, 96(4), 835--845.
 \bibitem[Johnson, 1970]{johnson1970asymptotic}
 Johnson, R. A. (1970). Asymptotic expansions associated with posterior distributions.
 {\it The Annals of Mathematical Statistics}, 41(3), 851--864.
+
+\bibitem[LeCun{,} Bengio \& Hinton, 2015]{lecun2015deep}
+LeCun, Y., Bengio, Y. \& Hinton, G. (2015). Deep learning. {\it Nature}, 521(7553), 436.
+
+\bibitem[LeCun \& Cortes, 2010]{lecun-mnisthandwrittendigit-2010}
+LeCun, Y. \& Cortes, C. (2010). MNIST handwritten digit database. Retrieved from {\it http://yann.lecun.com/exdb/mnist/}
 
 \bibitem[Lopes{,}  Polson \& Carvalho, 2012]{lopes2012bayesian}
 Lopes, H. F., Polson, N. G., \&  Carvalho, C. M. (2012). Bayesian statistics with a smile: a resampling-sampling perspective. {\it Brazilian Journal of Probability and Statistics}, 26(4) 358--371.
@@ -460,9 +484,9 @@ Van Der Pas, S., Kleijn, B.  \&  Van Der Vaart, A. (2014). The horseshoe estimat
 Welling, M. \&  Teh, Y. W. (2011). Bayesian learning via stochastic gradient Langevin dynamics. {\it In Proceedings of the 28th International Conference on Machine Learning} (ICML- 11), 681--688.
 
 \bibitem[West, 1991]{west1992modelling}
-West, M. (1991). {\it Modelling with mixtures} Institute of Statistics and Decision Sciences, Duke University
-\end{thebibliography}
+West, M. (1991). {\it Modelling with mixtures}. Institute of Statistics and Decision Sciences, Duke University
 
+\end{thebibliography}
 
 \begin{appendix}\label{SGD}
 Stochastic gradient descent (SGD) method or its variation  is typically used to find the deep learning model weights by minimizing the penalized loss function, $\sum_{i=1}^n w_i l_i(y_i; \theta) + \lambda w_{p} \phi(\theta)$. The method minimizes the function by taking a negative step along an estimate $g^k$ of the gradient $\nabla\left[\sum_{i=1}^n w_i l_i(y_i; \theta^k) + \lambda w_{p} \phi(\theta^k)\right] $ at iteration $k$. 
