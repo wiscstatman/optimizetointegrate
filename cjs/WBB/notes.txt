@@ -1,0 +1,47 @@
+
+tone down abstract (i.e. not a wide range of conditions)
+
+..in rethinking section 2...
+
+2.1 Context
+
+...on the ubiquity/importance of (1)  as penalized estimation tool...in addition to bias
+ and variance...stability...lack of overfitting...cite some review or book on this...
+  on the possibilities for empirical risk and penalty...possibly non-differentiable
+  [Hastie, Tibshirani, Wainright] [Boyd...]
+
+
+...on the computational side...both on development of effective general purpose algorithms
+ and software systems.   E.g in convex problems...[algorithms]...on the power of GD and SGD
+  ... on optimization transfer [MM]...; on code systems TensorFlow etc
+   [Steve's paper on CD...
+
+...on the Bayesian side...regularization ... need to figure out NP's points about Bregman
+   and on means rather than modes...but something about optimization possibly corresponding
+   to integration of some hierarchical prior...; but still, on the computational side
+   integration remains a challenge, even if algorithms can deliver posterior modes
+
+ on top of page 6, NP's f() not clear...maybe it's the objective?
+
+ 
+
+2.2 WBB
+
+ on notation...maybe don't use weighted posterior...maybe just introduce weighted objective
+ ...maybe use w_0 instead of w_p, then see example in 3.1 [w_2 should be w_0]
+
+
+...on future work...large p asymptotics should go there...understanding posterior concentration
+  compared to other schemes...[interpretting Fig 2]
+
+
+lasso should be LASSO
+
+on the neural net...maybe `where f^(l) are so-called activation functions`
+
+
+
+..
+Ruder, S., 2016. An overview of gradient descent optimization algorithms. arXiv preprint arXiv:1609.04747.
+
+Loh, Po-Ling, and Martin J. Wainwright. "Regularized M-estimators with nonconvexity: Statistical and algorithmic theory for local optima." In Advances in Neural Information Processing Systems, pp. 476-484. 2013.
