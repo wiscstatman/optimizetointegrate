@@ -1,0 +1,866 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,bm, bbm}
+\usepackage{graphicx,fancyhdr,epstopdf}
+\usepackage{enumerate,mathrsfs,multirow}
+\usepackage{natbib}
+
+\DeclareMathOperator*{\argmax}{arg\,max} %argmax
+\DeclareMathOperator*{\argmin}{arg\,min} %argmin
+
+\newcommand{\EX}{\mathbb{E}} % expected value
+\newcommand{\bnw}{\widehat{\bm{\beta}}_n^w} % weighted lasso estimator
+\newcommand{\bLS}{\widehat{\bm{\beta}}_n^{\text{OLS}}} % LSE 
+\newcommand{\be}{\bm{\beta}} % beta vector
+\newcommand{\ep}{\bm{\epsilon}} % epsilon vector
+\newcommand{\eLS}{\bm{e}_n^{\text{OLS}}} % LSE residual vector
+\newcommand{\sumin}{\sum_{i=1}^n} % sum from i = 1 to n
+\newcommand{\dn}{\dfrac{1}{n}} % 1/n
+\newcommand{\dqn}{\dfrac{1}{\sqrt{n}}} % 1/sqrt{n}
+\newcommand{\CONV}[1]{\stackrel{\text{#1}}{\longrightarrow}} % convergence mode
+\newcommand{\overbar}[1]{\mkern 2mu\overline{\mkern-2mu#1\mkern-2mu}\mkern 2mu}
+\newcommand{\x}{\bm{x}_i} % i-th row of design matrix X
+\newcommand{\bu}{\bm{u}} % vector u
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section] 
+
+\begin{document}
+
+\title{Weighted Lasso Bootstrap}
+\author{
+	Tun Lee Ng
+	\and
+	Michael A. Newton
+}\date{\today}
+\maketitle
+
+\section{Introduction}
+
+Consider the following linear regression model 
+	\begin{align} \label{linear.reg.1}
+	Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \epsilon_i,  
+	\end{align}
+\noindent for $i = 1, \ldots, n$, and $\{\epsilon_i\}$ are independent and identically distributed (iid) random variables with mean 0 and finite variance $\sigma^2$. We assume that $p$ is fixed. Without loss of generality, the covariates are centered to have mean 0, so that $\hat{\beta}_0 = \bar{Y}$, and $Y_i$ in \eqref{linear.reg.1} can be replaced by $Y_i - \bar{Y}$. Again, without loss of generality, we assume that $\bar{Y} = 0$. Then, \eqref{linear.reg.1} can be expressed as the following         
+	\begin{align} \label{linear.reg.2}
+	Y_i = \x' \be + \epsilon_i,  
+	\end{align}
+\noindent where $Y_i$ is the centered response, $\x' = (x_{i1}, \ldots, x_{ip})$ is the $p \times 1$  centered covariate vector and $\be = (\beta_1, \ldots, \beta_p)'$ are the regression parameters. \\
+
+Let $\be_0$ be the true values of the regression parameters $\be$. The model is assumed to be sparse, ie. some of the elements of $\be_0$ are exactly zero corresponding to predictors that are irrelevant to the response. \\  
+
+The Lasso estimator is defined to be the minimizer of the $l_1$-penalized least square objective function,
+	\begin{align} \label{lasso.obj}   
+	\widehat{\be}_n 
+	:= \argmin_{\be} 
+		\sumin ( y_i - \x' \be )^2 
+		+ \lambda_n \sum_{j=1}^p |\beta_j|
+	\end{align}
+\noindent for a given penalty or regularization parameter $\lambda_n$. The Lasso estimator was first introduced by \citet{Lasso}. \citet{Knight&Fu} obtained the asymptotic distribution of the Lasso estimator and showed that the Lasso is weakly consistent under some mild regularity condition. \citet{Chatterjee&Lahiri} studied strong consistency of the Lasso estimator under a slightly more stringent regularity condition. \\
+
+Following the idea by \citet{Newton&Raftery}, for a given set of responses $\bm{y} = (y_1, \ldots, y_n)'$, we define the weighted Lasso estimator as follows:
+	\begin{align} \label{weighted.lasso.obj}   
+	\bnw := \argmin_{\be} 
+			\sumin \widetilde{w}_i ( y_i - \x' \be )^2 
+			+ \lambda_n \widetilde{w}_{n+1} \sum_{j=1}^p |\beta_j|.
+	\end{align}
+\noindent Here, $\widetilde{\bm{w}} = ( \widetilde{w}_1, \ldots, \widetilde{w}_{n+1} )$ are random weights drawn from
+	\begin{align*}
+	\left(
+		\dfrac{W_1}{ \sum_{i=1}^{n+1} W_i}
+		, \ldots, 
+		\dfrac{ W_{n+1} }{ \sum_{i=1}^{n+1} W_i}
+	\right)
+	= 
+	\left(
+		\dfrac{W_1}{ (n+1) \overbar{W} }
+		, \ldots, 
+		\dfrac{ W_{n+1} }{ (n+1) \overbar{W} }
+	\right),
+	\end{align*} 
+\noindent where $W_1, \ldots, W_n$ $\stackrel{iid}{\sim}$ exp(1) and $W_{n+1} = 1$ a.s. Note that the random weights $\widetilde{\bm{w}}$ are generated independently of the data $\bm{y}$, and are similar in structure to a Dirichlet weight vector as expounded by \citet{Newton&Raftery}. \\
+
+Hence, for a given set of data $\bm{y}$, \eqref{weighted.lasso.obj} can be expressed as
+	\begin{align} \label{weighted.lasso.obj2}   
+	\bnw = \argmin_{\be}
+			\dfrac{1}{\overbar{W}}
+			\left\{
+				\dn \sumin W_i ( y_i - \x' \be )^2 
+				+ \dfrac{\lambda_n}{n} \sum_{j=1}^p |\beta_j|
+			\right\}. 
+	\end{align}
+For any given set of data, the sampling distribution of $\left\{ \widehat{\be}^w_{n,k} \right\}^K_{k=1}$ is induced by the randomly drawn weights $\left\{ \widetilde{\bm{w}}_k \right\}^K_{k=1}$.         	  	  
+
+
+\section{Asymptotics for WLB}
+
+Need to define the proper probability space... \\
+Need to define ``\textit{convergence in conditional probability}" (denoted with $\CONV{c.p.}$)... \\
+Need to define ``\textit{convergence in conditional distribution}" (denoted with $\CONV{c.d.}$)... \\
+Need restrictions on the topology of parameter space ($\be \in \Theta$ for open, convex subset $\Theta$ of $\mathcal{R}^p$)... \\             
+
+\begin{thm} \label{consistency}
+	\textbf{(Conditional Consistency)} Consider the linear regression model in \eqref{linear.reg.2}, where the error terms $\{\epsilon_i\}$ are iid with mean 0 and variance $\sigma^2$. Suppose that 
+		\begin{align*}
+		\dn \sumin \| \x  \|_2^2 = O(1),
+		\qquad \text{and} \qquad
+		\dn \underset{1 \leq i \leq n}{\text{max}} \| \x  \|_2^2 \to 0, 
+		\end{align*}
+	and there exists a non-singular matrix $C$ such that
+		\begin{align*}
+		X'X = \dn \sumin \x \x' \to C 
+		\quad \text{as} \quad n \to \infty.
+		\end{align*}
+	If $\dfrac{\lambda_n}{n} \to \lambda_0 \in [0,\infty)$, then 
+		$$
+		\left( \bnw - \be_0 \right) \bigg| \text{data} \CONV{c.p.} \argmin Z,
+		$$
+	where
+		\begin{align*} 
+		Z(\bu) = \bu' C \bu 
+					+ \lambda_0 \| \be_0 + \bu \|_1 .
+		\end{align*}  
+\end{thm}
+
+Hence, if $\lambda_0 = 0$, then $\bnw \CONV{c.p.} \be_0$, ie. The weighted Lasso estimator is conditionally consistent if the penalty term vanishes in the limit.     
+
+\begin{thm} \label{asympdistn}
+	\textbf{(Asymptotic Conditional Distribution)} Consider the linear regression model in \eqref{linear.reg.2}, where the error terms $\{\epsilon_i\}$ are iid with mean 0 and variance $\sigma^2$. Suppose that  
+		\begin{align*}
+		\EX (\epsilon_i)^4 < \infty,
+		\qquad \text{and} \qquad
+		\underset{1 \leq i \leq n}{\text{max}} \| \x  \|_2^2 = \mathcal{O} (1), 
+		\end{align*}
+	and there exists a non-singular matrix $C$ such that
+		\begin{align*}
+		X'X = \dn \sumin \x \x' \to C 
+		\quad \text{as} \quad n \to \infty.
+		\end{align*}
+	If $\dfrac{\lambda_n}{\sqrt{n}} \to \lambda_0 \in [0,\infty)$, then
+		$$
+		\sqrt{n} \left( 
+					\bnw - \bLS 
+				\right) 
+		\bigg| \text{data} 
+		\CONV{c.d.} \argmin (V),
+		$$
+	where $\bLS$ are the ordinary least squares (OLS) estimators for the linear regression model in \eqref{linear.reg.2},   
+		$$
+		V(\bu) = -2 \bu' \bm{Z} + \bu' C \bu 
+			 	+ \lambda_0 \sum_{j=1}^p 
+			 		\left[
+						u_j \, \text{sgn}(\beta_{0,j}) \mathbbm{1}_{ \{ \beta_{0,j} \neq 0 \}}
+						+ | u_j | \mathbbm{1}_{ \{ \beta_{0,j} = 0 \}} 
+			 		\right],
+		$$
+	and $\bm{Z} \sim N \left( \bm{0}, \sigma^2 C \right)$.
+\end{thm}
+
+Hence, if $\lambda_0 = 0$, then $\argmin_{\bu} V(\bu)= C^{-1} \bm{Z} \sim N \left( \bm{0}, \sigma^2 C^{-1} \right)$, which corresponds to the asymptotic normality result of the OLS estimator. 
+
+\section{Appendix}
+
+Here are the proofs for the theorems in this paper.
+
+\begin{lem} \label{lem_X'DnX}
+	For $W_1, W_2, \ldots \stackrel{iid}{\sim} \exp(1)$, let $D_n = diag(W_1, \ldots, W_n)$. If 
+		\begin{align*}
+		\dn \underset{1 \leq i \leq n}{\text{max}} \| \x \|_2^2 \to 0
+		\qquad \text{and} \qquad 
+		\dn \sumin \x' \x = \mathcal{O} (1),   
+		\end{align*}
+	and there exists a non-singular matrix $C$ such that
+		\begin{align*}
+		X'X = \dn \sumin \x \x' \to C 
+		\quad \text{as} \quad n \to \infty,
+		\end{align*}
+	then
+		\begin{align} \label{lemma1result}
+		\dn X' D_n X
+		\CONV{p} C 
+		\end{align}
+\end{lem}
+
+\allowdisplaybreaks
+\begin{proof}
+	 Note that $X'X$ is symmetric and $\dn X'X \to C$, so $C$ is symmetric. Therefore, by Lemma 1 of \citet{strawderman1994}, we prove \eqref{lemma1result} by showing that for every $t > 0$,
+	 $$
+	 P \left( 
+	 		\left\| 
+	 				\dn X' D_n X - C 
+	 		\right\|_\infty 
+	 		\geq t 
+	 	\right) 
+	 \to 0 \qquad \text{as} \quad n \to \infty,
+	 $$
+	 where $\|.\|_\infty$ refers to the spectral norm of a matrix. By Proposition 6.2 of \citet{MatrixChebyshev}, 
+	 \begin{align*}
+	 	&P \left( 
+	 			\left\| 
+	 					\dn X' D_n X - C 
+	 			\right\|_\infty 
+	 			\geq t 
+	 		\right) \\ 
+	 	&\leq \dfrac{1}{t^2} 
+	 		   \EX \left\| 
+	 		   			  \dn X' D_n X - C 
+	 		   		\right\|_2^2 \\
+	 	&= \dfrac{1}{t^2} 
+	 		\EX \left\| 
+	 				   \dn \sumin W_i \x \x' - C 
+	 			\right\|_2^2 \\
+	 	&= \dfrac{1}{t^2} 
+	 		\EX \left\| 
+	 					\dn \sumin (W_i - 1) \x \x' 
+	 					+ \dn X'X - C 
+	 			\right\|_2^2 \\
+	 	&= \dfrac{1}{t^2} 
+	 		\EX \left\| 
+	 				   \dn \sumin (W_i - 1) \x \x' 
+	 			 \right\|_2^2 
+	 	  + \dfrac{1}{t^2} 
+	 		\left\|  
+	 			   \dn X'X - C
+	 		\right\|_2^2 \\
+	 	&= \dfrac{1}{n^2 t^2}
+	 		\sumin \| \x \x' \|^2_2
+	 	  + \dfrac{1}{t^2} 
+			\left\|  
+				  \dn X'X - C
+			\right\|_2^2 \\
+	 	&= \dfrac{1}{n^2 t^2}
+	 		\sumin (\x' \x)^2
+	 	  + \dfrac{1}{t^2} 
+	 		\left\|  
+	 		  	  \dn X'X - C
+	 		\right\|_2^2 \\
+	 	&\leq \dfrac{1}{n t^2} \underset{1 \leq i \leq n}{\text{max}} \x' \x
+	 		   \times
+	 		   \dn \sumin \x' \x
+	 		 + \dfrac{1}{t^2} 
+	 		   \left\|  
+	 				  \dn X'X - C
+	 		   \right\|_2^2 \\
+	 	&\to 0 \qquad \text{as} \quad n \to \infty,  	
+	 \end{align*}
+ 	 where the last step follows from our assumptions.  
+\end{proof}
+
+\begin{lem} \label{lem_X'DnEp}
+	Let the error terms $\{\epsilon_i\}$ be iid with mean 0 and variance $\sigma^2$. Suppose that
+	\begin{align*}
+		\dn \sumin \| \x  \|_2^2 = \mathcal{O} (1),
+		\qquad \text{and} \qquad
+		\dn \underset{1 \leq i \leq n}{\text{max}} \| \x  \|_2^2 \to 0, 
+	\end{align*}
+	Then,  
+	\begin{align}
+	\left(
+		 \dn X'D_n \ep 
+	\right) 
+	\bigg| \text{data} 
+	\CONV{c.p.} \bm{0}.
+	\end{align}   
+\end{lem}
+
+\begin{proof}
+	First, by Jensen's inequality, we have
+	$$
+	\EX |X| = \EX (\sqrt{X^2}) 
+			\leq \sqrt{\EX (X^2)} 
+			\leq \EX X^2
+			= \sigma^2 
+			< \infty.
+	$$
+	Since $\EX(\epsilon_i) = 0$ and we assumed
+	$$
+	\dn \sumin \| \x  \|_2^2 = \mathcal{O} (1),
+	$$
+	then, by Lemma 3.1 of \citet{Chatterjee&Lahiri},
+	$$
+	\dn 
+	\sumin \epsilon_i \x
+	\CONV{a.s.} \bm{0}.
+	$$
+	In addition, note that 
+	\begin{align*}
+	\dn \sumin \|\epsilon_i \x \|_2 
+	&= \dn \sumin |\epsilon_i| \|\x\|_2 \\
+	&\leq \dn \sumin \epsilon_i^2 
+		 + \dn \sumin \|\x\|_2^2. 
+	\end{align*}
+	The strong law of large number ensures that 
+	$$
+	\dn \sumin \epsilon_i^2 
+	\CONV{a.s.} \EX (\epsilon_1^2) = \sigma^2. 
+	$$
+	So,    
+	\begin{align} \label{constraint1}
+	\dn \sumin \|\epsilon_i \x \|_2 = \mathcal{O} (1) \quad \text{a.s.}
+	\end{align}
+	Furthermore, note that
+	\begin{align} \label{constraint2} 
+	\dn \underset{1 \leq i \leq n}{\text{max}}  \|\epsilon_i \x \|_2 
+	&= \dn \underset{1 \leq i \leq n}{\text{max}} |\epsilon_i| \|\x\|_2 \notag \\ 
+	&\leq \dn \underset{1 \leq i \leq n}{\text{max}} |\epsilon_i| 
+		\times \dn \underset{1 \leq i \leq n}{\text{max}} \|\x\|_2 \notag \\
+	&\CONV{a.s.} 0,
+	\end{align}
+	where the last line follows from the fact that $\EX |\epsilon_1| < \infty$, so $\dn \underset{1 \leq i \leq n}{\text{max}} |\epsilon_i| \CONV{a.s.} 0$ by Lemma 14 of \citet{newton1991}. \\
+	
+	Conditional on data, $\ep$ is fixed albeit unobservable. Hence, for every $t > 0$, we deploy the multi-dimensional Chebyshev inequality 
+	$$
+	P \left( 
+			\left\|  
+					\dn X' D_n \ep - \bm{0} 
+			\right\|_2  
+			\geq t \bigg| \text{data}  
+	  \right) 
+	\leq \dfrac{1}{t^2}
+		 \EX_{\bm{W}} \left\{ 
+		 			  	 \left\| 
+		 			  		\dn X' D_n \ep 
+		 			  	 \right\|_2^2 \bigg| \text{data}
+		 			  \right\}
+	$$
+	to show that 
+	$$      
+	P \left( 
+			\left\|  
+					\dn X' D_n \ep - \bm{0} 
+			\right\|_2 
+			\geq t \bigg| \text{data}  
+	  \right) 
+	\to 0
+	\qquad \text{as} \qquad n \to \infty 
+	$$ 
+	due to the constraints in \eqref{constraint1} and \eqref{constraint2}. Then, by Lemma 3 of \citet{newton1991},
+	$$
+	\left( \dn X'D_n \ep \right) \bigg| \text{data} \CONV{c.p.} \bm{0}.
+	$$ 
+\end{proof}
+
+Now we are ready to prove Theorem \ref{consistency}. 
+
+\begin{proof} [Proof of Theorem \ref{consistency}]
+	From \eqref{weighted.lasso.obj2}, conditional on data, 
+	\begin{align*}
+	\bnw &= \argmin_{\be}
+					\dfrac{1}{\overbar{W}}
+					\left\{
+							\dn (Y - X \be)' D_n (Y - X \be)  
+							+ \dfrac{\lambda_n}{n} \| \be \|_1
+					\right\} \\
+		 &= \argmin_{\be}
+		 			\dfrac{1}{\overbar{W}}
+		 			\left\{
+		 					\dn [\ep - X (\be - \be_0)]' D_n [\ep - X (\be - \be_0)]
+		 					+ \dfrac{\lambda_n}{n} \| \be_0 + \be - \be_0 \|_1  
+		 			\right\}.  
+	\end{align*}
+	Therefore, 
+	\begin{align*}
+	(\bnw - \be_0) &= \argmin_{\bu}
+							 \dfrac{1}{\overbar{W}}
+							 \left\{
+		 							\dn (\ep - X \bu)' D_n (\ep - X \bu)
+									+ \dfrac{\lambda_n}{n} \| \be_0 + \bu \|_1  
+							 \right\} \\
+				   &= \argmin_{\bu}
+							 \dfrac{1}{\overbar{W}}
+							 \left\{
+							 		\dn [-2 \bu' (X' D_n \ep) + \bu' (X' D_n X) \bu]
+							 		+ \dfrac{\lambda_n}{n} \| \be_0 + \bu \|_1  
+							 \right\}. 
+	\end{align*}
+	The strong law of large numbers ensures that $\overbar{W} \CONV{a.s.} 1$. Let
+	$$
+	Z_n(\bu) 
+	:= -2 \bu' \left( \dfrac{X' D_n \ep}{n} \right) 
+		+ \bu' \left( \dfrac{X' D_n X}{n} \right) \bu 
+		+ \dfrac{\lambda_n}{n} \| \be_0 + \bu \|_1. 
+	$$ 
+	By Lemma \ref{lem_X'DnX}, we have 
+	$$
+	\dn X' D_n X \CONV{p} C.
+	$$
+	By Lemma \ref{lem_X'DnEp}, we have 
+	$$
+	\left( \dn X' D_n \ep \right) \bigg| \text{data} \CONV{c.p.} \bm{0}.
+	$$
+	Hence,  if $\dfrac{\lambda_n}{n} \to \lambda_0 \in [0 , \infty)$, then by Lemma 2 of \citet{newton1991}, 
+	$$
+	Z_n(\bu) \big| \text{data}  \CONV{c.p.} Z(\bu) \equiv \bu' C \bu + \lambda_0 \| \be_0 + \bu \|.
+	$$
+	Note that $Z_n(\bu)$ is a sequence of random convex functions of $\bu$. Hence, by the Convexity Lemma \citep{Pollard1991}, for a compact set $K \subset \Theta$, where $\Theta$ is itself a convex, open subset of $\mathcal{R}^p$,
+	$$
+	\underset{\bu \in K \subset \Theta}{\text{sup}} \; 
+	|Z_n (\bu) - Z (\bu)|
+	\bigg| \text{data}
+	\CONV{c.p.} 0. 	
+	$$
+	Also, note that $ \left( \bnw \big| \text{data} \right) = O_p(1)$.
+	Therefore,
+	\begin{align*}
+	&\left( \bnw - \be_0 \right) \bigg| \text{data} \\  
+	&= 	\argmin_{\bu}
+		\left\{
+			\dfrac{1}{\overbar{W}} Z_n(\bu)
+			\bigg| \text{data}  
+		\right\} \\ 
+	&\CONV{c.p.} \argmin_{\bu} Z(\bu).
+	\end{align*} 
+	It follows that if $\lambda_0 = 0$, then $\argmin_{\bu} Z(\bu) = \bm{0}$, i.e. $\bnw \CONV{c.p.} \be_0$.
+\end{proof}
+
+\begin{lem} \label{lem_slutsky_cd}
+	Consider two sequences $\{V_n\}$ and $\{U_n\}$ and two other random variables $V$ and $U$, all defined on the same product space $(\Omega, \mathcal{F})$. If
+	$$
+	V_n \CONV{c.p.} V 
+	\qquad \text{and} \qquad
+	U_n \CONV{c.d.} U,
+	$$
+	then
+	$$
+	V_n U_n \CONV{c.d.} V U 
+	\qquad \text{and} \qquad 
+	V_n + U_n \CONV{c.d.} V + U.
+	$$
+\end{lem} 
+
+\begin{proof}
+	For each fixed infinite sequence of data, the results follow from properties of convergence in distribution due to Slutsky's theorem.
+\end{proof}
+
+\begin{lem} \label{lem_ave_ei_xi^2} 
+	Suppose that  
+	\begin{align*}
+	\underset{1 \leq i \leq n}{\text{max}} \| \x  \|_2^2 = \mathcal{O} (1), 
+	\end{align*}
+	and there exists a non-singular matrix $C$ such that
+	\begin{align*}
+	X'X = \dn \sumin \x \x' \to C 
+	\quad \text{as} \quad n \to \infty,
+	\end{align*}
+	then
+	$$
+	\left(
+		\dn \sumin e_i^2 \x \x'
+	\right) \bigg| \text{data}
+	\CONV{c.p.} 
+	\sigma^2 C, 
+	$$
+	where $\left\{ e_i \right\}$ are the OLS residuals.
+\end{lem}
+
+\begin{proof}
+	Without loss of generality, we first consider the univariate case. Since 
+	$$
+	\widehat{Y_i}^{\text{OLS}} 
+	= x_i \widehat{\beta}_n^{\text{OLS}}
+	= x_i \dfrac {\sumin x_i Y_i} 
+		{\sumin x_i^2},
+	$$
+	then, under the OLS approach,
+	\begin{align*}
+	e_i^2
+	&= \left( Y_i - \widehat{Y_i}^{\text{OLS}} \right)^2 \\
+	&= Y_i^2 
+		+ x_i^2 \left( \widehat{\beta}_n^{\text{OLS}} \right)^2
+		- 2 \widehat{\beta}_n^{\text{OLS}} x_i Y_i \\
+	&= \left( x_i \beta_0 + \epsilon_i \right)^2
+		+ x_i^2 \left( \widehat{\beta}_n^{\text{OLS}} \right)^2
+		- 2 \widehat{\beta}_n^{\text{OLS}} x_i (x_i \beta_0 + \epsilon_i) \\
+	&= \epsilon_i^2 
+		+ x_i^2 \left[ 
+					 \beta_0^2 + 
+					 \left( \widehat{\beta}_n^{\text{OLS}} \right)^2
+					 - 2 \left( \beta_0 \widehat{\beta}_n^{\text{OLS}} \right)
+				\right]
+		- 2 x_i \epsilon_i \left(
+							\beta_0 \widehat{\beta}_n^{\text{OLS}}
+							\right), 
+	\end{align*}
+	which leads us to 
+	\begin{align*}
+	&\dn \sumin x_i^2 e_i^2 \\
+	&= \dn \sumin x_i^2 \epsilon_i^2
+		+ \left[ 
+				\beta_0^2 + 
+				\left( \widehat{\beta}_n^{\text{OLS}} \right)^2
+				- 2 \left( \beta_0 \widehat{\beta}_n^{\text{OLS}} \right)
+		  \right] 
+		  \left( \dn \sumin x_i^4 \right)
+		- 2 \left( \beta_0 \widehat{\beta}_n^{\text{OLS}} \right)
+			\left( \dn \sumin x_i^3 \epsilon_i \right).  
+	\end{align*}
+	We have assumed that 
+	$$
+	\dn \sumin x_i^2 \to c \quad \text{for some} \,\, c > 0.
+	$$
+	From the assumption $\underset{1 \leq i \leq n}{\text{max}} x_i^2 = \mathcal{O} (1)$, we have 
+	$$
+	\dn \sumin x_i^4 = \mathcal{O} (1).
+	$$
+	and the Strong Law of Large Numbers gives us 
+	$$
+	\dn \sumin x_i \epsilon_i \CONV{a.s.} 0.
+	\qquad \text{and} \qquad
+	\dn \sumin x_i^3 \epsilon_i \CONV{a.s.} 0.
+	$$
+	Therefore,
+	$$
+	\widehat{\beta}_n^{\text{OLS}} 
+	\CONV{a.s.}
+	\dfrac{\beta_0 c}{c}
+	= \beta_0, 
+	$$
+	that is, the OLS estimator is strongly consistent. 
+	Again, the Strong Law of Large Numbers ensures that 
+	$$
+	\dn \sumin x_i^2 (\epsilon_i - \sigma^2) \CONV{a.s.} 0,
+	$$
+	while 
+	$$
+	\sigma^2 \times \dn \sumin x_i^2 \to \sigma^2 c.
+	$$
+	Therefore,
+	$$
+	\dn \sumin x_i^2 \epsilon_i^2 \CONV{a.s.} \sigma^2 c.
+	$$
+	Finally, piecing the terms together, we have
+	\begin{align*}
+	\dn \sumin x_i^2 e_i^2 \CONV{a.s.} \sigma^2 c,
+	\end{align*}
+	and hence
+	$$
+	\left( \dn \sumin x_i^2 e_i^2 \right)
+	\bigg| \text{data} 
+	\CONV{c.p.} \sigma^2 c.
+	$$
+	A sketch of proof is also provided for the multivariate case. First, note that the assumption
+	$$
+	\dn X'X \to C
+	$$ 
+	implies that $X'X = \mathcal{O} (n^{-1})$. Therefore, by Theorem 1 of \citet{LSEstrong}, 
+	$$
+	\bLS 
+	\CONV{a.s.}
+	\be_0.
+	$$ 
+	Then,
+	\begin{align*}
+	&\dn \sumin e_i^2 \x \x' \\
+	&= \dn \sumin \epsilon_i^2 \x \x' \\
+	&+ \dfrac{2}{n} \sumin 
+					\epsilon_i \x' 
+					\left( \bLS - \be_0 \right)
+					\x \x' \\
+	&+ \dn \sumin
+			\left\{
+				\x'\left[
+						\be_0 \be_0'
+						- 2 \bLS \be_0'
+						+ \bLS \left( \bLS \right)' 
+				\right] \x 
+			\right\} \x \x'.
+	\end{align*} 
+	With our assumptions, the Strong Law of Large Numbers ensures that the first term converges to $\sigma^2 C$ with probability 1 whereas the other two terms converges to zero matrix almost surely. Therefore,
+	 $$
+	 \left( \dn \sumin e_i^2 \x \x' \right)
+	 \bigg| \text{data} 
+	 \CONV{c.p.} \sigma^2 C.
+	 $$
+\end{proof}
+
+\begin{lem} \label{lem_X'Dne_normal}
+	Suppose that 
+	$$
+	\underset{1 \leq i \leq n}{\text{max}} \| \x \|_2^2 = \mathcal{O} (1)
+	\qquad \text{and} \qquad
+	\EX (\epsilon_i) < \infty.
+	$$
+	Then,
+	$$
+	\left( 
+		\dqn X' D_n \eLS 
+	\right) \bigg| \text{data}
+	\CONV{c.d.} 
+	N \left( \bm{0}, \sigma^2 C \right).
+	$$
+\end{lem} 
+
+\begin{proof}
+	First, note that
+	\begin{align*}
+	&\dqn X' D_n \eLS \\
+	&= \left( \dn \sumin e_i^2 \x \x' \right)^{1/2}
+		\times \left( \sumin e_i^2 \x \x' \right)^{-1/2}
+		\times \sumin e_i \x W_i \\ 
+	&= \left( \dn \sumin e_i^2 \x \x' \right)^{1/2}
+		\times \left( \sumin e_i^2 \x \x' \right)^{-1/2}
+		\times \sumin e_i \x (W_i - 1), 
+	\end{align*}
+	where the last equality follows from the fact that
+	\begin{align*}
+	\sumin e_i \x
+	&= X' \eLS \\
+	&= X'Y - X'X (X'X)^{-1} X'Y \\
+	&= \bm{0}.
+	\end{align*}
+	By Lemma \ref{lem_ave_ei_xi^2}, 
+	$$
+	\left( \dn \sumin e_i^2 \x \x' \right)^{1/2}
+	\bigg| \text{data}
+	\CONV{c.p.} 
+	\sigma C^{1/2}.
+	$$
+	Without loss of generality, we will continue our proof for the univariate case. We shall show that the Lindeberg's Central Limit Theorem gives 
+	$$
+	\left(
+		\dfrac{ \sumin e_i x_i (W_i - 1) }
+			  { \sqrt{\sumin e_i^2 x_i^2} }
+	\right) \bigg| \text{data}
+	\CONV{c.d.} N(0, 1)
+	$$
+	by verifying the following Liapounov's sufficient condition
+	$$
+	\dfrac{ \sumin \EX 
+					\left[ 
+						e_i^4 x_i^4 
+						(W_i - 1)^4 
+						| \text{data}
+					\right] 
+		  }
+		  { \left( Var 
+		  			\left[
+			  			\sumin e_i x_i (W_i - 1)
+			  			| \text{data}
+			  		\right] 
+			\right)^2 
+		  }
+	\to 0 
+	\quad \text{as} \,\,
+	n \to \infty.
+	$$
+	With our assumptions that $\underset{1 \leq i \leq n}{\text{max}} x_i^2 = \mathcal{O} (1)$ and   
+	$\EX (\epsilon_i) < \infty$, we can use similar technique in Lemma \ref{lem_ave_ei_xi^2} to show that 
+	$$
+	\sumin e_i^4 x_i^4 = \mathcal{O} (n) \,\, \text{a.s.}
+	$$
+	Since $\EX \left[ (W_i - 1)^4 \right] = 9$, 
+	$$
+	\sumin \EX 
+				\left[ 
+					e_i^4 x_i^4 
+					(W_i - 1)^4 
+					| \text{data}
+				\right]
+			= \mathcal{O} (n)
+	$$
+	On the other hand, by Lemma \ref{lem_ave_ei_xi^2}, 
+	$$
+	\left( \dn \sumin x_i^2 e_i^2 \right)^2
+	\CONV{a.s.} 
+	\sigma^4 c^2,
+	$$
+	which implies that
+	$$
+	\left( \sumin x_i^2 e_i^2 \right)^2 
+	= \mathcal{O} (n^2)
+	\,\, \text{a.s.}
+	$$
+	Hence, 
+	\begin{align*}
+	&\left( Var 
+		\left[
+			\sumin e_i x_i (W_i - 1)
+			\bigg| \text{data}
+		\right] 
+	\right)^2 \\
+	&= \left( 
+			\sumin x_i^2 e_i^2 
+		\right)^2 
+		\bigg| \text{data} \\
+	&= \mathcal{O} (n^2)
+	\end{align*}
+	Therefore, conditional on data, 
+	$$
+	\sumin e_i^4 x_i^4 \EX \left[ (W_i - 1)^4 \right]
+	= o \left[ \left(
+				\sumin e_i^2 x_i^2 
+				\right)^2 
+		\right],
+	$$ 
+	that is, the Liapounov's sufficient condition is satisfied. Finally, we apply Lemma \ref{lem_slutsky_cd} to obtain
+	$$
+	\left( 
+		\dqn X' D_n \eLS 
+	\right) \bigg| \text{data}
+	\CONV{c.d.} 
+	N \left( \bm{0}, \sigma^2 C \right).
+	$$
+\end{proof}
+
+Now we are ready to prove Theorem \ref{asympdistn}. 
+
+\begin{proof} [Proof of Theorem \ref{asympdistn}]
+	Define 
+	$$
+	Q_n (\bm{z}) := \left\| 
+						 	D_n^{\frac{1}{2}} (\bm{y} - X \bm{z})
+				    \right\|_2^2 
+				    + \lambda_n \| \bm{z} \|_1,
+	$$
+	which leads to 
+	\begin{align*}
+	Q_n \left( \bLS + \dqn \bu \right)
+	&= \left\| 
+			  D_n^{\frac{1}{2}} 
+			  \left[
+			  		Y - X \left( \bLS + \dqn \bu \right)				
+			  \right]	
+	   \right\|_2^2
+	   + \lambda_n \left\|
+	   					 \bLS + \dqn \bu
+	   			   \right\|_1 \\
+	&= \left\| 
+			 D_n^{\frac{1}{2}} 
+			\left( 
+				 \eLS - \dqn X \bu 
+			\right)				
+		\right\|_2^2
+		+ \lambda_n \left\|
+						\bLS + \dqn \bu
+					\right\|_1, 
+	\end{align*}
+	and 
+	\begin{align*}
+	Q_n \left( \bLS  \right)
+	&= \left\| 
+			 D_n^{\frac{1}{2}} 
+			 \left( 
+				  Y - X \bLS 
+			 \right)				
+		\right\|_2^2
+		+ \lambda_n \left\| \bLS \right\|_1 \\
+	&= \left\| 
+			 D_n^{\frac{1}{2}} \eLS		
+	   \right\|_2^2
+	   + \lambda_n \left\| \bLS \right\|_1 .\\
+	\end{align*}
+	Now define
+	$$
+	V_n(\bu) := Q_n \left( \bLS  + \dqn \bu \right) - Q_n \left( \bLS  \right), 
+	$$
+	such that 
+	$$
+	\argmin_{\bu} V_n(\bu)
+	= \argmin_{\bu}  Q_n \left( \bLS  + \dqn \bu \right)
+	= \sqrt{n} \left( \bnw - \bLS \right).
+	$$
+	Notice that $V_n(\bu)$ can be simplified into 
+	$$
+	-2 \bu' \left( \dfrac{X' D_n \eLS}{\sqrt{n}} \right)
+	+ \bu' \left( \dfrac{X' D_n X}{n} \right) \bu
+	+ \lambda_n \left\{
+					\left\| \bLS + \dqn \bu \right\|_1
+					- \left\| \bLS \right\|_1 
+				\right\}.
+	$$
+	By Lemma \ref{lem_X'DnX}, 
+	$$
+	\dn X' D_n X \CONV{p} C.
+	$$
+	By Lemma \ref{lem_X'Dne_normal}, 
+	$$
+	\dqn X' D_n \eLS 
+	\CONV{c.d.}
+	N \left( \bm{0}, \sigma^2 C \right).
+	$$
+	For the penalty term,
+	\begin{align*}
+	&\lambda_n \left\{
+					\left\| \bLS + \dqn \bu \right\|_1
+					- \left\| \bLS \right\|_1 
+			   \right\} \\
+	&= \dfrac{\lambda_n}{\sqrt{n}} 
+		\sum_{j=1}^p
+		\left\{
+				\left| 
+						\sqrt{n} \widehat{\beta}_{n,j}^{\text{OLS}} 
+						+ \mu_j
+				\right|
+			  - \left|
+			  			\sqrt{n} \widehat{\beta}_{n,j}^{\text{OLS}}
+			   	\right|
+		\right\} \\
+	&:= \dfrac{\lambda_n}{\sqrt{n}}
+		 \sum_{j=1}^p
+		 p_n(u_j). 
+	\end{align*}
+	We assumed, for Theorem \ref{asympdistn}, that 
+	$$
+	\dfrac{\lambda_n}{\sqrt{n}} \to \lambda_0 \in [0, \infty).
+	$$
+	When $\widehat{\beta}_{n,j}^{\text{OLS}} = 0$, $p_n(u_j) = |u_j|$. Also, for large $n$, $\sqrt{n} \widehat{\beta}_{n,j}^{\text{OLS}}$ dominates $u_j$. Hence, it is easy to verify that, for large $n$, we have
+	$$
+	p_n(u_j) = u_j 
+				\text{sgn} 
+				\left( \widehat{\beta}_{n,j}^{\text{OLS}} \right)
+				\mathbbm{1}_{ 
+							\left\{ 
+									\widehat{\beta}_{n,j}^{\text{OLS}} \neq 0 
+							\right\} 
+							}
+			+ |u_j| 
+				\mathbbm{1}_{
+							\left\{
+								\widehat{\beta}_{n,j}^{\text{OLS}} = 0
+							\right\} 
+							}
+	$$
+	based on the following observations
+	\begin{itemize}
+		\item when $\widehat{\beta}_{n,j}^{\text{OLS}} >0$ and $u_j >0$, then $p_n(u_j) = u_j$; \\
+		\item when $\widehat{\beta}_{n,j}^{\text{OLS}} >0$ and $u_j <0$, then $p_n(u_j) = u_j$; \\
+		\item when $\widehat{\beta}_{n,j}^{\text{OLS}} <0$ and $u_j >0$, then $p_n(u_j) = -u_j$; \\
+		\item when $\widehat{\beta}_{n,j}^{\text{OLS}} <0$ and $u_j <0$, then $p_n(u_j) = -u_j$. \\ 
+	\end{itemize}  
+	On the other hand, we have shown that $\bLS$ is strongly consistent. Therefore, conditional on data,
+	\begin{align*}
+	&\lambda_n \left\{
+					\left\| \bLS + \dqn \bu \right\|_1
+					- \left\| \bLS \right\|_1 
+				\right\} \\
+	&\to \lambda_0
+		 \sum_{j=1}^p
+		 \left[
+				u_j \, \text{sgn}(\beta_{0,j}) \mathbbm{1}_{ \{ \beta_{0,j} \neq 0 \}}
+				+ | u_j | \mathbbm{1}_{ \{ \beta_{0,j} = 0 \}} 
+		 \right]. 
+	\end{align*}
+	Then, by Lemma \ref{lem_slutsky_cd}, 
+	$$
+	V_n(\bu) \CONV{c.d.}  V(\bu) \equiv 
+	-2 \bu' \bm{Z} 
+	+ \bu' C \bu
+	+ \lambda_0 
+	  \sum_{j=1}^p
+	  \left[
+	  		u_j \, \text{sgn}(\beta_{0,j}) \mathbbm{1}_{ \{ \beta_{0,j} \neq 0 \}}
+	  		+ | u_j | \mathbbm{1}_{ \{ \beta_{0,j} = 0 \}} 
+	  \right], 
+	$$
+	where $\bm{Z} \sim N \left( \bm{0}, \sigma^2 C \right)$. Finally, conditional on data, $V_n(\bu)$ is convex, and $V(\bu)$ has unique minimum. Therefore, it follows from \citet{Geyer1996} that
+	$$
+	\sqrt{n} \left( \bnw - \be_0 \right) \bigg| \text{data}
+	= \argmin_{\bu} \left\{ V_n(\bu) \big| \text{data} \right\}
+	\CONV{c.d.}
+	\argmin_{\bu} V(\bu).
+	$$  
+\end{proof}
+   
+\bibliographystyle{asa}     
+\bibliography{WLB_Ref}         
+
+\end{document}
