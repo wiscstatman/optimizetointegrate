@@ -21,7 +21,7 @@
 
 \begin{document}
 %\rhauthor{Michael A. Newton,  Nicholas G. Polson and Jianeng Xu}
-\rhauthor{BlindedA, BlindedB, and BlindedC}
+\rhauthor{Blinded-A, Blinded-B, and Blinded-C}
 \copyrightline{Statistical Society of Canada}
 \Frenchcopyrightline{Soci\'et\'e statistique du Canada}
 
@@ -59,39 +59,47 @@ We develop a weighted Bayesian Bootstrap (WBB) for  machine learning and statist
 \section{Introduction}
 Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference 
 problems. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis
-offers a general approach, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to 
-provide uncertainty assessments.
+offers a general solution, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to provide uncertainty assessments.
  
-Our work builds on \cite{newton1994approximate} who provide a weighted likelihood Bootstrap (WLB) method for Bayesian inference. They develop a sampling algorithm together with asymptotic analysis to show that  the WLB
-provides approximate posterior samples. Their bootstrap procedure exploits tools to maximize likelihoods and 
-theoretical connections between posterior variation and curvature of log-likelihood revealed through
-repeated optimization of randomly weighted likelihoods. 
- By contrast, the proposed weighted Bayesian Bootstrap (WBB) calculates a series of
+For relatively simple statistical models, the weighted likelihood bootstrap (WLB) method provides
+approximate posterior sampling through repeated optimization of a randomly weighted likelihood function (\cite{newton1994approximate}).
+The proposed WBB extends the WLB to a broad class of  contemporary statistical models by leveraging advances in optimization methodology.
+Essentially, the WLB used optimization of certain 
+randomized objective functions to enable approximate marginalization (i.e. integration) 
+required in Bayesian analysis.  The same idea -- optimize a randomized objective function to 
+achieve  posterior sampling -- is at the heart of the proposed WBB method, though some changes to the WLB procedure are required to 
+carry out this program for the models considered.
+Theoretical support for the WLB approximation is based on  connections between posterior variation and curvature of 
+log-likelihood revealed through repeated optimization of randomly weighted likelihoods. 
+ By contrast, the proposed WBB calculates a series of
 randomized  posterior modes rather than randomized likelihood maximizers. A key rationale for this proposal is  that 
 high dimensional posterior modes are now readily computable, thanks to systems such as TensorFlow (Abadi et al., 2015) and Keras (Chollet et al., 2015)
 that deploy stochastic gradient descent (SGD) and convex optimization methods (Boyd \& Vandenberghe, 2004) for large-scale
 problems, such as on neural network architectures used in deep learning (LeCun{,} Bengio \& Hinton, 2015).
-By linking random weighting with modern-day optimization to calibrate estimates, we provide a 
-framework for uncertainty quantification.
+By linking random weighting with modern-day optimization, we expose a simple scheme
+for approximate uncertainty quantification in a wide class of statistical models.
 
 Quantifying uncertainty is typically unavailable in a purely regularization optimization method. 
-From the proposed Bayesian perspective, UQ is 
-available directly through repeated optimization of randomized objective functions, using the same
+We contend that UQ is available directly by repeated optimization of randomized objective functions, using the same
 computational tools that produce the primary estimate,  rather than through Markov
 chain Monte Carlo, variational methods,  approximate Bayesian computation, or other techniques. 
 Thus, uncertainty assessments are provided at little extra computational cost over the original
-training computations.  Another useful feature is that  it is straightforward to add a regularization path across hyper-parameters, which is usually difficult to compute in traditional Bayesian
+training computations.  A further benefit is that  it is straightforward to add a regularization path 
+across hyper-parameters, which is usually difficult to compute in traditional Bayesian
 sensitivity analysis.  We use predictive cross-validation techniques in this regard.
 
 The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy et al., 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include bootstrap filters in state-space models (Gordon{,}  Salmond \& Smith, 1993)  and comparison with the resampling-sampling
 perspective to sequential Bayesian inference (Lopes, Polson \& Carvalho, 2012), etc.
 
 \section{Weighted Bayesian Bootstrap}
+\subsection{Set up}
+We work with a broad class of statistical models for data structures involving outcomes and covariates.
+Examples considered in Section~3  include high-dimensional regression, trend-filtering, and deep learning.
 Let  $y=(y_1, y_2, \cdots, y_n)$ be an $n$-vector of outcomes and let $\theta$ be a $d$-dimensional parameter of interest. 
-Auxiliary data may include a 
-fixed $n \times d$ matrix $A$ whose rows are the design points (or ``features'') $a_i^T$
+Covariate data may be organized in an 
+$n \times d$ matrix $A$ whose rows are the design points (or ``features'') $a_i^T$
 where we index  observations by $i$ and parameters by $j$.  
-A large number of machine learning and statistical problems can be expressed in the form
+A large number of estimation/training  problems can be expressed in the form
 \begin{equation}
 \label{eqn:canonicalform}
 \begin{aligned}
@@ -105,13 +113,16 @@ effects a favorable bias-variance tradeoff.  We allow for the possibility that $
 If we treat the data, $y$, as arising from a probabilistic 
 model parameterized by $\theta$, then the likelihood function $p(y|\theta)$ yields 
 the model-associated measure of fit $l(y| \theta) = -\log p(y|\theta)$.
-We will make use of the following notation: $ \hat{\theta}_n \defeq {\rm arg max}_\theta\; p(y |\theta) $ to
-denote the MLE, and, relative some prior $p(\theta)$,
-\begin{enumerate}[label=(\roman*)]
-\item let $\theta^*_n \defeq {\rm arg max}_\theta \; p( \theta|y) $ be the posterior mode,
-\item let $ \bar{\theta}_n \defeq E(\theta | y) $ be the posterior mean.
-\end{enumerate}
-Next, we recall a key duality between regularization and Bayesian analysis.
+The maximimum likelihood estimator (MLE) is  $ \hat{\theta}_n \defeq {\rm arg max}_\theta\; p(y |\theta) $, though
+of course this usually differs from the solution to~(\ref{eqn:canonicalform}): $\argmin \left\{ l(y|\theta) + \lambda \phi(\theta)
+ \right\}]$.  We recall a key duality between regularization and Bayesian analysis.
+
+% and, relative some prior $p(\theta)$,
+%\begin{enumerate}[label=(\roman*)]
+%\item let $\theta^*_n \defeq {\rm arg max}_\theta \; p( \theta|y) $ be the posterior mode,
+%\item let $ \bar{\theta}_n \defeq E(\theta | y) $ be the posterior mean.
+%\end{enumerate}
+%Next, we recall a key duality between regularization and Bayesian analysis.
 
 \subsection{Bayesian Regularization Duality}
 
@@ -120,14 +131,19 @@ From the Bayesian perspective, the measure of fit, $l(y|\theta) = - \log p(y| \t
  p(y | \theta) \propto \exp & \{-  l(y|\theta)\} \; , \quad p(\theta) \propto \exp\{ - \lambda\phi(\theta) \} \\
 p( \theta | y ) &  \propto \exp\{- ( l(y|\theta) + \lambda\phi(\theta) ) \}.
 \end{align*}
-
-The prior is not necessarily proper but the posterior, $p(\theta | y) \propto p(y | \theta) p(\theta)$, may still be proper. This provides an equivalence between regularization and Bayesian methods. For example, regression with a least squares log-likelihood subject to a penalty such as an $L^2$-norm (ridge) Gaussian probability model or $ L^1$-norm (lasso) double exponential probability model. We then have
+This posterior $p(\theta|y)$  is often a proper distribution over $\R^d$, even if the prior $p(\theta)$ is not proper. 
+The well-known equivalence between regularization and Bayesian methods is seen,
+for example, in regression with a Gaussian regession model
+subject to a penalty such as an $L^2$-norm (ridge) Gaussian prior or $ L^1$-norm (LASSO) 
+double exponential prior.  By this duality, the posterior mode is also the solution to~(\ref{eqn:canonicalform}):
 \begin{eqnarray}
-&\hat\theta_n =& \underset{\theta \in \Theta}{\argmin}\, l(y|\theta),\\
-&\theta^*_n =& \underset{\theta \in \Theta}{\argmin}\,  \{ l(y|\theta) + \lambda\phi(\theta) \}.  \label{posterior mode}
+\theta^*_n & =& \underset{\theta \in \Theta}{\argmin}\,  \{ l(y|\theta) + \lambda\phi(\theta) \}.  \label{posteriormode}
 \end{eqnarray}
 
-Let $\partial$ be the subdifferential operator.  Then a necessary and sufficient condition for $\theta^*$ to minimize $ l(y|\theta) + \lambda\phi(\theta)$  is 
+\subsection{Optimization}
+
+Let $\partial$ be the subdifferential operator.  
+Then a necessary and sufficient condition for $\theta^*$ to minimize $ l(y|\theta) + \lambda\phi(\theta)$  is 
 \begin{equation}
 \label{eqn:subdiffproxgrad}
 0 \in \partial \left\{ l(y|\theta) + \lambda\phi(\theta)\right\} = \nabla l(y|\theta) + \lambda\partial \phi(\theta) 
