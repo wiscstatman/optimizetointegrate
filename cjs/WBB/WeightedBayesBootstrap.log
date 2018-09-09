@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  8 SEP 2018 17:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  8 SEP 2018 21:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -467,7 +467,10 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 File: omsptm.fd 
 ) [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3]
+]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [2] [3]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -477,52 +480,49 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [4] [5] [6]
-
-LaTeX Warning: Reference `posterior mode' on page 7 undefined on input line 164
-.
-
-[7] (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [8]
-[9] [10] [11] <simple.pdf, id=54, 528.97626pt x 508.90125pt>
+[7] [8] [9] [10] <simple.pdf, id=51, 528.97626pt x 508.90125pt>
 File: simple.pdf Graphic file (type pdf)
- <use simple.pdf>
-Package pdftex.def Info: simple.pdf used on input line 249.
+
+<use simple.pdf>
+Package pdftex.def Info: simple.pdf used on input line 260.
 (pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
-
-[12 <./simple.pdf>] [13] <diabetes.pdf, id=72, 525.965pt x 508.90125pt>
+ [11] [12 <./simple.pdf>]
+<diabetes.pdf, id=68, 525.965pt x 508.90125pt>
 File: diabetes.pdf Graphic file (type pdf)
-
-<use diabetes.pdf>
-Package pdftex.def Info: diabetes.pdf used on input line 282.
+ <use diabetes.pdf>
+Package pdftex.def Info: diabetes.pdf used on input line 293.
 (pdftex.def)             Requested size: 368.17297pt x 356.22844pt.
- [14 <./diabetes.pdf>] [15] [16]
-<filtering.pdf, id=87, 665.48625pt x 448.67625pt>
+ [13] [14 <./diabetes.pdf>] [15] [16] <filtering.pdf, id=87, 665.48625pt x 448.
+67625pt>
 File: filtering.pdf Graphic file (type pdf)
- <use filtering.pdf>
-Package pdftex.def Info: filtering.pdf used on input line 330.
-(pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
- [17]
-[18 <./filtering.pdf>] [19] <acc.pdf, id=104, 705.63625pt x 504.88625pt>
-File: acc.pdf Graphic file (type pdf)
 
-<use acc.pdf>
-Package pdftex.def Info: acc.pdf used on input line 385.
+<use filtering.pdf>
+Package pdftex.def Info: filtering.pdf used on input line 341.
+(pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
+ [17 <./filtering.pdf>] [18] [19]
+<acc.pdf, id=104, 705.63625pt x 504.88625pt>
+File: acc.pdf Graphic file (type pdf)
+ <use acc.pdf>
+Package pdftex.def Info: acc.pdf used on input line 396.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
- [20] [21 <./acc.pdf>] [22] [23] [24] [25]
-(./WeightedBayesBootstrap.aux)
+ [20] [21 <./acc.pdf>]
+
+LaTeX Warning: Reference `posterior mode' on page 22 undefined on input line 41
+9.
+
+[22] [23] [24] [25] [26] [27] (./WeightedBayesBootstrap.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4686 strings out of 493033
- 60751 string characters out of 6134139
- 139876 words of memory out of 5000000
- 8107 multiletter control sequences out of 15000+600000
+ 4688 strings out of 493033
+ 60774 string characters out of 6134139
+ 139931 words of memory out of 5000000
+ 8109 multiletter control sequences out of 15000+600000
  40635 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,12n,25p,847b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,25p,847b,363s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texl
@@ -546,10 +546,10 @@ urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WeightedBayesBootstrap.pdf (25 pages, 430982 bytes).
+Output written on WeightedBayesBootstrap.pdf (27 pages, 434442 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
+ 213 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
