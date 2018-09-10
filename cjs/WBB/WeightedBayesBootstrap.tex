@@ -106,18 +106,18 @@ A large number of estimation/training  problems can be expressed in the form
 \label{eqn:canonicalform}
 \begin{aligned}
 & \underset{\theta \in \R^d}{\text{minimize}}
-& &  l(y| \theta) + \lambda\phi(\theta) \, ,
+& &  \mathcal{L}(\theta) \defeq l(y| \theta) + \lambda\phi(\theta) \, ,
 \end{aligned}
 \end{equation}
 where $l(y| \theta) = \sum_{i=1}^n l_i( y_i | \theta )$ is a measure of fit (or ``empirical risk function'') depending on $\theta$ and $y$ and implicitly on $A$.
 The penalty function, or regularization term, $\lambda\phi(\theta) $,   encodes soft or hard constraints, and,
 from the perspective of estimation, effects a favorable bias-variance tradeoff.   
-We allow for the possibility that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g. $L_1$ norm).  
+To accommodate contemporary applications we  must allow that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g. $L^1$ norm).  
 If we treat the data, $y$, as arising from a probabilistic 
 model parameterized by $\theta$, then the likelihood function $p(y|\theta)$ yields 
 the model-associated measure of fit $l(y| \theta) = -\log p(y|\theta)$.
 The maximimum likelihood estimator (MLE) is  $ \hat{\theta} \defeq {\rm arg max}_\theta\; p(y |\theta) $, though
-of course this usually differs from the solution to~(\ref{eqn:canonicalform}): $\argmin \left\{ l(y|\theta) + \lambda \phi(\theta)
+of course this usually differs from the solution to~(\ref{eqn:canonicalform}): $\theta^* \defeq \argmin \left\{ l(y|\theta) + \lambda \phi(\theta)
  \right\}]$.  We recall a key duality between regularization and Bayesian analysis.
 
 % and, relative some prior $p(\theta)$,
@@ -130,24 +130,29 @@ of course this usually differs from the solution to~(\ref{eqn:canonicalform}): $
 \subsection{Bayesian Regularization Duality}
 
 From the Bayesian perspective, the measure of fit, $l(y|\theta) = - \log p(y| \theta)$, and the penalty function, $\lambda\phi(\theta)$, correspond to the negative logarithms of the likelihood and prior distribution in the model
-\begin{align*}
+\begin{equation}
+\label{eqn:bayes}
+\begin{aligned}
  p(y | \theta) \propto \exp & \{-  l(y|\theta)\} \; , \quad p(\theta) \propto \exp\{ - \lambda\phi(\theta) \} \\
 p( \theta | y ) &  \propto \exp\{- ( l(y|\theta) + \lambda\phi(\theta) ) \}.
-\end{align*}
+\end{aligned}
+\end{equation}
 This posterior $p(\theta|y)$  is often a proper distribution over $\R^d$, even if the prior $p(\theta)$ is not proper. 
 The well-known equivalence between regularization and Bayesian methods is seen,
 for example, in regression with a Gaussian regession model
 subject to a penalty such as an $L^2$-norm (ridge) Gaussian prior or $ L^1$-norm (LASSO) 
-double exponential prior.  By this duality, the posterior mode is also the solution to~(\ref{eqn:canonicalform}):
-\begin{eqnarray}
-\theta^* & =& \underset{\theta \in \Theta}{\argmin}\,  \{ l(y|\theta) + \lambda\phi(\theta) \}.  \label{posteriormode}
-\end{eqnarray}
+double exponential prior.  By this duality, the posterior mode is also $\theta^*$,  
+a solution to~(\ref{eqn:canonicalform}).
+%\begin{eqnarray}
+%\theta^* & =& \underset{\theta \in \Theta}{\argmin}\,  \{ l(y|\theta) + \lambda\phi(\theta) \}.  \label{posteriormode}
+%\end{eqnarray}
+See (\cite{gribonval2013}) for a nuanced view of the connection between~(\ref{eqn:canonicalform}) and~(\ref{eqn:bayes}). 
 
 \subsection{Optimization}
 
 Advances in the theory and practice of optimization provide efficient algorithms and software tools
-to compute $\theta^*$  for a wide range of  loss and penalty functions. 
-Theory is well developed in the case of convex objective functions (e.g. \cite{boyd2004convex}). For example
+to compute $\theta^* = \argmin \mathcal{L}(\theta)$  for a wide range of  loss and penalty functions. 
+Theory is well developed in the case of convex objective functions (e.g. \cite{bertsekas2003},\cite{boyd2004convex}). For example
 if loss $l$ is convex and differentiable in $\theta$ and penalty $\phi$ is convex, then 
 a necessary and sufficient condition for $\theta^*$ to minimize $ l(y|\theta) + \lambda\phi(\theta)$  is 
 \begin{equation}
@@ -445,6 +450,9 @@ Beaumont, M. A.,  Cornuet, J.M.,  Marin,J.M. \& Robert, C. P. (2009). Adaptive a
 \bibitem[Bertail \& Lo, 1991]{Bertail}
 Bertail, P. \& Lo,  A. Y.  (1991). On Johnson's asymptotic expansion for a posterior distribution. {\it Centre de Recherche en Economie et Statistique}.
 
+\bibitem[Bertsekas et al. 2003]{bertsekas2003}
+Bertsekas, D.P., Nedi, A. \& Ozdaglar, A.E. (2003). {\em Convex analysis and optimization}. Athena Scientific.
+
 \bibitem[Boyd \& Vandenberghe, 2004]{boyd2004convex}
 Boyd, S. \& Vandenberghe, L. (2004) {\it Convex optimization}. Cambridge university press.
 
@@ -478,6 +486,11 @@ Gordon, N. J.,  Salmond, D. J. \&  Smith, A. F. (1993). Novel approach to nonlin
 
 \bibitem[Gramacy \& Polson, 2012]{gramacy2012simulation}
 Gramacy, R. B. \& Polson, N. G. (2012). Simulation-based regularized logistic regression. {\it Bayesian Analysis }, 7(3), 567--590.
+
+\bibitem[Gribonval \& Machart, 2013]{gribonval2013}
+Gribonval, R. \& Machart, P. (2013). 
+Reconciling "priors" \&"priors" without prejudice?. In {\em Advances in Neural Information Processing Systems} 
+pp. 2193-2201.
 
 \bibitem[Hans, 2009]{hans2009Bayesian}
 Hans, C. (2009). Bayesian lasso regression. {\it Biometrika}, 96(4), 835--845.
@@ -533,6 +546,10 @@ Taddy, M.,  Chen, C.S., Yu, J.  \&  Wyle M. (2015). Bayesian and empirical Bayes
 
 \bibitem[Tibshirani, 2014]{tibshirani2014adaptive}
 Tibshirani, R. J. (2014). Adaptive piecewise polynomial estimation via trend filtering. {\it The Annals of Statistics}, 42(1), 285--323.
+
+\bibitem[Tibshirani, 2017]{tibshirani2017dykstra}
+Tibshirani, R.J. (2017). Dykstra's Algorithm, ADMM, and Coordinate Descent: Connections, Insights, 
+ and Extensions. In {\em Advances in Neural Information Processing Systems}, pp. 517-528.
 
 \bibitem[Van Der Pas{,}  Kleijn \& Van Der Vaart, 2014]{van2014horseshoe}
 Van Der Pas, S., Kleijn, B.  \&  Van Der Vaart, A. (2014). The horseshoe estimator: Posterior concentration around nearly black vectors. {\it Electronic Journal of Statistics}, 8(2), 2585--2618.
