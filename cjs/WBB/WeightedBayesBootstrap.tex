@@ -59,11 +59,12 @@ We provide regularity conditions which apply to a range of machine learning and 
 
 \section{Introduction}
 Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference 
-problems (e.g., \cite{wang2018special}). Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis
+problems (e.g., Wang, 2018). 
+Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis
 offers a general solution, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to provide uncertainty assessments.
  
 For relatively simple statistical models, the weighted likelihood bootstrap (WLB) method provides
-approximate posterior sampling through repeated optimization of a randomly weighted likelihood function (\cite{newton1994approximate}).
+approximate posterior sampling through repeated optimization of a randomly weighted likelihood function (Newton \& Raftery, 1994).
 The proposed WBB extends the WLB to a broad class of  contemporary statistical models by leveraging advances in optimization methodology.
 Essentially, the WLB used optimization of certain 
 randomized objective functions to enable approximate marginalization (i.e. integration) 
@@ -141,18 +142,19 @@ This posterior $p(\theta|y)$  is often a proper distribution over $\R^d$, even i
 The well-known equivalence between regularization and Bayesian methods is seen,
 for example, in regression with a Gaussian regession model
 subject to a penalty such as an $L^2$-norm (ridge) Gaussian prior or $ L^1$-norm (LASSO) 
-double exponential prior.  By this duality, the posterior mode is also $\theta^*$,  
+double exponential prior.  By this duality, the posterior mode, or maximum a posteriori (MAP) estimate, is $\theta^*$,  
 a solution to~(\ref{eqn:canonicalform}).
 %\begin{eqnarray}
 %\theta^* & =& \underset{\theta \in \Theta}{\argmin}\,  \{ l(y|\theta) + \lambda\phi(\theta) \}.  \label{posteriormode}
 %\end{eqnarray}
-See (\cite{gribonval2013}) for a nuanced view of the connection between~(\ref{eqn:canonicalform}) and~(\ref{eqn:bayes}). 
+See Gribonval and Machart (2013) for a nuanced view of the connection between~(\ref{eqn:canonicalform}) and~(\ref{eqn:bayes}) in
+Gaussian regression models. 
 
 \subsection{Optimization}
 
 Advances in the theory and practice of optimization provide efficient algorithms and software tools
 to compute $\theta^* = \argmin \mathcal{L}(\theta)$  for a wide range of  loss and penalty functions. 
-Theory is well developed in the case of convex objective functions (e.g. \cite{bertsekas2003},\cite{boyd2004convex}). For example
+Theory is well developed in the case of convex objective functions (e.g. Bertsekas {\em et al.} 2003; Boyd \& Vandenberghe 2004). For example
 if loss $l$ is convex and differentiable in $\theta$ and penalty $\phi$ is convex, then 
 a necessary and sufficient condition for $\theta^*$ to minimize $ l(y|\theta) + \lambda\phi(\theta)$  is 
 \begin{equation}
@@ -161,18 +163,23 @@ a necessary and sufficient condition for $\theta^*$ to minimize $ l(y|\theta) + 
 \end{equation}
 where $\partial$ is the subdifferential operator (the set of subgradients of the objective), in this case
 the sum of a point and a set.   Though not a formula for $\theta^*$, such as given by the normal equations in linear regression, 
-(\ref{eqn:subdiffproxgrad}) usefully guides algorithms that aim to solve $\theta^*$.   [For example, the shooting algorithm
-for solving the LASSO?.]
+(\ref{eqn:subdiffproxgrad}) usefully guides algorithms that aim to solve $\theta^*$.   
+For example, under separability conditions on the penalty function, coordinate descent algorithms effectively solve for $\theta^*$
+See Wright (2015), or  Hastie, Tibshirani, and Wainwright (2015), chapter 5, for a statistical perspective.
 The optimization literature also characterizes $\theta^*$ as the fixed point of a proximal operator
-$\theta^* = \prox_{\gamma \phi}\{ \theta^* - \lambda \nabla f(\theta^*) \} $, see \cite{polson2015mixtures} and \cite{polson2015proximal} for further discussion.   **?something on theory of non-convex?** **maybe something about KKT a special case of above**
+$\theta^* = \prox_{\gamma \phi}\{ \theta^* - \lambda \nabla f(\theta^*) \} $, which opens the door to powerful MM algorithms.
+See Lange (2016, chap 5) and Polson \& Scott (2015a, 2015b).
+ for further discussion.   **?something on theory of non-convex?** 
 
 
 *on algorithms*  gradient descent...sGD...other; many are coordinate descent (Wright, 2015).
 
 * on code systems* TensorFlow ...Keras...glmnet...genlasso...
 
-  {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and 
-\cite{arnold2014genlasso}. 
+  {\tt glmnet} Friedman {\em et al.} (2010);  
+and {\tt genlasso} 
+ Arnold \& Tibshirani, (2014)
+
 
 
 
@@ -210,7 +217,7 @@ $$
 \item For each ${\bf{w}}$, solve $\theta^*_{{\bf w},n} = \underset{\theta}{\argmin} \sum_{i=1}^n w_i l_i(\theta) +  \lambda w_p \phi(\theta)$. 
 \end{enumerate}
 
-The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and \cite{arnold2014genlasso}. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. See Appendix and \cite{polson2017deep} for further discussion. 
+The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and \cite{arnold2014genlasso}. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. See Appendix and Polson \& Sokolov (2017)  for further discussion. 
 
 The next section builds on \cite{newton1994approximate} and derives asymptotic properties of the weighted Bayesian Bootstrap. We simply add the regularized factor. To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
 
@@ -359,7 +366,8 @@ essentially  a standard error for the estimator $\hat \beta_i$.
 
 
 \subsection{Deep Learning: MNIST Example}
-Deep learning is a form of machine learning that uses hierarchical abstract layers of latent variables to perform pattern matching and prediction. \cite{polson2017deep} take a Bayesian probabilistic perspective and provide a number of insights into more efficient algorithms for optimization
+Deep learning is a form of machine learning that uses hierarchical abstract layers of latent variables to perform pattern matching and prediction.  Polson \& Sokolov (2017)
+ take a Bayesian probabilistic perspective and provide a number of insights into more efficient algorithms for optimization
 and hyper-parameter tuning.
 
 The general goal is to finds a predictor of an output $y$ given a high dimensional input $x$. For a classification problem, $y \in \{1, 2, ..., K\}$ is a discrete variable and can be coded as a $K$-dimensional 0-1 vector. The model is as follows. Let $z^{(l)}$ denote the $l$-th layer, and so $x = z^{(0)}$. The final output is the response $y$,
@@ -495,9 +503,15 @@ pp. 2193-2201.
 \bibitem[Hans, 2009]{hans2009Bayesian}
 Hans, C. (2009). Bayesian lasso regression. {\it Biometrika}, 96(4), 835--845.
 
+\bibitem[HTW2015]{htw2015}
+Hastie, T., Tibshirani, R. \& Wainwright, M., 2015. {\em Statistical learning with sparsity: the lasso and generalizations}. CRC press.
+
 \bibitem[Johnson, 1970]{johnson1970asymptotic}
 Johnson, R. A. (1970). Asymptotic expansions associated with posterior distributions.
 {\it The Annals of Mathematical Statistics}, 41(3), 851--864.
+
+\bibitem[Lange 2016]{Lange2016}
+Lange, K. (2016). {\em MM Optimization Algorithms}. Vol. 147, SIAM. 
 
 \bibitem[LeCun{,} Bengio \& Hinton, 2015]{lecun2015deep}
 LeCun, Y., Bengio, Y. \& Hinton, G. (2015). Deep learning. {\it Nature}, 521(7553), 436.
