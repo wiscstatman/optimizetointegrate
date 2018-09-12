@@ -35,9 +35,9 @@
 %\affiliation[1]{Departments of Statistics and of Biostatistics and Medical Informatics, University of Wisconsin-Madison}
 %\affiliation[2]{Booth School of Business, University of Chicago}
 %\affiliation[3]{Booth School of Business, University of Chicago}
-\author{BlindedA}
-\author{BlindedB}
-\author{BlindedC}
+\author{Blinded-A}
+\author{Blinded-B}
+\author{Blinded-C}
 
 
 \startabstract{
@@ -69,7 +69,7 @@ For relatively simple statistical models, the weighted likelihood bootstrap (WLB
 approximate posterior sampling through repeated optimization of a randomly weighted likelihood function (Newton \& Raftery, 1994).
 The proposed WBB extends the WLB to a broad class of  contemporary statistical models by leveraging advances in optimization methodology.
 Essentially, the WLB used optimization of certain 
-randomized objective functions to enable approximate marginalization (i.e. integration) 
+randomized objective functions to enable approximate marginalization ({\em i.e.}, integration) 
 required in Bayesian analysis.  The same idea -- optimize a randomized objective function to 
 achieve  posterior sampling -- is at the heart of the proposed WBB method, though some changes to the WLB procedure are required to 
 carry out this program for the models considered.
@@ -116,7 +116,7 @@ where $l(y| \theta) = \sum_{i=1}^n l_i( y_i | \theta )$ is a measure of fit (or 
 The penalty function, or regularization term, $\lambda\phi(\theta) $,   may encode soft or hard constraints, and is controlled by 
 a hyper-parameter, $\lambda>0$, whose values index an entire path of solutions. 
 From the perspective of estimation, the penalty function effects a favorable bias-variance tradeoff.   
-To accommodate contemporary applications we  must allow that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g. $L^1$ norm).  
+To accommodate contemporary applications we  must allow that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g., $L^1$ norm).  
 If we treat the data, $y$, as arising from a probabilistic 
 model parameterized by $\theta$, then the likelihood function $p(y|\theta)$ yields 
 the model-associated measure of fit $l(y| \theta) = -\log p(y|\theta)$.
@@ -236,17 +236,17 @@ a straightforward, optimization-based algorithm for approximate posterior sampli
         \label{alg:ALG1}
         \textbf{Input:}  \begin{list}{}
                          \item data: ${\mathcal D}=(y,A)$ 
-                         \item model structure: ${\mathcal M}=(l,\lambda,\phi)$ 
-                         \item number of samples: $N_{\rm sim}$ 
+                         \item model structure: ${\mathcal M}=\left( \{l_i\} ,\lambda,\phi\right)$ 
+                         \item number of draws: $T$ 
 	                \end{list}
-        \textbf{Output:} $N_{\rm sim}$ parameter samples $\{ \theta^{*,k} \}$
+        \textbf{Output:} $T$ parameter samples $\{ \theta^{*,t} \}$
         \begin{algorithmic}
-            \State  Function ${\bf WBB}({\mathcal D},{\mathcal M},N_{\rm sim})$:
+            \State  Function ${\bf WBB}({\mathcal D},{\mathcal M},T)$:
 
-            \ForAll  {$k=1$ to $N_{\rm sim}$}
-		\State Realize: $(u_0, u_1, \cdots, u_n) \sim_{i.i.d}$Uniform$(0,1)$ 
+            \ForAll  {$t=1$ to $T$}
+		\State Realize: $(u_0, u_1, \cdots, u_n) \sim_{i.i.d.}\, $Uniform$(0,1)$ 
 		\State Construct: $w_i \gets \log(1/u_i), \quad \forall i, \quad {\bf w}=(w_0, w_1, \cdots, w_n)$ 
-		\State Compute: $\theta^{*,k} \gets \argmin {\mathcal L}_{\bf w}(\theta)$
+		\State Compute: $\theta^{*,t} \gets \argmin {\mathcal L}_{\bf w}(\theta)$
 
             \EndFor 
 
@@ -265,12 +265,14 @@ When optimization on the original problem~(\ref{eqn:canonicalform}) is fast and 
 
 % The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and \cite{arnold2014genlasso}. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. 
 
+** on lambda **
 See Appendix and Polson \& Sokolov (2017)  for further discussion. 
-
 The next section builds on \cite{newton1994approximate} and derives asymptotic properties of the weighted Bayesian Bootstrap. We simply add the regularized factor. To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
+**
 
 \subsection{WBB Properties}
-The following proposition which follows from the Theorem 2 in \cite{newton1994approximate} summaries the properties of WBB.
+The following proposition, which follows from the Theorem 2 in Newton and Raftery (1994), summaries the properties of WBB.
+
 \begin{proposition}{Proposition}{}
 The weighted Bayesian Bootstrap draws are approximate posterior samples
 $$
@@ -310,21 +312,20 @@ $$
 y|\theta \sim N(\theta,1^2), \quad \theta \sim Laplace (0,1/\lambda)
 $$
 
-Given the i.i.d. exponential weights $w_1$ and $w_2$, the weighted posterior mode $\theta^*_{\bf w}$ is 
+Given the i.i.d. exponential weights $w_0$ and $w_1$, the weighted posterior mode $\theta^*_{\bf w}$ is 
 $$
-\theta^*_{\bf w} = \underset{\theta \in \Theta}{\argmin}\, \left\{\frac{w_1}{2} (y-\theta)^2 + \lambda w_2 |\theta|\right\}.
+\theta^*_{\bf w} = \underset{\theta \in \Theta}{\argmin}\, \left\{\frac{w_1}{2} (y-\theta)^2 + \lambda w_0 |\theta|\right\}.
 $$
 This is sufficiently simple for an exact WBB solution in terms of soft thresholding:
 $$
 \theta^*_{\bf w} = 
 \begin{cases}
-y - \lambda w_2/w_1 &\mbox{if $y > \lambda w_2/w_1$},\\
-y + \lambda w_2/w_1 &\mbox{if $y < -\lambda w_2/w_1$},\\
-0 &\mbox{if $|y| \leq \lambda w_2/w_1$}.\\
+y - \lambda w_0/w_1 &\mbox{if $y > \lambda w_0/w_1$},\\
+y + \lambda w_0/w_1 &\mbox{if $y < -\lambda w_0/w_1$},\\
+0 &\mbox{if $|y| \leq \lambda w_0/w_1$}.\\
 \end{cases}
 $$
-The WBB mean $E_{{\bf w}}(\theta^*_{\bf w}|y)$ is approximated by the sample mean of $\{ \theta^{*(k)}_{\bf w}\}_{k=1}^K$. On the other hand, \cite{mitchell1994note} gives the expression for the posterior mean, 
-
+The WBB mean $E_{{\bf w}}(\theta^*_{\bf w}|y)$ is approximated by the sample mean of $\{ \theta^{*,t}_{\bf w}\}_{t=1}^T$. On the other hand, Mitchell (1994) gives the expression for the posterior mean, 
 \begin{eqnarray*}
 E(\theta|y) &=& \frac{\int_{-\infty}^\infty \theta\exp\left\{-(y-\theta)^2/2 - \lambda |\theta|\right\} d\theta}{\int_{-\infty}^\infty \exp\left\{-(y-\theta)^2/2 - \lambda |\theta|\right\} d\theta}\\
 &=& \frac{F(y)}{F(y) + F(-y)}(y+\lambda) + \frac{F(-y)}{F(y) + F(-y)}(y-\lambda)\\
@@ -356,9 +357,9 @@ $$
 
 \begin{equation}
 \label{eqn:diabetes}
-\hat\beta_{\bf{w}} := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda w_{n+1}\sum_{j=1}^p |\beta_j|\; . 
+\hat\beta_{\bf{w}} := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda w_{0}\sum_{j=1}^p |\beta_j|\; . 
 \end{equation}
-The regularization factor $\lambda$ is chosen by cross-validation with unweighted likelihood. The weighted Bayesian Bootstrap is also performed with fixed prior, namely, $w_{n+1}$ is set to be 1 for all bootstrap samples. \cite{polson2014Bayesian} analyze the same dataset using the Bayesian Bridge estimator and suggest MCMC sampling from the posterior. 
+The regularization factor $\lambda$ is chosen by cross-validation with unweighted likelihood. The weighted Bayesian Bootstrap is also performed with fixed prior, namely, $w_{0}$ is set to be 1 for all bootstrap samples. \cite{polson2014Bayesian} analyze the same dataset using the Bayesian Bridge estimator and suggest MCMC sampling from the posterior. 
 
 To compare our WBB results we also run the Bayesian bridge estimation. Here the Bayesian setting we use is 
 $$p(\beta, \sigma^2) = p(\beta | \sigma^2)p(\sigma^2),\, \text{where }  p(\sigma^2) \propto 1/\sigma^2.$$
@@ -400,16 +401,16 @@ $$
 $$
 WBB solves the following generalized lasso problem in each draw:
 \begin{eqnarray*}
- \beta_{\bf w}^* &=& \underset{\beta}{\argmin} \, \frac{1}{2}\sum_{i=1}^p w_i(y_i - \beta_i)^2 + \lambda w_{p+1}\|D^{(k)}\beta\|_1\\
+ \beta_{\bf w}^* &=& \underset{\beta}{\argmin} \, \frac{1}{2}\sum_{i=1}^p w_i(y_i - \beta_i)^2 + \lambda w_{0}\|D^{(k)}\beta\|_1\\
 &=&\underset{\beta}{\argmin} \, \frac{1}{2}  \|Wy - W\beta\|_2^2  + \lambda \|D^{(k)}\beta\|_1\\
 &=&W^{-1}  \underset{\tilde\beta}{\argmin} \, \frac{1}{2}  \|\tilde{y}_{\bf w} - \tilde{\beta}_{\bf w}\|_2^2  + \lambda \|\tilde{D}^{(k)}_{\bf w}\tilde{\beta}_{\bf w}\|_1\\
 \end{eqnarray*}
-where $$W = diag(\sqrt{w_i}/\sqrt{w_{p+1}}, ...,  \sqrt{w_p}/\sqrt{w_{p+1}})$$ and $$\tilde{y}_{\bf w} = Wy, \, \tilde{\beta}_{\bf w} = W\beta, \,   \tilde{D}^{(k)}_{\bf w}= D^{(k)}W^{-1}.$$
+where $$W = {\rm diag}\left(\sqrt{w_1}/\sqrt{w_{0}},\cdots,  \sqrt{w_p}/\sqrt{w_{0}}\right)$$ and $$\tilde{y}_{\bf w} = Wy, \, \tilde{\beta}_{\bf w} = W\beta, \,   \tilde{D}^{(k)}_{\bf w}= D^{(k)}W^{-1}.$$
 To illustrate our method, we simulate data $y_i$ from a Fourier series regression 
 $$
 y_i = \sin\left(\frac{4\pi}{500} i\right)\exp\left({\frac{3}{500} i}\right) + \epsilon_i
 $$
-for $i=1,2,...500$, where $\epsilon_i\sim N(0,2^2)$ are i.i.d. Gaussian deviates. The cubic trend filtering result is given in Figure (\ref{filter}). 
+for $i=1,2, \cdots, n=500$, where $\epsilon_i\sim N(0,2^2)$ are i.i.d. Gaussian deviates. The cubic trend filtering result is given in Figure (\ref{filter}). 
 
 For each $i$, the WBB gives a group of estimates $\left\{\beta_{\bf w}^*(i) \right\}_{j=1}^T$ where $T$ is the total number of draws. The standard deviation of these weighted solutions consitutes a posterior standard deviation, or
 essentially  a standard error for the estimator $\hat \beta_i$.
@@ -450,7 +451,7 @@ $$
 $$
 Accordingly, with each draw of weights ${\bf w}$, WBB provides the estimates $(W^*_{\bf w}, b^*_{\bf w})$ by solving the following optimization problem.
 $$
-(W^*_{\bf w}, b^*_{\bf w}) = \argmin_{W, b} \sum_{i=1}^{n}w_i l_i(y_i|x_i, W, b) + \lambda w_p\phi(W, b)
+(W^*_{\bf w}, b^*_{\bf w}) = \argmin_{W, b} \sum_{i=1}^{n}w_i l_i(y_i|x_i, W, b) + \lambda w_0\phi(W, b)
 $$
 
 We take the classic MNIST example (LeCun \& Cortes, 2010) to illustrate the application of WBB in deep learning. The MNIST database of handwritten digits, available from Yann LeCun's website, has 60,000 training examples and 10,000 test examples. Here the high-dimensional $x$ is a normalized and centered fixed-size ($28\times 28$) image and the output $\hat{y}$ is a 10-dimensional vector, where $i$-th coordinate corresponds to the probability of that image being the $i$-th digit.
