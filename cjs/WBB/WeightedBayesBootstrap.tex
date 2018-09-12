@@ -113,9 +113,11 @@ A large number of estimation/training  problems can be expressed in the form
 \end{aligned}
 \end{equation}
 where $l(y| \theta) = \sum_{i=1}^n l_i( y_i | \theta )$ is a measure of fit (or ``empirical risk function'') depending on $\theta$ and $y$ and implicitly on $A$.
-The penalty function, or regularization term, $\lambda\phi(\theta) $,   may encode soft or hard constraints, and is controlled by 
+The penalty function, or regularization term, $\lambda\phi(\theta) $,   
+may encode soft or hard constraints, and is controlled by 
 a hyper-parameter, $\lambda>0$, whose values index an entire path of solutions. 
-From the perspective of estimation, the penalty function effects a favorable bias-variance tradeoff.   
+The penalty function effects a favorable bias-variance 
+estimation tradeoff and provides extensive modeling flexibility (Wellner and Zhang, 2012).   
 To accommodate contemporary applications we  must allow that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g., $L^1$ norm).  
 If we treat the data, $y$, as arising from a probabilistic 
 model parameterized by $\theta$, then the likelihood function $p(y|\theta)$ yields 
@@ -182,7 +184,7 @@ Advances in applied optimization provide effective software tools for data analy
 elastic net penalties (Friedman {\em et al..} 2010). To solve the generalized LASSO problem, the R package 
 \verb+genlasso+  deploys a dual path algorithm (Arnold \& Tibshirani, 2014).  A variety of general 
 purpose optimization tools for statistics are compiled at the optimization view at CRAN 
-(\verb+http://cran.r-project.org+). In machine learning, the \verb+TensorFlow+ system has greatly simplified 
+(\verb+http://cran.r-project.org+). For machine learning, the \verb+TensorFlow+ system has greatly simplified 
 gradient descent, SGD, and related algorithms for many applications (Abadi {\em et al.} 2016).  
 
 
@@ -261,13 +263,13 @@ a straightforward, optimization-based algorithm for approximate posterior sampli
 %\item For each ${\bf{w}}$, solve $\theta^*_{{\bf w},n} = \underset{\theta}{\argmin} \sum_{i=1}^n w_i l_i(\theta) +  \lambda w_p \phi(\theta)$. 
 %\end{enumerate}
 
-When optimization on the original problem~(\ref{eqn:canonicalform}) is fast and scalable, so too is the WBB.
+When optimization on the original problem~(\ref{eqn:canonicalform}) is fast and scalable, so too is the WBB. Next we consider the approximation~(\ref{eqn:conjecture}) from an asymptotic perspective.
 
 % The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and \cite{arnold2014genlasso}. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. 
 
 ** on lambda **
 See Appendix and Polson \& Sokolov (2017)  for further discussion. 
-The next section builds on \cite{newton1994approximate} and derives asymptotic properties of the weighted Bayesian Bootstrap. We simply add the regularized factor. To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
+ To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
 **
 
 \subsection{WBB Properties}
@@ -634,6 +636,10 @@ Wang, Y. \& Swiler, L. (2018). Special Issue on Uncertainty Quantification in Mu
 
 \bibitem[Welling \& Teh, 2011]{welling2011bayesian}
 Welling, M. \&  Teh, Y. W. (2011). Bayesian learning via stochastic gradient Langevin dynamics. {\it In Proceedings of the 28th International Conference on Machine Learning} (ICML- 11), 681--688.
+
+\bibitem[Wellner \& Zhang, 2012]{wellner2012} Wellner, J. \& Zhang, T. (2012). 
+Introduction to the special issue on sparsity and regularization methods. 
+{\em Statistical Science}, 27, 447-449.
 
 \bibitem[West, 1991]{west1992modelling}
 West, M. (1991). {\it Modelling with mixtures}. Institute of Statistics and Decision Sciences, Duke University
