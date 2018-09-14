@@ -118,7 +118,7 @@ may encode soft or hard constraints, and is controlled by
 a hyper-parameter, $\lambda>0$, whose values index an entire path of solutions. 
 The penalty function effects a favorable bias-variance 
 estimation tradeoff and provides extensive modeling flexibility (Wellner and Zhang, 2012).   
-To accommodate contemporary applications we  must allow that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g., $L^1$ norm).  
+To accommodate contemporary applications we  allow that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g., $L^1$ norm).  
 If we treat the data, $y$, as arising from a probabilistic 
 model parameterized by $\theta$, then the likelihood function $p(y|\theta)$ yields 
 the model-associated measure of fit $l(y| \theta) = -\log p(y|\theta)$.
@@ -291,9 +291,11 @@ As to the WBB distribution, consider a one-term Taylor expansion of $\nabla {\ma
 mode $\theta^*_n$, which is allowable for sufficiently smooth loss and penalty terms:
 \begin{eqnarray}
 \label{eq:wbbTaylor}
-\nabla {\mathcal L}_{{\bf w}, n} (\theta) = \nabla {\mathcal L}_{ {\bf w}, n}( \theta^*_n ) + ...
+\nabla {\mathcal L}_{{\bf w}, n} (\theta) = \nabla {\mathcal L}_{ {\bf w}, n}( \theta^*_n ) + 
+ \left(  \nabla^2 {\mathcal L}_{ {\bf w}, n }(\theta_n^*)  \right)^T (\theta - \theta^*_n )  + R_n
 \end{eqnarray}
-...where $R_n$ is an error term.  Evaluating this expansion at $\theta^*_{ {\bf w}, n } = \argmin {\mathcal L}_{{\bf w},n}(\theta)$ zeros
+where $R_n$ is an error term and $\nabla$ and $\nabla^2$ record the gradient vector and matrix of second partial
+derivatives, respectively of the weighted objective function.  Evaluating this expansion at $\theta^*_{ {\bf w}, n } = \argmin {\mathcal L}_{{\bf w},n}(\theta)$ zeros
 out the left hand side of~(\ref{eq:wbbTaylor}), and leads to:
 \begin{eqnarray}
 \label{eq:asymp}
