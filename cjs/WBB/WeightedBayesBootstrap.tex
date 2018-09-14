@@ -275,7 +275,7 @@ See Appendix and Polson \& Sokolov (2017)  for further discussion.
 \subsection{WBB Properties}
 
 Conditions under which the target posterior distribution~(\ref{eqn:bayes}) is approximately Gaussian are well established (e.g., 
-Johnson, 1970; Kleijn \& van der Vaart, 2012).  For example, when data forms a random sample from fixed distribution $p(y_i|\theta_0)$
+Johnson, 1970; Kleijn \& van der Vaart, 2012).  For example, when data form a random sample from fixed distribution $p(y_i|\theta_0)$
 that resides in a sufficiently regular model, and when the prior is smooth and positive around $\theta_0 \in \R^d$,  we have 
 \begin{eqnarray}
 \label{eq:postG}
@@ -313,14 +313,16 @@ have WBB variation:
 \left. \theta^*_{{\bf w},n} \right| y  \sim_{\rm approx} N_d \left( \theta_n^*, J_n^{-1}(\theta^*_n)\right).
 \end{eqnarray}
 In a relatively narrow asymptotic sense, therefore, the WBB procedure is approximating the
-target posterior distribution, in that both are approximately Gaussian with the same mean
+target posterior distribution, because both are approximately Gaussian with the same mean
 and covariance.   Details of the asymptotic analysis follow the WLB case presented in 
 Newton (1991) and Newton and Raftery (1994), 
-and differ only slightly in our use of posterior mode $\theta^*_n$ in place
-of maximum likelihood estimator $\hat \theta_n$, and also in our incorporation of weight
-$w_0$ on the penalty term of the objective function.   At this first-order 
-level of asymptotic analysis, neither of these features affects the limiting distribution
-of $\theta^*_{{\bf w},n}$.
+and differ only slightly in our use of the posterior mode $\theta^*_n$ in place
+of the maximum likelihood estimator $\hat \theta_n$, and also in our incorporation of weight
+$w_0$ on the penalty term of the objective function.   At this level of first-order 
+ asymptotic analysis, neither of these features affects the limiting conditional
+Gaussian distribution of $\theta^*_{{\bf w},n}$.
+
+Van Der Pas {\em et al.} (2014)
 
 
 
@@ -364,6 +366,7 @@ of $\theta^*_{{\bf w},n}$.
 %where $Z \sim N(0,1)$ is a standard Normal variable. The conditional posterior satisfies $\mathbb{P} \left ( | {\theta}^*_n - \hat{\theta}_n | > \epsilon \right ) \rightarrow 0$ for each $ \epsilon > 0 $ as $ n \rightarrow \infty $. In the 'large $p$' case, a number of results are available for posterior concentration, for example, see \cite{van2014horseshoe} for sparse high dimensional models.
 %
 %
+
  We note that rescaling in~(\ref{eqn:rand}) has no effect on
 solutions~(\ref{eqn:wbb}), and so it is equivalent in the construction
  to use normalized weights $\tilde {\bf w}$ that sum to unity. Such $\tilde {\bf w}$ are uniformly distributed over
@@ -565,6 +568,17 @@ We rewrite $ h_\psi(y) $ is terms of the correction term and $ h_\phi(y)$. Here 
 For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{posterior mode}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis.
 
 \cite{strawderman2013hierarchical} and  \cite{polson2015proximal} considered scenarios where posterior modes can be used as posterior means from augmented probability models. Moreover, in their original foundation of the Weighted Likelihood Bootstrap (WLB), \cite{newton1994approximate} introduced the concept of the implicit prior. Clearly this is an avenue for future research.
+
+Expanding WBB asymptotics presents some exciting research opportunities.   
+The argument in Section 2.5 
+relies on smoothness in both the sampling model and prior, and it retains fixed parameter
+dimension as $n$ increases. Fortunately the groundwork has been done, for example by 
+Van Der Pas {\em et al.} (2014), Narisety \&  He  (2014) and others on the asymptotic  behaviour of the 
+posterior distribution;  
+by Knight and Fu (2000), ? and others on sampling theory of optimization-based estimators,
+nd ** on random weighting.
+
+?
 
 
 
