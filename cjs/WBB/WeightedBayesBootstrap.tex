@@ -292,7 +292,7 @@ mode $\theta^*_n$, which is allowable for sufficiently smooth loss and penalty t
 \begin{eqnarray}
 \label{eq:wbbTaylor}
 \nabla {\mathcal L}_{{\bf w}, n} (\theta) = \nabla {\mathcal L}_{ {\bf w}, n}( \theta^*_n ) + 
- \left(  \nabla^2 {\mathcal L}_{ {\bf w}, n }(\theta_n^*)  \right)^T (\theta - \theta^*_n )  + R_n
+ \nabla^2 {\mathcal L}_{ {\bf w}, n }(\theta_n^*)  (\theta - \theta^*_n )  + R_n
 \end{eqnarray}
 where $R_n$ is an error term and $\nabla$ and $\nabla^2$ record the gradient vector and matrix of second partial
 derivatives, respectively of the weighted objective function.  Evaluating this expansion at $\theta^*_{ {\bf w}, n } = \argmin {\mathcal L}_{{\bf w},n}(\theta)$ zeros
@@ -302,43 +302,68 @@ out the left hand side of~(\ref{eq:wbbTaylor}), and leads to:
 \sqrt{n} \left( \theta_{{\bf w},n }^* - \theta_{n}^*  \right) = - \left( \frac{1}{n} \nabla^2 {\mathcal L}_{{\bf w},n} ( \theta^*_n )  \right)^{-1} \left(  \frac{1}{\sqrt{n}}
      \nabla {\mathcal L}_{{\bf w},n} ( \theta_n^* )  \right)  + \tilde R_n 
 \end{eqnarray}
-where ...
+where $\tilde R_n$ is another error term.  Following Newton and Raftery (1994), we recognize that the ${\bf w}$-induced variation in~(\ref{eq:asymp}), conditional upon 
+the data, causes the matrix factor to be approximately the inverse information 
+$[J_n(\theta^*_n)]^{-1}$, the score-like second factor to be approximately mean-zero 
+Gaussian with covariance equal to $J_n(\theta^*_n)$, and the error $\tilde R_n$ to be
+negligible.   Thus, compared to the target posterior variation~(\ref{eq:postG}), we 
+have WBB variation:
+\begin{eqnarray}
+\label{eq:postW}
+\left. \theta^*_{{\bf w},n} \right| y  \sim_{\rm approx} N_d \left( \theta_n^*, J_n^{-1}(\theta^*_n)\right).
+\end{eqnarray}
+In a relatively narrow asymptotic sense, therefore, the WBB procedure is approximating the
+target posterior distribution, in that both are approximately Gaussian with the same mean
+and covariance.   Details of the asymptotic analysis follow the WLB case presented in 
+Newton (1991) and Newton and Raftery (1994), 
+and differ only slightly in our use of posterior mode $\theta^*_n$ in place
+of maximum likelihood estimator $\hat \theta_n$, and also in our incorporation of weight
+$w_0$ on the penalty term of the objective function.   At this first-order 
+level of asymptotic analysis, neither of these features affects the limiting distribution
+of $\theta^*_{{\bf w},n}$.
+
+
 
 **Nick,   you wrote *$J_n = nj$ as `observed information`, but if it's the curvature of the observed log likelihood then I guess it's not $n j$.
  Do you mean Fisher information?**
 
 
 
+* asymptotic analysis limited...e.g. requires smooth prior and fixed dimension...alternatives*
+
+* throughout we use exponential weights...scaling not NB...in fact maybe expo not important
+ (cite Barbe and Bertaile), except through connection to Bayes and the Dirichlet...one
+ curious fact is that the expo gives uniform on the simplex...
 
 
 ***STILL TO UPDATE**
 
-The following proposition, which follows from the Theorem 2 in Newton and Raftery (1994), summaries the properties of WBB.
-
-\begin{proposition}{Proposition}{}
-The weighted Bayesian Bootstrap draws are approximate posterior samples
-$$
-\left\{\theta^{*(k)}_{{\bf w},n} \right\}_{k=1}^K \sim p(\theta | y).
-$$
-\end{proposition}
-
-Now we consider `large $n$' properties. The variation in the posterior density $p(\theta|y) \propto e^{-n l_n(\theta)}p(\theta)$ for sufficiently large $n$ will be dominated by the likelihood term. Expanding $l_n(\theta)$ around its maximum, $\hat\theta$, and defining $J_n(\hat\theta) = nj(\hat\theta)$ as the observed information matrix gives the traditional normal approximation for the posterior distribution
-$$
-\theta \sim N_d \left( \hat\theta_n, J_n^{-1}(\hat\theta)\right)
-$$
-where $ \hat{\theta}_n$ is the MLE. A more accurate approximation is obtained by expanding around the posterior mode, $\theta^*$, which we will exploit in our weighted Bayesian Bootstrap. Now we have the asymptotic distributional approximation 
-$$
-\theta \sim N_d \left( \theta^*, J_n^{-1}(\theta^*)\right)
-$$
-where $\theta^*_n \defeq {\rm arg \; max}_\theta \; p( \theta|y) $ is the posterior mode. 
-
-The use of the posterior mode here is crucially important as it's the mode that is computationally available from TensorFlow and Keras. Approximate normality and second order approximation also holds, see \cite{johnson1970asymptotic}, \cite{Bertail} and \cite{newton1994approximate} for future discussion. Specifically,
-$$
-\sqrt{ n I ( \hat{\theta}_n )} \left ( {\theta}^*_n - \hat{\theta}_n \right ) \eqdist Z
-$$
-where $Z \sim N(0,1)$ is a standard Normal variable. The conditional posterior satisfies $\mathbb{P} \left ( | {\theta}^*_n - \hat{\theta}_n | > \epsilon \right ) \rightarrow 0$ for each $ \epsilon > 0 $ as $ n \rightarrow \infty $. In the 'large $p$' case, a number of results are available for posterior concentration, for example, see \cite{van2014horseshoe} for sparse high dimensional models.
-
-
+%The following proposition, which follows from the Theorem 2 in Newton and Raftery (1994), summaries the properties of WBB.
+%
+%\begin{proposition}{Proposition}{}
+%The weighted Bayesian Bootstrap draws are approximate posterior samples
+%$$
+%\left\{\theta^{*(k)}_{{\bf w},n} \right\}_{k=1}^K \sim p(\theta | y).
+%$$
+%\end{proposition}
+%%
+%Now we consider `large $n$' properties. The variation in the posterior density $p(\theta|y) \propto e^{-n l_n(\theta)}p(\theta)$ for sufficiently large $n$ will be dominated by the likelihood term. Expanding $l_n(\theta)$ around its maximum, $\hat\theta$, and defining $J_n(\hat\theta) = nj(\hat\theta)$ as the observed information matrix gives the traditional normal approximation for the posterior distribution
+%$$
+%\theta \sim N_d \left( \hat\theta_n, J_n^{-1}(\hat\theta)\right)
+%$$
+%where $ \hat{\theta}_n$ is the MLE. A more accurate approximation is obtained by expanding around the posterior mode, $\theta^*$, which we will exploit in our weighted Bayesian Bootstrap. Now we have the asymptotic distributional approximation 
+%$$
+%\theta \sim N_d \left( \theta^*, J_n^{-1}(\theta^*)\right)
+%$$
+%where $\theta^*_n \defeq {\rm arg \; max}_\theta \; p( \theta|y) $ is the posterior mode. 
+%
+%The use of the posterior mode here is crucially important as it's the mode that is computationally available from TensorFlow and Keras. Approximate normality and second order approximation also holds, see \cite{johnson1970asymptotic}, \cite{Bertail} and \cite{newton1994approximate} for future discussion. Specifically,
+%$$
+%\sqrt{ n I ( \hat{\theta}_n )} \left ( {\theta}^*_n - \hat{\theta}_n \right ) \eqdist Z
+%$$
+%where $Z \sim N(0,1)$ is a standard Normal variable. The conditional posterior satisfies $\mathbb{P} \left ( | {\theta}^*_n - \hat{\theta}_n | > \epsilon \right ) \rightarrow 0$ for each $ \epsilon > 0 $ as $ n \rightarrow \infty $. In the 'large $p$' case, a number of results are available for posterior concentration, for example, see \cite{van2014horseshoe} for sparse high dimensional models.
+%
+%
  We note that rescaling in~(\ref{eqn:rand}) has no effect on
 solutions~(\ref{eqn:wbb}), and so it is equivalent in the construction
  to use normalized weights $\tilde {\bf w}$ that sum to unity. Such $\tilde {\bf w}$ are uniformly distributed over
