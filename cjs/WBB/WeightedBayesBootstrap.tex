@@ -263,14 +263,12 @@ a straightforward, optimization-based algorithm for approximate posterior sampli
 %\item For each ${\bf{w}}$, solve $\theta^*_{{\bf w},n} = \underset{\theta}{\argmin} \sum_{i=1}^n w_i l_i(\theta) +  \lambda w_p \phi(\theta)$. 
 %\end{enumerate}
 
-When optimization on the original problem~(\ref{eqn:canonicalform}) is fast and scalable, so too is the WBB. Next we consider the approximation~(\ref{eqn:conjecture}) from an asymptotic perspective.
+When optimization on the original problem~(\ref{eqn:canonicalform}) is fast and scalable, so too is the WBB. 
+To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
+Next we consider the approximation~(\ref{eqn:conjecture}) from an asymptotic perspective.
 
 % The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and \cite{arnold2014genlasso}. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. 
 
-** on lambda **
-See Appendix and Polson \& Sokolov (2017)  for further discussion. 
- To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
-**
 
 \subsection{WBB Properties}
 
@@ -284,7 +282,7 @@ that resides in a sufficiently regular model, and when the prior is smooth and p
 where, including sample size $n$ as an explicit subscript, we have posterior mode $\theta_n^* = \argmin {\mathcal L}_n( \theta)$, and
 where $J_n(\theta^*_n)=nj(\theta_n^*)$ is the Fisher information matrix evaluted at $\theta_n^*$.  
 Here $j(\theta)$ is the information per sample, and $y=(y_1, \cdots, y_n)$ denotes data.
-Centering on the posterior mode, rather than the MLE, improves accuracy in many cases (?citation?).   
+Centering on the posterior mode, rather than the MLE, improves accuracy in many cases ({\em ?citation?}).   
 
 
 As to the WBB distribution, consider a one-term Taylor expansion of $\nabla {\mathcal L}_{{\bf w},n} (\theta)$ about the posterior
@@ -324,14 +322,7 @@ Gaussian distribution of $\theta^*_{{\bf w},n}$.
 
 
 
-**Nick,   you wrote *$J_n = nj$ as `observed information`, but if it's the curvature of the observed log likelihood then I guess it's not $n j$.
- Do you mean Fisher information?**
-
-
-
-* throughout we use exponential weights...scaling not NB...in fact maybe expo not important
- (cite Barbe and Bertaile), except through connection to Bayes and the Dirichlet...one
- curious fact is that the expo gives uniform on the simplex...
+{\it Nick,   you wrote *$J_n = nj$ as `observed information`, but if it's the curvature of the observed log likelihood then I guess it's not $n j$.  Do you mean Fisher information?**}
 
 
 
@@ -363,7 +354,7 @@ Gaussian distribution of $\theta^*_{{\bf w},n}$.
 %
 
  We note that rescaling in~(\ref{eqn:rand}) has no effect on
-solutions~(\ref{eqn:wbb}), and so it is equivalent in the construction
+solutions~$\theta^*_{{\bf w},n}$, and so it is equivalent in the construction
  to use normalized weights $\tilde {\bf w}$ that sum to unity. Such $\tilde {\bf w}$ are uniformly distributed over
 the $(n+1)$-dimensional unit simplex, and thus correspond to a specific Dirichlet distribution.
 The use of Exponential/Dirichlet weights is motivated from considerations that are both inferential,
@@ -551,6 +542,7 @@ whilst accounting for parameter uncertainty by drawing  samples from a weighted 
 to provide  sparsity in high dimensional statistical problems. With a similar ease of computation, WBB provides an alternative to ABC methods (Beaumont, 2009) and Variational Bayes (VB) methods. A fruitful area for future research is the comparison of approximate Bayesian computation with simulated Bayesian Bootstrap inference.
 
 
+{\em 
 A general class of natural exponential family models can be expressed in terms of the Bregman divergence of the dual of the cumulant transform.
 Let $ \phi $ be the conjugate Legendre transform of $\psi$. Hence $ \psi(\theta) = \sup_\mu \; \left ( \mu^\top \theta - \phi(\mu) \right )$. Then we can write
 \begin{align*}
@@ -559,7 +551,7 @@ p_\psi ( y | \theta ) & = \exp \left ( y^\top \theta - \psi( \theta) - h_\psi(y)
 & = \exp \left ( - D_\phi ( y , \mu(\theta) ) - h_\phi (y) \right )
 \end{align*}
 where the infimum is attained at $ \mu(\theta) = \phi^\prime (\theta) $ is the mean of the exponential family distribution.
-We rewrite $ h_\psi(y) $ is terms of the correction term and $ h_\phi(y)$. Here there is a duality as $D_\phi$ can be interpreted as a Bregman divergence.
+We rewrite $ h_\psi(y) $ is terms of the correction term and $ h_\phi(y)$. Here there is a duality as $D_\phi$ can be interpreted as a Bregman divergence.}
 
 For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{posterior mode}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis.
 
