@@ -322,8 +322,6 @@ $w_0$ on the penalty term of the objective function.   At this level of first-or
  asymptotic analysis, neither of these features affects the limiting conditional
 Gaussian distribution of $\theta^*_{{\bf w},n}$.
 
-Van Der Pas {\em et al.} (2014)
-
 
 
 **Nick,   you wrote *$J_n = nj$ as `observed information`, but if it's the curvature of the observed log likelihood then I guess it's not $n j$.
@@ -331,14 +329,11 @@ Van Der Pas {\em et al.} (2014)
 
 
 
-* asymptotic analysis limited...e.g. requires smooth prior and fixed dimension...alternatives*
-
 * throughout we use exponential weights...scaling not NB...in fact maybe expo not important
  (cite Barbe and Bertaile), except through connection to Bayes and the Dirichlet...one
  curious fact is that the expo gives uniform on the simplex...
 
 
-***STILL TO UPDATE**
 
 %The following proposition, which follows from the Theorem 2 in Newton and Raftery (1994), summaries the properties of WBB.
 %
@@ -370,8 +365,11 @@ Van Der Pas {\em et al.} (2014)
  We note that rescaling in~(\ref{eqn:rand}) has no effect on
 solutions~(\ref{eqn:wbb}), and so it is equivalent in the construction
  to use normalized weights $\tilde {\bf w}$ that sum to unity. Such $\tilde {\bf w}$ are uniformly distributed over
-the $(n+1)$-dimensional unit simplex, and thus have a specific Dirichlet distribution.
-** more on the Bayes connection **
+the $(n+1)$-dimensional unit simplex, and thus correspond to a specific Dirichlet distribution.
+The use of Exponential/Dirichlet weights is motivated from considerations that are both inferential,
+related to the original Bayesian bootstrap (Rubin, 1981), and also numerical, owing to benefits of 
+smoothly varying weights. Other weight distributions may also be effective (Barbe and Bertail, 2012).
+
 
 
 \section{Applications}
@@ -495,9 +493,7 @@ essentially  a standard error for the estimator $\hat \beta_i$.
 \subsection{Deep Learning: MNIST Example}
 Deep learning is a form of machine learning that uses hierarchical abstract layers of latent variables to perform pattern matching and prediction.  Polson \& Sokolov (2017)
  take a Bayesian probabilistic perspective and provide a number of insights into more efficient algorithms for optimization
-and hyper-parameter tuning.
-
-The general goal is to finds a predictor of an output $y$ given a high dimensional input $x$. For a classification problem, $y \in \{1, 2, ..., K\}$ is a discrete variable and can be coded as a $K$-dimensional 0-1 vector. The model is as follows. Let $z^{(l)}$ denote the $l$-th layer, and so $x = z^{(0)}$. The final output is the response $y$,
+and hyper-parameter tuning.  The general goal is to find a predictor of an output $y$ given a high dimensional input $x$. For a classification problem, $y \in \{1, 2, ..., K\}$ is a discrete variable and can be coded as a $K$-dimensional 0-1 vector. The model is as follows. Let $z^{(l)}$ denote the $l$-th layer, and so $x = z^{(0)}$. The final output is the response $y$,
 which can be numeric or categorical. A deep prediction rule is then 
 \begin{align*}
 z^{(1)} & = f^{(1)} \Big( W^{(0)} x + b^{(0)} \Big),\\
@@ -569,16 +565,14 @@ For a wide range of non-smooth objective functions/statistical models, recent re
 
 \cite{strawderman2013hierarchical} and  \cite{polson2015proximal} considered scenarios where posterior modes can be used as posterior means from augmented probability models. Moreover, in their original foundation of the Weighted Likelihood Bootstrap (WLB), \cite{newton1994approximate} introduced the concept of the implicit prior. Clearly this is an avenue for future research.
 
-Expanding WBB asymptotics presents some exciting research opportunities.   
+Extending WBB asymptotics presents some exciting research opportunities.   
 The argument in Section 2.5 
 relies on smoothness in both the sampling model and prior, and it retains fixed parameter
-dimension as $n$ increases. Fortunately the groundwork has been done, for example by 
+dimension as $n$ increases.  Theoretical guarantees remain unavailable for relatively large parameter
+dimension or for non-smooth penalty functions.  Fortunately, groundwork has been done, for example by 
 Van Der Pas {\em et al.} (2014), Narisety \&  He  (2014) and others on the asymptotic  behaviour of the 
-posterior distribution;  
-by Knight and Fu (2000), ? and others on sampling theory of optimization-based estimators,
-nd ** on random weighting.
-
-?
+posterior distribution,  and by Knight and Fu (2000) and others on sampling theory of 
+optimization-based estimators,
 
 
 
@@ -590,8 +584,12 @@ Abadi, M., Agarwal, A., Barham, P., Brevdo, E., Chen, Z., Citro, C., Corrado, G.
 \bibitem[Arnold \& Tibshirani, 2014]{arnold2014genlasso}
 Arnold, T. B., \& Tibshirani, R. J. (2014). genlasso: Path algorithm for generalized lasso problems. {\it R package version 1.3}.
 
+\bibitem[BB12]{bb12}
+Barbe, P. \& Bertail, P. (2012). {\em The weighted bootstrap} Vol. 98. Springer Science \& Business Media.
+
 \bibitem[Beaumont et al., 2009]{beaumont2009adaptive}
 Beaumont, M. A.,  Cornuet, J.M.,  Marin,J.M. \& Robert, C. P. (2009). Adaptive approximate bayesian computation. {\it Biometrika}, 96(4), 983--990.
+
 
 \bibitem[Bertail \& Lo, 1991]{Bertail}
 Bertail, P. \& Lo,  A. Y.  (1991). On Johnson's asymptotic expansion for a posterior distribution. {\it Centre de Recherche en Economie et Statistique}.
@@ -612,7 +610,7 @@ Daniels, H. \& Young, G.  (1991). Saddlepoint approximation for the studentized 
 Efron, B. (1981). Nonparametric standard errors and confidence intervals. {\it Canadian Journal of Statistics}, 9(2), 139--158.
 
 \bibitem[Efron, 2012]{efron2012bayesian}
-Efron, B. (2012). Bayesian inference and the parametric bootstrap. {\it The Annals of Applied Statistics}, 6(4), 1971.
+Efron, B. (2012). Bayesian inference and the parametric bootstrap. {\it The Annals of Applied Statistics}, 6(4), 1971-1997.
 
 \bibitem[Efron et al., 2004]{efron2004least}
 Efron, B., Hastie, T., Johnstone, I. \& Tibshirani, R. J. (2004).  Diabetes dataset. Available from R package {\it lars}.
