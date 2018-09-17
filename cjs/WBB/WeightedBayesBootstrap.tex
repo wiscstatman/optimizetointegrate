@@ -542,7 +542,23 @@ whilst accounting for parameter uncertainty by drawing  samples from a weighted 
 to provide  sparsity in high dimensional statistical problems. With a similar ease of computation, WBB provides an alternative to ABC methods (Beaumont, 2009) and Variational Bayes (VB) methods. A fruitful area for future research is the comparison of approximate Bayesian computation with simulated Bayesian Bootstrap inference.
 
 
-{\em 
+For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{eqn:canonicalform}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis. Further, Strawderman {\em et al.} (2013) and Polson and Scott (2015b) 
+considered scenarios where posterior modes can be used as posterior means from augmented probability models.
+There may be useful interpretations of the random weights from the data-augmentation perspective.
+
+
+Extending WBB asymptotics presents an exciting research opportunity.   
+The argument in Section 2.5 
+relies on smoothness in both the sampling model and prior, and it retains fixed parameter
+dimension as $n$ increases.  Theoretical guarantees remain unavailable for relatively large parameter
+dimension or for non-smooth penalty functions.  Fortunately, groundwork has been done, for example by 
+Van Der Pas {\em et al.} (2014), Narisety \&  He  (2014) and others on the asymptotic  behaviour of the 
+posterior distribution,  and by Knight and Fu (2000) and others on sampling theory of 
+optimization-based estimators,
+
+
+
+{\em **Nick, not sure where this should go.**
 A general class of natural exponential family models can be expressed in terms of the Bregman divergence of the dual of the cumulant transform.
 Let $ \phi $ be the conjugate Legendre transform of $\psi$. Hence $ \psi(\theta) = \sup_\mu \; \left ( \mu^\top \theta - \phi(\mu) \right )$. Then we can write
 \begin{align*}
@@ -552,19 +568,6 @@ p_\psi ( y | \theta ) & = \exp \left ( y^\top \theta - \psi( \theta) - h_\psi(y)
 \end{align*}
 where the infimum is attained at $ \mu(\theta) = \phi^\prime (\theta) $ is the mean of the exponential family distribution.
 We rewrite $ h_\psi(y) $ is terms of the correction term and $ h_\phi(y)$. Here there is a duality as $D_\phi$ can be interpreted as a Bregman divergence.}
-
-For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{posterior mode}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis.
-
-\cite{strawderman2013hierarchical} and  \cite{polson2015proximal} considered scenarios where posterior modes can be used as posterior means from augmented probability models. Moreover, in their original foundation of the Weighted Likelihood Bootstrap (WLB), \cite{newton1994approximate} introduced the concept of the implicit prior. Clearly this is an avenue for future research.
-
-Extending WBB asymptotics presents some exciting research opportunities.   
-The argument in Section 2.5 
-relies on smoothness in both the sampling model and prior, and it retains fixed parameter
-dimension as $n$ increases.  Theoretical guarantees remain unavailable for relatively large parameter
-dimension or for non-smooth penalty functions.  Fortunately, groundwork has been done, for example by 
-Van Der Pas {\em et al.} (2014), Narisety \&  He  (2014) and others on the asymptotic  behaviour of the 
-posterior distribution,  and by Knight and Fu (2000) and others on sampling theory of 
-optimization-based estimators,
 
 
 

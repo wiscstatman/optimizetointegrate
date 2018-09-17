@@ -812,7 +812,7 @@
 \def\Fjname#1{\gdef\@Fjname{\it #1}}
 \Fjname{La revue canadienne de statistique}
 
-\jyear{2011}
+\jyear{2019}
 \jvol{}
 \jname{The Canadian Journal of Statistics}
 \def\PrintReprintLine{}
