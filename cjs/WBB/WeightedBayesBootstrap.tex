@@ -99,7 +99,7 @@ perspective to sequential Bayesian inference (Lopes, Polson \& Carvalho, 2012), 
 \section{Weighted Bayesian Bootstrap}
 \subsection{Set up}
 We work with a broad class of statistical models for data structures involving outcomes and covariates.
-Examples considered in Section~3  include high-dimensional regression, trend-filtering, and deep learning.
+Examples considered in Section~3  include  regression, trend-filtering, and deep learning.
 Let  $y=(y_1, y_2, \cdots, y_n)$ be an $n$-vector of outcomes and let $\theta$ be a $d$-dimensional parameter of interest. 
 Covariate data may be organized in an 
 $n \times d$ matrix $A$ whose rows are the design points (or ``features'') $a_i^T$
@@ -366,7 +366,7 @@ smoothly varying weights. Other weight distributions may also be effective (Barb
 \section{Applications}
 Consider now a number of scenarios to assess when WBB corresponds to a full Bayesian posterior distribution. 
 \subsection{Lasso}
-First, a simple univariate normal means problem with a  lasso prior where  
+First, a simple univariate normal means problem with a  LASSO prior where  
 $$
 y|\theta \sim N(\theta,1^2), \quad \theta \sim Laplace (0,1/\lambda)
 $$
@@ -395,7 +395,7 @@ where $F(y) = \exp(y)\Phi(-y-\lambda)$ and $\Phi(\cdot)$ is the c.d.f. of standa
 \begin{figure}[!ht]
 \centering 
 \includegraphics[scale=0.55]{simple.pdf} 
-\caption{Normal means model with lasso prior: WBB mean $E_{{\bf w}}(\theta^*_{\bf w}|y)$ (in solid lines) versus exact posterior mean $E(\theta|y)$ (in dashed lines).}
+\caption{Normal means model with LASSO prior: WBB mean $E_{{\bf w}}(\theta^*_{\bf w}|y)$ (in solid lines) versus exact posterior mean $E(\theta|y)$ (in dashed lines).}
 \label{simple}
 \end{figure}
 
@@ -436,7 +436,7 @@ Figure (\ref{diabetes}) shows the results of all these three methods (the weight
 
 
 \subsection{Trend Filtering}
-The generalized lasso solves the optimization problem:
+The generalized LASSO solves the optimization problem:
 \begin{eqnarray}
 \beta^* &=& \underset{\beta}{\argmin} \, \left\{ l(y|\beta) + \lambda\phi(\beta)  \right\}\\
 &=& \underset{\beta}{\argmin} \, \frac{1}{2}\|y - X\beta\|_2^2 + \lambda \|D\beta\|_1
@@ -458,7 +458,7 @@ and $D^{(k+1)} = D^{(1)}D^{(k)}$ for $k =1,2,3...$. For example, the log-prior i
 $$
 \|D^{(k+1)}\beta\|_1 = \sum_{i=1}^{p-k-1} \Big| \sum_{j=i}^{i+k+1} (-1)^{(j-i)} \binom{k+1}{j-i}\beta_j \Big|.
 $$
-WBB solves the following generalized lasso problem in each draw:
+WBB solves the following generalized LASSO problem in each draw:
 \begin{eqnarray*}
  \beta_{\bf w}^* &=& \underset{\beta}{\argmin} \, \frac{1}{2}\sum_{i=1}^p w_i(y_i - \beta_i)^2 + \lambda w_{0}\|D^{(k)}\beta\|_1\\
 &=&\underset{\beta}{\argmin} \, \frac{1}{2}  \|Wy - W\beta\|_2^2  + \lambda \|D^{(k)}\beta\|_1\\
