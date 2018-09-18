@@ -28,7 +28,7 @@
 \Frenchcopyrightline{Soci\'et\'e statistique du Canada}
 
 
-\title{Weighted Bayesian Bootstrap for Scalable Bayes}
+\title{Weighted Bayesian Bootstrap for Scalable Posterior Distributions}
 %\author{Michael Newton\authorref{1}}
 %author{Nicholas G. Polson\authorref{2}}
 %\author{Jianeng Xu\authorref{3}}
@@ -49,7 +49,7 @@ Bayesian\sep Bootstrap\sep MCMC\sep Weighted Bootstrap\sep ABC\sep Trend Filteri
 \begin{abstract}
 \abstractsection{}
 \abstractsection{Abstract}
-We develop a weighted Bayesian Bootstrap (WBB) for  machine learning and statistics. WBB provides uncertainty quantification by sampling from a high dimensional posterior distribution. WBB is computationally fast and scalable using only off-the-shelf optimization software. 
+We develop a Weighted Bayesian Bootstrap (WBB) for  Machine Learning and Statistics. WBB provides uncertainty quantification by sampling from a high dimensional posterior distribution. WBB is computationally fast and scalable using only off-the-shelf optimization software. 
 We provide regularity conditions which apply to a range of machine learning and statistical models. We illustrate our methodology in regularized regression, trend filtering and deep learning. Finally, we conclude with directions for future research.
 
 \end{abstract}}
@@ -272,8 +272,7 @@ Next we consider the approximation~(\ref{eqn:conjecture}) from an asymptotic per
 
 \subsection{WBB Properties}
 
-Conditions under which the target posterior distribution~(\ref{eqn:bayes}) is approximately Gaussian are well established (e.g., 
-Johnson, 1970; Kleijn \& van der Vaart, 2012).  For example, when data form a random sample from fixed distribution $p(y_i|\theta_0)$
+Conditions under which the target posterior distribution~(\ref{eqn:bayes}) is approximately Gaussian are well established (Kleijn \& van der Vaart, 2012).  For example, when data form a random sample from fixed distribution $p(y_i|\theta_0)$
 that resides in a sufficiently regular model, and when the prior is smooth and positive around $\theta_0 \in \R^d$,  we have 
 \begin{eqnarray}
 \label{eq:postG}
@@ -282,7 +281,7 @@ that resides in a sufficiently regular model, and when the prior is smooth and p
 where, including sample size $n$ as an explicit subscript, we have posterior mode $\theta_n^* = \argmin {\mathcal L}_n( \theta)$, and
 where $J_n(\theta^*_n)=nj(\theta_n^*)$ is the Fisher information matrix evaluted at $\theta_n^*$.  
 Here $j(\theta)$ is the information per sample, and $y=(y_1, \cdots, y_n)$ denotes data.
-Centering on the posterior mode, rather than the MLE, improves accuracy in many cases ({\em ?citation?}).   
+Centering on the posterior mode, rather than the MLE, improves accuracy in many cases (Bertail \& Lo, 1991).   
 
 
 As to the WBB distribution, consider a one-term Taylor expansion of $\nabla {\mathcal L}_{{\bf w},n} (\theta)$ about the posterior
@@ -322,7 +321,7 @@ Gaussian distribution of $\theta^*_{{\bf w},n}$.
 
 
 
-{\it Nick,   you wrote *$J_n = nj$ as `observed information`, but if it's the curvature of the observed log likelihood then I guess it's not $n j$.  Do you mean Fisher information?**}
+%{\it Nick,   you wrote *$J_n = nj$ as `observed information`, but if it's the curvature of the observed log likelihood then I guess it's not $n j$.  Do you mean Fisher information?**}
 
 
 
@@ -357,8 +356,8 @@ Gaussian distribution of $\theta^*_{{\bf w},n}$.
 solutions~$\theta^*_{{\bf w},n}$, and so it is equivalent in the construction
  to use normalized weights $\tilde {\bf w}$ that sum to unity. Such $\tilde {\bf w}$ are uniformly distributed over
 the $(n+1)$-dimensional unit simplex, and thus correspond to a specific Dirichlet distribution.
-The use of Exponential/Dirichlet weights is motivated from considerations that are both inferential,
-related to the original Bayesian bootstrap (Rubin, 1981), and also numerical, owing to benefits of 
+Exponential/Dirichlet weights are motivated from both inferential,
+related to the original Bayesian bootstrap (Rubin, 1981), and numerical, owing to benefits of 
 smoothly varying weights. Other weight distributions may also be effective (Barbe and Bertail, 2012).
 
 
@@ -371,11 +370,11 @@ $$
 y|\theta \sim N(\theta,1^2), \quad \theta \sim Laplace (0,1/\lambda)
 $$
 
-Given the i.i.d. exponential weights $w_0$ and $w_1$, the weighted posterior mode $\theta^*_{\bf w}$ is 
+Given the i.i.d. exponential weights $w_0$ and $w_1$, the weighted posterior mode $\theta^*_{\bf w}$ is given by 
 $$
 \theta^*_{\bf w} = \underset{\theta \in \Theta}{\argmin}\, \left\{\frac{w_1}{2} (y-\theta)^2 + \lambda w_0 |\theta|\right\}.
 $$
-This is sufficiently simple for an exact WBB solution in terms of soft thresholding:
+This is sufficiently simple for an exact WBB solution in terms of the soft thresholding proximal operator:
 $$
 \theta^*_{\bf w} = 
 \begin{cases}
@@ -445,6 +444,13 @@ where $ l(y|\beta) = \frac{1}{2}\|y - X\beta\|_2^2 $ is the negative log-likelih
 
 As a subproblem, polynomial trend filtering (Tibshirani, 2014; Polson \& Scott, 2015a) is recently introduced for piece-wise polynomial curve-fitting, where the knots and the parameters are chosen adaptively. Intuitively, the trend-filtering estimator is similar to an adaptive spline model: it penalizes the discrete derivative of order $k$, resulting in piecewise polynomials of higher degree for larger $k$.
 
+\begin{figure}[ht]
+\centering 
+\includegraphics[scale=0.55]{filtering.pdf} 
+\caption{Cubic trend filtering: the red line is $\hat\beta_i$ for $i=1,2,...500$; the blue line is $\hat\beta_i \pm 2*se$ where the standard errors are computed by WBB. $\lambda = 1000$.}
+\label{filter}
+\end{figure}
+
 Specifically, $X = I_p$ in the trend filtering setting  and the data $y = (y_1, ..., y_p)$ are assumed to be meaningfully ordered from 1 to $p$. The penalty matrix is specially designed by the discrete $(k+1)$-th order  derivative,
 $$D^{(1)}=
 \begin{bmatrix}
@@ -462,30 +468,20 @@ WBB solves the following generalized LASSO problem in each draw:
 \begin{eqnarray*}
  \beta_{\bf w}^* &=& \underset{\beta}{\argmin} \, \frac{1}{2}\sum_{i=1}^p w_i(y_i - \beta_i)^2 + \lambda w_{0}\|D^{(k)}\beta\|_1\\
 &=&\underset{\beta}{\argmin} \, \frac{1}{2}  \|Wy - W\beta\|_2^2  + \lambda \|D^{(k)}\beta\|_1\\
-&=&W^{-1}  \underset{\tilde\beta}{\argmin} \, \frac{1}{2}  \|\tilde{y}_{\bf w} - \tilde{\beta}_{\bf w}\|_2^2  + \lambda \|\tilde{D}^{(k)}_{\bf w}\tilde{\beta}_{\bf w}\|_1\\
-\end{eqnarray*}
-where $$W = {\rm diag}\left(\sqrt{w_1}/\sqrt{w_{0}},\cdots,  \sqrt{w_p}/\sqrt{w_{0}}\right)$$ and $$\tilde{y}_{\bf w} = Wy, \, \tilde{\beta}_{\bf w} = W\beta, \,   \tilde{D}^{(k)}_{\bf w}= D^{(k)}W^{-1}.$$
+&=&W^{-1}  \underset{\tilde\beta}{\argmin} \, \frac{1}{2}  \|\tilde{y}_{\bf w} - \tilde{\beta}_{\bf w}\|_2^2  + \lambda \|\tilde{D}^{(k)}_{\bf w}\tilde{\beta}_{\bf w}\|_1
+\end{eqnarray*}where 
+$W = {\rm diag}\left(\sqrt{w_1}/\sqrt{w_{0}},\cdots,  \sqrt{w_p}/\sqrt{w_{0}}\right)$ and $$\tilde{y}_{\bf w} = Wy, \, \tilde{\beta}_{\bf w} = W\beta, \,   \tilde{D}^{(k)}_{\bf w}= D^{(k)}W^{-1}.$$
 To illustrate our method, we simulate data $y_i$ from a Fourier series regression 
 $$
 y_i = \sin\left(\frac{4\pi}{500} i\right)\exp\left({\frac{3}{500} i}\right) + \epsilon_i
 $$
 for $i=1,2, \cdots, n=500$, where $\epsilon_i\sim N(0,2^2)$ are i.i.d. Gaussian deviates. The cubic trend filtering result is given in Figure (\ref{filter}). 
-
-For each $i$, the WBB gives a group of estimates $\left\{\beta_{\bf w}^*(i) \right\}_{j=1}^T$ where $T$ is the total number of draws. The standard deviation of these weighted solutions consitutes a posterior standard deviation, or
+For each $i$, the WBB gives a group of estimates $\left\{\beta_{\bf w}^*(i) \right\}_{j=1}^T$ where $T$ is the total number of draws. The standard deviation of these weighted solutions constitutes a posterior standard deviation, or
 essentially  a standard error for the estimator $\hat \beta_i$.
-\begin{figure}[!ht]
-\centering 
-\includegraphics[scale=0.55]{filtering.pdf} 
-\caption{Cubic trend filtering: the red line is $\hat\beta_i$ for $i=1,2,...500$; the blue line is $\hat\beta_i \pm 2*se$ where the standard errors are computed by WBB. $\lambda = 1000$.}
-\label{filter}
-\end{figure}
-
-
 \subsection{Deep Learning: MNIST Example}
-Deep learning is a form of machine learning that uses hierarchical abstract layers of latent variables to perform pattern matching and prediction.  Polson \& Sokolov (2017)
- take a Bayesian probabilistic perspective and provide a number of insights into more efficient algorithms for optimization
+Deep learning is a form of machine learning that uses hierarchical abstract layers of latent variables to perform pattern matching and prediction.  A Bayesian probabilistic perspective provides a number of insights into more efficient algorithms for optimization
 and hyper-parameter tuning.  The general goal is to find a predictor of an output $y$ given a high dimensional input $x$. For a classification problem, $y \in \{1, 2, ..., K\}$ is a discrete variable and can be coded as a $K$-dimensional 0-1 vector. The model is as follows. Let $z^{(l)}$ denote the $l$-th layer, and so $x = z^{(0)}$. The final output is the response $y$,
-which can be numeric or categorical. A deep prediction rule is then 
+which can be numeric or categorical. A deep prediction rule (Polson \& Sokolov, 2017) is then 
 \begin{align*}
 z^{(1)} & = f^{(1)} \Big( W^{(0)} x + b^{(0)} \Big),\\
 z^{(2)} & = f^{(2)} \Big( W^{(1)} z^{(1)} + b^{(1)} \Big),\\
@@ -508,9 +504,8 @@ $$
 $$
 Accordingly, with each draw of weights ${\bf w}$, WBB provides the estimates $(W^*_{\bf w}, b^*_{\bf w})$ by solving the following optimization problem.
 $$
-(W^*_{\bf w}, b^*_{\bf w}) = \argmin_{W, b} \sum_{i=1}^{n}w_i l_i(y_i|x_i, W, b) + \lambda w_0\phi(W, b)
+(W^*_{\bf w}, b^*_{\bf w}) = \argmin_{W, b} \sum_{i=1}^{n}w_i l_i(y_i|x_i, W, b) + \lambda w_0\phi(W, b).
 $$
-
 We take the classic MNIST example (LeCun \& Cortes, 2010) to illustrate the application of WBB in deep learning. The MNIST database of handwritten digits, available from Yann LeCun's website, has 60,000 training examples and 10,000 test examples. Here the high-dimensional $x$ is a normalized and centered fixed-size ($28\times 28$) image and the output $\hat{y}$ is a 10-dimensional vector, where $i$-th coordinate corresponds to the probability of that image being the $i$-th digit.
 
 For simplicity, we build a 2-layer neural network with layer sizes 128 and 64 respectively. Therefore, the dimensions of parameters are
@@ -523,17 +518,14 @@ The activation function $f^{(i)}$ is ReLU, $f(x) = \max\{0,x\}$, and the negativ
 $$
 \lambda\phi(W,b) = \lambda\sum_{l=0}^{2}\Vert W^{(l)} \Vert_2^2
 $$
-where $\lambda = 10^{-4}$. 
-
-Figure (\ref{fig:acc}) shows the posterior distribution of the classification accuracy in the test dataset. We see that the test accuracies are centered around 0.75 and the posterior distribution is left-skewed. Furthermore, the accuracy is higher than 0.35 in 99\% of the cases. The 95\% interval is [0.407, 0.893].
-
+where we take $\lambda = 10^{-4}$. 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{acc}
 	\caption{Posterior distribution of the classification accuracy. $n=500, \lambda=10^{-4}$.}
 	\label{fig:acc}
 \end{figure}
-
+Figure (\ref{fig:acc}) shows the posterior distribution of the classification accuracy in the test dataset. We see that the test accuracies are centered around 0.75 and the posterior distribution is left-skewed. Furthermore, the accuracy is higher than 0.35 in 99\% of the cases. The 95\% interval is [0.407, 0.893].
 
 
 \section{Discussion}
@@ -558,16 +550,16 @@ optimization-based estimators,
 
 
 
-{\em **Nick, not sure where this should go.**
-A general class of natural exponential family models can be expressed in terms of the Bregman divergence of the dual of the cumulant transform.
-Let $ \phi $ be the conjugate Legendre transform of $\psi$. Hence $ \psi(\theta) = \sup_\mu \; \left ( \mu^\top \theta - \phi(\mu) \right )$. Then we can write
-\begin{align*}
-p_\psi ( y | \theta ) & = \exp \left ( y^\top \theta - \psi( \theta) - h_\psi(y) \right )\\
- & = \exp \left \{ \inf_\mu \; \left ( ( y - \mu )^\top \theta - \phi(\mu) \right ) - h_\psi(y) \right \}\\
-& = \exp \left ( - D_\phi ( y , \mu(\theta) ) - h_\phi (y) \right )
-\end{align*}
-where the infimum is attained at $ \mu(\theta) = \phi^\prime (\theta) $ is the mean of the exponential family distribution.
-We rewrite $ h_\psi(y) $ is terms of the correction term and $ h_\phi(y)$. Here there is a duality as $D_\phi$ can be interpreted as a Bregman divergence.}
+%{\em **Nick, not sure where this should go.**
+%A general class of natural exponential family models can be expressed in terms of the Bregman divergence of the dual of the cumulant transform.
+%Let $ \phi $ be the conjugate Legendre transform of $\psi$. Hence $ \psi(\theta) = \sup_\mu \; \left ( \mu^\top \theta - \phi(\mu) \right )$. Then we can write
+%\begin{align*}
+%p_\psi ( y | \theta ) & = \exp \left ( y^\top \theta - \psi( \theta) - h_\psi(y) \right )\\
+% & = \exp \left \{ \inf_\mu \; \left ( ( y - \mu )^\top \theta - \phi(\mu) \right ) - h_\psi(y) \right \}\\
+%& = \exp \left ( - D_\phi ( y , \mu(\theta) ) - h_\phi (y) \right )
+%\end{align*}
+%where the infimum is attained at $ \mu(\theta) = \phi^\prime (\theta) $ is the mean of the exponential family distribution.
+%We rewrite $ h_\psi(y) $ is terms of the correction term and $ h_\phi(y)$. Here there is a duality as $D_\phi$ can be interpreted as a Bregman divergence.}
 
 
 
