@@ -80,7 +80,7 @@ randomized  posterior modes rather than randomized likelihood maximizers. A key 
 high dimensional posterior modes are now readily computable, thanks to systems such as \verb+TensorFlow+ (Abadi et al., 2015) and 
 \verb+Keras+ (Chollet et al., 2015)
 that deploy stochastic gradient descent (SGD) and convex optimization methods for large-scale
-problems, such as on neural network architectures used in deep learning (LeCun{,} Bengio \& Hinton, 2015).
+problems, such as on neural network architectures used in deep learning (LeCun {\em et al.} 2015).
 By linking random weighting with modern-day optimization, we expose a simple scheme
 for approximate uncertainty quantification in a wide class of statistical models.
 
@@ -93,8 +93,8 @@ training computations.  A further benefit is that  it is straightforward to add 
 across hyper-parameters, which is usually difficult to compute in traditional Bayesian
 sensitivity analysis.  We use predictive cross-validation techniques in this regard.
 
-The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy et al., 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include bootstrap filters in state-space models (Gordon{,}  Salmond \& Smith, 1993)  and comparison with the resampling-sampling
-perspective to sequential Bayesian inference (Lopes, Polson \& Carvalho, 2012), etc.
+The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy et al., 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include bootstrap filters in state-space models (Gordon {\em et al.}  1993)  and comparison with the resampling-sampling
+perspective to sequential Bayesian inference (Lopes {\em et al.} 2012), etc.
 
 \section{Weighted Bayesian Bootstrap}
 \subsection{Set up}
@@ -170,11 +170,12 @@ where $\partial$ is the subdifferential operator (the set of subgradients of the
 the sum of a point and a set.   Though not a formula for $\theta^*$, such as given by the normal equations in linear regression, 
 (\ref{eqn:subdiffproxgrad}) usefully guides algorithms that aim to solve $\theta^*$.   
 For example, under separability conditions on the penalty function, coordinate descent algorithms effectively solve for $\theta^*$;
-see Wright (2015), or  Hastie, Tibshirani, and Wainwright (2015, chap. 5) for a statistical perspective.
+see Wright (2015), or  Hastie {\em et al.} (2015, chap. 5) for a statistical perspective.
 The optimization literature also characterizes $\theta^*$ as the fixed point of a proximal operator
 $\prox_{\gamma \mathcal{L}}(\theta) = \argmin_z \{ \mathcal{L}(z) - \frac{1}{2\gamma} || z - \theta||_2^2  \}$, 
 which opens the door to powerful MM algorithms and related schemes; 
- see Lange (2016, chap. 5) and Polson \& Scott (2015a, 2015b).  Beyond convexity, the guarantees are weaker (e.g., local
+ see Lange (2016, chap. 5), Polson \& Scott (2015), Polson {\em et al.} (2015).  
+Beyond convexity, the guarantees are weaker (e.g., local
 not global minima) and the algorithms are many (e.g., Nocedal and Wright, 2006).  Gradient descent
 or stochastic gradient descent (SGD) are effective in many cases, owing to parameter 
 dimensionality and structure of the gradients.  The appendix develops SGD for one example.
@@ -312,7 +313,7 @@ have WBB variation:
 In a relatively narrow asymptotic sense, therefore, the WBB procedure is approximating the
 target posterior distribution, because both are approximately Gaussian with the same mean
 and covariance.   Details of the asymptotic analysis follow the WLB case presented in 
-Newton (1991) and Newton and Raftery (1994), 
+Newton and Raftery (1994), 
 and differ only slightly in our use of the posterior mode $\theta^*_n$ in place
 of the maximum likelihood estimator $\hat \theta_n$, and also in our incorporation of weight
 $w_0$ on the penalty term of the objective function.   At this level of first-order 
@@ -442,7 +443,7 @@ The generalized LASSO solves the optimization problem:
 \end{eqnarray}
 where $ l(y|\beta) = \frac{1}{2}\|y - X\beta\|_2^2 $ is the negative log-likelihood. $D \in \R^{m\times p}$ is a penalty matrix and $ \lambda\phi(\beta) = \lambda \|D\beta\|_1$ is the negative log-prior or regularization penalty. There are fast path algorithms for solving this problem (see {\tt genlasso} package).
 
-As a subproblem, polynomial trend filtering (Tibshirani, 2014; Polson \& Scott, 2015a) is recently introduced for piece-wise polynomial curve-fitting, where the knots and the parameters are chosen adaptively. Intuitively, the trend-filtering estimator is similar to an adaptive spline model: it penalizes the discrete derivative of order $k$, resulting in piecewise polynomials of higher degree for larger $k$.
+As a subproblem, polynomial trend filtering (Tibshirani, 2014; Polson \& Scott, 2015) is recently introduced for piece-wise polynomial curve-fitting, where the knots and the parameters are chosen adaptively. Intuitively, the trend-filtering estimator is similar to an adaptive spline model: it penalizes the discrete derivative of order $k$, resulting in piecewise polynomials of higher degree for larger $k$.
 
 \begin{figure}[ht]
 \centering 
@@ -529,12 +530,13 @@ Figure (\ref{fig:acc}) shows the posterior distribution of the classification ac
 
 
 \section{Discussion}
-Weighted Bayesian Bootstrap (WBB) provides a computationally attractive solution to scalable Bayesian inference (Minsker et al., 2014; Welling \& Teh, 2011)
-whilst accounting for parameter uncertainty by drawing  samples from a weighted posterior distribution. WBB can also be used in conjunction with proximal methods (Parikh \& Boyd, 2013; Polson \& Scott, 2015b)
+Weighted Bayesian Bootstrap (WBB) provides a computationally attractive solution to scalable Bayesian inference (Minsker {\em et al.}, 2014; Welling \& Teh, 2011)
+whilst accounting for parameter uncertainty by drawing  samples from a weighted posterior distribution. WBB can also be used in conjunction with proximal methods (Parikh \& Boyd, 2013; Polson {\em et al.} 
+ 2015)
 to provide  sparsity in high dimensional statistical problems. With a similar ease of computation, WBB provides an alternative to ABC methods (Beaumont, 2009) and Variational Bayes (VB) methods. A fruitful area for future research is the comparison of approximate Bayesian computation with simulated Bayesian Bootstrap inference.
 
 
-For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{eqn:canonicalform}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis. Further, Strawderman {\em et al.} (2013) and Polson and Scott (2015b) 
+For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{eqn:canonicalform}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis. Further, Strawderman {\em et al.} (2013) and Polson and Scott (2015) 
 considered scenarios where posterior modes can be used as posterior means from augmented probability models.
 There may be useful interpretations of the random weights from the data-augmentation perspective.
 
@@ -623,15 +625,15 @@ Gribonval, R. \& Machart, P. (2013).
 Reconciling "priors" \&"priors" without prejudice?. In {\em Advances in Neural Information Processing Systems} 
 pp. 2193-2201.
 
-\bibitem[Hans, 2009]{hans2009Bayesian}
-Hans, C. (2009). Bayesian lasso regression. {\it Biometrika}, 96(4), 835--845.
+%\bibitem[Hans, 2009]{hans2009Bayesian}
+%Hans, C. (2009). Bayesian lasso regression. {\it Biometrika}, 96(4), 835--845.
 
 \bibitem[HTW2015]{htw2015}
 Hastie, T., Tibshirani, R. \& Wainwright, M., 2015. {\em Statistical learning with sparsity: the lasso and generalizations}. CRC press.
 
-\bibitem[Johnson, 1970]{johnson1970asymptotic}
-Johnson, R. A. (1970). Asymptotic expansions associated with posterior distributions.
-{\it The Annals of Mathematical Statistics}, 41(3), 851--864.
+%\bibitem[Johnson, 1970]{johnson1970asymptotic}
+%Johnson, R. A. (1970). Asymptotic expansions associated with posterior distributions.
+%{\it The Annals of Mathematical Statistics}, 41(3), 851--864.
 
 \bibitem[Lange 2016]{Lange2016}
 Lange, K. (2016). {\em MM Optimization Algorithms}. Vol. 147, SIAM. 
@@ -651,8 +653,9 @@ Minsker, S., Srivastava, S.,  Lin, L. \& Dunson, D. (2014). Scalable and robust 
 \bibitem[Mitchell, 1994]{mitchell1994note}
 Mitchell, A. F. (1994). A note on posterior moments for a normal mean with double- exponential prior. {\it Journal of the Royal Statistical Society. Series B (Methodological)}, 605--610.
 
-\bibitem[Newton, 1991]{newton1991weighted}
-Newton, M. A. (1991). The weighted likelihood bootstrap and an algorithm for prepivoting. Ph. D. thesis, Department of Statistics, University of Washington, Seattle.
+%\bibitem[Newton, 1991]{newton1991weighted}
+%Newton, M. A. (1991). The weighted likelihood bootstrap and an algorithm for prepivoting. Ph. D. thesis, Department of Statistics, University of Washington, Seattle.
+%
 
 \bibitem[Newton \& Raftery, 1994]{newton1994approximate}
 Newton, M. A. \& Raftery,, 1994 A. E.  (1994). Approximate Bayesian inference with the weighted likelihood bootstrap. {\it Journal of the Royal Statistical Society. Series B (Methodological)}, 3--48.
@@ -663,10 +666,10 @@ Nocedal, J. \& Wright, S.J. (2006). {\em Numerical optimization}, 2nd edition. S
 \bibitem[Parikh \& Boyd, 2014]{parikh2013proximal}
 Parikh, N. \&  Boyd, S. (2014). Proximal algorithms. {\it Foundations and Trends in Optimization}, 1(3), 127--239.
 
-\bibitem[Polson \& Scott, 2015a]{polson2015mixtures}
+\bibitem[Polson \& Scott, 2015]{polson2015mixtures}
 Polson, N. G. \&  Scott , J. G.(2015). Mixtures, envelopes and hierarchical duality. {\it Journal of the Royal Statistical Society: Series B (Statistical Methodology)},  78(4), 701--727.
 
-\bibitem[Polson \& Scott, 2015b]{polson2015proximal}
+\bibitem[Polson et al., 2015]{polson2015proximal}
 Polson, N. G.,  Scott, J. G., \& Willard, B. T.  (2015). Proximal algorithms in statistics and machine learning. {\it Statistical Science}, 30(4), 559--581.
 
 \bibitem[Polson{,}  Scott \& Windle, 2014]{polson2014Bayesian}
@@ -705,8 +708,9 @@ Welling, M. \&  Teh, Y. W. (2011). Bayesian learning via stochastic gradient Lan
 Introduction to the special issue on sparsity and regularization methods. 
 {\em Statistical Science}, 27, 447-449.
 
-\bibitem[West, 1991]{west1992modelling}
-West, M. (1991). {\it Modelling with mixtures}. Institute of Statistics and Decision Sciences, Duke University
+%\bibitem[West, 1991]{west1992modelling}
+%West, M. (1991). {\it Modelling with mixtures}. Institute of Statistics and Decision Sciences, Duke University
+%
 
 \bibitem[Wright, 2015]{wright2015}
 Wright S.J. (2015).  Coordinate descent algorithms. {\it Mathematical Programming},  151(1):3-34.
