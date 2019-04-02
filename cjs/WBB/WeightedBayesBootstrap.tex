@@ -10,6 +10,8 @@
 \usepackage{enumitem}
 \usepackage{algorithm}% http://ctan.org/pkg/algorithms
 \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage{multirow}
+
 
 
 
@@ -57,14 +59,10 @@ We provide regularity conditions which apply to a range of machine learning and 
 \makechaptertitle
 
 
-
 \newpage
 
 \section{Introduction}
-Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference 
-problems (e.g., Wang, 2018). 
-Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis
-offers a general solution, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to provide uncertainty assessments.
+Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference problems. TensorFlow (TF) provides a numerical optimization framework for training and inference of models but does not provide uncertainty quantification. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis offers a general solution, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to provide uncertainty assessments. Our goal here is to marry Bayesian uncertainty techniques with state-of-art optimization methods such as convex optimization and TensorFlow.
  
 For relatively simple statistical models, the weighted likelihood bootstrap (WLB) method provides
 approximate posterior sampling through repeated optimization of a randomly weighted likelihood function (Newton \& Raftery, 1994).
@@ -88,13 +86,12 @@ for approximate uncertainty quantification in a wide class of statistical models
 Quantifying uncertainty is typically unavailable in a purely regularization optimization method. 
 We contend that UQ is available directly by repeated optimization of randomized objective functions, using the same
 computational tools that produce the primary estimate,  rather than through Markov
-chain Monte Carlo, variational methods,  approximate Bayesian computation, or other techniques. 
-Thus, uncertainty assessments are provided at little extra computational cost over the original
-training computations.  A further benefit is that  it is straightforward to add a regularization path 
-across hyper-parameters, which is usually difficult to compute in traditional Bayesian
+chain Monte Carlo, variational methods,  approximate Bayesian computation, or other techniques. See Green {\em et al} 2015 for a good summary of Bayesian computation history. Thus, uncertainty assessments are provided at little extra effort over the original
+training computations.  A further benefit is that with extra computational cost, it is straightforward to add a regularization path 
+across hyper-parameters (e.g. simply repeat WBB on different $\lambda$), which is usually difficult to compute in traditional Bayesian
 sensitivity analysis.  We use predictive cross-validation techniques in this regard.
 
-The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy et al., 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include bootstrap filters in state-space models (Gordon {\em et al.}  1993)  and comparison with the resampling-sampling
+The rest of the paper is outlined as follows. Section 2 develops our weighted Bayesian Bootstrap (WBB) algorithm. Section 3 provides applications to high dimensional sparse regression, trend filtering and deep learning. WBB can also be applied to Bayesian tree models (Taddy {\em et al.} 2015). Finally, Section 4 concludes with directions for future research. Areas for future study include bootstrap filters in state-space models (Gordon {\em et al.}  1993)  and comparison with the resampling-sampling
 perspective to sequential Bayesian inference (Lopes {\em et al.} 2012), etc.
 
 \section{Weighted Bayesian Bootstrap}
@@ -117,7 +114,7 @@ where $l(y| \theta) = \sum_{i=1}^n l_i( y_i | \theta )$ is a measure of fit (or 
 The penalty function, or regularization term, $\lambda\phi(\theta) $,   
 may encode soft or hard constraints, and is controlled by 
 a hyper-parameter, $\lambda>0$, whose values index an entire path of solutions. 
-The penalty function $\phi(\theta) = \sum_{j=1}^p \phi(\theta_j)$ is assumed to be separable and effects a favorable bias-variance 
+The penalty function $\phi(\theta)$ effects a favorable bias-variance 
 estimation tradeoff and provides extensive modeling flexibility (Wellner and Zhang, 2012).   
 To accommodate contemporary applications we  allow that $\phi(\theta)$ may have points in its domain where it fails to be differentiable (e.g., $L^1$ norm).  
 If we treat the data, $y$, as arising from a probabilistic 
@@ -183,7 +180,7 @@ dimensionality and structure of the gradients.  The appendix develops SGD for on
 
 Advances in applied optimization provide effective software tools for data analysis. For example, the R package
 \verb+glmnet+ deploys coordinate descent for loss functions arising from generalized linear models and LASSO or 
-elastic net penalties (Friedman {\em et al..} 2010). To solve the generalized LASSO problem, the R package 
+elastic net penalties (Friedman {\em et al.} 2010). To solve the generalized LASSO problem, the R package 
 \verb+genlasso+  deploys a dual path algorithm (Arnold \& Tibshirani, 2014).  A variety of general 
 purpose optimization tools for statistics are compiled at the optimization view at CRAN 
 (\verb+https://cran.r-project.org/web/views/Optimization.html+). For machine learning, the \verb+TensorFlow+ system has greatly simplified 
@@ -197,21 +194,20 @@ gradient descent, SGD, and related algorithms for many applications (Abadi {\em 
 we form the randomized objective
 \begin{eqnarray}
 \label{eqn:rand}
-\mathcal{L}_{\bf w}( \theta ) = \left\{ \sum_{i=1}^n w_i^l l_i( y_i | \theta ) \right\} + \lambda \sum_{j=1}^p w_j^\phi \phi(\theta_j)
+\mathcal{L}_{\bf w}( \theta ) = \left\{ \sum_{i=1}^n w_i l_i( y_i | \theta ) \right\} + \lambda w_0 \phi(\theta)
 \end{eqnarray}
 %$$
 %{\bf w} = (w_1, ..., w_n, w_p),\,
 %p_{\bf w}(\theta | y) \propto \prod_{i=1}^n p(y_i|\theta)^{w_i} p(\theta)^{w_p}
 %$$
-where entries of  ${\bf w}=(w_1^l, \cdots, w_n^l, w_1^\phi, ..., w_p^\phi)$ are independent and identically distributed (i.i.d.) 
+where entries of  ${\bf w}=(w_0, w_1, \cdots, w_n)$ are independent and identically distributed (i.i.d.) 
 standard exponentially distributed random weights, generated by the analyst and independently from the data $y$. 
 Equivalently, 
-$w_k = \log(1/u_k)$ where $u_k$'s are i.i.d. Uniform$(0,1)$. 
+$w_i = \log(1/u_i)$ where $u_i$'s are i.i.d. Uniform$(0,1)$. When $p>n$ and $\phi(\theta)$ is separable as $\phi(\theta) = \sum_{j=1}^p \phi_j(\theta_j)$, we recommend individual weight on each prior regularization term $\phi_j(\beta_j)$ to help with sparsity and to reduce the effect of occasionally large $\lambda$, namely $\lambda \sum_{j=1}^p w_j^\phi \phi_j(\theta_j)$
 Associated with any vector ${\bf w}$ is the solution,
 $\theta^*_{\bf w} = \argmin \mathcal{L}_{\bf w}(\theta).$
 Our basic conjecture is that the conditional distribution of $\theta^*_{\bf w}$ -- the distribution
-induced by ${\bf w}$ with the data fixed --  approximates the Bayesian posterior~(\ref{eqn:bayes}): for any measure set $\mathcal{B}$ 
-in the parameter space,
+induced by ${\bf w}$ with the data fixed --  approximates the Bayesian posterior~(\ref{eqn:bayes}): for any measurable set $\mathcal{B}$ in the parameter space,
 \begin{eqnarray}
 \label{eqn:conjecture}
 {\rm Pr}\left( \theta^*_{\bf w} \in \mathcal{B} | y \right) \approx \int_\mathcal{B} p(\theta|y) \, d\theta.
@@ -248,8 +244,8 @@ a straightforward, optimization-based algorithm for approximate posterior sampli
             \State  Function ${\bf WBB}({\mathcal D},{\mathcal M},T)$:
 
             \ForAll  {$t=1$ to $T$}
-		\State Realize: $(u_1, \cdots, u_n, u_{n+1}, \cdots, u_{n+p}) \sim_{i.i.d.}\, $Uniform$(0,1)$ 
-		\State Construct: $w_i^l \gets \log(1/u_i), w_j^\phi \gets \log(1/u_{n+j}), \quad 1 \leq i \leq n, \;1 \leq j \leq p$. %${\bf w}=(w_1, \cdots, w_n, w_{n+1}, \cdots, w_{n+p})$ 
+		\State Realize: $(u_0, u_1, \cdots, u_n) \sim_{i.i.d.}\, $Uniform$(0,1)$ 
+		\State Construct: $w_i \gets \log(1/u_i), \forall i. \; {\bf w}=(w_0, w_1, \cdots, w_n)$ 
 		\State Compute: $\theta^{*,t} \gets \argmin {\mathcal L}_{\bf w}(\theta)$
 
             \EndFor 
@@ -265,8 +261,8 @@ a straightforward, optimization-based algorithm for approximate posterior sampli
 %\item For each ${\bf{w}}$, solve $\theta^*_{{\bf w},n} = \underset{\theta}{\argmin} \sum_{i=1}^n w_i l_i(\theta) +  \lambda w_p \phi(\theta)$. 
 %\end{enumerate}
 
-When optimization on the original problem~(\ref{eqn:canonicalform}) is fast and scalable, so too is the WBB. 
-To choose the amount of regularization $\lambda$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
+When optimization on the original problem~(\ref{eqn:canonicalform}) is fast and scalable, so too is the WBB. Weights ${\bf w}$ and the corresponding  $\theta^*_{\bf w}$ are independent across $t$, making it possible to speed up the algorithm via parallel computing.
+To choose the amount of regularization $\lambda$ which is assumed to be fixed for all sets of ${\bf w}$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
 Next we consider the approximation~(\ref{eqn:conjecture}) from an asymptotic perspective.
 
 % The WBB algorithm is fast and scalable to compute a regularized estimator. For a large number of popular priors, the minimizing solution $\theta^*_{{\bf w},n}$ in the second step can be directly obtained via regularization packages such as {\tt glmnet} by Trevor Hastie and {\tt genlasso} by Taylor Arnold, see  \cite{friedman2010regularization} and \cite{arnold2014genlasso}. When the likelihood function or the prior is specially designed, Stochastic Gradient Descent (SGD) is powerful and fast enough to solve the minimization problem. It can be easily implemented in TensorFlow once the objective function is specified. 
@@ -282,7 +278,7 @@ that resides in a sufficiently regular model, and when the prior is smooth and p
 \end{eqnarray}
 where, including sample size $n$ as an explicit subscript, we have posterior mode $\theta_n^* = \argmin {\mathcal L}_n( \theta)$, and
 where $J_n(\theta^*_n)=nj(\theta_n^*)$ is the Fisher information matrix evaluated at $\theta_n^*$.  
-Here $j(\theta)$ is the information per sample, and $y=(y_1, \cdots, y_n)$ denotes data.
+Here $j(\theta)$ is the information per sample, and $y=(y_1, \cdots, y_n)$ denotes data. Johnstone (2010) studies Bernstein-von Mises theorem in high dimensional settings where $p$ grows with $n$ and the situation is very different. 
 Centering on the posterior mode, rather than the MLE, improves accuracy in many cases (Bertail \& Lo, 1991).   
 
 
@@ -312,12 +308,12 @@ have WBB variation:
 \left. \theta^*_{{\bf w},n} \right| y  \sim_{\rm approx} N_p \left( \theta_n^*, J_n^{-1}(\theta^*_n)\right).
 \end{eqnarray}
 In a relatively narrow asymptotic sense, therefore, the WBB procedure is approximating the
-target posterior distribution, because both are approximately Gaussian with the same mean
+target posterior distribution, as both are approximately Gaussian with the same mean
 and covariance.   Details of the asymptotic analysis follow the WLB case presented in 
 Newton and Raftery (1994), 
 and differ only slightly in our use of the posterior mode $\theta^*_n$ in place
 of the maximum likelihood estimator $\hat \theta_n$, and also in our incorporation of weight
-$(w_{n+1}, ..., w_{n+p})$ on the penalty term of the objective function.   At this level of first-order 
+$w_0$ on the penalty term of the objective function.   At this level of first-order 
  asymptotic analysis, neither of these features affects the limiting conditional
 Gaussian distribution of $\theta^*_{{\bf w},n}$.
 
@@ -363,26 +359,25 @@ related to the original Bayesian bootstrap (Rubin, 1981), and numerical, owing t
 smoothly varying weights. Other weight distributions may also be effective (Barbe and Bertail, 2012).
 
 
-
 \section{Applications}
 We now illustrate our methodology with a number of scenarios to assess when WBB corresponds to a full Bayesian posterior distribution. 
-\subsection{Lasso}
+\subsection{LASSO Experiment}
 First, a simple univariate normal means problem with a  LASSO prior where  
 $$
 y|\theta \sim N(\theta,1^2), \quad \theta \sim Laplace (0,1/\lambda)
 $$
 
-Given the i.i.d. exponential weights $w^l$ and $w^\phi$, the weighted posterior mode $\theta^*_{\bf w}$ is given by 
+Given the i.i.d. exponential weights $w_1$ and $w_0$, the weighted posterior mode $\theta^*_{\bf w}$ is given by 
 $$
-\theta^*_{\bf w} = \underset{\theta \in \Theta}{\argmin}\, \left\{\frac{w^l}{2} (y-\theta)^2 + \lambda w^\phi |\theta|\right\}.
+\theta^*_{\bf w} = \underset{\theta \in \Theta}{\argmin}\, \left\{\frac{w_1}{2} (y-\theta)^2 + \lambda w_0 |\theta|\right\}.
 $$
 This is sufficiently simple for an exact WBB solution in terms of the soft thresholding proximal operator:
 $$
 \theta^*_{\bf w} = 
 \begin{cases}
-y - \lambda w^\phi /w^l &\mbox{if $y > \lambda w^\phi /w^l$},\\
-y + \lambda w^\phi /w^l &\mbox{if $y < -\lambda w^\phi /w^l$},\\
-0 &\mbox{if $|y| \leq \lambda w^\phi/w^l$}.\\
+y - \lambda w_0 /w_1 &\mbox{if $y > \lambda w_0 /w_1$},\\
+y + \lambda w_0 /w_1 &\mbox{if $y < -\lambda w_0 /w_1$},\\
+0 &\mbox{if $|y| \leq \lambda w_0/w_1 $}.\\
 \end{cases}
 $$
 The WBB mean $E_{{\bf w}}(\theta^*_{\bf w}|y)$ is approximated by the sample mean of $\{ \theta^{*,t}_{\bf w}\}_{t=1}^T$. On the other hand, Mitchell (1994) gives the expression for the posterior mean, 
@@ -391,7 +386,7 @@ E(\theta|y) &=& \frac{\int_{-\infty}^\infty \theta\exp\left\{-(y-\theta)^2/2 - \
 &=& \frac{F(y)}{F(y) + F(-y)}(y+\lambda) + \frac{F(-y)}{F(y) + F(-y)}(y-\lambda)\\
 &=& y + \frac{F(y) - F(-y)}{F(y) + F(-y)}\lambda
 \end{eqnarray*}
-where $F(y) = \exp(y)\Phi(-y-\lambda)$ and $\Phi(\cdot)$ is the c.d.f. of standard normal distribution. We plot  the WBB mean versus the exact posterior mean in Figure (\ref{simple}).  Interestingly, WBB algorithm gives sparser posterior means. 
+where $F(y) = \exp(y)\Phi(-y-\lambda)$ and $\Phi(\cdot)$ is the c.d.f. of standard normal distribution. We plot  the WBB mean versus the exact posterior mean in Figure (\ref{simple}).  Interestingly, WBB algorithm shrinks posterior means towards zero.
 
 \begin{figure}[!ht]
 \centering 
@@ -399,6 +394,96 @@ where $F(y) = \exp(y)\Phi(-y-\lambda)$ and $\Phi(\cdot)$ is the c.d.f. of standa
 \caption{Normal means model with LASSO prior: WBB mean $E_{{\bf w}}(\theta^*_{\bf w}|y)$ (in solid lines) versus exact posterior mean $E(\theta|y)$ (in dashed lines).}
 \label{simple}
 \end{figure}
+
+A simulation study is conducted in order to further investigate WBB with LASSO prior. We simulate data from a simple linear regression model,
+$$
+Y = X\beta + \epsilon, \; \epsilon \sim N(0, \sigma_\epsilon^2 I)
+$$
+where $X$ is $N\times p$ and $Y$ is $N\times 1$. The design matrix, $X=[X_1, X_2, ..., X_p]$, is generated from the distribution $X \sim N(0, \Sigma)$. The covariance between $X_i$ and $X_j$ is set to be $\Sigma_{i,j} = 0.1^2*0.8^{|i-j|}$. Here we also assume i.i.d Gaussian noise where $\sigma_\epsilon = \sqrt{\Vert X\beta \Vert^2_2/(2N)}$. In this setting, the signal-noise ratio (SNR) is 2. In terms of the coefficient vector $\beta = [\beta_1, \beta_2, ..., \beta_p]'$, we consider both sparse and dense settings: 
+\begin{enumerate}
+	\item[A(i).] $\beta_i = 1$ for $1 \leq i \leq 10$ and $\beta_i = 0$ for $i > 10$.
+	\item[A(ii).] $\beta_i = 1$ for $1 \leq i \leq 5$, $\beta_i = 10$ for $6 \leq i \leq 10$ and $\beta_i = 0$ for $i > 10$.
+	\item[B.] $\beta_i = 1$ for $1 \leq i \leq p$.
+\end{enumerate}
+For each setting of $\beta$, we set $p = 40, 60, 80, 100, 120$. To investigate the performance of our methodology under different sample size, we also choose two settings of $N$:
+\begin{enumerate}
+	\item $N = 100$ for all $p$.
+	\item $N = p / 2$ for all $p$.
+\end{enumerate}
+
+For WBB with LASSO prior, we compare it  with Bayesian LASSO (Park \& Casella, 2008; Carlin \& Polson, 1991). The two methods has different prior specifications, 
+\begin{align}
+\text{WBB}:& \; \lambda\phi(\beta | {\bf w}) = \lambda \sum_{j=1}^p w^\phi_j |\beta_j|,\\
+\text{BLASSO}:& \; \phi(\beta | \sigma^2) = -\log\left(\frac{\lambda}{2\sigma}\right) + \frac{\lambda}{\sigma} \sum_{j=1}^p  |\beta_j|.
+\end{align}
+Bayesian LASSO imposes a noninformative marginal prior on $\sigma^2$, $\pi(\sigma^2) = 1/\sigma^2$ and posterior distribution is sampled by a Gibbs sampler, with $\lambda$ chosen by maximizing marginal likelihood. In WBB, $\lambda$ is chosen via cross-validation, using standard unweighted LASSO. Here the original LASSO prior is separable. We give weights not only to each sample, but also to each individual $\beta_j$. In high-dimensional cases, an extremely large common $w_0$ multiplied to $\phi(\beta)$ can introduce extra sparsity to all marginal posteriors.  We change the common prior weight to individual ones in hope of avoiding this issue. For comparison criteria, we present the estimation MSE of coefficients $\beta$ (use posterior mean as our estimate), out-of-sample prediction MSE (test sets are of the same size as the corresponding training sets), and the (median, mean) of the 95\% credible interval coverages. Fixing $(p, n, \beta)$,  the estimation procedure is repeated over $B$ independent datasets $\{(X,Y)^{(b)}\}_{b=1}^B$.  For each coordinate $j$,  coverage is then calculated using $\{\beta_j^{(b)}\}_{b=1}^B$ and the two statistics are calculated across $1\leq j \leq p$. 
+
+Results for estimation error,  out-of-sample prediction error  and credible interval coverage are displayed in Table (1), (2), (3), respectively. In all cases when $p>40$, WBB has lower estimation error than BLASSO does. It also outperforms BLASSO in terms of out-of-sample prediction in general. The latter makes better predictions when $p\geq 100$ and the sparse $\beta$ is not uniform across those non-zero coordinates. Credible intervals of both WBB and BLASSO don't have exact 95\% coverages.  WBB performs well when $p \geq 100$ and $\beta$ is sparse, though it always gives narrow intervals.  When $\beta_j = 1$ for all $1 \leq j \leq p$, BLASSO intervals are too wide while WBB intervals have accurate coverage at least when $n = 50$ and $40 \leq p \leq 60$.
+
+\renewcommand{\arraystretch}{0.5}
+\begin{table}[ht]\label{beta-mse}
+	\tbl{Coefficient Estimation Mean Squared Error (MSE)}{%
+\begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
+\toprule
+	&       $\beta$              & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
+		\multirow{6}{*}{$N = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.13   & 0.10   & 0.06   & 0.05   & 0.05   \\
+		&                        & WBB    & 0.18   & 0.06   & 0.05   & 0.04   & 0.03   \\ 
+		& \multirow{2}{*}{A(ii)} & BLASSO & 5.70   & 3.81   & 2.86   & 2.41   & 1.91   \\
+		&                        & WBB    & 7.02   & 3.01   & 2.21   & 1.84   & 1.57   \\
+		& \multirow{2}{*}{B}     & BLASSO & 0.69   & 0.70   & 0.69   & 0.79   & 0.81   \\
+		&                        & WBB    & 1.41   & 0.50   & 0.52   & 0.54   & 0.55   \\  \colrule
+		\multirow{6}{*}{$N = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.13   & 0.08   & 0.06   &   -     & 0.04   \\
+		&                        & WBB    & 0.13   & 0.07   & 0.05   &  -      & 0.03   \\ 
+		& \multirow{2}{*}{A(ii)} & BLASSO & 7.05   & 4.23   & 2.95   &  -      & 1.92   \\
+		&                        & WBB    & 6.15   & 3.86   & 2.51   &  -      & 1.52   \\ 
+		& \multirow{2}{*}{B}     & BLASSO & 0.55   & 0.60   & 0.69   &  -      & 0.80   \\
+		&                        & WBB    & 0.66   & 0.60   & 0.57   &  -      & 0.51   \\ \botrule
+\end{tabular*}}
+\end{table}		
+		
+\begin{table}[ht]
+	\label{oos-mse}
+	\tbl{Out-of-Sample Prediction Mean Squared Error (MSE)}{%
+\begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
+\toprule
+	&      $\beta$               & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule	
+		\multirow{6}{*}{$N = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 3.21   & 3.29   & 3.63   & 3.71   & 3.84   \\
+		&                        & WBB    & 3.20   & 3.25   & 3.61   & 3.63   & 3.83   \\ 
+		& \multirow{2}{*}{A(ii)} & BLASSO & 120.22 & 129.77 & 129.21 & 130.59 & 133.64 \\
+		&                        & WBB    & 121.30 & 128.89 & 129.40 & 133.55 & 138.04 \\ 
+		& \multirow{2}{*}{B}     & BLASSO & 19.98  & 33.12  & 47.18  & 63.50  & 80.49  \\
+		&                        & WBB    & 20.26  & 32.60  & 47.09  & 63.65  & 77.51  \\  \colrule
+		\multirow{6}{*}{$N = p/2$} &  \multirow{2}{*}{A(i)} & BLASSO & 4.57   & 3.92   & 4.05   &  -      & 3.47   \\
+		&                        & WBB    & 3.84   & 3.55   & 3.94   &  -      & 3.53   \\ 
+		& \multirow{2}{*}{A(ii)}  & BLASSO & 184.01 & 151.70 & 142.93 &  -      & 128.91 \\
+		&                        & WBB    & 150.67 & 136.02 & 140.68 &  -      & 134.78 \\ 
+		& \multirow{2}{*}{B}      & BLASSO & 27.93  & 37.57  & 51.24  &  -      & 76.36  \\
+		&                        & WBB    & 23.36  & 34.10  & 47.31  &  -      & 79.15  \\ \botrule
+	\end{tabular*}}
+\end{table}
+
+
+\begin{table}[ht]
+	\label{tab:coverage}
+	\tbl{95\% Credible Interval Coverage}{%
+\begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
+\toprule
+	&        $\beta$                & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
+		\multirow{6}{*}{$N = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.91 & 0.93 & 0.93 & 0.94 & 0.95 \\
+		&                        & WBB    & 0.90 & 0.91 & 0.92 & 0.94 & 0.94 \\ 
+		& \multirow{2}{*}{A(ii)} & BLASSO & 0.91 & 0.93 & 0.95 & 0.96 & 0.96 \\
+		&                        & WBB    & 0.91 & 0.92 & 0.93 & 0.94 & 0.95 \\ 
+		& \multirow{2}{*}{B}     & BLASSO & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 \\
+		&                        & WBB    & 0.95 & 0.95 & 0.93 & 0.91 & 0.88 \\ \colrule
+		\multirow{6}{*}{$N = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.94 & 0.94 & 0.94 &  -    & 0.94 \\
+		&                        & WBB    & 0.91 & 0.92 & 0.93 & -     & 0.94 \\
+		& \multirow{2}{*}{A(ii)} & BLASSO & 0.92 & 0.94 & 0.95 & -     & 0.96 \\
+		&                        & WBB    & 0.90 & 0.92 & 0.93 & -     & 0.95 \\
+		& \multirow{2}{*}{B}     & BLASSO & 1.00 & 1.00 & 1.00 & -     & 1.00 \\
+		&                        & WBB    & 0.90 & 0.91 & 0.91 & -     & 0.90 \\  \botrule
+	\end{tabular*}}
+\end{table}
+
 
 
 \subsection{Diabetes Data}
@@ -419,22 +504,21 @@ $$
 \label{eqn:diabetes}
 \hat\beta_{\bf{w}} := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda w_{0}\sum_{j=1}^p |\beta_j|\; . 
 \end{equation}
-The regularization factor $\lambda$ is chosen by cross-validation with unweighted likelihood. The weighted Bayesian Bootstrap is also performed with fixed prior, namely, $w_{0}$ is set to be 1 for all bootstrap samples. \cite{polson2014Bayesian} analyze the same dataset using the Bayesian Bridge estimator and suggest MCMC sampling from the posterior. 
+The regularization factor $\lambda$ is chosen by cross-validation with unweighted likelihood. The weighted Bayesian Bootstrap is also performed with individual weight on each $|\beta_j|$,
+\begin{equation}
+\label{eqn:diabetes2}
+\hat\beta_{\bf{w}}^\phi := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda \sum_{j=1}^p w_j^\phi |\beta_j|\; . 
+\end{equation}
 
-To compare our WBB results we also run the Bayesian bridge estimation. Here the Bayesian setting we use is 
-$$p(\beta, \sigma^2) = p(\beta | \sigma^2)p(\sigma^2),\, \text{where }  p(\sigma^2) \propto 1/\sigma^2.$$
-The prior on $\beta$, with suitable normalization constant $C_\alpha$, is given by $$p(\beta) = C_\alpha\exp(-\sum_{j=1}^p |\beta_j/\tau|^\alpha  ).$$ The hyper-parameter is drawn as $\nu = \tau^{-\alpha} \sim \Gamma(2,2)$, where $\alpha = 1/2.$\\
-
-
+As in the simulation study, WBB results are compared with Bayesian LASSO estimations. 
 \begin{figure}[!ht]
 \centering 
 \includegraphics[scale=0.7]{diabetes.pdf} 
-\caption{Diabetes example: the weighted Bayesian Bootstrap (with fixed prior and weighted prior) and Bayesian Bridge are used to draw from the marginal posteriors for $\beta_j$'s, j = 1,2,...10. }
+\caption{Diabetes example: the weighted Bayesian Bootstrap (with common prior weight and individual prior weights) and Bayesian LASSO are used to draw from the marginal posteriors for $\beta_j$'s, j = 1,2,...10. }
 \label{diabetes}
 \end{figure}
 
-Figure (\ref{diabetes}) shows the results of all these three methods (the weighted Bayesian Bootstrap with fixed prior/weighted prior and the Bayesian Bridge). Marginal posteriors for $\beta_j$'s are presented. One notable feature is that the weighted Bayesian Bootstrap tends to introduce more sparsity than Bayesian Bridge does. For example, the weighted Bayesian Bootstrap posteriors of {\tt age, ldl} and {\tt tch} have higher spikes located around 0, compared with the Bayesian Bridge ones. For {\tt tc, hdl, tch} and {\tt glu}, multi-modes in the marginal posteriors are observed. In general, the posteriors with fixed priors are more concentrated than those with randomly weighted priors. This difference is naturally attributed to variation in the weight assigned to the log-prior penalty term.
-
+Figure (\ref{diabetes}) shows the results of all these three methods (the weighted Bayesian Bootstrap with common / individual weight on prior terms , and Bayesian LASSO). Marginal posteriors for $\beta_j$'s are presented. One notable feature is that the weighted Bayesian Bootstrap tends to introduce less sparsity than Bayesian LASSO does. For example, the Bayesian LASSO posteriors of {\tt age, tc, ldl, tch} and {\tt glu} have higher spikes located around 0, compared with the weighted Bayesian Bootstrap ones. For {\tt tc} and {\tt hdl}, multi-modes in the marginal posteriors are observed. In general, the posteriors with individual weight on prior terms are similar with those given common prior weights. This difference is naturally attributed to variation in the weight assigned to the log-prior penalty term. 
 
 \subsection{Trend Filtering}
 The generalized LASSO solves the optimization problem:
@@ -520,21 +604,20 @@ The activation function $f^{(i)}$ is ReLU, $f(x) = \max\{0,x\}$, and the negativ
 $$
 \lambda\phi(W,b) = \lambda\sum_{l=0}^{2}\Vert W^{(l)} \Vert_2^2
 $$
-where we take $\lambda = 10^{-4}$. 
+where we manually choose $\lambda = 10^{-4}$. 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{acc}
 	\caption{Posterior distribution of the classification accuracy. $n=500, \lambda=10^{-4}$.}
 	\label{fig:acc}
 \end{figure}
-Figure (\ref{fig:acc}) shows the posterior distribution of the classification accuracy in the test dataset. We see that the test accuracies are centered around 0.75 and the posterior distribution is left-skewed. Furthermore, the accuracy is higher than 0.35 in 99\% of the cases. The 95\% interval is [0.407, 0.893].
-
+Figure (\ref{fig:acc}) shows the posterior distribution of the classification accuracy in the test dataset. We see that the test accuracies are centered around 0.75 and the posterior distribution is left-skewed. Furthermore, the accuracy is higher than 0.35 in 99\% of the cases. The 95\% interval is [0.407, 0.893].  Due to the simple 2-layer neural network structure, the classification accuracy is admittedly low compared with those state-of-art ones (e.g. Lee {\em et al.} 2016; Liang \& Hu,  2015). This illustration example however shows how WBB can be easily implemented in deep learning. Variational Bayes in deep learning is discussed in Polson \& Sokolov (2017).
 
 \section{Discussion}
-Weighted Bayesian Bootstrap (WBB) provides a computationally attractive solution to scalable Bayesian inference (Minsker {\em et al.}, 2014; Welling \& Teh, 2011)
+Weighted Bayesian Bootstrap (WBB) provides a computationally attractive solution to scalable Bayesian inference (Minsker {\em et al.} 2014; Welling \& Teh, 2011)
 whilst accounting for parameter uncertainty by drawing  samples from a weighted posterior distribution. WBB can also be used in conjunction with proximal methods (Parikh \& Boyd, 2013; Polson {\em et al.} 
  2015)
-to provide  sparsity in high dimensional statistical problems. With a similar ease of computation, WBB provides an alternative to ABC methods (Beaumont, 2009) and Variational Bayes (VB) methods. A fruitful area for future research is the comparison of approximate Bayesian computation with simulated Bayesian Bootstrap inference.
+to provide  sparsity in high dimensional statistical problems. With a similar ease of computation, WBB provides an alternative to ABC methods (Beaumont, 2009) and Variational Bayes (VB) methods (See Blei {\em et al} 2017 for a review of variational inference in Bayesian statistics). A fruitful area for future research is the comparison of approximate Bayesian computation with simulated Bayesian Bootstrap inference.
 
 
 For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{eqn:canonicalform}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis. Further, Strawderman {\em et al.} (2013) and Polson and Scott (2015) 
@@ -580,6 +663,8 @@ Barbe, P. \& Bertail, P. (2012). {\em The weighted bootstrap} Vol. 98. Springer 
 \bibitem[Beaumont et al., 2009]{beaumont2009adaptive}
 Beaumont, M. A.,  Cornuet, J.M.,  Marin,J.M. \& Robert, C. P. (2009). Adaptive approximate bayesian computation. {\it Biometrika}, 96(4), 983--990.
 
+\bibitem[Blei et al., 2017]{blei2017variational}
+Blei, D. M., Kucukelbir, A., \& McAuliffe, J. D. (2017). Variational inference: A review for statisticians. {\it Journal of the American Statistical Association}, 112(518), 859-877.
 
 \bibitem[Bertail \& Lo, 1991]{Bertail}
 Bertail, P. \& Lo,  A. Y.  (1991). On Johnson's asymptotic expansion for a posterior distribution. {\it Centre de Recherche en Economie et Statistique}.
@@ -589,6 +674,9 @@ Bertsekas, D.P., Nedi, A. \& Ozdaglar, A.E. (2003). {\em Convex analysis and opt
 
 \bibitem[Boyd \& Vandenberghe, 2004]{boyd2004convex}
 Boyd, S. \& Vandenberghe, L. (2004) {\it Convex optimization}. Cambridge university press.
+
+\bibitem[Carlin \& Polson, 1991]{carlin1991inference}
+Carlin, B. P., \& Polson, N. G. (1991). Inference for nonconjugate Bayesian models using the Gibbs sampler. {\it Canadian Journal of statistics}, 19(4), 399-405.
 
 \bibitem[Chollet et al., 2015]{chollet2015keras}
 Chollet, Fran\c{c}ois \& others. (2015) Keras {\it https://keras.io}
@@ -621,6 +709,9 @@ Gordon, N. J.,  Salmond, D. J. \&  Smith, A. F. (1993). Novel approach to nonlin
 \bibitem[Gramacy \& Polson, 2012]{gramacy2012simulation}
 Gramacy, R. B. \& Polson, N. G. (2012). Simulation-based regularized logistic regression. {\it Bayesian Analysis }, 7(3), 567--590.
 
+\bibitem[Green et al., 2015]{green2015bayesian}
+Green, P. J., {\L}atuszy{\'n}ski, K., Pereyra, M., \& Robert, C. P. (2015). Bayesian computation: a summary of the current state, and samples backwards and forwards. Statistics and Computing, 25(4), 835-862.
+
 \bibitem[Gribonval \& Machart, 2013]{gribonval2013}
 Gribonval, R. \& Machart, P. (2013). 
 Reconciling "priors" \&"priors" without prejudice?. In {\em Advances in Neural Information Processing Systems} 
@@ -630,11 +721,14 @@ pp. 2193-2201.
 %Hans, C. (2009). Bayesian lasso regression. {\it Biometrika}, 96(4), 835--845.
 
 \bibitem[HTW2015]{htw2015}
-Hastie, T., Tibshirani, R. \& Wainwright, M., 2015. {\em Statistical learning with sparsity: the lasso and generalizations}. CRC press.
+Hastie, T., Tibshirani, R. \& Wainwright, M., (2015). {\em Statistical learning with sparsity: the lasso and generalizations}. CRC press.
 
 %\bibitem[Johnson, 1970]{johnson1970asymptotic}
 %Johnson, R. A. (1970). Asymptotic expansions associated with posterior distributions.
 %{\it The Annals of Mathematical Statistics}, 41(3), 851--864.
+
+\bibitem[Johnstone 2010]{johnstone2010high}
+Johnstone, I. M. (2010). High dimensional Bernstein-von Mises: simple examples. {\it Institute of Mathematical Statistics collections}, 6, 87.
 
 \bibitem[Lange 2016]{Lange2016}
 Lange, K. (2016). {\em MM Optimization Algorithms}. Vol. 147, SIAM. 
@@ -644,6 +738,9 @@ LeCun, Y., Bengio, Y. \& Hinton, G. (2015). Deep learning. {\it Nature}, 521(755
 
 \bibitem[LeCun \& Cortes, 2010]{lecun-mnisthandwrittendigit-2010}
 LeCun, Y. \& Cortes, C. (2010). MNIST handwritten digit database. Retrieved from {\it http://yann.lecun.com/exdb/mnist/}
+
+\bibitem[Liang \& Hu, 2015]{liang2015recurrent}
+Liang, M., \& Hu, X. (2015). Recurrent convolutional neural network for object recognition. {\it In Proceedings of the IEEE conference on computer vision and pattern recognition} (pp. 3367-3375).
 
 \bibitem[Lopes{,}  Polson \& Carvalho, 2012]{lopes2012bayesian}
 Lopes, H. F., Polson, N. G., \&  Carvalho, C. M. (2012). Bayesian statistics with a smile: a resampling-sampling perspective. {\it Brazilian Journal of Probability and Statistics}, 26(4) 358--371.
@@ -666,6 +763,9 @@ Nocedal, J. \& Wright, S.J. (2006). {\em Numerical optimization}, 2nd edition. S
 
 \bibitem[Parikh \& Boyd, 2014]{parikh2013proximal}
 Parikh, N. \&  Boyd, S. (2014). Proximal algorithms. {\it Foundations and Trends in Optimization}, 1(3), 127--239.
+
+\bibitem[Park \& Casella, 2008]{park2008bayesian}
+Park, T., \& Casella, G. (2008). The Bayesian lasso. {\it Journal of the American Statistical Association}, 103(482), 681-686.
 
 \bibitem[Polson \& Scott, 2015]{polson2015mixtures}
 Polson, N. G. \&  Scott , J. G.(2015). Mixtures, envelopes and hierarchical duality. {\it Journal of the Royal Statistical Society: Series B (Statistical Methodology)},  78(4), 701--727.
