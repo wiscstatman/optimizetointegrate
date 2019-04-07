@@ -63,7 +63,7 @@
 \begin{enumerate}
 \item In addition to addressing the two reviewer's comments, I think that a well-designed simulation study would greatly improve the quality of this work. Right now, it is difficult to have insights about the performance (accuracy of the estimation of the accuracies, and computation time) of the proposed method, compared to existing alternative methods. In particular, the simulation study should aim at justifying the author's claims about scalability. Hence, some scenarios with $p>>n$ should be included. The authors could use any setting and methods they see fit but they should at least include a simple linear regression setting with different combinations of $(p,n)$. In that case, the authors should make some links with the burgeoning ``post-selection inference" literature.
 
-\answer{Thanks for the suggestion. We have added a regression simulation study with different combinations of $(p,n)$ in both sparse and non-sparse settings. Your comment also led us to add extra individual weights into the penalty. This helps in the large $p$ case.}
+\answer{Thanks for the suggestion. We have added a regression simulation study with different combinations of $(p,n)$ in both sparse and non-sparse settings. Your comment also led us to add extra individual weights into the penalty. This helps in the large $p$ case. As for CPU time, WBB is comparable (approximately 1.5 times) to Bayesian LASSO in the linear case, but of course, for the nonlinear deep learning example, WBB provides significant advantages over full MCMC.}
 \end{enumerate}
 
 
