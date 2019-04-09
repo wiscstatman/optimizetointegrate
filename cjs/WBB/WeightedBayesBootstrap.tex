@@ -62,7 +62,7 @@ We provide regularity conditions which apply to a range of machine learning and 
 \newpage
 
 \section{Introduction}
-Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference problems. TensorFlow (TF) provides a numerical optimization framework for training and inference of models but does not provide uncertainty quantification. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis offers a general solution, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to provide uncertainty assessments. Our goal here is to marry Bayesian uncertainty techniques with state-of-art optimization methods such as convex optimization and TensorFlow.
+Weighted Bayesian Bootstrap (WBB) is a simulation-based algorithm for assessing uncertainty in machine learning and statistics. Uncertainty quantification (UQ) is an active area of research, particularly in high-dimensional inference problems. Whilst there are computationally fast and scalable algorithms for training models in a wide variety of contexts, uncertainty assessments are still required, as are methods to compute these assessments.  Bayesian analysis offers a general solution, but developing computationally fast scalable algorithms for sampling a posterior distribution is a notoriously hard problem. WBB makes a contribution to this literature by showing how off-the-shelf optimization algorithms, such as convex optimization or stochastic gradient descent (SGD), can be adapted to provide uncertainty assessments. Our goal here is to marry Bayesian uncertainty techniques with state-of-art optimization methods such as convex optimization and TensorFlow.
  
 For relatively simple statistical models, the weighted likelihood bootstrap (WLB) method provides
 approximate posterior sampling through repeated optimization of a randomly weighted likelihood function (Newton \& Raftery, 1994).
@@ -184,7 +184,7 @@ elastic net penalties (Friedman {\em et al.} 2010). To solve the generalized LAS
 \verb+genlasso+  deploys a dual path algorithm (Arnold \& Tibshirani, 2014).  A variety of general 
 purpose optimization tools for statistics are compiled at the optimization view at CRAN 
 (\verb+https://cran.r-project.org/web/views/Optimization.html+). For machine learning, the \verb+TensorFlow+ system has greatly simplified 
-gradient descent, SGD, and related algorithms for many applications (Abadi {\em et al.} 2016).  
+gradient descent, SGD, and related algorithms for many applications (Abadi {\em et al.} 2015).  
 
 
 
@@ -512,12 +512,12 @@ To illustrate our methodology, we use weighted Bayesian Bootstrap (WBB) on the c
 
 \begin{equation}
 \label{eqn:diabetes}
-\hat\beta_{\bf{w}}^0 := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda w_{0}\sum_{j=1}^p |\beta_j|\; . 
+\beta^{*,{\rm common}}_{\bf w} := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda w_{0}\sum_{j=1}^p |\beta_j|\; . 
 \end{equation}
 The regularization factor $\lambda$ is chosen by cross-validation with unweighted likelihood. The weighted Bayesian Bootstrap is also performed with separate weights on each $|\beta_j|$,
 \begin{equation}
 \label{eqn:diabetes2}
-\hat\beta_{\bf{w}}^\phi := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda \sum_{j=1}^p w_{0,j} |\beta_j|\; . 
+\beta^{*,{\rm separate}}_{\bf w} := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda \sum_{j=1}^p w_{0,j} |\beta_j|\; . 
 \end{equation}
 
 As in the simulation study, WBB results are compared with Bayesian LASSO estimations. 
@@ -574,7 +574,7 @@ $$
 y_i = \sin\left(\frac{4\pi}{500} i\right)\exp\left({\frac{3}{500} i}\right) + \epsilon_i
 $$
 for $i=1,2, \cdots, n=500$, where $\epsilon_i\sim N(0,2^2)$ are i.i.d. Gaussian deviates. The cubic trend filtering result is given in Figure (\ref{filter}). 
-For each $i$, the WBB gives a group of estimates $\left\{\beta_{\bf w}^*(i) \right\}_{j=1}^T$ where $T$ is the total number of draws. The standard deviation of these weighted solutions constitutes a posterior standard deviation, or
+For each $i$, the WBB gives a group of estimates $\left\{\beta_{\bf w}^{*, t}(i) \right\}_{t=1}^T$ where $T$ is the total number of draws. The standard deviation of these weighted solutions constitutes a posterior standard deviation, or
 essentially  a standard error for the estimator $\hat \beta_i$.
 \subsection{Deep Learning: MNIST Example}
 Deep learning is a form of machine learning that uses hierarchical abstract layers of latent variables to perform pattern matching and prediction.  A Bayesian probabilistic perspective provides a number of insights into more efficient algorithms for optimization
