@@ -404,18 +404,18 @@ where $F(y) = \exp(y)\Phi(-y-\lambda)$ and $\Phi(\cdot)$ is the c.d.f. of standa
 
 A simulation study is conducted in order to further investigate WBB with LASSO prior. We simulate data from a simple linear regression model,
 $$
-Y = X\beta + \epsilon, \; \epsilon \sim N(0, \sigma_\epsilon^2 I)
+y = A\beta + \epsilon, \; \epsilon \sim N(0, \sigma_\epsilon^2 I)
 $$
-where $X$ is $N\times p$ and $Y$ is $N\times 1$. The design matrix, $X=[X_1, X_2, ..., X_p]$, is generated from the distribution $X \sim N(0, \Sigma)$. The covariance between $X_i$ and $X_j$ is set to be $\Sigma_{i,j} = 0.1*0.8^{|i-j|}$. Here we also assume i.i.d Gaussian noise where $\sigma_\epsilon = \sqrt{\Vert X\beta \Vert^2_2/(2N)}$. In this setting, the signal-noise ratio (SNR) is 2. In terms of the coefficient vector $\beta = [\beta_1, \beta_2, ..., \beta_p]'$, we consider both sparse and dense settings: 
+where $A$ is $n\times p$ and $y$ is $n\times 1$. The design matrix, $A=[A_1, A_2, ..., A_p]$, is generated from the distribution $A \sim N(0, \Sigma)$. The covariance between $A_i$ and $A_j$ is set to be $\Sigma_{i,j} = 0.1*0.8^{|i-j|}$. Here we also assume i.i.d Gaussian noise where $\sigma_\epsilon = \sqrt{\Vert A\beta \Vert^2_2/(2n)}$. In this setting, the signal-noise ratio (SNR) is 2. In terms of the coefficient vector $\beta = [\beta_1, \beta_2, ..., \beta_p]'$, we consider both sparse and dense settings: 
 \begin{enumerate}
 	\item[A(i).] $\beta_j = 1$ for $1 \leq j \leq 10$ and $\beta_j = 0$ for $j > 10$.
 	\item[A(ii).] $\beta_j = 1$ for $1 \leq j \leq 5$, $\beta_j = 10$ for $6 \leq j \leq 10$ and $\beta_j = 0$ for $j > 10$.
 	\item[B.] $\beta_j = 1$ for $1 \leq j \leq p$.
 \end{enumerate}
-For each setting of $\beta$, we set $p = 40, 60, 80, 100, 120$. To investigate the performance of our methodology under different sample size, we also choose two settings of $N$:
+For each setting of $\beta$, we set $p = 40, 60, 80, 100, 120$. To investigate the performance of our methodology under different sample size, we also choose two settings of $n$:
 \begin{enumerate}
-	\item $N = 100$ for all $p$.
-	\item $N = p / 2$ for all $p$.
+	\item $n = 100$ for all $p$.
+	\item $n = p / 2$ for all $p$.
 \end{enumerate}
 
 For WBB with LASSO prior, we compare it  with Bayesian LASSO (Park \& Casella, 2008; Carlin \& Polson, 1991). The two methods has different prior specifications, 
@@ -424,7 +424,7 @@ For WBB with LASSO prior, we compare it  with Bayesian LASSO (Park \& Casella, 2
 \text{BLASSO}:& \; \phi(\beta | \sigma^2) = -\log\left(\frac{\lambda}{2\sigma}\right) + \frac{\lambda}{\sigma} \sum_{j=1}^p  |\beta_j|.
 \end{align}
 Bayesian LASSO imposes a noninformative marginal prior on $\sigma^2$, $\pi(\sigma^2) = 1/\sigma^2$ and posterior distribution is sampled by a Gibbs sampler, with $\lambda$ chosen by maximizing marginal likelihood. In WBB, $\lambda$ is chosen via cross-validation, using standard unweighted LASSO. Here the original LASSO prior is separable. We give weights not only to each sample, but also to each individual $\beta_j$. In high-dimensional cases, an extremely large common $w_0$ multiplied to $\phi(\beta)$ can introduce extra sparsity to all marginal posteriors.  We change the common prior weight to separate weights in 
-an effort to overcome this issue. For comparison criteria, we present the estimation MSE of coefficients $\beta$ (use posterior mean as our estimate), out-of-sample prediction MSE (test sets are of the same size as the corresponding training sets), and the (median, mean) of the 95\% credible interval coverages. Fixing $(p, n, \beta)$,  the estimation procedure is repeated over $B$ independent datasets $\{(X,Y)^{(b)}\}_{b=1}^B$.  For each coordinate $j$,  coverage is then calculated using $\{\beta_j^{(b)}\}_{b=1}^B$ and the two statistics are calculated across $1\leq j \leq p$. 
+an effort to overcome this issue. For comparison criteria, we present the estimation MSE of coefficients $\beta$ (use posterior mean as our estimate), out-of-sample prediction MSE (test sets are of the same size as the corresponding training sets), and the (median, mean) of the 95\% credible interval coverages. Fixing $(p, n, \beta)$,  the estimation procedure is repeated over $B$ independent datasets $\{(A,y)^{(b)}\}_{b=1}^B$.  For each coordinate $j$,  coverage is then calculated using $\{\beta_j^{(b)}\}_{b=1}^B$ and the two statistics are calculated across $1\leq j \leq p$. 
 
 \renewcommand{\arraystretch}{0.5}
 \begin{table}[ht]\label{beta-mse}
@@ -432,13 +432,13 @@ an effort to overcome this issue. For comparison criteria, we present the estima
 \begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
 \toprule
 	&       $\beta$              & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
-		\multirow{6}{*}{$N = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.13   & 0.10   & 0.06   & 0.05   & 0.05   \\
+		\multirow{6}{*}{$n = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.13   & 0.10   & 0.06   & 0.05   & 0.05   \\
 		&                        & WBB    & 0.18   & 0.06   & 0.05   & 0.04   & 0.03   \\ 
 		& \multirow{2}{*}{A(ii)} & BLASSO & 5.70   & 3.81   & 2.86   & 2.41   & 1.91   \\
 		&                        & WBB    & 7.02   & 3.01   & 2.21   & 1.84   & 1.57   \\
 		& \multirow{2}{*}{B}     & BLASSO & 0.69   & 0.70   & 0.69   & 0.79   & 0.81   \\
 		&                        & WBB    & 1.41   & 0.50   & 0.52   & 0.54   & 0.55   \\  \colrule
-		\multirow{6}{*}{$N = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.13   & 0.08   & 0.06   &   -     & 0.04   \\
+		\multirow{6}{*}{$n = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.13   & 0.08   & 0.06   &   -     & 0.04   \\
 		&                        & WBB    & 0.13   & 0.07   & 0.05   &  -      & 0.03   \\ 
 		& \multirow{2}{*}{A(ii)} & BLASSO & 7.05   & 4.23   & 2.95   &  -      & 1.92   \\
 		&                        & WBB    & 6.15   & 3.86   & 2.51   &  -      & 1.52   \\ 
@@ -457,13 +457,13 @@ Results for estimation error,  out-of-sample prediction error  and credible inte
 \begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
 \toprule
 	&      $\beta$               & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule	
-		\multirow{6}{*}{$N = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 3.21   & 3.29   & 3.63   & 3.71   & 3.84   \\
+		\multirow{6}{*}{$n = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 3.21   & 3.29   & 3.63   & 3.71   & 3.84   \\
 		&                        & WBB    & 3.20   & 3.25   & 3.61   & 3.63   & 3.83   \\ 
 		& \multirow{2}{*}{A(ii)} & BLASSO & 120.22 & 129.77 & 129.21 & 130.59 & 133.64 \\
 		&                        & WBB    & 121.30 & 128.89 & 129.40 & 133.55 & 138.04 \\ 
 		& \multirow{2}{*}{B}     & BLASSO & 19.98  & 33.12  & 47.18  & 63.50  & 80.49  \\
 		&                        & WBB    & 20.26  & 32.60  & 47.09  & 63.65  & 77.51  \\  \colrule
-		\multirow{6}{*}{$N = p/2$} &  \multirow{2}{*}{A(i)} & BLASSO & 4.57   & 3.92   & 4.05   &  -      & 3.47   \\
+		\multirow{6}{*}{$n = p/2$} &  \multirow{2}{*}{A(i)} & BLASSO & 4.57   & 3.92   & 4.05   &  -      & 3.47   \\
 		&                        & WBB    & 3.84   & 3.55   & 3.94   &  -      & 3.53   \\ 
 		& \multirow{2}{*}{A(ii)}  & BLASSO & 184.01 & 151.70 & 142.93 &  -      & 128.91 \\
 		&                        & WBB    & 150.67 & 136.02 & 140.68 &  -      & 134.78 \\ 
@@ -479,13 +479,13 @@ Results for estimation error,  out-of-sample prediction error  and credible inte
 \begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
 \toprule
 	&        $\beta$                & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
-		\multirow{6}{*}{$N = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.91 & 0.93 & 0.93 & 0.94 & 0.95 \\
+		\multirow{6}{*}{$n = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.91 & 0.93 & 0.93 & 0.94 & 0.95 \\
 		&                        & WBB    & 0.90 & 0.91 & 0.92 & 0.94 & 0.94 \\ 
 		& \multirow{2}{*}{A(ii)} & BLASSO & 0.91 & 0.93 & 0.95 & 0.96 & 0.96 \\
 		&                        & WBB    & 0.91 & 0.92 & 0.93 & 0.94 & 0.95 \\ 
 		& \multirow{2}{*}{B}     & BLASSO & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 \\
 		&                        & WBB    & 0.95 & 0.95 & 0.93 & 0.91 & 0.88 \\ \colrule
-		\multirow{6}{*}{$N = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.94 & 0.94 & 0.94 &  -    & 0.94 \\
+		\multirow{6}{*}{$n = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.94 & 0.94 & 0.94 &  -    & 0.94 \\
 		&                        & WBB    & 0.91 & 0.92 & 0.93 & -     & 0.94 \\
 		& \multirow{2}{*}{A(ii)} & BLASSO & 0.92 & 0.94 & 0.95 & -     & 0.96 \\
 		&                        & WBB    & 0.90 & 0.92 & 0.93 & -     & 0.95 \\
