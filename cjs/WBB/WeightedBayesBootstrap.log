@@ -1,11 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/MacPorts 2018.47642_4) (preloaded format=pdflatex 2018.7.30)  9 APR 2019 16:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  9 APR 2019 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **WeightedBayesBootstrap.tex
 (./WeightedBayesBootstrap.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+LaTeX2e <2018-04-01> patch level 5
 (./TD-CJS.cls
 Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
 \proofcount=\count80
@@ -45,8 +44,8 @@ Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
 \messageskip=\skip46
 \colorcount=\count90
 \c@ContinuousCnt=\count91
-(/opt/local/share/texmf-texlive/tex/latex/tools/dcolumn.sty
-(/opt/local/share/texmf-texlive/tex/latex/tools/array.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/dcolumn.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
 \col@sep=\dimen118
 \ar@mcellbox=\box29
 \extrarowheight=\dimen119
@@ -59,19 +58,19 @@ Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
 \hour=\count93
 \extramargin=\skip49
 
-(/opt/local/share/texmf-texlive/tex/latex/graphics/epsfig.sty
-(/opt/local/share/texmf-texlive/tex/latex/graphics/graphicx.sty
-(/opt/local/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
 \KV@toks@=\toks15
 )
-(/opt/local/share/texmf-texlive/tex/latex/graphics/graphics.sty
-(/opt/local/share/texmf-texlive/tex/latex/graphics/trig.sty)
-(/opt/local/share/texmf-texlive/tex/latex/graphics-cfg/graphics.cfg
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/opt/local/share/texmf-texlive/tex/latex/graphics-def/pdftex.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen120
@@ -190,7 +189,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \@footmax=\dimen135
 \fnsm=\count128
 
-(/opt/local/share/texmf-texlive/tex/latex/tools/multicol.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
 \c@tracingmulticols=\count129
 \mult@box=\box37
 \multicol@leftmargin=\dimen136
@@ -278,8 +277,7 @@ LaTeX Info: Redefining \cite on input line 409.
 \nomdim=\dimen157
 \defbox=\box70
 \defboxdimen=\dimen158
-
-(/opt/local/share/texmf-texlive/tex/latex/picinpar/picinpar.sty
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/picinpar/picinpar.sty
 Pictures in Paragraphs. Version 1.2a, July 13, 1993
 \br=\count149
 \bl=\count150
@@ -335,26 +333,26 @@ Pictures in Paragraphs. Version 1.2a, July 13, 1993
 \NewTextHeight=\dimen175
 \NewColroom=\dimen176
 )
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 \@emptytoks=\toks21
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 ))
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
 \@mathmargin=\skip107
 
 For additional information on amsmath, use the `?' option.
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amstext.sty
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks22
 \ex@=\dimen177
 ))
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
 \pmbraise@=\dimen178
 )
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsopn.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty)
 \inf@bad=\count159
 LaTeX Info: Redefining \frac on input line 213.
 \uproot@=\count160
@@ -391,101 +389,84 @@ LaTeX Info: Redefining \cdots on input line 596.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(/opt/local/share/texmf-texlive/tex/latex/psnfss/times.sty))
-(/opt/local/share/texmf-texlive/tex/latex/base/latexsym.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/latexsym.sty
 \symlasy=\mathgroup6
 )
-(/opt/local/share/texmf-texlive/tex/latex/psfrag/psfrag.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psfrag/psfrag.sty
 \pfg@pcount=\count171
 \pfg@scount=\count172
 \pfg@temp=\write5
 )
-
-! LaTeX Error: File `enumitem.sty' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-(/opt/local/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
-(/opt/local/share/texmf-texlive/tex/latex/float/float.sty
-\c@float@type=\count173
-\float@exts=\toks27
-\float@box=\box88
-\@float@everytoks=\toks28
-\@floatcapt=\box89
+(/usr/local/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
+\labelindent=\skip110
+\enit@outerparindent=\dimen186
+\enit@toks=\toks27
+\enit@inbox=\box88
+\enitdp@description=\count173
 )
-(/opt/local/share/texmf-texlive/tex/latex/base/ifthen.sty)
-\@float@every@algorithm=\toks29
-\c@algorithm=\count174
+(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+\c@float@type=\count174
+\float@exts=\toks28
+\float@box=\box89
+\@float@everytoks=\toks29
+\@floatcapt=\box90
 )
-(/opt/local/share/texmf-texlive/tex/latex/algorithmicx/algpseudocode.sty
-(/opt/local/share/texmf-texlive/tex/latex/algorithmicx/algorithmicx.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty)
+\@float@every@algorithm=\toks30
+\c@algorithm=\count175
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count175
-\c@ALG@rem=\count176
-\c@ALG@nested=\count177
-\ALG@tlm=\skip110
-\ALG@thistlm=\skip111
-\c@ALG@Lnr=\count178
-\c@ALG@blocknr=\count179
-\c@ALG@storecount=\count180
-\c@ALG@tmpcounter=\count181
-\ALG@tmplength=\skip112
+\c@ALG@line=\count176
+\c@ALG@rem=\count177
+\c@ALG@nested=\count178
+\ALG@tlm=\skip111
+\ALG@thistlm=\skip112
+\c@ALG@Lnr=\count179
+\c@ALG@blocknr=\count180
+\c@ALG@storecount=\count181
+\c@ALG@tmpcounter=\count182
+\ALG@tmplength=\skip113
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+\multirow@colwidth=\skip114
+\multirow@cntb=\count183
+\multirow@dima=\skip115
+\bigstrutjot=\dimen187
 )
-
-! LaTeX Error: File `multirow.sty' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: q
-
-! LaTeX Error: File `q.sty' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Interruption.
-<to be read again> 
-                   }
-l.14 ^^M
-        
-? q
-OK, entering \batchmode...
- (./WeightedBayesBootstrap.aux)
+(./WeightedBayesBootstrap.aux)
 \openout1 = `WeightedBayesBootstrap.aux'.
 
 
-(/opt/local/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-(/opt/local/share/texmf-texlive/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count182
-\scratchdimen=\dimen186
-\scratchbox=\box90
-\nofMPsegments=\count183
-\nofMParguments=\count184
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count185
-\MPscratchDim=\dimen187
-\MPnumerator=\count186
-\makeMPintoPDFobject=\count187
-\everyMPtoPDFconversion=\toks31
-)
-(/opt/local/share/texmf-texlive/tex/latex/oberdiek/epstopdf-base.sty
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty)
-(/opt/local/share/texmf-texlive/tex/latex/oberdiek/grfext.sty
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvdefinekeys.sty
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty)))
-(/opt/local/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+\scratchcounter=\count184
+\scratchdimen=\dimen188
+\scratchbox=\box91
+\nofMPsegments=\count185
+\nofMParguments=\count186
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count187
+\MPscratchDim=\dimen189
+\MPnumerator=\count188
+\makeMPintoPDFobject=\count189
+\everyMPtoPDFconversion=\toks32
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package ifluatex Info: LuaTeX not detected.
 )
 Package etexcmds Info: Could not find \expanded.
@@ -493,8 +474,8 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
-(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -507,61 +488,100 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(/opt/local/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-(/opt/local/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/opt/local/share/texmf-texlive/tex/latex/base/ulasy.fd
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-(/opt/local/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
-) [1{/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}
+) [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-(/opt/local/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12]
+) [2] [3]
+[4] [5] [6] [7] [8] [9] [10] [11] [12]
 <simple.pdf, id=56, 528.97626pt x 508.90125pt>
 File: simple.pdf Graphic file (type pdf)
 <use simple.pdf>
 Package pdftex.def Info: simple.pdf  used on input line 390.
 (pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
- [13] 
+ [13] [14 <./simple.pdf>] [15] [16]
+[17] [18]
+<diabetes.pdf, id=86, 578.16pt x 722.7pt>
+File: diabetes.pdf Graphic file (type pdf)
+<use diabetes.pdf>
+Package pdftex.def Info: diabetes.pdf  used on input line 526.
+(pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
 
-ERROR:
- **************************************************** List Environment Must hav
-e a Square Bracket Argument ***************************************************
-*
- 
- Example:
- \begin{enumerate}[12.] 
-----------------------------------------------------
- 
-Press [ENTER] and [e] to correct the error 
--->
-! Emergency stop.
-<read *> 
-         
-l.411 	\item
-            [A(i).] $\beta_j = 1$ for $1 \leq j \leq 10$ and $\beta_j = 0$ f...
-*** (cannot \read from terminal in nonstop modes)
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 526--528
+ [][] 
+ []
 
- 
+[19]
+
+LaTeX Warning: Text page 20 contains only floats.
+
+[20 <./diabetes.pdf>]
+<filtering.pdf, id=99, 665.48625pt x 448.67625pt>
+File: filtering.pdf Graphic file (type pdf)
+<use filtering.pdf>
+Package pdftex.def Info: filtering.pdf  used on input line 547.
+(pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
+ [21] [22 <./filtering.pdf>] [23] [24]
+<acc.pdf, id=118, 705.63625pt x 504.88625pt>
+File: acc.pdf Graphic file (type pdf)
+<use acc.pdf>
+Package pdftex.def Info: acc.pdf  used on input line 622.
+(pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
+ [25] [26 <./acc.pdf>] [27] [28] [29] [30] [31] [32] [33] (./WeightedBayesBoots
+trap.aux) ) 
 Here is how much of TeX's memory you used:
- 4993 strings out of 494590
- 64093 string characters out of 6177729
- 141632 words of memory out of 5000000
- 8499 multiletter control sequences out of 15000+600000
- 39557 words of font info for 88 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 40i,12n,25p,1001b,256s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 5329 strings out of 492641
+ 70230 string characters out of 6129330
+ 158231 words of memory out of 5000000
+ 9079 multiletter control sequences out of 15000+600000
+ 40635 words of font info for 89 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 40i,12n,25p,1001b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/ur
+w/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times
+/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pf
+b></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on WeightedBayesBootstrap.pdf (33 pages, 443277 bytes).
+PDF statistics:
+ 228 PDF objects out of 1000 (max. 8388607)
+ 161 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+
