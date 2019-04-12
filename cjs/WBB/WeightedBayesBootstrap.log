@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 APR 2019 09:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 APR 2019 14:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -439,6 +439,7 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen187
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/doublestroke/dsfont.sty)
 (./WeightedBayesBootstrap.aux)
 \openout1 = `WeightedBayesBootstrap.aux'.
 
@@ -515,17 +516,19 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 <simple.pdf, id=56, 528.97626pt x 508.90125pt>
 File: simple.pdf Graphic file (type pdf)
  <use simple.pdf>
-Package pdftex.def Info: simple.pdf used on input line 390.
+Package pdftex.def Info: simple.pdf used on input line 391.
 (pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
- [13] [14 <./simple.pdf>] [15] [16] [17] [18] <diabetes.pdf, id=86, 578.16pt x 
-722.7pt>
+ [13] [14 <./simple.pdf>] [15]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+) [16]
+[17] [18] <diabetes.pdf, id=87, 578.16pt x 722.7pt>
 File: diabetes.pdf Graphic file (type pdf)
-
-<use diabetes.pdf>
-Package pdftex.def Info: diabetes.pdf used on input line 526.
+ <use diabetes.pdf>
+Package pdftex.def Info: diabetes.pdf used on input line 555.
 (pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
 
-Overfull \hbox (20.59705pt too wide) in paragraph at lines 526--528
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 555--557
  [][] 
  []
 
@@ -533,54 +536,56 @@ Overfull \hbox (20.59705pt too wide) in paragraph at lines 526--528
 
 LaTeX Warning: Text page 20 contains only floats.
 
-[20 <./diabetes.pdf>] <filtering.pdf, id=99, 665.48625pt x 448.67625pt>
+[20 <./diabetes.pdf>] [21] <filtering.pdf, id=103, 665.48625pt x 448.67625pt>
 File: filtering.pdf Graphic file (type pdf)
 
 <use filtering.pdf>
-Package pdftex.def Info: filtering.pdf used on input line 547.
+Package pdftex.def Info: filtering.pdf used on input line 576.
 (pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
- [21] [22 <./filtering.pdf>] [23] [24]
-<acc.pdf, id=118, 705.63625pt x 504.88625pt>
+ [22 <./filtering.pdf>] [23] [24] [25]
+<acc.pdf, id=123, 705.63625pt x 504.88625pt>
 File: acc.pdf Graphic file (type pdf)
  <use acc.pdf>
-Package pdftex.def Info: acc.pdf used on input line 622.
+Package pdftex.def Info: acc.pdf used on input line 651.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
- [25] [26 <./acc.pdf>] [27] [28] [29] [30] [31] [32] [33] (./WeightedBayesBoots
-trap.aux) ) 
+ [26 <./acc.pdf>]
+[27] [28] [29] [30] [31] [32] [33] [34] (./WeightedBayesBootstrap.aux) ) 
 Here is how much of TeX's memory you used:
- 5325 strings out of 493089
- 70016 string characters out of 6134842
- 154030 words of memory out of 5000000
- 8673 multiletter control sequences out of 15000+600000
- 40635 words of font info for 89 fonts, out of 8000000 for 9000
+ 5352 strings out of 493089
+ 70601 string characters out of 6134842
+ 167145 words of memory out of 5000000
+ 8690 multiletter control sequences out of 15000+600000
+ 41115 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,12n,25p,1001b,370s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist
-/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
-w/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times
-/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WeightedBayesBootstrap.pdf (33 pages, 443755 bytes).
+ 40i,12n,25p,1087b,368s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/l
+ocal/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/doublestroke/dsrom12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
+courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic
+/uhvb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on WeightedBayesBootstrap.pdf (34 pages, 446093 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
+ 235 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
