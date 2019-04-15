@@ -110,7 +110,7 @@
 
 \item In Fig 2, do the authors have any explanation why the WBB means are more sparse than bridge? $\alpha = 1/2$ in bridge, would it provide more sparse estimator than lasso (where WBB) is used if the same tuning parameter is used?
 
-\answer{Thanks for the suggestion. We have removed Bayesian bridge and used Bayesian LASSO instead. In WBB, we now allowed a weight for each individual $\beta$.}
+\answer{Thanks for the suggestion. We have removed Bayesian bridge and used Bayesian LASSO instead. In WBB, we now allowed a separate weight for each $\beta_j$.}
 
 
 \item Page 20 line 26. Remove $K=10$.
@@ -142,8 +142,9 @@ Empirically, the authors compare the WBB uncertainty estimate to that of the tru
 
 The Bayesian bridge example actually indicates that WBB fails to accurately approximate the posterior even in this favorable setting; note the discrepancy between the true posteriors and WBB estimates for "age", "ldl", and "tch." The example also indicates the sensitivity of WBB to the random weight on the penalty term. The fact that WBB tends to yield a sparser solution (as pointed out by the authors themselves) can be explained by occasional large weights on the penalty term.
 
-\answer{Thanks for your good point.  This led us to reconsider how to deal with the case $p>n$. We now add a weight on each penalty term
-This alleviates the problem you identified. Although it's hard to totally get rid of it. We have added an extensive simulation study to illustrate your point -- we used Bayesian LASSO.}
+\answer{Thanks for your very good point.  It led us to reconsider how to deal with the case $p>n$. We now add a separate weight on each penalty term to mitigate the problem you 
+identified, although the problem is not completely eliminated.
+ We have added a simulation study to illustrate your point -- we used Bayesian LASSO.}
 
 \item Despite the issue raised, I think there are potential contributions in the manuscript the authors just need to make the case for why WBB is "better" or "more promising" than alternative methods for quantifying uncertainty. For example, given that most of the existing approximate Bayesian procedures rather poorly estimate the true posterior, perhaps the accuracy of WBB should be measured against other approximate Bayesian procedures such as variational inference. (Such comparisons are not performed in the manuscript.)
 
