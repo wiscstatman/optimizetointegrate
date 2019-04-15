@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  15 APR 2019 09:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.19)  15 APR 2019 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **WeightedBayesBootstrap.tex
 (./WeightedBayesBootstrap.tex
-LaTeX2e <2018-04-01> patch level 5
+LaTeX2e <2018-12-01>
 (./TD-CJS.cls
 Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
 \proofcount=\count80
@@ -38,21 +38,21 @@ Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
 \mathindent=\dimen115
 \emathindent=\dimen116
 \bibindent=\dimen117
-\tempbox=\box26
-\tempabox=\box27
-\tempbbox=\box28
+\tempbox=\box27
+\tempabox=\box28
+\tempbbox=\box29
 \messageskip=\skip46
 \colorcount=\count90
 \c@ContinuousCnt=\count91
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/dcolumn.sty
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
 \col@sep=\dimen118
-\ar@mcellbox=\box29
+\ar@mcellbox=\box30
 \extrarowheight=\dimen119
 \NC@list=\toks14
 \extratabsurround=\skip47
 \backup@length=\skip48
-\ar@cellbox=\box30
+\ar@cellbox=\box31
 ))
 \minute=\count92
 \hour=\count93
@@ -100,7 +100,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Authcount=\count107
 \thankscount=\count108
 \c@authorfootnotecounter=\count109
-\Mybox=\box31
+\Mybox=\box32
 \c@part=\count110
 \c@chapter=\count111
 \c@section=\count112
@@ -170,18 +170,18 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \abovefigureskip=\skip99
 \c@figure=\count123
 \figcapdim=\dimen128
-\onebox=\box32
-\figtempbox=\box33
+\onebox=\box33
+\figtempbox=\box34
 \c@tabfoot=\count124
 \c@table=\count125
-\tabbodybox=\box34
+\tabbodybox=\box35
 \tabbodyht=\dimen129
 \tabbodywd=\dimen130
 \askip=\skip100
 \tabledim=\dimen131
-\tablecapbox=\box35
-\tabledim=\dimen132
 \tablecapbox=\box36
+\tabledim=\dimen132
+\tablecapbox=\box37
 \c@textboxfloat=\count126
 \c@boxcount=\count127
 \figtopskip=\dimen133
@@ -191,7 +191,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
 \c@tracingmulticols=\count129
-\mult@box=\box37
+\mult@box=\box38
 \multicol@leftmargin=\dimen136
 \c@unbalance=\count130
 \c@collectmore=\count131
@@ -204,14 +204,13 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \postmulticols=\dimen140
 \multicolsep=\skip101
 \multicolbaselineskip=\skip102
-\partial@page=\box38
-\last@line=\box39
+\partial@page=\box39
+\last@line=\box40
 \maxbalancingoverflow=\dimen141
-\mult@rightbox=\box40
-\mult@grightbox=\box41
-\mult@gfirstbox=\box42
-\mult@firstbox=\box43
-\@tempa=\box44
+\mult@rightbox=\box41
+\mult@grightbox=\box42
+\mult@gfirstbox=\box43
+\mult@firstbox=\box44
 \@tempa=\box45
 \@tempa=\box46
 \@tempa=\box47
@@ -228,13 +227,14 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \@tempa=\box58
 \@tempa=\box59
 \@tempa=\box60
+\@tempa=\box61
 \c@columnbadness=\count135
 \c@finalcolumnbadness=\count136
 \last@try=\dimen142
 \multicolovershoot=\dimen143
 \multicolundershoot=\dimen144
-\mult@nat@firstbox=\box61
-\colbreak@box=\box62
+\mult@nat@firstbox=\box62
+\colbreak@box=\box63
 \mc@col@check@num=\count137
 )
 \c@appcount=\count138
@@ -248,14 +248,14 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 LaTeX Info: Redefining \cite on input line 409.
 \c@NAT@ctr=\count139
 )
-\bibbox=\box63
+\bibbox=\box64
 \bibitemskip=\skip105
 \bibitemindent=\skip106
 \c@linecounter=\count140
 \a=\count141
 \b=\count142
-\mybox=\box64
-\tempbox=\box65
+\mybox=\box65
+\tempbox=\box66
 \halfcol=\dimen149
 \PageCountForBookmarks=\count143
 \bcount=\count144
@@ -269,13 +269,13 @@ LaTeX Info: Redefining \cite on input line 409.
 \topruleht=\dimen155
 \tempcount=\count147
 \bcount=\count148
-\ttbox=\box66
-\firstbox=\box67
-\thirdbox=\box68
-\NomenBox=\box69
+\ttbox=\box67
+\firstbox=\box68
+\thirdbox=\box69
+\NomenBox=\box70
 \NomenDim=\dimen156
 \nomdim=\dimen157
-\defbox=\box70
+\defbox=\box71
 \defboxdimen=\dimen158
  (/usr/local/texlive/2018/texmf-dist/tex/latex/picinpar/picinpar.sty
 Pictures in Paragraphs. Version 1.2a, July 13, 1993
@@ -306,21 +306,21 @@ Pictures in Paragraphs. Version 1.2a, July 13, 1993
 \ra=\toks18
 \ha=\toks19
 \pictoc=\toks20
-\rawtext=\box71
-\holder=\box72
-\windowbox=\box73
-\wartext=\box74
-\finaltext=\box75
-\aslice=\box76
-\bslice=\box77
-\wbox=\box78
-\wstrutbox=\box79
-\picbox=\box80
-\waslice=\box81
-\wbslice=\box82
-\fslice=\box83
+\rawtext=\box72
+\holder=\box73
+\windowbox=\box74
+\wartext=\box75
+\finaltext=\box76
+\aslice=\box77
+\bslice=\box78
+\wbox=\box79
+\wstrutbox=\box80
+\picbox=\box81
+\waslice=\box82
+\wbslice=\box83
+\fslice=\box84
 )
-\tempboxa=\box84
+\tempboxa=\box85
 \calcwd=\dimen171
 \calcht=\dimen172
  (./Bookmarks.sty
@@ -328,7 +328,7 @@ Pictures in Paragraphs. Version 1.2a, July 13, 1993
 \openout4 = `WeightedBayesBootstrap.bkm'.
 
 \myheight=\dimen173
-\tempbox=\box85
+\tempbox=\box86
 \newpagetotal=\dimen174
 \NewTextHeight=\dimen175
 \NewColroom=\dimen176
@@ -354,17 +354,17 @@ File: amsgen.sty 1999/11/30 v2.0 generic functions
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty)
 \inf@bad=\count159
-LaTeX Info: Redefining \frac on input line 213.
+LaTeX Info: Redefining \frac on input line 223.
 \uproot@=\count160
 \leftroot@=\count161
-LaTeX Info: Redefining \overline on input line 375.
+LaTeX Info: Redefining \overline on input line 385.
 \classnum@=\count162
 \DOTSCASE@=\count163
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box86
-\strutbox@=\box87
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box87
+\strutbox@=\box88
 \big@size=\dimen179
 \macc@depth=\count164
 \c@MaxMatrixCols=\count165
@@ -386,8 +386,8 @@ LaTeX Info: Redefining \cdots on input line 596.
 \multlinegap=\skip108
 \multlinetaggap=\skip109
 \mathdisplay@stack=\toks26
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty))
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/latexsym.sty
@@ -402,16 +402,16 @@ LaTeX Info: Redefining \] on input line 2818.
 \labelindent=\skip110
 \enit@outerparindent=\dimen186
 \enit@toks=\toks27
-\enit@inbox=\box88
+\enit@inbox=\box89
 \enitdp@description=\count173
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/algorithms/algorithm.sty
 (/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
 \c@float@type=\count174
 \float@exts=\toks28
-\float@box=\box89
+\float@box=\box90
 \@float@everytoks=\toks29
-\@floatcapt=\box90
+\@floatcapt=\box91
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty)
 \@float@every@algorithm=\toks30
@@ -450,7 +450,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count184
 \scratchdimen=\dimen188
-\scratchbox=\box91
+\scratchbox=\box92
 \nofMPsegments=\count185
 \nofMParguments=\count186
 \everyMPshowfont=\toks31
@@ -517,7 +517,7 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 <simple.pdf, id=56, 528.97626pt x 508.90125pt>
 File: simple.pdf Graphic file (type pdf)
 <use simple.pdf>
-Package pdftex.def Info: simple.pdf  used on input line 391.
+Package pdftex.def Info: simple.pdf  used on input line 392.
 (pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
  [13] [14 <./simple.pdf>] [15]
 (/usr/local/texlive/2018/texmf-dist/tex/latex/doublestroke/Udsrom.fd
@@ -527,10 +527,10 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 <diabetes.pdf, id=87, 578.16pt x 722.7pt>
 File: diabetes.pdf Graphic file (type pdf)
 <use diabetes.pdf>
-Package pdftex.def Info: diabetes.pdf  used on input line 561.
+Package pdftex.def Info: diabetes.pdf  used on input line 571.
 (pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
 
-Overfull \hbox (20.59705pt too wide) in paragraph at lines 561--563
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 571--573
  [][] 
  []
 
@@ -538,28 +538,28 @@ Overfull \hbox (20.59705pt too wide) in paragraph at lines 561--563
 
 LaTeX Warning: Text page 20 contains only floats.
 
-[20 <./diabetes.pdf>] [21]
-<filtering.pdf, id=103, 665.48625pt x 448.67625pt>
+[20 <./diabetes.pdf>]
+<filtering.pdf, id=100, 665.48625pt x 448.67625pt>
 File: filtering.pdf Graphic file (type pdf)
 <use filtering.pdf>
-Package pdftex.def Info: filtering.pdf  used on input line 582.
+Package pdftex.def Info: filtering.pdf  used on input line 596.
 (pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
- [22 <./filtering.pdf>] [23] [24] [25]
-<acc.pdf, id=123, 705.63625pt x 504.88625pt>
+ [21] [22 <./filtering.pdf>] [23] [24]
+<acc.pdf, id=119, 705.63625pt x 504.88625pt>
 File: acc.pdf Graphic file (type pdf)
 <use acc.pdf>
-Package pdftex.def Info: acc.pdf  used on input line 657.
+Package pdftex.def Info: acc.pdf  used on input line 671.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
- [26 <./acc.pdf>] [27] [28] [29] [30] [31] [32] [33] [34] (./WeightedBayesBoots
+ [25] [26 <./acc.pdf>] [27] [28] [29] [30] [31] [32] [33] (./WeightedBayesBoots
 trap.aux) ) 
 Here is how much of TeX's memory you used:
- 5356 strings out of 492641
- 70815 string characters out of 6129330
- 171346 words of memory out of 5000000
- 9096 multiletter control sequences out of 15000+600000
+ 5403 strings out of 492616
+ 71596 string characters out of 6128981
+ 171831 words of memory out of 5000000
+ 9168 multiletter control sequences out of 15000+600000
  41115 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,12n,25p,1513b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,25p,1059b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
 r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/l
@@ -583,10 +583,10 @@ type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/u
 rw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/time
 s/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.p
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WeightedBayesBootstrap.pdf (34 pages, 445664 bytes).
+Output written on WeightedBayesBootstrap.pdf (33 pages, 445161 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
+ 232 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
