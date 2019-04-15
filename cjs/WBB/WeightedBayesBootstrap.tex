@@ -535,10 +535,8 @@ Results for estimation error,  out-of-sample prediction error, credible interval
 WBB shows comparable or superior out-of-sample prediction in most cases. 
  Credible intervals of neither WBB nor BLASSO have exact 95\% coverage.  WBB performs well when $p \geq 100$ and $\beta$ is sparse, though it often under covers.  When $\beta_j = 1$ for all $1 \leq j \leq p$, BLASSO intervals are too wide while WBB intervals have coverage close to 95\% when $40 \leq p \leq 80$. In terms of model selection,  WBB  puts more mass near the correct selection than BLASSO in all sparse cases. 
 There the WBB mean model-selection discrepancy is substantially 
-smaller than that of BLASSO. However, its performance gets worse when $\beta$ is dense and uniform. 
-	
-Though limited in scope, this simulation reveals broad similarities between WBB and Bayesian LASSO in both 
-posterior structure and the sampling performance of approximate posterior summaries. It may provide
+smaller than that of BLASSO. However, its performance gets worse when $\beta$ is dense and uniform.  Though limited in scope, this simulation reveals some distinctions
+and also  broad similarities between WBB and Bayesian LASSO in both posterior structure and the sampling performance of approximate posterior summaries. It may provide
 a useful basis for further methodology development.
 
 \subsection{Diabetes Data}
@@ -564,7 +562,6 @@ The regularization factor $\lambda$ is chosen by cross-validation with unweighte
 \label{eqn:diabetes2}
 \beta^{*,{\rm separate}}_{\bf w} := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda \sum_{j=1}^p w_{0,j} |\beta_j|\; . 
 \end{equation}
-
 As in the simulation study, WBB results are compared with the Bayesian LASSO. 
 \begin{figure}[!ht]
 \centering 
