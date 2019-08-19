@@ -1,23 +1,24 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/MacPorts 2018.47642_4) (preloaded format=pdflatex 2018.7.30)  2 JUL 2019 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 AUG 2019 18:15
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **WBB-revision2.tex
 (./WBB-revision2.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (./TD-CJS.cls
 Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
-\proofcount=\count80
-\definitioncount=\count81
-\propositioncount=\count82
-\corollarycount=\count83
-\theoremcount=\count84
-\remarkcount=\count85
-\notationcount=\count86
-\examplecount=\count87
-\lemmacount=\count88
-\conjecturecount=\count89
+\proofcount=\count79
+\definitioncount=\count80
+\propositioncount=\count81
+\corollarycount=\count82
+\theoremcount=\count83
+\remarkcount=\count84
+\notationcount=\count85
+\examplecount=\count86
+\lemmacount=\count87
+\conjecturecount=\count88
 \draftrule=\dimen102
 \trimrule=\dimen103
 \trimwidth=\dimen104
@@ -43,36 +44,38 @@ Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
 \tempabox=\box27
 \tempbbox=\box28
 \messageskip=\skip46
-\colorcount=\count90
-\c@ContinuousCnt=\count91
-(/opt/local/share/texmf-texlive/tex/latex/tools/dcolumn.sty
-(/opt/local/share/texmf-texlive/tex/latex/tools/array.sty
+\colorcount=\count89
+\c@ContinuousCnt=\count90
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/dcolumn.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/array.sty
 \col@sep=\dimen118
-\ar@mcellbox=\box29
 \extrarowheight=\dimen119
 \NC@list=\toks14
 \extratabsurround=\skip47
 \backup@length=\skip48
-\ar@cellbox=\box30
 ))
-\minute=\count92
-\hour=\count93
+\minute=\count91
+\hour=\count92
 \extramargin=\skip49
 
-(/opt/local/share/texmf-texlive/tex/latex/graphics/epsfig.sty
-(/opt/local/share/texmf-texlive/tex/latex/graphics/graphicx.sty
-(/opt/local/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
 \KV@toks@=\toks15
 )
-(/opt/local/share/texmf-texlive/tex/latex/graphics/graphics.sty
-(/opt/local/share/texmf-texlive/tex/latex/graphics/trig.sty)
-(/opt/local/share/texmf-texlive/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 
-(/opt/local/share/texmf-texlive/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)
+\Gread@gobject=\count93
 ))
 \Gin@req@height=\dimen120
 \Gin@req@width=\dimen121
@@ -92,6 +95,8 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \plntempcount=\count103
 \acount=\count104
 \auttemp=\count105
+
+(./WBB-revision2.aut)
 \aut=\write3
 \openout3 = `WBB-revision2.aut'.
 
@@ -99,7 +104,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Authcount=\count107
 \thankscount=\count108
 \c@authorfootnotecounter=\count109
-\Mybox=\box31
+\Mybox=\box29
 \c@part=\count110
 \c@chapter=\count111
 \c@section=\count112
@@ -169,18 +174,18 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \abovefigureskip=\skip99
 \c@figure=\count123
 \figcapdim=\dimen128
-\onebox=\box32
-\figtempbox=\box33
+\onebox=\box30
+\figtempbox=\box31
 \c@tabfoot=\count124
 \c@table=\count125
-\tabbodybox=\box34
+\tabbodybox=\box32
 \tabbodyht=\dimen129
 \tabbodywd=\dimen130
 \askip=\skip100
 \tabledim=\dimen131
-\tablecapbox=\box35
+\tablecapbox=\box33
 \tabledim=\dimen132
-\tablecapbox=\box36
+\tablecapbox=\box34
 \c@textboxfloat=\count126
 \c@boxcount=\count127
 \figtopskip=\dimen133
@@ -188,9 +193,9 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \@footmax=\dimen135
 \fnsm=\count128
 
-(/opt/local/share/texmf-texlive/tex/latex/tools/multicol.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/multicol.sty
 \c@tracingmulticols=\count129
-\mult@box=\box37
+\mult@box=\box35
 \multicol@leftmargin=\dimen136
 \c@unbalance=\count130
 \c@collectmore=\count131
@@ -203,13 +208,15 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \postmulticols=\dimen140
 \multicolsep=\skip101
 \multicolbaselineskip=\skip102
-\partial@page=\box38
-\last@line=\box39
+\partial@page=\box36
+\last@line=\box37
 \maxbalancingoverflow=\dimen141
-\mult@rightbox=\box40
-\mult@grightbox=\box41
-\mult@gfirstbox=\box42
-\mult@firstbox=\box43
+\mult@rightbox=\box38
+\mult@grightbox=\box39
+\mult@gfirstbox=\box40
+\mult@firstbox=\box41
+\@tempa=\box42
+\@tempa=\box43
 \@tempa=\box44
 \@tempa=\box45
 \@tempa=\box46
@@ -225,15 +232,13 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \@tempa=\box56
 \@tempa=\box57
 \@tempa=\box58
-\@tempa=\box59
-\@tempa=\box60
 \c@columnbadness=\count135
 \c@finalcolumnbadness=\count136
 \last@try=\dimen142
 \multicolovershoot=\dimen143
 \multicolundershoot=\dimen144
-\mult@nat@firstbox=\box61
-\colbreak@box=\box62
+\mult@nat@firstbox=\box59
+\colbreak@box=\box60
 \mc@col@check@num=\count137
 )
 \c@appcount=\count138
@@ -247,14 +252,14 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 LaTeX Info: Redefining \cite on input line 409.
 \c@NAT@ctr=\count139
 )
-\bibbox=\box63
+\bibbox=\box61
 \bibitemskip=\skip105
 \bibitemindent=\skip106
 \c@linecounter=\count140
 \a=\count141
 \b=\count142
-\mybox=\box64
-\tempbox=\box65
+\mybox=\box62
+\tempbox=\box63
 \halfcol=\dimen149
 \PageCountForBookmarks=\count143
 \bcount=\count144
@@ -268,16 +273,15 @@ LaTeX Info: Redefining \cite on input line 409.
 \topruleht=\dimen155
 \tempcount=\count147
 \bcount=\count148
-\ttbox=\box66
-\firstbox=\box67
-\thirdbox=\box68
-\NomenBox=\box69
+\ttbox=\box64
+\firstbox=\box65
+\thirdbox=\box66
+\NomenBox=\box67
 \NomenDim=\dimen156
 \nomdim=\dimen157
-\defbox=\box70
+\defbox=\box68
 \defboxdimen=\dimen158
-
-(/opt/local/share/texmf-texlive/tex/latex/picinpar/picinpar.sty
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/picinpar/picinpar.sty
 Pictures in Paragraphs. Version 1.2a, July 13, 1993
 \br=\count149
 \bl=\count150
@@ -306,21 +310,21 @@ Pictures in Paragraphs. Version 1.2a, July 13, 1993
 \ra=\toks18
 \ha=\toks19
 \pictoc=\toks20
-\rawtext=\box71
-\holder=\box72
-\windowbox=\box73
-\wartext=\box74
-\finaltext=\box75
-\aslice=\box76
-\bslice=\box77
-\wbox=\box78
-\wstrutbox=\box79
-\picbox=\box80
-\waslice=\box81
-\wbslice=\box82
-\fslice=\box83
+\rawtext=\box69
+\holder=\box70
+\windowbox=\box71
+\wartext=\box72
+\finaltext=\box73
+\aslice=\box74
+\bslice=\box75
+\wbox=\box76
+\wstrutbox=\box77
+\picbox=\box78
+\waslice=\box79
+\wbslice=\box80
+\fslice=\box81
 )
-\tempboxa=\box84
+\tempboxa=\box82
 \calcwd=\dimen171
 \calcht=\dimen172
  (./Bookmarks.sty
@@ -328,25 +332,266 @@ Pictures in Paragraphs. Version 1.2a, July 13, 1993
 \openout4 = `WBB-revision2.bkm'.
 
 \myheight=\dimen173
-\tempbox=\box85
+\tempbox=\box83
 \newpagetotal=\dimen174
 \NewTextHeight=\dimen175
 \NewColroom=\dimen176
 )
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 \@emptytoks=\toks21
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 ))
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
 \@mathmargin=\skip107
 
 For additional information on amsmath, use the `?' option.
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amstext.sty
-(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks22
 \ex@=\dimen177
 ))
-(/opt/local/share/texmf-texlive/tex/latex/am
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty
+\pmbraise@=\dimen178
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsopn.sty)
+\inf@bad=\count159
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count160
+\leftroot@=\count161
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count162
+\DOTSCASE@=\count163
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box84
+\strutbox@=\box85
+\big@size=\dimen179
+\macc@depth=\count164
+\c@MaxMatrixCols=\count165
+\dotsspace@=\muskip10
+\c@parentequation=\count166
+\dspbrk@lvl=\count167
+\tag@help=\toks23
+\row@=\count168
+\column@=\count169
+\maxfields@=\count170
+\andhelp@=\toks24
+\eqnshift@=\dimen180
+\alignsep@=\dimen181
+\tagshift@=\dimen182
+\tagwidth@=\dimen183
+\totwidth@=\dimen184
+\lineht@=\dimen185
+\@envbody=\toks25
+\multlinegap=\skip108
+\multlinetaggap=\skip109
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/latexsym.sty
+\symlasy=\mathgroup6
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psfrag/psfrag.sty
+\pfg@pcount=\count171
+\pfg@scount=\count172
+\pfg@temp=\write5
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/enumitem/enumitem.sty
+\labelindent=\skip110
+\enit@outerparindent=\dimen186
+\enit@toks=\toks27
+\enit@inbox=\box86
+\enitdp@description=\count173
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
+\c@float@type=\count174
+\float@exts=\toks28
+\float@box=\box87
+\@float@everytoks=\toks29
+\@floatcapt=\box88
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+\@float@every@algorithm=\toks30
+\c@algorithm=\count175
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count176
+\c@ALG@rem=\count177
+\c@ALG@nested=\count178
+\ALG@tlm=\skip111
+\ALG@thistlm=\skip112
+\c@ALG@Lnr=\count179
+\c@ALG@blocknr=\count180
+\c@ALG@storecount=\count181
+\c@ALG@tmpcounter=\count182
+\ALG@tmplength=\skip113
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen187
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/doublestroke/dsfont.sty)
+(./WBB-revision2.aux)
+\openout1 = `WBB-revision2.aux'.
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count183
+\scratchdimen=\dimen188
+\scratchbox=\box89
+\nofMPsegments=\count184
+\nofMParguments=\count185
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count186
+\MPscratchDim=\dimen189
+\MPnumerator=\count187
+\makeMPintoPDFobject=\count188
+\everyMPtoPDFconversion=\toks32
+) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+) [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [2] [3]
+[4] [5] [6] [7] [8] [9] [10] [11] [12]
+<simple.pdf, id=56, 528.97626pt x 508.90125pt>
+File: simple.pdf Graphic file (type pdf)
+ <use simple.pdf>
+Package pdftex.def Info: simple.pdf used on input line 392.
+(pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
+ [13] [14 <./simple.pdf>] [15]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+) [16]
+<mcmc.pdf, id=81, 560.0925pt x 439.6425pt>
+File: mcmc.pdf Graphic file (type pdf)
+ <use mcmc.pdf>
+Package pdftex.def Info: mcmc.pdf used on input line 452.
+(pdftex.def)             Requested size: 308.05182pt x 241.80411pt.
+ [17 <./mcmc.pdf>]
+[18] [19] <diabetes.pdf, id=98, 578.16pt x 722.7pt>
+File: diabetes.pdf Graphic file (type pdf)
+ <use diabetes.pdf>
+Package pdftex.def Info: diabetes.pdf used on input line 579.
+(pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
+
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 579--581
+ [][] 
+ []
+
+[20]
+
+LaTeX Warning: Text page 21 contains only floats.
+
+[21 <./diabetes.pdf>] [22] <filtering.pdf, id=113, 665.48625pt x 448.67625pt>
+File: filtering.pdf Graphic file (type pdf)
+
+<use filtering.pdf>
+Package pdftex.def Info: filtering.pdf used on input line 604.
+(pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
+ [23 <./filtering.pdf>] [24] [25] [26]
+<acc.pdf, id=133, 705.63625pt x 504.88625pt>
+File: acc.pdf Graphic file (type pdf)
+ <use acc.pdf>
+Package pdftex.def Info: acc.pdf used on input line 679.
+(pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
+ [27 <./acc.pdf>]
+[28] [29] [30] [31] [32] [33] [34] (./WBB-revision2.aux) ) 
+Here is how much of TeX's memory you used:
+ 5358 strings out of 493089
+ 70567 string characters out of 6134842
+ 165136 words of memory out of 5000000
+ 8695 multiletter control sequences out of 15000+600000
+ 41115 words of font info for 94 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 40i,12n,25p,1050b,354s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2
+015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/doublestroke
+/dsrom12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on WBB-revision2.pdf (34 pages, 471568 bytes).
+PDF statistics:
+ 241 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+
