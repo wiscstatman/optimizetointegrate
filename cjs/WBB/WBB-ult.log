@@ -1,0 +1,593 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  27 OCT 2019 11:32
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**WBB-ult.tex
+(./WBB-ult.tex
+LaTeX2e <2018-04-01> patch level 5
+(./TD-CJS.cls
+Document Class: TD-CJS 1994/07/13 v1.2u Standard LaTeX document class
+\proofcount=\count80
+\definitioncount=\count81
+\propositioncount=\count82
+\corollarycount=\count83
+\theoremcount=\count84
+\remarkcount=\count85
+\notationcount=\count86
+\examplecount=\count87
+\lemmacount=\count88
+\conjecturecount=\count89
+\draftrule=\dimen102
+\trimrule=\dimen103
+\trimwidth=\dimen104
+\trimheight=\dimen105
+\typewidth=\dimen106
+\typeheight=\dimen107
+\tempdimen=\dimen108
+\normaltextheight=\dimen109
+\normalbaselineskip=\skip41
+\belowfrontmatterskip=\skip42
+\blindfoliodrop=\dimen110
+\enumdim=\dimen111
+\figheight=\dimen112
+\figwidth=\dimen113
+\tabledim=\dimen114
+\tableleftskip=\skip43
+\tablerightskip=\skip44
+\tablebaselineskip=\skip45
+\mathindent=\dimen115
+\emathindent=\dimen116
+\bibindent=\dimen117
+\tempbox=\box26
+\tempabox=\box27
+\tempbbox=\box28
+\messageskip=\skip46
+\colorcount=\count90
+\c@ContinuousCnt=\count91
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/dcolumn.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
+\col@sep=\dimen118
+\ar@mcellbox=\box29
+\extrarowheight=\dimen119
+\NC@list=\toks14
+\extratabsurround=\skip47
+\backup@length=\skip48
+\ar@cellbox=\box30
+))
+\minute=\count92
+\hour=\count93
+\extramargin=\skip49
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+\KV@toks@=\toks15
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+)
+\epsfxsize=\dimen122
+\epsfysize=\dimen123
+)
+\myabseccount=\count94
+\myfabseccount=\count95
+\authorcount=\count96
+\affiliationcount=\count97
+\tempcount=\count98
+\affiltempcount=\count99
+\checkauthorcount=\count100
+\authorendcount=\count101
+\plncount=\count102
+\plntempcount=\count103
+\acount=\count104
+\auttemp=\count105
+
+(./WBB-ult.aut)
+\aut=\write3
+\openout3 = `WBB-ult.aut'.
+
+\contractcount=\count106
+\Authcount=\count107
+\thankscount=\count108
+\c@authorfootnotecounter=\count109
+\Mybox=\box31
+\c@part=\count110
+\c@chapter=\count111
+\c@section=\count112
+\c@subsection=\count113
+\c@subsubsection=\count114
+\c@paragraph=\count115
+\c@subparagraph=\count116
+\topsepi=\skip50
+\topsepii=\skip51
+\topsepiii=\skip52
+\itemsepi=\skip53
+\itemsepii=\skip54
+\itemsepiii=\skip55
+\itemsepiv=\skip56
+\itemsepv=\skip57
+\itemsepvi=\skip58
+\itemsepvii=\skip59
+\itemsepviii=\skip60
+\itemsepix=\skip61
+\LabelSep=\dimen124
+\c@enumv=\count117
+\c@enumvi=\count118
+\c@enumvii=\count119
+\c@enumviii=\count120
+\c@enumix=\count121
+\listtextleftmargin=\skip62
+\listtextleftmarginii=\skip63
+\listtextleftmarginiii=\skip64
+\listtextrightmargin=\skip65
+\listlabelleftskip=\skip66
+\listlabelleftskipii=\skip67
+\listlabelleftskipiii=\skip68
+\abovelistskipi=\skip69
+\belowlistskipi=\skip70
+\abovelistskipii=\skip71
+\belowlistskipii=\skip72
+\abovelistskipiii=\skip73
+\belowlistskipiii=\skip74
+\abovelistskipiv=\skip75
+\belowlistskipiv=\skip76
+\abovelistskipv=\skip77
+\belowlistskipv=\skip78
+\abovelistskipvi=\skip79
+\belowlistskipvi=\skip80
+\abovelistskipvii=\skip81
+\belowlistskipvii=\skip82
+\abovelistskipviii=\skip83
+\belowlistskipviii=\skip84
+\abovelistskipvix=\skip85
+\belowlistskipix=\skip86
+\labelsepi=\skip87
+\labelsepii=\skip88
+\labelsepiii=\skip89
+\labelsepiv=\skip90
+\labelsepv=\skip91
+\labelsepvi=\skip92
+\labelsepvii=\skip93
+\labelsepviii=\skip94
+\labelsepix=\skip95
+\enumdimwd=\dimen125
+\itemleftmargin=\dimen126
+\itemlabelsep=\dimen127
+\c@ncount=\count122
+\abovecaptionskip=\skip96
+\belowcaptionskip=\skip97
+\belowfigureskip=\skip98
+\abovefigureskip=\skip99
+\c@figure=\count123
+\figcapdim=\dimen128
+\onebox=\box32
+\figtempbox=\box33
+\c@tabfoot=\count124
+\c@table=\count125
+\tabbodybox=\box34
+\tabbodyht=\dimen129
+\tabbodywd=\dimen130
+\askip=\skip100
+\tabledim=\dimen131
+\tablecapbox=\box35
+\tabledim=\dimen132
+\tablecapbox=\box36
+\c@textboxfloat=\count126
+\c@boxcount=\count127
+\figtopskip=\dimen133
+\figbottomskip=\dimen134
+\@footmax=\dimen135
+\fnsm=\count128
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
+\c@tracingmulticols=\count129
+\mult@box=\box37
+\multicol@leftmargin=\dimen136
+\c@unbalance=\count130
+\c@collectmore=\count131
+\doublecol@number=\count132
+\multicoltolerance=\count133
+\multicolpretolerance=\count134
+\full@width=\dimen137
+\page@free=\dimen138
+\premulticols=\dimen139
+\postmulticols=\dimen140
+\multicolsep=\skip101
+\multicolbaselineskip=\skip102
+\partial@page=\box38
+\last@line=\box39
+\maxbalancingoverflow=\dimen141
+\mult@rightbox=\box40
+\mult@grightbox=\box41
+\mult@gfirstbox=\box42
+\mult@firstbox=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\c@columnbadness=\count135
+\c@finalcolumnbadness=\count136
+\last@try=\dimen142
+\multicolovershoot=\dimen143
+\multicolundershoot=\dimen144
+\mult@nat@firstbox=\box61
+\colbreak@box=\box62
+\mc@col@check@num=\count137
+)
+\c@appcount=\count138
+\bibitemsep=\dimen145
+\bibparsep=\dimen146
+\biblabelsep=\dimen147
+\bibleftmargini=\dimen148
+ (./Cjsref.sty
+\bibhang=\skip103
+\bibsep=\skip104
+LaTeX Info: Redefining \cite on input line 409.
+\c@NAT@ctr=\count139
+)
+\bibbox=\box63
+\bibitemskip=\skip105
+\bibitemindent=\skip106
+\c@linecounter=\count140
+\a=\count141
+\b=\count142
+\mybox=\box64
+\tempbox=\box65
+\halfcol=\dimen149
+\PageCountForBookmarks=\count143
+\bcount=\count144
+\ncount=\count145
+\ccount=\count146
+\temptextheight=\dimen150
+\ttempht=\dimen151
+\leftsp=\dimen152
+\bdimen=\dimen153
+\botruleht=\dimen154
+\topruleht=\dimen155
+\tempcount=\count147
+\bcount=\count148
+\ttbox=\box66
+\firstbox=\box67
+\thirdbox=\box68
+\NomenBox=\box69
+\NomenDim=\dimen156
+\nomdim=\dimen157
+\defbox=\box70
+\defboxdimen=\dimen158
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/picinpar/picinpar.sty
+Pictures in Paragraphs. Version 1.2a, July 13, 1993
+\br=\count149
+\bl=\count150
+\na=\count151
+\nb=\count152
+\tcdsav=\count153
+\tcl=\count154
+\tcd=\count155
+\tcn=\count156
+\cumtcl=\count157
+\cumpartcl=\count158
+\lftside=\dimen159
+\rtside=\dimen160
+\hpic=\dimen161
+\vpic=\dimen162
+\strutilg=\dimen163
+\picwd=\dimen164
+\topheight=\dimen165
+\ilg=\dimen166
+\lpic=\dimen167
+\lwindowsep=\dimen168
+\rwindowsep=\dimen169
+\cumpar=\dimen170
+\twa=\toks16
+\la=\toks17
+\ra=\toks18
+\ha=\toks19
+\pictoc=\toks20
+\rawtext=\box71
+\holder=\box72
+\windowbox=\box73
+\wartext=\box74
+\finaltext=\box75
+\aslice=\box76
+\bslice=\box77
+\wbox=\box78
+\wstrutbox=\box79
+\picbox=\box80
+\waslice=\box81
+\wbslice=\box82
+\fslice=\box83
+)
+\tempboxa=\box84
+\calcwd=\dimen171
+\calcht=\dimen172
+ (./Bookmarks.sty
+\bookmarks=\write4
+\openout4 = `WBB-ult.bkm'.
+
+\myheight=\dimen173
+\tempbox=\box85
+\newpagetotal=\dimen174
+\NewTextHeight=\dimen175
+\NewColroom=\dimen176
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+\@emptytoks=\toks21
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+\@mathmargin=\skip107
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks22
+\ex@=\dimen177
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+\pmbraise@=\dimen178
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty)
+\inf@bad=\count159
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count160
+\leftroot@=\count161
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count162
+\DOTSCASE@=\count163
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box86
+\strutbox@=\box87
+\big@size=\dimen179
+\macc@depth=\count164
+\c@MaxMatrixCols=\count165
+\dotsspace@=\muskip10
+\c@parentequation=\count166
+\dspbrk@lvl=\count167
+\tag@help=\toks23
+\row@=\count168
+\column@=\count169
+\maxfields@=\count170
+\andhelp@=\toks24
+\eqnshift@=\dimen180
+\alignsep@=\dimen181
+\tagshift@=\dimen182
+\tagwidth@=\dimen183
+\totwidth@=\dimen184
+\lineht@=\dimen185
+\@envbody=\toks25
+\multlinegap=\skip108
+\multlinetaggap=\skip109
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/latexsym.sty
+\symlasy=\mathgroup6
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psfrag/psfrag.sty
+\pfg@pcount=\count171
+\pfg@scount=\count172
+\pfg@temp=\write5
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
+\labelindent=\skip110
+\enit@outerparindent=\dimen186
+\enit@toks=\toks27
+\enit@inbox=\box88
+\enitdp@description=\count173
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+\c@float@type=\count174
+\float@exts=\toks28
+\float@box=\box89
+\@float@everytoks=\toks29
+\@floatcapt=\box90
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty)
+\@float@every@algorithm=\toks30
+\c@algorithm=\count175
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count176
+\c@ALG@rem=\count177
+\c@ALG@nested=\count178
+\ALG@tlm=\skip111
+\ALG@thistlm=\skip112
+\c@ALG@Lnr=\count179
+\c@ALG@blocknr=\count180
+\c@ALG@storecount=\count181
+\c@ALG@tmpcounter=\count182
+\ALG@tmplength=\skip113
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+\multirow@colwidth=\skip114
+\multirow@cntb=\count183
+\multirow@dima=\skip115
+\bigstrutjot=\dimen187
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/doublestroke/dsfont.sty)
+(./WBB-ult.aux)
+\openout1 = `WBB-ult.aux'.
+
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+) (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count184
+\scratchdimen=\dimen188
+\scratchbox=\box91
+\nofMPsegments=\count185
+\nofMParguments=\count186
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count187
+\MPscratchDim=\dimen189
+\MPnumerator=\count188
+\makeMPintoPDFobject=\count189
+\everyMPtoPDFconversion=\toks32
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+) [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [2] [3]
+[4] [5] [6] [7] [8] [9] [10] [11] [12]
+<simple.pdf, id=56, 528.97626pt x 508.90125pt>
+File: simple.pdf Graphic file (type pdf)
+<use simple.pdf>
+Package pdftex.def Info: simple.pdf  used on input line 393.
+(pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
+ [13] [14 <./simple.pdf>] [15]
+<mcmc.pdf, id=77, 560.0925pt x 439.6425pt>
+File: mcmc.pdf Graphic file (type pdf)
+<use mcmc.pdf>
+Package pdftex.def Info: mcmc.pdf  used on input line 466.
+(pdftex.def)             Requested size: 308.05182pt x 241.80411pt.
+ [16]
+[17 <./mcmc.pdf>] [18] [19]
+<diabetes.pdf, id=97, 578.16pt x 722.7pt>
+File: diabetes.pdf Graphic file (type pdf)
+<use diabetes.pdf>
+Package pdftex.def Info: diabetes.pdf  used on input line 591.
+(pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
+
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 591--593
+ [][] 
+ []
+
+[20]
+
+LaTeX Warning: Text page 21 contains only floats.
+
+[21 <./diabetes.pdf>]
+<filtering.pdf, id=109, 665.48625pt x 448.67625pt>
+File: filtering.pdf Graphic file (type pdf)
+<use filtering.pdf>
+Package pdftex.def Info: filtering.pdf  used on input line 616.
+(pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
+ [22 <./filtering.pdf>] [23] [24] [25]
+<acc.pdf, id=129, 705.63625pt x 504.88625pt>
+File: acc.pdf Graphic file (type pdf)
+<use acc.pdf>
+Package pdftex.def Info: acc.pdf  used on input line 691.
+(pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
+ [26 <./acc.pdf>]
+[27] [28] [29] [30] [31] [32] [33] [34] (./WBB-ult.aux) ) 
+Here is how much of TeX's memory you used:
+ 5347 strings out of 492641
+ 70440 string characters out of 6129330
+ 164314 words of memory out of 5000000
+ 9092 multiletter control sequences out of 15000+600000
+ 40635 words of font info for 89 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 40i,12n,25p,986b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/20
+18/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
+fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on WBB-ult.pdf (34 pages, 468168 bytes).
+PDF statistics:
+ 237 PDF objects out of 1000 (max. 8388607)
+ 167 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+

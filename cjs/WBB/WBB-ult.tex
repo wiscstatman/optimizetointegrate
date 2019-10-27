@@ -54,7 +54,7 @@ Bayesian\sep Bootstrap\sep MCMC\sep Weighted Bootstrap\sep ABC\sep Trend Filteri
 \abstractsection{}
 \abstractsection{Abstract}
 We develop a Weighted Bayesian Bootstrap (WBB) for  Machine Learning and Statistics. WBB provides uncertainty quantification by sampling from a high dimensional posterior distribution. WBB is computationally fast and scalable using only off-the-shelf optimization software. 
-We provide regularity conditions which apply to a range of machine learning and statistical models. We illustrate our methodology in regularized regression, trend filtering and deep learning. Finally, we conclude with directions for future research.
+We provide regularity conditions which apply to a range of machine learning and statistical models. We illustrate our methodology in regularized regression, trend filtering and deep learning and conclude with directions for future research.
 
 \end{abstract}}
 \makechaptertitle
@@ -367,9 +367,10 @@ smoothly varying weights. Other weight distributions may also be effective (Barb
 
 
 \section{Applications}
-We now illustrate our methodology with a number of scenarios to assess when WBB corresponds to a full Bayesian posterior distribution. 
+We illustrate our methodology with a number of scenarios to assess 
+the quality of the WBB approximation.
 \subsection{LASSO Experiment}
-First, a simple univariate normal means problem with a  LASSO prior where  
+First, consider a simple univariate normal means problem with a  LASSO prior where  
 $$
 y|\theta \sim N(\theta,1^2), \quad \theta \sim Laplace (0,1/\lambda)
 $$
@@ -415,7 +416,8 @@ between entries in columns $i$ and $j$ is set to be $\Sigma_{i,j} = 0.1\times 0.
 	\item[A(ii).] $\beta_j = 1$ for $1 \leq j \leq 5$, $\beta_j = 10$ for $6 \leq j \leq 10$ and $\beta_j = 0$ for $j > 10$.
 	\item[B.] $\beta_j = 1$ for $1 \leq j \leq p$.
 \end{enumerate}
-For each setting of $\beta$, we set $p = 40, 60, 80, 100, 120$. To investigate the performance of our methodology under different sample size, we also choose two settings of $n$:
+
+For each setting of $\beta$, we consider $p = 40, 60, 80, 100, 120$. To investigate the performance of our methodology under different sample size, we also choose two settings of $n$:
 \begin{enumerate}
 	\item $n = 100$ for all $p$.
 	\item $n = p / 2$ for all $p$.
@@ -430,27 +432,39 @@ the Bayesian LASSO (Park \& Casella, 2008; Carlin \& Polson, 1991).
 \end{align}
 Bayesian LASSO imposes a noninformative marginal prior on $\sigma^2$, $\pi(\sigma^2) = 1/\sigma^2$ and the posterior distribution is sampled by a Gibbs sampler, with $\lambda$ chosen by maximizing marginal likelihood. In WBB, $\lambda$ is chosen via cross-validation, using standard unweighted LASSO. Here the original LASSO prior is separable 
 and we study the separate-weights version of WBB.
- In high-dimensional cases, a large common $w_0$ multiplied to $\phi(\beta)$ can introduce extra sparsity to all marginal posteriors.  We use separate weights in an effort to overcome this issue. For comparison criteria, we present the estimation MSE of coefficients $\beta$ (use posterior mean as our estimate), out-of-sample prediction MSE (test sets are of the same size as the corresponding training sets), and the mean of the 95\% credible interval coverages. Fixing $(p, n, \beta)$,  we draw $T=200$ posterior samples by each method and the estimation procedure is repeated over $B=500$ independent datasets $\{(X,y)^{(b)}\}_{b=1}^B$. Let $\beta^{*,t}(b)$ denote the $t$-th posterior draw, with respect to the $b$-th dataset. For each coordinate $j$,  coverage is calculated using $\{\beta_j^{*,t}(b): 1\leq t \leq T, 1\leq b \leq B\}$. The coverages are then averaged across $1\leq j \leq p$. To further understand how the two methods compare on the structure of the posterior, we define the model-selection discrepancy as 
-$$
-d(\beta^*, \beta) = \frac{1}{p} \sum_{j=1}^p \left( \mathds{1}\{\beta_{j}^*=0, \beta_{j}\neq 0\} + \mathds{1}\{\beta_{j}^*\neq 0, \beta_{j}=0\} \right)
-$$
-where $\beta^*$ is a draw from the posterior distribution produced by WBB or Bayesian LASSO. 
-The mean model-selection discrepancy  is then estimated by averaging $d(\beta^*,\beta)$ over both posterior
-samples and simulated data sets.
+ In high-dimensional cases, a large common $w_0$ multiplied to $\phi(\beta)$ can introduce extra sparsity to all marginal posteriors.  We use separate weights in an effort to overcome this issue. 
+For comparison criteria, we present the estimation MSE of coefficients $\beta$ (use posterior mean as our estimate), out-of-sample prediction MSE (test sets are of the same size as the corresponding training sets), and the mean of the 95\% credible interval coverages. Fixing $(p, n, \beta)$,  we draw $T=200$ posterior samples by each method and the estimation procedure is repeated over $B=500$ independent datasets $\{(X,y)^{(b)}\}_{b=1}^B$. Let $\beta^{*,t}(b)$ denote the $t$-th posterior draw, with respect to the $b$-th dataset. For each coordinate $j$,  coverage is calculated using $\{\beta_j^{*,t}(b): 1\leq t \leq T, 1\leq b \leq B\}$. The coverages are then averaged across $1\leq j \leq p$. 
+
+%To further understand how the two methods compare on the structure of the posterior, we define the model-selection discrepancy as 
 %$$
+%d(\beta^*, \beta) = \frac{1}{p} \sum_{j=1}^p \left( \mathds{1}\{\beta_{j}^*=0, \beta_{j}\neq 0\} + \mathds{1}\{\beta_{j}^*\neq 0, \beta_{j}=0\} \right)
+%$$
+%where $\beta^*$ is a draw from the posterior distribution produced by WBB or Bayesian LASSO. 
+%The mean model-selection discrepancy  is then estimated by averaging $d(\beta^*,\beta)$ over both posterior
+%samples and simulated data sets.
+%%$$
 %\hat E\left[d(\beta^*, \beta) | y\right] = \frac{1}{pT} \sum_{t=1}^T\sum_{j=1}^p \mathds{1}\{\beta_{j}^{*,t}=0, \beta_{j}\neq 0\} + \mathds{1}\{\beta_{j}^{*,t}\neq 0, \beta_{j}=0\}.
 %$$
 %Note that we will further average it over $B$ datasets.
 
-{\bf **something about BLASSO being on a different prior than the WBB penalty**}
-
-Before we look into the simulation results, it's worth mentioning that WBB algorithm samples from a posterior with slightly different prior than the prior used in the penalty. In the simple example shown in Figure (\ref{mcmc}), we fix prior as $p(\beta) \propto \exp\{-\lambda \Vert \beta\Vert_1\}$ and set $\lambda = 10, n=50, p=2, \sigma_\epsilon^2=1, \Sigma = [[1, 0.3]', [0.3,1]']$ and $\beta_1 = 0, \beta_2 = 2$. Both posteriors from WBB and MCMC are presented. For comparison, MCMC posteriors with $L^0$ priors, $p(\beta) \propto \exp\{-\lambda \Vert \beta\Vert_0\}$ and $p(\beta) \propto \exp\{-5\lambda \Vert \beta\Vert_0\}$, are also shown in the same figure. The WBB posterior has a spike at $\beta_1 = 0$, indicating a positive probability there, which is never the case under LASSO or $L^0$ prior.
+We view the WBB samples as approximate posterior draws, though the algorithm structure does not
+permit a clear descripton of the prior that is in force for this sampled distribution.   
+Whatever is this {\em effective prior}, it may be different from the prior encoded in the 
+penalty used in repeated optimization.   Figure (\ref{mcmc}) displays WBB samples (kernel density
+estimates) and posteriors via MCMC in one of the simulation settings; 
+$n=50, p=2, \sigma_\epsilon^2=1, \Sigma = [[1, 0.3]', [0.3,1]']$ and $\beta_1 = 0, \beta_2 = 2$. 
+The WBB (on the $L^1$, LASSO prior penalty) is compared  to  posteriors computed via MCMC under
+several different priors: the same $L^1$ prior encoded in the WBB penalty, and also
+two $L^0$ penalties,  $p(\beta) \propto \exp\{-\lambda \Vert \beta\Vert_0\}$ and $p(\beta) \propto \exp\{-5\lambda \Vert \beta\Vert_0\}$. 
+The WBB samples entail a spike at $\beta_1 = 0$, indicating a positive probability mass in the
+effective prior. No such posterior mass is evident in the $L^0$ priors nor possible in
+ the $L^1$ prior. 
 
 
 \begin{figure}[!ht]
 \centering 
 \includegraphics[scale=0.55]{mcmc} 
-\caption{WBB posterior under LASSO prior, compared with MCMC posteriors under  LASSO prior and $L^0$ prior.}
+\caption{WBB samples under LASSO penalty, compared with MCMC posteriors under  LASSO prior and $L^0$ prior.}
 \label{mcmc}
 \end{figure}
 
@@ -521,37 +535,35 @@ Before we look into the simulation results, it's worth mentioning that WBB algor
 \end{table}
 
 
-\begin{table}[ht]
-	\label{tab:discrepancy}
-	\tbl{Mean Model-selection Discrepancy}{%
-\begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
-\toprule
-	&                        & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
-		\multirow{6}{*}{$n = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.44   & 0.46   & 0.46   & 0.43   & 0.38   \\
-               &       & WBB    & 0.38   & 0.26   & 0.22   & 0.19   & 0.17   \\
-		& \multirow{2}{*}{A(ii)}  & BLASSO & 0.45   & 0.46   & 0.47   & 0.44   & 0.39   \\
-               &       & WBB    & 0.38   & 0.26   & 0.22   & 0.19   & 0.17   \\
-		& \multirow{2}{*}{B}     & BLASSO & 0.46   & 0.48   & 0.49   & 0.54   & 0.60   \\
-               &       & WBB    & 0.55   & 0.80   & 0.83   & 0.85   & 0.87   \\\colrule
-		\multirow{6}{*}{$n = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.44   & 0.43   & 0.43   & -      & 0.44   \\
-               &       & WBB    & 0.31   & 0.25   & 0.21   & -      & 0.17   \\
-		& \multirow{2}{*}{A(ii)} & BLASSO & 0.44   & 0.43   & 0.43   & -      & 0.44   \\
-               &       & WBB    & 0.31   & 0.25   & 0.22   & -      & 0.17   \\
-		& \multirow{2}{*}{B}     & BLASSO & 0.57   & 0.55   & 0.54   & -      & 0.54   \\
-               &       & WBB    & 0.81   & 0.82   & 0.84   & -      & 0.86    \\  \botrule
-	\end{tabular*}}
-\end{table}
+%\begin{table}[ht]
+%	\label{tab:discrepancy}
+%	\tbl{Mean Model-selection Discrepancy}{%
+%\begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
+%\toprule
+%	&                        & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
+%		\multirow{6}{*}{$n = 50$}  & \multirow{2}{*}{A(i)}  & BLASSO & 0.44   & 0.46   & 0.46   & 0.43   & 0.38   \\
+%               &       & WBB    & 0.38   & 0.26   & 0.22   & 0.19   & 0.17   \\
+%		& \multirow{2}{*}{A(ii)}  & BLASSO & 0.45   & 0.46   & 0.47   & 0.44   & 0.39   \\
+%               &       & WBB    & 0.38   & 0.26   & 0.22   & 0.19   & 0.17   \\
+%		& \multirow{2}{*}{B}     & BLASSO & 0.46   & 0.48   & 0.49   & 0.54   & 0.60   \\
+%               &       & WBB    & 0.55   & 0.80   & 0.83   & 0.85   & 0.87   \\\colrule
+%		\multirow{6}{*}{$n = p/2$} & \multirow{2}{*}{A(i)}  & BLASSO & 0.44   & 0.43   & 0.43   & -      & 0.44   \\
+%               &       & WBB    & 0.31   & 0.25   & 0.21   & -      & 0.17   \\
+%		& \multirow{2}{*}{A(ii)} & BLASSO & 0.44   & 0.43   & 0.43   & -      & 0.44   \\
+%               &       & WBB    & 0.31   & 0.25   & 0.22   & -      & 0.17   \\
+%		& \multirow{2}{*}{B}     & BLASSO & 0.57   & 0.55   & 0.54   & -      & 0.54   \\
+%               &       & WBB    & 0.81   & 0.82   & 0.84   & -      & 0.86    \\  \botrule
+%	\end{tabular*}}
+%\end{table}
 
-The complete results for estimation error,  out-of-sample prediction error, credible interval coverage and model-selection discrepancy are displayed in Table (1), (2), (3) and (4), respectively. In almost all cases when $p\geq 60$, WBB has lower estimation error than BLASSO. 
+The complete results for estimation error,  out-of-sample prediction error, and credible interval coverage are displayed in Table (1), (2), and (3), respectively. In almost all cases when $p\geq 60$, WBB has lower estimation error than BLASSO. 
 WBB shows comparable or superior out-of-sample prediction in most cases. 
- Credible intervals of neither WBB nor BLASSO have exact 95\% coverage.  WBB performs well when $p \geq 100$ and $\beta$ is sparse, though it often under covers.  When $\beta_j = 1$ for all $1 \leq j \leq p$, BLASSO intervals are too wide while WBB intervals have coverage close to 95\% when $40 \leq p \leq 80$. In terms of model selection,  WBB  puts more mass near the correct selection than BLASSO in all sparse cases. 
-There the WBB mean model-selection discrepancy is substantially 
-smaller than that of BLASSO. However, its performance gets worse when $\beta$ is dense and uniform.  Though limited in scope, this simulation reveals some distinctions
+ Credible intervals of neither WBB nor BLASSO have exact 95\% coverage.  WBB performs well when $p \geq 100$ and $\beta$ is sparse, though it often under covers.  When $\beta_j = 1$ for all $1 \leq j \leq p$, BLASSO intervals are too wide while WBB intervals have coverage close to 95\% when $40 \leq p \leq 80$.    Though limited in scope, this simulation reveals some distinctions
 and also  broad similarities between WBB and Bayesian LASSO in both posterior structure and the sampling performance of approximate posterior summaries. It may provide
 a useful basis for further methodology development.
 
 \subsection{Diabetes Data}
-To further illustrate the WBB methodology, we apply it to the classic diabetes dataset (Efron et al., 2004). The measurements for 442 diabetes patients are obtained ($n=442$), with 10 baseline variables ($p=10$), such as age, sex, body mass index, average blood pressure, and six blood serum measurements. 
+To further illustrate the WBB methodology, we apply it to the often-analyzed diabetes dataset (Efron et al., 2004). The measurements for 442 diabetes patients are obtained ($n=442$), with 10 baseline variables ($p=10$), such as age, sex, body mass index, average blood pressure, and six blood serum measurements. 
 
 %The likelihood function is given by
 %$$
