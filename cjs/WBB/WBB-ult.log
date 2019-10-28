@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  27 OCT 2019 19:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  27 OCT 2019 19:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -515,22 +515,22 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 <simple.pdf, id=56, 528.97626pt x 508.90125pt>
 File: simple.pdf Graphic file (type pdf)
 <use simple.pdf>
-Package pdftex.def Info: simple.pdf  used on input line 394.
+Package pdftex.def Info: simple.pdf  used on input line 401.
 (pdftex.def)             Requested size: 290.93784pt x 279.89655pt.
  [13] [14 <./simple.pdf>]
 <mcmc.pdf, id=74, 560.0925pt x 439.6425pt>
 File: mcmc.pdf Graphic file (type pdf)
 <use mcmc.pdf>
-Package pdftex.def Info: mcmc.pdf  used on input line 433.
+Package pdftex.def Info: mcmc.pdf  used on input line 440.
 (pdftex.def)             Requested size: 308.05182pt x 241.80411pt.
- [15 <./mcmc.pdf>] [16] [17] [18] [19]
+ [15] [16 <./mcmc.pdf>] [17] [18] [19]
 <diabetes.pdf, id=97, 578.16pt x 722.7pt>
 File: diabetes.pdf Graphic file (type pdf)
 <use diabetes.pdf>
-Package pdftex.def Info: diabetes.pdf  used on input line 593.
+Package pdftex.def Info: diabetes.pdf  used on input line 600.
 (pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
 
-Overfull \hbox (20.59705pt too wide) in paragraph at lines 593--595
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 600--602
  [][] 
  []
 
@@ -542,50 +542,49 @@ LaTeX Warning: Text page 21 contains only floats.
 <filtering.pdf, id=109, 665.48625pt x 448.67625pt>
 File: filtering.pdf Graphic file (type pdf)
 <use filtering.pdf>
-Package pdftex.def Info: filtering.pdf  used on input line 618.
+Package pdftex.def Info: filtering.pdf  used on input line 625.
 (pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
- [22 <./filtering.pdf>] [23] [24] [25]
+ [22] [23 <./filtering.pdf>] [24] [25]
 <acc.pdf, id=129, 705.63625pt x 504.88625pt>
 File: acc.pdf Graphic file (type pdf)
 <use acc.pdf>
-Package pdftex.def Info: acc.pdf  used on input line 693.
+Package pdftex.def Info: acc.pdf  used on input line 700.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
- [26 <./acc.pdf>]
-[27] [28] [29] [30] [31] [32] [33] [34] (./WBB-ult.aux) ) 
+ [26] [27 <./acc.pdf>] [28] [29] [30] [31] [32] [33] [34] (./WBB-ult.aux) ) 
 Here is how much of TeX's memory you used:
  5360 strings out of 492641
  70590 string characters out of 6129330
- 165346 words of memory out of 5000000
+ 164346 words of memory out of 5000000
  9102 multiletter control sequences out of 15000+600000
  42519 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,12n,25p,986b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/20
-18/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WBB-ult.pdf (34 pages, 482890 bytes).
+ 40i,12n,25p,986b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/us
+r/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/co
+urier/ucrr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/u
+hvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.p
+fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on WBB-ult.pdf (34 pages, 483546 bytes).
 PDF statistics:
  245 PDF objects out of 1000 (max. 8388607)
  173 compressed objects within 2 object streams

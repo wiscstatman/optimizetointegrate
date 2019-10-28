@@ -366,8 +366,15 @@ Exponential/Dirichlet weights are motivated from both inferential,
 related to the original Bayesian bootstrap (Rubin, 1981), and numerical, owing to benefits of 
 smoothly varying weights. Other weight distributions may also be effective (Barbe and Bertail, 2012).
 
+We aim to use WBB samples as approximate posterior samples for uncertainty quantification.  It remains 
+unknown in general what is the relationship between this WBB distribution and the posterior distribution
+associated with any specific prior.  The first-order asymptotic approximation above is constructed so that the prior
+structure is asymptotically negligible; one could say, then, that WBB approximates any one of a number of different
+posterior distributions.  In particular, the WBB samples may not provide a close approximation to the posterior
+formed from the same prior as used in the penalty term in the objective function.  We deploy numerical
+experiments  to understand the approximation better in finite samples.
 
-\section{Applications}
+\section{Numerical experiments}
 We illustrate the proposed methodology with a number of scenarios to assess 
 the quality of the WBB approximation.
 \subsection{LASSO Experiment}
