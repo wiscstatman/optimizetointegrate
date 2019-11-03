@@ -705,9 +705,10 @@ Figure (\ref{fig:acc}) shows the posterior distribution of the classification ac
 
 \section{Discussion}
 Weighted Bayesian Bootstrap (WBB) provides a computationally attractive solution to scalable Bayesian inference (Minsker {\em et al.} 2014; Welling \& Teh, 2011)
-whilst accounting for parameter uncertainty by drawing  samples from a weighted posterior distribution. WBB can also be used in conjunction with proximal methods (Parikh \& Boyd, 2013; Polson {\em et al.} 
+whilst accounting for parameter uncertainty by maximizing a weighted posterior distribution. WBB can also be used in conjunction with proximal methods (Parikh \& Boyd, 2013; Polson {\em et al.} 
  2015)
-to provide  sparsity in high dimensional statistical problems. With a similar ease of computation, WBB provides an alternative to ABC methods (Beaumont, 2009) and Variational Bayes (VB) methods (See Blei {\em et al} 2017 for a review of variational inference in Bayesian statistics). A fruitful area for future research is the comparison of approximate Bayesian computation with simulated Bayesian Bootstrap inference. {\bf **a sentence or two connecting to Lydden, Holmes etc** }
+to provide  sparsity in high dimensional statistical problems. With a similar ease of computation, WBB provides an alternative to ABC methods (Beaumont, 2009) and variational Bayes (VB) methods. (See Blei {\em et al} 2017 for a review of variational inference in Bayesian statistics.) A fruitful area for future research is the comparison of WBB to recent extensions of 
+the weighted likelihood bootstrap for generalized Bayesian inference (Lyddon et al. 2018).
 
 
 For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (\ref{eqn:canonicalform}), which can also be viewed as the posterior mode. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis. Further, Strawderman {\em et al.} (2013) and Polson and Scott (2015) 
@@ -834,6 +835,11 @@ Liang, M., \& Hu, X. (2015). Recurrent convolutional neural network for object r
 
 \bibitem[Lopes{,}  Polson \& Carvalho, 2012]{lopes2012bayesian}
 Lopes, H. F., Polson, N. G., \&  Carvalho, C. M. (2012). Bayesian statistics with a smile: a resampling-sampling perspective. {\it Brazilian Journal of Probability and Statistics}, 26(4) 358--371.
+
+\bibitem[Lyddon]{lwh2018}
+Lyddon, S., Holmes, C. and Walker, S. (2018). 
+Generalized Bayesian updating and the loss likelihood bootstrap. {\em Biometrika}, 106(2), 465--478.
+
 
 \bibitem[Minsker et al., 2014]{minsker2014scalable}
 Minsker, S., Srivastava, S.,  Lin, L. \& Dunson, D. (2014). Scalable and robust bayesian inference via the median posterior. {\it International Conference on Machine Learning}, 1656--1664.

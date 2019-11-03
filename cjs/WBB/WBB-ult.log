@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  27 OCT 2019 19:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  3 NOV 2019 13:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**WBB-ult.tex
+**WBB-ult
 (./WBB-ult.tex
 LaTeX2e <2018-04-01> patch level 5
 (./TD-CJS.cls
@@ -552,13 +552,13 @@ Package pdftex.def Info: acc.pdf  used on input line 700.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
  [26] [27 <./acc.pdf>] [28] [29] [30] [31] [32] [33] [34] (./WBB-ult.aux) ) 
 Here is how much of TeX's memory you used:
- 5360 strings out of 492641
- 70590 string characters out of 6129330
- 164346 words of memory out of 5000000
- 9102 multiletter control sequences out of 15000+600000
+ 5361 strings out of 492641
+ 70599 string characters out of 6129330
+ 164366 words of memory out of 5000000
+ 9103 multiletter control sequences out of 15000+600000
  42519 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,12n,25p,986b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,25p,982b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/us
 r/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive
 /2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/
@@ -584,7 +584,7 @@ hvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.p
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/l
 ocal/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WBB-ult.pdf (34 pages, 483546 bytes).
+Output written on WBB-ult.pdf (34 pages, 481442 bytes).
 PDF statistics:
  245 PDF objects out of 1000 (max. 8388607)
  173 compressed objects within 2 object streams
