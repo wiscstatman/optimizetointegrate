@@ -569,7 +569,9 @@ The complete results for estimation error,  out-of-sample prediction error, and 
 WBB shows comparable or superior out-of-sample prediction in most cases. 
  Credible intervals of neither WBB nor BLASSO have exact 95\% coverage.  WBB performs well when $p \geq 100$ and $\beta$ is sparse, though it often under covers.  When $\beta_j = 1$ for all $1 \leq j \leq p$, BLASSO intervals are too wide while WBB intervals have coverage close to 95\% when $40 \leq p \leq 80$.    Though limited in scope, this simulation reveals some distinctions
 and also  broad similarities between WBB and Bayesian LASSO in both posterior structure and the sampling performance of approximate posterior summaries. It may provide
-a useful basis for further methodology development.
+a useful basis for further methodology development.  Serial computations were used in the simulation above, and
+WBB was  slightly slower than BLASSO  (by a factor of 1.5 on CPU time);  the computational advantage of WBB shows up in
+parallel computations, since weight vectors induce separate optimizations. 
 
 \subsection{Diabetes Data}
 To further illustrate the WBB methodology, we apply it to the often-analyzed diabetes dataset (Efron et al., 2004). The measurements for 442 diabetes patients are obtained ($n=442$), with 10 baseline variables ($p=10$), such as age, sex, body mass index, average blood pressure, and six blood serum measurements. 

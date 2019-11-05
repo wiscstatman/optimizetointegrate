@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  3 NOV 2019 13:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  3 NOV 2019 19:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -527,10 +527,10 @@ Package pdftex.def Info: mcmc.pdf  used on input line 440.
 <diabetes.pdf, id=97, 578.16pt x 722.7pt>
 File: diabetes.pdf Graphic file (type pdf)
 <use diabetes.pdf>
-Package pdftex.def Info: diabetes.pdf  used on input line 600.
+Package pdftex.def Info: diabetes.pdf  used on input line 602.
 (pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
 
-Overfull \hbox (20.59705pt too wide) in paragraph at lines 600--602
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 602--604
  [][] 
  []
 
@@ -542,13 +542,13 @@ LaTeX Warning: Text page 21 contains only floats.
 <filtering.pdf, id=109, 665.48625pt x 448.67625pt>
 File: filtering.pdf Graphic file (type pdf)
 <use filtering.pdf>
-Package pdftex.def Info: filtering.pdf  used on input line 625.
+Package pdftex.def Info: filtering.pdf  used on input line 627.
 (pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
  [22] [23 <./filtering.pdf>] [24] [25]
 <acc.pdf, id=129, 705.63625pt x 504.88625pt>
 File: acc.pdf Graphic file (type pdf)
 <use acc.pdf>
-Package pdftex.def Info: acc.pdf  used on input line 700.
+Package pdftex.def Info: acc.pdf  used on input line 702.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
  [26] [27 <./acc.pdf>] [28] [29] [30] [31] [32] [33] [34] (./WBB-ult.aux) ) 
 Here is how much of TeX's memory you used:
@@ -584,7 +584,7 @@ hvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.p
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/l
 ocal/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WBB-ult.pdf (34 pages, 481442 bytes).
+Output written on WBB-ult.pdf (34 pages, 481651 bytes).
 PDF statistics:
  245 PDF objects out of 1000 (max. 8388607)
  173 compressed objects within 2 object streams
