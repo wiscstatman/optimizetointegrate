@@ -1,0 +1,5 @@
+
+Hi Jianeng and Nick
+I pushed a modified version.   I reorganized the simulation results somewhat, so that we discuss the Fig 2 story  before the general regression simulation on the WBB/BLasso.  Please check that my description about the L0 case is consistent with what you did. I add language near there about an effective prior, as the referee was concerned about WBB notreally being a posterior.   On that point, I also added a short paragraph at the end of the theory section to address this.
+There are only two small things to do, as I see it.  One is to add a sentence or two about Holmes/Lydden's recent work as something for future comparison.   I'll do that no problem.   The other is a point the referee raises about `fast scalable`.   He/she complains that we call it fast scalable but we don't report any data on computer time.   Can we add something quantitative about compute time for any one of the examples?
+thanks-Michael N.
