@@ -1,0 +1,42 @@
+
+11-Dec-2019
+
+Dear Prof. Newton,
+
+Manuscript ID CJS-18-0178.R2 entitled "Weighted Bayesian Bootstrap for Scalable Posterior 
+Distributions" which you submitted to The Canadian Journal of Statistics, has been reviewed. 
+
+I am pleased that you took great efforts to address technical comments from the review team. Before moving to the next step, I invite you to do another round of revision which will focus on improving the exposition of your research.   
+
+The attached files include  my general editorial comments as well as the comments from an editorial AE. Please carefully incorporate them at your discretion.
+
+To increase the potential impact of your work, CJS solicits your computation code and the data which are to be submitted as Supplementary Materials.  You may wrap up the documents as a .zip file if necessary. Please organize those materials so that interested CJS readers can easily access your code and reproduce the results:
+
+1. Make the file be self-contained with the title and author information included
+   -  just as they appear in the final publication form.
+
+2. Necessary comments should be added to the code so that the readers can easily match the code with the procedures described in the article. Instructions should be clear and complete so that the code can be run by others.
+
+3. Include the data set with suitable descriptions as Supplementary Materials if applicable.
+
+4. Please indicate in the main text that the computing code and the data (if applicable) are placed in the Supplementary Materials for possible use by interested readers.
+
+Please try to complete your revision within four weeks. If you encounter technical problems when submitting files, email my assistant for help:
+
+          jcfalkner@gmail.com
+
+When you submit your revised manuscript, please include a point-to-point cover letter to explain the changes you have made to respond to the comments you have received.
+
+
+Upload your revised manuscript and submit it through your Author Center. Log into https://mc.manuscriptcentral.com/cjs-wiley  and enter your Author Center, where you will find your manuscript title listed under "Manuscripts with Decisions".
+
+
+IMPORTANT:  We have your original files. When submitting (uploading) your revised manuscript, please delete the file(s) that you wish to replace and then upload the revised file(s).
+
+Once again, thank you for submitting your manuscript to The Canadian Journal of Statistics. I look forward to receiving your revision.
+
+Sincerely,
+
+Prof. Grace Yi
+Editor, The Canadian Journal of Statistics
+yyi@uwaterloo.ca
