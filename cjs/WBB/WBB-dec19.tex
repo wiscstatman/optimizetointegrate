@@ -88,7 +88,7 @@ high dimensional posterior modes are now readily computable, thanks to systems s
 \verb+Keras+ (Chollet et al., 2015)
 that deploy stochastic gradient descent (SGD) and convex optimization methods for large-scale
 problems, such as on neural network architectures used in deep learning (LeCun, Bengio, \& Hinton,  2015).
-By linking random weighting with modern-day optimization, we expose a simple scheme
+By linking random weighting with advanced optimization, we expose a simple scheme
 for approximate uncertainty quantification in a wide class of statistical models.
 
 Quantifying uncertainty is typically unavailable in a purely regularization optimization method. 
@@ -219,8 +219,8 @@ induced by ${\bf w}$ with the data fixed --  approximates the Bayesian posterior
 {\rm Pr}\left( \theta^*_{\bf w} \in \mathcal{B} | y \right) \approx \int_\mathcal{B} p(\theta|y) \, d\theta.
 \end{eqnarray}
 Section 2.5 provides an asymptotic argument in support of~(Eq. \ref{eqn:conjecture}), and we investigate
-the approximation numerically in a few examples in Section 3.   Assuming this conjecture is true, we have immediately 
-a straightforward, optimization-based algorithm for approximate posterior sampling:
+the approximation numerically in a few examples in Section 3.   Assuming this conjecture is true, we have 
+a straightforward optimization-based algorithm for approximate posterior sampling:
 
 
 \begin{algorithm} [H]
@@ -485,7 +485,8 @@ WBB was  slightly slower than BLASSO  (by a factor of 1.5 on CPU time);  the com
 parallel computations, since weight vectors induce separate optimizations. 
 
 \subsection{Diabetes Data}
-To further illustrate the WBB methodology, we apply it to the often-analyzed diabetes dataset (Efron et al., 2004). Data from $n=442$ diabetes patients are available, with 10 baseline variables ($p=10$), including age, sex, body mass index, average blood pressure, and six blood serum measurements. 
+To further illustrate the WBB methodology, we apply it to the often-analyzed diabetes dataset (Efron et al., 2004). Data from $n=442$ diabetes patients are available, with response a measure of
+disease progression and with 10 baseline variables ($p=10$), including age, sex, body mass index, average blood pressure, and six blood serum measurements. 
  We apply Algorithm~1 with $T=1000$. For each weight vector ${\bf w}$, the WBB estimate $\beta^*_{\bf w}$ is calculated using Equation (\ref{eqn:diabetes}) via the regularization method in the package {\tt glmnet}. 
 
 \begin{equation}
@@ -689,8 +690,8 @@ Hastie, T., Tibshirani, R. \& Wainwright, M., (2015). {\em Statistical learning 
 \bibitem[Johnstone 2010]{johnstone2010high}
 Johnstone, I. M. (2010). High dimensional Bernstein-von Mises: simple examples. {\it Institute of Mathematical Statistics collections}, 6, 87.
 
-\bibitem[Klein2012]
-Klein, B. J. K. \& van der Vaart, A. W. (2012). The Bernstien-von-Mises theorem
+\bibitem[Klein2012]{kleijnv}
+Kleijn, B. J. K. \& van der Vaart, A. W. (2012). The Bernstien-von-Mises theorem
 under misspecification. {\em Electronic Journal of Statistics}, 6, 354--381.
 
 \bibitem[KnightFu]{knightfu}

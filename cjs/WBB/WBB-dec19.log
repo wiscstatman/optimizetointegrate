@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  19 DEC 2019 00:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.11)  21 DEC 2019 14:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -529,10 +529,10 @@ Package pdftex.def Info: mcmc.pdf  used on input line 384.
 <diabetes.pdf, id=97, 578.16pt x 722.7pt>
 File: diabetes.pdf Graphic file (type pdf)
 <use diabetes.pdf>
-Package pdftex.def Info: diabetes.pdf  used on input line 502.
+Package pdftex.def Info: diabetes.pdf  used on input line 503.
 (pdftex.def)             Requested size: 404.70924pt x 505.88655pt.
 
-Overfull \hbox (20.59705pt too wide) in paragraph at lines 502--504
+Overfull \hbox (20.59705pt too wide) in paragraph at lines 503--505
  [][] 
  []
 
@@ -544,18 +544,18 @@ LaTeX Warning: Text page 21 contains only floats.
 <filtering.pdf, id=109, 665.48625pt x 448.67625pt>
 File: filtering.pdf Graphic file (type pdf)
 <use filtering.pdf>
-Package pdftex.def Info: filtering.pdf  used on input line 524.
+Package pdftex.def Info: filtering.pdf  used on input line 525.
 (pdftex.def)             Requested size: 366.01857pt x 246.77269pt.
  [22] [23 <./filtering.pdf>] [24] [25]
 <acc.pdf, id=129, 705.63625pt x 504.88625pt>
 File: acc.pdf Graphic file (type pdf)
 <use acc.pdf>
-Package pdftex.def Info: acc.pdf  used on input line 599.
+Package pdftex.def Info: acc.pdf  used on input line 600.
 (pdftex.def)             Requested size: 268.87737pt x 192.38263pt.
  [26] [27 <./acc.pdf>] [28] [29] [30] [31] [32] [33] [34] (./WBB-dec19.aux) ) 
 Here is how much of TeX's memory you used:
  5353 strings out of 492641
- 70468 string characters out of 6129330
+ 70474 string characters out of 6129330
  167230 words of memory out of 5000000
  9096 multiletter control sequences out of 15000+600000
  40835 words of font info for 96 fonts, out of 8000000 for 9000
@@ -586,7 +586,7 @@ courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic
 .pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WBB-dec19.pdf (34 pages, 480761 bytes).
+Output written on WBB-dec19.pdf (34 pages, 480778 bytes).
 PDF statistics:
  245 PDF objects out of 1000 (max. 8388607)
  173 compressed objects within 2 object streams
