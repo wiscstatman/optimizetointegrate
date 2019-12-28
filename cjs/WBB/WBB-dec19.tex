@@ -49,7 +49,7 @@
 \startabstract{
 \keywords{
 \KWDtitle{Key words and phrases}
-Bayesian\sep bootstrap\sep Markov chain Monte Carlo\sep weighted bootstrap\sep approximate Bayesian computation\sep trend filtering\sep deep learning\sep regularization.
+weighted bootstrap\sep Markov chain Monte Carlo\sep  trend filtering\sep deep learning\sep regularization.
 % MSC 2010 subject classification codes
 \KWDtitle{MSC 2010}Primary 62F40\sep secondary 6262F15}
 \begin{abstract}
@@ -308,7 +308,7 @@ solutions~$\theta^*_{{\bf w},n}$, and so it is equivalent in the construction
  to use normalized weights $\tilde {\bf w}$ that sum to unity. Such $\tilde {\bf w}$ are uniformly distributed over
 the unit simplex, and thus correspond to a specific Dirichlet distribution.
 Exponential/Dirichlet weights are motivated from the perspective of both inference,
-related to the original Bayesian bootstrap (Rubin, 1981; Muliere \& Secci, 1996), 
+related to the original Bayesian bootstrap (Rubin, 1981; Muliere \& Secchi, 1996), 
 and computation, owing to benefits of 
 smoothly varying weights. Other weight distributions may also be effective (Barbe \& Bertail, 2012).
 
@@ -487,7 +487,8 @@ parallel computations, since weight vectors induce separate optimizations.
 \subsection{Diabetes Data}
 To further illustrate the WBB methodology, we apply it to the often-analyzed diabetes dataset (Efron et al., 2004). Data from $n=442$ diabetes patients are available, with response a measure of
 disease progression and with 10 baseline variables ($p=10$), including age, sex, body mass index, average blood pressure, and six blood serum measurements. 
- We apply Algorithm~1 with $T=1000$. For each weight vector ${\bf w}$, the WBB estimate $\beta^*_{\bf w}$ is calculated using Equation (\ref{eqn:diabetes}) via the regularization method in the package {\tt glmnet}. 
+ We apply Algorithm~1 with $T=1000$. (R code is in Supplementary Material file.) 
+For each weight vector ${\bf w}$, the WBB estimate $\beta^*_{\bf w}$ is calculated using Equation (\ref{eqn:diabetes}) via the regularization method in the package {\tt glmnet}. 
 
 \begin{equation}
 \label{eqn:diabetes}
@@ -622,7 +623,7 @@ The argument in Section 2.5
 relies on smoothness in both the sampling model and prior, and it retains fixed parameter
 dimension as $n$ increases.  Theoretical guarantees remain unavailable for relatively large parameter
 dimension or for non-smooth penalty functions.  Fortunately, groundwork has been done, for example by 
-van der Pas, Kleijn,   \& van der Vaart, (2014), 
+van der Pas, Kleijn,   \& van der Vaart (2014), 
 Narisety \& He  (2014), and others on the asymptotic  behaviour of the 
 posterior distribution,  and by Knight \& Fu (2000) and others on sampling theory of 
 optimization-based estimators,
