@@ -1,0 +1,19 @@
+Title: Weighted Bayesian bootstrap for scalable posterior distributions 
+
+Layman's abstract:
+
+Contemporary data analysis aims to recover information from large, high-dimensional, and highly 
+structured data sets.   Statistical models play an impoortant role in this recovery task, and a
+great deal of research has advanced the state of the art in learning parameters of such models,
+for example using sophisticated optimization algorithms.  Coupled with parameter learning is the
+task to assess uncertainty in the reported parameter estimates.  Bayesian analysis provides a
+formal framework for uncertainty quantification, but there continue to be limitations with available
+computational methods to calculate uncertainties in many models.  The propoosed Weighted Bayesian
+Bootstrap (WBB) is a 
+
+**
+
+We introduce and develop a weighted Bayesian bootstrap (WBB) for  Machine Learning and Statistics. WBB provides uncertainty quantification by sampling from a high dimensional posterior distribution. WBB is computationally fast and scalable using only off-the-shelf optimization software.  First-order asymptotic analysis provides a theoretical justification
+under suitable regularity conditions on the statistical model.
+We illustrate the proposed
+methodology in regularized regression, trend filtering and deep learning and conclude with directions for future research.
