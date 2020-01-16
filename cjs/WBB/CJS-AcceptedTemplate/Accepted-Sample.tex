@@ -1,0 +1,212 @@
+\documentclass{TD-CJS}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{psfrag}
+\usepackage{graphicx}
+
+\begin{document}
+\firstpage{1}
+\lastpage{25}
+\jvol{xx}
+\issue{yy}
+\jyear{20??}
+\jid{CJS}
+\aid{???}
+% The running head contains the author names: remove the blinding now!
+\rhauthor{AuthorA and AuthorB}
+\copyrightline{Statistical Society of Canada}
+\Frenchcopyrightline{Soci\'et\'e statistique du Canada}
+% History: received and accepted dates
+\received{\rec{9}{July}{2009}}
+\accepted{\acc{8}{July}{2010}}
+
+% User-defined commands go here
+\renewcommand{\eqref}[1]{(\ref{#1})}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\mt}[1]{\mathrm{#1}}
+\newcommand{\rv}{random variable}
+
+% Title, authors, affiliations
+\title[]{Title on one or two lines without capitals, except after a colon}%\query{Q1}
+\author{AuthorA\authorref{1}\thanksref{*}}
+\author{AuthorB\authorref{2}}
+\affiliation[1]{First Affiliation}
+\affiliation[2]{Second Affiliation}
+
+% Abstract, keywords, and classification codes
+\startabstract{%
+\keywords{
+\KWDtitle{Key words and phrases}
+Association parameters\sep clustered data\sep mean parameters\sep missing data\sep pairwise
+likelihood\sep repeated measurements.
+% MSC 2010 subject classification codes
+\KWDtitle{MSC 2010}Primary 62???\sep secondary 62???}
+\begin{abstract}
+\abstractsection{}
+\abstractsection{Abstract}
+Insert your abstract here; it should
+typically be up to ten lines long. Avoid symbols as much as possible. Formulas
+are strongly discouraged, and citations should be avoided. 
+The title and the abstract should be concise and descriptive;
+list the key words in alphabetical order.  The MSC 2010 subject classification codes can be found here:
+http://www.ams.org/mathscinet/msc/pdfs/classifications2010.pdf.
+\abscopyright
+\fabstractsection{}
+\fabstractsection{R\'{e}sum\'{e}}
+Ins\'{e}rer votre r\'{e}sum\'{e}
+ici. We will supply a French abstract for those authors who
+can't prepare it themselves.\Frenchabscopyright
+\end{abstract}}
+\makechaptertitle
+
+% Email address for corresponding author
+\correspondingauthor[*]{\\\email{Insert your email address here}}
+
+\section{INTRODUCTION}
+Your text starts here. For English spelling,
+we follow the style of the Canadian Oxford Dictionary (Barber, 2004).  
+If the dictionary lists more than one acceptable spelling, choose the main entry.
+
+Manuscripts may be submitted in either English or French.  We do accept submissions in Microsoft Word.  We do not provide a Word template, and we ask you to follow the general instructions in this document.
+
+\subsection{Subsections start this way}
+Refer to papers by authors (date) throughout. For example,
+you might quote Author1 \& Author2 (1986a,~b) or Author (1987, 1992) or 
+Author1, Author2, \& Author3 (2011). If there
+are four authors or more, refer to (for example) Author1 et al.\ (1990).
+
+When references are in parentheses, separate them by a semicolon and do not
+put brackets around the year (e.g., Author1 \& Author2, 1994; Author3 \&
+Author4, 1999).
+
+\section{MATHEMATICAL TYPESETTING}
+Symbols should not be used at the start of a sentence, and footnotes are not allowed. Try to avoid double subscripts, and never use triple subscripts. Unless central or essential to the flow of the discussion, mathematical arguments should be deferred to the Appendix.
+Note that equations should be numbered consecutively, i.e., (1), (2), etc. Number
+\textit{only} those equations that are referred to in the text.  Punctuation should be given after equations. Equations should be cited as, for example, Equation (6) or Equations (6)--(8). Within parentheses use an abbreviation: (Eq. 7).
+
+Likewise, number consecutively your definitions, lemmas, propositions,
+theorems, corollaries and the like. For example:
+
+\begin{theorem}{Theorem 1.}{}%
+Here is the statement of our theorem.
+\end{theorem}
+\begin{proof}{Proof}{}%
+We prove our theorem using Equation (\ref{Einstn}) below:
+\begin{equation}
+e = mc^2.
+\label{Einstn}
+\end{equation}
+\end{proof}
+
+\section{FIGURES AND TABLES}
+When you submit the final version of your manuscript in
+\LaTeX \, form, please include postscript files (.ps or .eps) for the figures,
+labelling them fig1.ps, fig2.ps, etc. When referring to a figure, spell out the word (e.g., Figure 1) whether or not it is in parentheses.
+
+% Instructions for a figure
+%\begin{figure}
+%\centerline{\epsfbox{gr1.eps}}
+%\caption{This is a full width figure}
+%\end{figure}
+
+See Table 1 for an example table layout; note that we do not use
+vertical lines between columns.  The data in this table are from Genest (1999).
+
+\begin{table}
+% Next comes the table caption
+\tbl{Top 10 countries for gross national publication (\textsc{gnp}) of
+research in statistics. The ranks are based on variable \textsc{pag}$^{\star}%
+$.}{%
+\begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}r@{}c@{}r@{}r@{}r@{}r@{}r@{}r@{}@{\hskip5pt}}
+\toprule
+Rank & Country & \textsc{pag}$^{\star}$ & \textsc{pag} & \textsc{art}$^{\star
+}$ & \textsc{art} & $\frac{\mbox{{\sc pag}}} {\mbox{{\sc art}}}$ &
+$\frac{\mbox{{\sc aut}}}{\mbox{{\sc art}}}$\\
+\colrule
+1 & \textsc{usa} & 109338 & 60369 & 7240 & 4061 & 14.9 & 1.83\\
+2 & United Kingdom\tref{a} & 12597 & 7504 & 884 & 538 & 14.1 & 1.81\\
+3 & Canada & 12407 & 6837 & 909 & 516 & 13.6 & 1.89\\
+4 & Australia & 7872 & 4261 & 578 & 323 & 13.5 & 1.95\\
+5 & Germany & 6782 & 4500 & 456 & 306 & 14.9 & 1.63\\
+6 & France & 3647 & 1843 & 261 & 129 & 14.5 & 2.18\\
+7 & Japan & 2865 & 1880 & 241 & 163 & 11.6 & 1.60\\
+8 & Netherlands & 2864 & 1702 & 191 & 116 & 15.1 & 1.80\\
+9 & India & 2559 & 1395 & 275 & 151 & 9.5 & 1.91\\
+10 & Israel & 2097 & 1160 & 148 & 83 & 14.5 & 1.99\\
+\botrule
+\end{tabular*}}
+\begin{tabnote}
+\tblfno{a}This is a footnote to the table.
+\end{tabnote}
+\end{table}
+
+\begin{ack}{ACKNOWLEDGEMENTS}
+Place all acknowledgements here.  Granting agencies should not be abbreviated, and do not include grant numbers.  We are grateful for your assistance with our publication process.\\
+\\
+A note on references: they should be listed alphabetically. Initials should be separated by blank characters and
+journal names should be {\it in italics}. Don't use boldface for volume
+number and separate pages by two dashes.
+Abbreviations should not be used for authors' or journal's names, nor for the titles of the articles.
+\end{ack}
+
+\begin{thebibliography}{}
+% For English spelling, we follow the style of this dictionary
+\bibitem[]{bib1}
+Barber, K. (Ed.) (2004). {\it The Oxford Canadian Dictionary}, 2nd ed., 
+Oxford University Press, Toronto.
+
+% Single-author journal article
+\bibitem[]{bib2}
+Cleveland, W. (1979). Robust locally-weighted regression and smoothing scatterplots. 
+{\it Journal of the American Statistical Association}, 74, 829–-836.
+
+% Genest provided the data for our sample table
+\bibitem[]{bib3}
+Genest, C. (1999). Probability and statistics: A tale of two worlds? 
+{\it The Canadian Journal of Statistics}, 27(2), 421--444.
+
+% Multiple-author journal article.  All the author names are separated by commas, and 
+% note the uppercase letter after the colon in the title.
+\bibitem[]{bib4}
+Johnes, J., Taylor, J., \& Francis, B. (1993). The research
+performance of \textsc{uk} universities: A statistical analysis of the results
+of the 1989 research selectivity exercise. {\it Journal of the Royal
+Statistical Society Series A}, 156, 271--286.
+
+% Book in French.  Be careful with accents.
+\bibitem[]{bib5}
+Kidron, M. \& Segal, R. (1992). {\it Atlas du Nouvel \'Etat
+du Monde}. \'Editions Autrement, Paris.
+
+% Book, two authors, second edition
+\bibitem[]{bib6}
+Little, R.~J.~A. \& Rubin, D.~B. (2002). {\it Statistical Analysis with Missing Data}, 2nd ed., 
+John Wiley \& Sons, New York.
+
+% Unpublished paper with website link
+\bibitem[]{bib7}
+Molina, I. \& Rao, J.~N.~K. (2009). Small area estimation of poverty indicators. Working Paper 09-15, Statistics and Econometric Series 05, Universidad Carlos III de Madrid, \\http://hdl.handle.net/10016/5644.
+
+% Edited book
+\bibitem[]{bib8}
+Roberts, G., Ren, Q., \& Rao, J.~N.~K. (2009). 
+Using marginal mean models for data from longitudinal surveys
+with a complex design: Some advances in methods. In Lynn, R. (Ed.) {\it Methodology of Longitudinal Surveys}, 
+John Wiley \& Sons, New York, 351–-366.
+\end{thebibliography}
+
+\begin{appendix}
+There should be just one appendix, for proofs and longer
+mathematical arguments. These proofs are in the following form:
+
+\begin{proof}{Proof of Theorem 1}{}%
+We now prove the two parts of Theorem 1.
+\end{proof}
+\end{appendix}
+
+\CJShistory
+\end{document}
