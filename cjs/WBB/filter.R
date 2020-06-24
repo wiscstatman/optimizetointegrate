@@ -29,10 +29,17 @@ SD = apply(Beta,1,sd)
 
 
 # plot
+
+#pdf( file="1-filtering.pdf", height=5, width=7 )
+pdf( file="1-filtering.pdf" )
 b = coef.genlasso(a,lambda = Lambda)$beta # trend estimate
-plot(1:length(y),y,xlab="position",main="Trend filtering (cubic)",pch=21,bg="gray",cex=1.5)
-lines(1:length(y),b,lwd=4,col="red")
-lines(1:length(y),b+2*SD,lwd=4,col="cornflowerblue")
-lines(1:length(y),b-2*SD,lwd=4,col="cornflowerblue")
+#plot(1:length(y),y,xlab="position",main="Trend filtering (cubic)",pch=21,bg="gray",cex=1.5)
+plot(1:length(y),y,xlab="position",main="Trend filtering (cubic)",pch=21,bg="gray",cex=1.3, cex.axis=1.4,cex.lab=1.4)
+#lines(1:length(y),b,lwd=4,col="red")
+#lines(1:length(y),b+2*SD,lwd=4,col="cornflowerblue")
+#lines(1:length(y),b-2*SD,lwd=4,col="cornflowerblue")
+lines(1:length(y),b,lwd=2,col="red")
+lines(1:length(y),b+2*SD,lwd=2,col="cornflowerblue")
+lines(1:length(y),b-2*SD,lwd=2,col="cornflowerblue")
 
-
+dev.off()

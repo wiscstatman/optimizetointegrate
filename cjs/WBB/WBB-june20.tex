@@ -510,7 +510,8 @@ The regularization factor $\lambda$ is chosen by cross-validation with unweighte
 As in the simulation study, WBB is compared to the Bayesian LASSO. 
 \begin{figure}[!ht]
 \centering 
-\includegraphics[scale=0.7]{diabetes.pdf} 
+%\includegraphics[scale=0.7]{diabetes.pdf} 
+\includegraphics[scale=0.8]{fig3.pdf} 
 \caption{Diabetes example: the WBB (with common prior weight
 (blue) and separate prior weights (green)) and Bayesian LASSO (red) are used to draw from the marginal posteriors for $\beta_j$'s, j = 1,2,...10. }
 \label{diabetes}
@@ -532,8 +533,9 @@ As a subproblem, polynomial trend filtering (Tibshirani, 2014; Polson \& Scott, 
 
 \begin{figure}[ht]
 \centering 
-\includegraphics[scale=0.55]{filtering.pdf} 
-\caption{Cubic trend filtering: the red line is $\hat\beta_i$ for $i=1,2,...500$; the blue line is $\hat\beta_i \pm 2*se$ where the standard errors are computed by WBB. $\lambda = 1000$.}
+%\includegraphics[scale=0.55]{filtering.pdf} 
+\includegraphics[scale=0.65]{1-filtering.pdf} 
+\caption{Cubic trend filtering: the red line is $\hat\beta_i$ for $i=1,2,...500$; the blue line is $\hat\beta_i \pm 2 \times se$ where the standard errors are computed by WBB; $\lambda = 1000$.}
 \label{filter}
 \end{figure}
 

@@ -58,6 +58,7 @@ blasso_res = blasso(X,y,T=2*B,verb = 0)
 beta_blasso = tail(blasso_res$beta,B)
 colnames(beta_blasso) = name
 
+pdf( file="fig3.pdf" )
 
 # Plot --------------
 beta_common = melt(beta_common)[,-1]
@@ -74,4 +75,6 @@ p = ggplot(beta, aes(beta,colour = method)) +
   facet_wrap(~ variable,scales = "free",ncol = 2)+
   theme_bw()
 
-print(p)
+print(p+theme_bw(base_size=14) )
+
+dev.off()
