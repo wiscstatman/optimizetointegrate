@@ -44,7 +44,7 @@ for(i in 1:length(lambda))
 }
 
 pdf( file="1-simple.pdf" )
-plot(y,y,"n",ylab="posterior mean", cex.axis=1.3 , cex.lab=1.3)
+plot(y,y,"n",ylab="posterior mean", cex.axis=1.4 , cex.lab=1.4)
 for(i in 1:length(lambda))
 {
   lines(y,post[i,],col=i+1,lwd=2)
@@ -56,6 +56,6 @@ abline(v=0)
 #legend("topleft",legend=c("lambda = 0.5","lambda = 1","lambda = 2"),
 #       lwd=2,col=c(1:length(lambda)+1), cex=1.3)
 legend("topleft",legend= c( expression(lambda== 0.5), expression(lambda==1), expression(lambda==2) ),
-       lwd=2,col=c(1:length(lambda)+1), cex=1.3)
+       lwd=2,col=c(1:length(lambda)+1), cex=1.4)
 
 dev.off()
