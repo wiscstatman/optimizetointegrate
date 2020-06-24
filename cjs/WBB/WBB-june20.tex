@@ -26,7 +26,7 @@
 
 \newcommand{\pushcode}[1][1]{\hskip\dimexpr#1\algorithmicindent\relax}
 \begin{document}
-\rhauthor{Michael A. Newton,  Nicholas G. Polson and Jianeng Xu}
+\rhauthor{Newton,  Polson and Xu}
 %\rhauthor{Blinded-A, Blinded-B, and Blinded-C}
 \copyrightline{Statistical Society of Canada}
 \Frenchcopyrightline{Soci\'et\'e statistique du Canada}
@@ -102,7 +102,7 @@ including bootstrap filters in state-space models (Gordon, Salmond, \& Smith,  1
 perspective in sequential Bayesian inference (Lopes,  Polson,  \& Carvalho, 2012).
 
 \section{Weighted Bayesian Bootstrap}
-\subsection{Set up}
+\subsection{Setting}
 We work with a broad class of statistical models for data structures involving outcomes and covariates.
 Examples considered in Section~3  include  regression, trend-filtering, and deep learning.
 Let  $y=(y_1, y_2, \cdots, y_n)$ be an $n$-vector of outcomes and let $\theta = (\theta_1, \theta_2, ..., \theta_p)$ be a $p$-dimensional parameter of interest. 
@@ -110,13 +110,18 @@ Covariate data may be organized in an
 $n \times p$ matrix $A$ whose rows are the design points (or ``features'') $a_i^T$
 where we index  observations by $i$ and parameters by $j$.  
 A large number of estimation/training  problems can be expressed in the form
-\begin{equation}
+%\begin{equation}
+%\label{eqn:canonicalform}
+%\begin{aligned}
+%& \underset{\theta \in \R^d}{\text{minimize}}
+%& &  \mathcal{L}(\theta) \defeq l(y| \theta) + \lambda\phi(\theta) \, ,
+%\end{aligned}
+%\end{equation}
+\begin{eqnarray}
 \label{eqn:canonicalform}
-\begin{aligned}
-& \underset{\theta \in \R^d}{\text{minimize}}
-& &  \mathcal{L}(\theta) \defeq l(y| \theta) + \lambda\phi(\theta) \, ,
-\end{aligned}
-\end{equation}
+ \underset{\theta \in \R^d}{\text{minimize}} \quad
+  \mathcal{L}(\theta) \defeq l(y| \theta) + \lambda\phi(\theta) 
+\end{eqnarray}
 where $l(y| \theta) = \sum_{i=1}^n l_i( y_i | \theta )$ is a measure of fit (or ``empirical risk function'') depending on $\theta$ and $y$ and implicitly on $A$.
 The penalty function, or regularization term, $\lambda\phi(\theta) $,   
 may encode soft or hard constraints, and is controlled by 
@@ -127,31 +132,38 @@ To accommodate contemporary applications we  allow $\phi(\theta)$ to have points
 If we treat data, $y$, as arising from a probabilistic 
 model parameterized by $\theta$, then the likelihood function $p(y|\theta)$ yields 
 the model-associated measure of fit $l(y| \theta) = -\log p(y|\theta)$.
-The maximimum likelihood estimator (MLE) is  $ \hat{\theta} \defeq {\rm arg max}_\theta\; p(y |\theta) $, though
-of course this usually differs from the solution to~(Eq. \ref{eqn:canonicalform}): $\theta^* \defeq \argmin \left\{ l(y|\theta) + \lambda \phi(\theta)
+The maximum likelihood estimator (MLE) is  $ \hat{\theta} \defeq {\rm arg max}_\theta\; p(y |\theta) $, though
+of course this usually differs from the solution to Equation~(\ref{eqn:canonicalform}): $\theta^* \defeq \argmin \left\{ l(y|\theta) + \lambda \phi(\theta)
  \right\}]$.  We recall a key duality between regularization and Bayesian analysis.
 
 \subsection{Bayesian Regularization Duality}
 
 From the Bayesian perspective, the measure of fit, $l(y|\theta) = - \log p(y| \theta)$, and the penalty function, $\lambda\phi(\theta)$, correspond to the negative logarithms of the likelihood and prior distribution in the model
-\begin{equation}
-\label{eqn:bayes}
-\begin{aligned}
- p(y | \theta) \propto \exp & \{-  l(y|\theta)\} \; , \quad p(\theta) \propto \exp\{ - \lambda\phi(\theta) \} \\
-p( \theta | y ) &  \propto \exp\{- ( l(y|\theta) + \lambda\phi(\theta) ) \}.
-\end{aligned}
-\end{equation}
+%\begin{equation}
+%\label{eqn:bayes}
+%\begin{aligned}
+% p(y | \theta) \propto \exp & \{-  l(y|\theta)\} \; , \quad p(\theta) \propto \exp\{ - \lambda\phi(\theta) \} \\
+%p( \theta | y ) &  \propto \exp\{- ( l(y|\theta) + \lambda\phi(\theta) ) \}.
+%\end{aligned}
+%\end{equation}
+\begin{eqnarray}
+\label{eqn:bayes} 
+\nonumber
+ p(y | \theta) &\propto& \exp  \{-  l(y|\theta)\} \;,\\ \nonumber
+ p(\theta) &\propto& \exp\{ - \lambda\phi(\theta) \}, \\ 
+p( \theta | y ) &  \propto & \exp\{- ( l(y|\theta) + \lambda\phi(\theta) ) \}.
+\end{eqnarray}
 This posterior $p(\theta|y)$  is often a proper distribution over $\R^d$, even if the prior $p(\theta)$ is not proper. 
 The well-known equivalence between regularization and Bayesian methods is seen,
-for example, in regression with a Gaussian regession model
+for example, in regression with a Gaussian regression model
 subject to a penalty such as an $L^2$-norm (ridge) Gaussian prior or $ L^1$-norm (LASSO) 
 double exponential prior.  By this duality, the posterior mode, or maximum a posteriori (MAP) estimate, is $\theta^*$,  
-a solution to~(Eq. \ref{eqn:canonicalform}).
+a solution to Equation~(\ref{eqn:canonicalform}).
 %\begin{eqnarray}
 %\theta^* & =& \underset{\theta \in \Theta}{\argmin}\,  \{ l(y|\theta) + \lambda\phi(\theta) \}.  \label{posteriormode}
 %\end{eqnarray}
-See Gribonval \& Machart (2013) for a nuanced view of the connection between~(Eq. \ref{eqn:canonicalform}) 
-and~(Eq. \ref{eqn:bayes}) in
+See Gribonval \& Machart (2013) for a nuanced view of the connection between 
+Equation~(\ref{eqn:canonicalform}) and Equation~(\ref{eqn:bayes}) in
 Gaussian regression models. 
 
 \subsection{Optimization}
@@ -167,7 +179,7 @@ a necessary and sufficient condition for $\theta^*$ to minimize $ l(y|\theta) + 
 \end{equation}
 where $\partial$ is the subdifferential operator (the set of subgradients of the objective), in this case
 the sum of a point and a set.   Though not a formula for $\theta^*$, such as given by the normal equations in linear regression, 
-(Eq. \ref{eqn:subdiffproxgrad}) usefully guides algorithms that aim to solve $\theta^*$.   
+Equation~(\ref{eqn:subdiffproxgrad}) usefully guides algorithms that aim to solve $\theta^*$.   
 For example, under separability conditions on the penalty function, coordinate descent algorithms effectively solve for $\theta^*$;
 see Wright (2015), or  Hastie, Tibshirani, \& Wainwright  (2015, chap. 5) for a statistical perspective.
 The optimization literature also characterizes $\theta^*$ as the fixed point of a proximal operator
@@ -191,7 +203,7 @@ gradient descent, SGD, and related algorithms for many applications (Abadi et al
 
 
 \subsection{WBB Algorithm}
-\noindent We now define the weighted Bayesian bootstrap (WBB).  Recalling the original objective function~(Eq. \ref{eqn:canonicalform}),
+\noindent We now define the weighted Bayesian bootstrap (WBB).  Recalling the original objective function Equation~(\ref{eqn:canonicalform}),
 we form the randomized objective
 \begin{eqnarray}
 \label{eqn:rand}
@@ -211,12 +223,12 @@ allows separate i.i.d. random  weights on the prior regularization terms $\phi_j
 In either case, associated with any vector ${\bf w}$ is the solution,
 $\theta^*_{\bf w} = \argmin \mathcal{L}_{\bf w}(\theta).$
 Our basic conjecture is that the conditional distribution of $\theta^*_{\bf w}$ -- the distribution
-induced by ${\bf w}$ with the data fixed --  approximates the Bayesian posterior~(Eq. \ref{eqn:bayes}). For any measurable set $\mathcal{B}$ in the parameter space,
+induced by ${\bf w}$ with the data fixed --  approximates the Bayesian posterior Equation~(\ref{eqn:bayes}). For any measurable set $\mathcal{B}$ in the parameter space,
 \begin{eqnarray}
 \label{eqn:conjecture}
 {\rm Pr}\left( \theta^*_{\bf w} \in \mathcal{B} | y \right) \approx \int_\mathcal{B} p(\theta|y) \, d\theta.
 \end{eqnarray}
-Section 2.5 provides an asymptotic argument in support of~(Eq. \ref{eqn:conjecture}), and we investigate
+Section 2.5 provides an asymptotic argument in support of  Equation~(\ref{eqn:conjecture}), and we investigate
 the approximation numerically in a few examples in Section 3.   Assuming this conjecture is true, we have 
 a straightforward optimization-based algorithm for approximate posterior sampling:
 
@@ -247,14 +259,14 @@ a straightforward optimization-based algorithm for approximate posterior samplin
     \end{algorithm}
 
 
-When optimization on the original problem~(Eq. \ref{eqn:canonicalform}) is fast and scalable, so too is the WBB. Weights ${\bf w}$ and the corresponding  $\theta^*_{\bf w}$ are independent across $t$, making it possible to speed up the algorithm via parallel computing.
+When optimization on the original problem Equation~(\ref{eqn:canonicalform}) is fast and scalable, so too is the WBB. Weights ${\bf w}$ and the corresponding  $\theta^*_{\bf w}$ are independent across $t$, making it possible to speed up the algorithm via parallel computing.
 To choose the amount of regularization $\lambda$ which is assumed to be fixed for all sets of ${\bf w}$, we can use the marginal likelihood $m_\lambda (y)$, estimated by bridge sampling (Gelman \& Meng, 1998) or simply using predictive cross-validation.
-Next we consider the approximation~(Eq. \ref{eqn:conjecture}) from an asymptotic perspective.
+Next we consider the approximation Equation~(\ref{eqn:conjecture}) from an asymptotic perspective.
 
 
 \subsection{WBB Properties}
 
-Conditions under which the target posterior distribution~(Eq. \ref{eqn:bayes}) is approximately Gaussian are well established (Kleijn \&  van der Vaart, 2012).  For example, when data form a random sample from fixed distribution $p(y_i|\theta_0)$
+Conditions under which the target posterior distribution Equation~(\ref{eqn:bayes}) is approximately Gaussian are well established (Kleijn \&  van der Vaart, 2012).  For example, when data form a random sample from fixed distribution $p(y_i|\theta_0)$
 that resides in a sufficiently regular model, and when the prior is smooth and positive around $\theta_0 \in \R^p$,  we have 
 \begin{eqnarray}
 \label{eq:postG}
@@ -275,17 +287,17 @@ mode $\theta^*_n$, which is allowable for sufficiently smooth loss and penalty t
 \end{eqnarray}
 where $R_n$ is an error term and $\nabla$ and $\nabla^2$ record the gradient vector and matrix of second partial
 derivatives, respectively, of the weighted objective function.  Evaluating this expansion at $\theta^*_{ {\bf w}, n } = \argmin {\mathcal L}_{{\bf w},n}(\theta)$ zeros
-out the left hand side of~(Eq. \ref{eq:wbbTaylor}) and leads to:
+out the left hand side of Equation~(\ref{eq:wbbTaylor}) and leads to:
 \begin{eqnarray}
 \label{eq:asymp}
 \sqrt{n} \left( \theta_{{\bf w},n }^* - \theta_{n}^*  \right) = - \left( \frac{1}{n} \nabla^2 {\mathcal L}_{{\bf w},n} ( \theta^*_n )  \right)^{-1} \left(  \frac{1}{\sqrt{n}}
      \nabla {\mathcal L}_{{\bf w},n} ( \theta_n^* )  \right)  + \tilde R_n 
 \end{eqnarray}
-where $\tilde R_n$ is another error term.  Following Newton \& Raftery (1994), we recognize that the ${\bf w}$-induced variation in~(Eq. \ref{eq:asymp}), conditional upon 
+where $\tilde R_n$ is another error term.  Following Newton \& Raftery (1994), we recognize that the ${\bf w}$-induced variation in Equation~(\ref{eq:asymp}), conditional upon 
 the data, causes the matrix factor to be approximately the inverse information 
 $[J_n(\theta^*_n)]^{-1}$, the score-like second factor to be approximately mean-zero 
 Gaussian with covariance equal to $J_n(\theta^*_n)$, and the error $\tilde R_n$ to be
-negligible.   Thus, compared to the target posterior variation~(Eq. \ref{eq:postG}), we 
+negligible.   Thus, compared to the target posterior variation Equation~(\ref{eq:postG}), we 
 have WBB variation:
 \begin{eqnarray*}
 \left. \theta^*_{{\bf w},n} \right| y  \sim_{\rm approx} N_p \left( \theta_n^*, J_n^{-1}(\theta^*_n)\right).
@@ -301,7 +313,7 @@ $w_0$ on the penalty term of the objective function.   At this level of first-or
 Gaussian distribution of $\theta^*_{{\bf w},n}$.
 
 
-We note that rescaling in~(Eq. \ref{eqn:rand}) has no effect on
+We note that rescaling in Equation~(\ref{eqn:rand}) has no effect on
 solutions~$\theta^*_{{\bf w},n}$, and so it is equivalent in the construction
  to use normalized weights $\tilde {\bf w}$ that sum to unity. Such $\tilde {\bf w}$ are uniformly distributed over
 the unit simplex, and thus correspond to a specific Dirichlet distribution.
@@ -341,7 +353,7 @@ y + \lambda w_0 /w_1 &\mbox{if $y < -\lambda w_0 /w_1$},\\
 $$
 \begin{figure}[!ht]
 \centering 
-\includegraphics[scale=0.55]{simple.pdf} 
+\includegraphics[scale=0.55]{1-simple.pdf} 
 \caption{Normal means model with LASSO prior: WBB mean $E_{{\bf w}}(\theta^*_{\bf w}|y)$ (in solid lines) versus exact posterior mean $E(\theta|y)$ (in dashed lines).}
 \label{simple}
 \end{figure}
@@ -353,7 +365,7 @@ E(\theta|y) &=& \frac{\int_{-\infty}^\infty \theta\exp\left\{-(y-\theta)^2/2 - \
 \end{eqnarray*}
 where $F(y) = \exp(y)\Phi(-y-\lambda)$ and $\Phi(\cdot)$ is the c.d.f. of standard normal distribution. We plot  the WBB mean versus the exact posterior mean in Figure~\ref{simple}.  Interestingly, the WBB algorithm shrinks the posterior means towards zero. 
 WBB samples are approximate posterior draws, though the algorithm structure does not
-permit a clear descripton of the prior that is in force for this sampled distribution.
+permit a clear description of the prior that is in force for this sampled distribution.
 Whatever is this  effective prior, it may be different from the prior encoded in the
 penalty used in repeated optimization, as the result in Figure~1 suggests.
 
@@ -410,7 +422,7 @@ For comparison criteria, we present the estimation MSE of coefficients $\beta$ (
 
 \renewcommand{\arraystretch}{0.5}
 \begin{table}[ht]\label{beta-mse}
-	\tbl{Coefficient Estimation Mean Squared Error (MSE)}{%
+	\tbl{Coefficient estimation mean squared error (MSE).}{%
 \begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
 \toprule
 	&                     & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
@@ -432,7 +444,7 @@ For comparison criteria, we present the estimation MSE of coefficients $\beta$ (
 		
 \begin{table}[ht]
 	\label{oos-mse}
-	\tbl{Out-of-Sample Prediction Mean Squared Error (MSE)}{%
+	\tbl{Out-of-sample prediction mean squared error (MSE).}{%
 \begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
 \toprule
 	&                     & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule	
@@ -454,7 +466,7 @@ For comparison criteria, we present the estimation MSE of coefficients $\beta$ (
 
 \begin{table}[ht]
 	\label{tab:coverage}
-	\tbl{95\% Credible Interval Coverage}{%
+	\tbl{95\% Credible interval coverage.}{%
 \begin{tabular*}{30pc}{@{\hskip5pt}@{\extracolsep{\fill}}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}@{\hskip5pt}}
 \toprule
 	&                        & $p$      & 40   & 60   & 80   & 100  & 120  \\ \colrule
@@ -486,8 +498,7 @@ parallel computations, since weight vectors induce separate optimizations.
 To further illustrate the WBB methodology, we apply it to the often-analyzed diabetes dataset (Efron et al., 2004). Data from $n=442$ diabetes patients are available, with response a measure of
 disease progression and with 10 baseline variables ($p=10$), including age, sex, body mass index, average blood pressure, and six blood serum measurements. 
  We apply Algorithm~1 with $T=1000$. (R code is in Supplementary Material file.) 
-For each weight vector ${\bf w}$, the WBB estimate $\beta^*_{\bf w}$ is calculated using Equation (\ref{eqn:diabetes}) via the regularization method in the package {\tt glmnet}. 
-
+For each weight vector ${\bf w}$, the WBB estimate $\beta^*_{\bf w}$ is calculated using Equation~(\ref{eqn:diabetes}) via the regularization method in the package {\tt glmnet}. 
 \begin{equation}
 \label{eqn:diabetes}
 \beta^{*,{\rm common}}_{\bf w} := \underset{\beta}{\argmin} \;\sum_{i=1}^n w_i(y_i - x_i'\beta)^2+ \lambda w_{0}\sum_{j=1}^p |\beta_j|\; . 
@@ -611,7 +622,7 @@ the weighted likelihood bootstrap for generalized Bayesian inference
 (Lyddon, Holmes, \& Walker, 2019).
 
 
-For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form (Eq. \ref{eqn:canonicalform}), which can also be viewed as posterior modes. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis. Further, Strawderman, Wells, \& Schifano  (2013) and Polson \& Scott (2015) 
+For a wide range of non-smooth objective functions/statistical models, recent regularization methods provide fast, scalable algorithms for calculating estimates of the form Equation~(\ref{eqn:canonicalform}), which can also be viewed as posterior modes. Therefore as $\lambda$ varies we obtain a full regularization path as a form of prior sensitivity analysis. Further, Strawderman, Wells, \& Schifano  (2013) and Polson \& Scott (2015) 
 considered scenarios where posterior modes can be used as posterior means from augmented probability models.
 There may be useful interpretations of the random weights from the data-augmentation perspective.
 
@@ -631,19 +642,19 @@ optimization-based estimators,
 \begin{thebibliography}{}
 
 \bibitem[Abadi et al., 2015]{tensorflow2015-whitepaper}
-Abadi, M., Agarwal, A., Barham, P., Brevdo, E., Chen, Z., Citro, C., Corrado, G. S., Davis, A., Dean, J., Devin, M., Ghemawat, S., Goodfellow, I., Harp, A., Irving, G., Isard, M., Jia, Y., Jozefowicz, R., Kaiser, L., Kudlur, M., Levenberg, J., Man\'{e}, D., Monga, R., Moore, S., Murray, D., Olah, C., Schuster, M., Shlens, J., Steiner, B., Sutskever, I., Talwar, K., Tucker, P., Vanhoucke, V., Vasudevan, V., Vi\'{e}gas, F., Vinyals, O., Warden, P., Wattenberg, M., Wicke, M., Yu, Y., \& Zheng, X. (2015) TensorFlow: Large-scale machine learning on heterogeneous systems. {\it Software available from tensorflow.org}.
+Abadi, M., Agarwal, A., Barham, P., Brevdo, E., Chen, Z., Citro, C., Corrado, G. S., Davis, A., Dean, J., Devin, M., Ghemawat, S., Goodfellow, I., Harp, A., Irving, G., Isard, M., Jia, Y., Jozefowicz, R., Kaiser, L., Kudlur, M., Levenberg, J., Man\'{e}, D., Monga, R., Moore, S., Murray, D., Olah, C., Schuster, M., Shlens, J., Steiner, B., Sutskever, I., Talwar, K., Tucker, P., Vanhoucke, V., Vasudevan, V., Vi\'{e}gas, F., Vinyals, O., Warden, P., Wattenberg, M., Wicke, M., Yu, Y., \& Zheng, X. (2015). TensorFlow: Large-scale machine learning on heterogeneous systems. {\it Software available from tensorflow.org}.
 
 \bibitem[Arnold \& Tibshirani, 2014]{arnold2014genlasso}
 Arnold, T. B. \& Tibshirani, R. J. (2014). genlasso: Path algorithm for generalized lasso problems. {\it R package version 1.3}.
 
 \bibitem[BB12]{bb12}
-Barbe, P. \& Bertail, P. (2012). {\em The weighted bootstrap} Vol. 98. Springer Science \& Business Media.
+Barbe, P. \& Bertail, P. (2012). {\em The weighted bootstrap}. Vol. 98. Springer Science \& Business Media.
 
 \bibitem[Beaumont et al., 2009]{beaumont2009adaptive}
-Beaumont, M. A.,  Cornuet, J. M.,  Marin, J. M. \& Robert, C. P. (2009). Adaptive approximate Bayesian computation. {\it Biometrika}, 96(4), 983--990.
+Beaumont, M. A.,  Cornuet, J. M.,  Marin, J. M., \& Robert, C. P. (2009). Adaptive approximate Bayesian computation. {\it Biometrika}, 96(4), 983--990.
 
 \bibitem[Bertsekas et al. 2003]{bertsekas2003}
-Bertsekas, D. P., Nedi, A. \& Ozdaglar, A. E. (2003). {\em Convex analysis and optimization}. Athena Scientific.
+Bertsekas, D. P., Nedi, A., \& Ozdaglar, A. E. (2003). {\em Convex analysis and optimization}. Athena Scientific.
 
 \bibitem[Blei et al., 2017]{blei2017variational}
 Blei, D. M., Kucukelbir, A., \& McAuliffe, J. D. (2017). Variational inference: A review for statisticians. {\it Journal of the American Statistical Association}, 112(518), 859-877.
@@ -652,16 +663,16 @@ Blei, D. M., Kucukelbir, A., \& McAuliffe, J. D. (2017). Variational inference: 
 Boyd, S. \& Vandenberghe, L. (2004) {\it Convex optimization}. Cambridge university press.
 
 \bibitem[Carlin \& Polson, 1991]{carlin1991inference}
-Carlin, B. P. \& Polson, N. G. (1991). Inference for nonconjugate Bayesian models using the Gibbs sampler. {\it Canadian Journal of statistics}, 19(4), 399-405.
+Carlin, B. P. \& Polson, N. G. (1991). Inference for nonconjugate Bayesian models using the Gibbs sampler. {\it Canadian Journal of Statistics}, 19(4), 399-405.
 
 \bibitem[Chollet et al., 2015]{chollet2015keras}
-Chollet, F. \& others. (2015) Keras {\it https://keras.io}
+Chollet, F.,  (2015). Keras {\it https://keras.io}.
 
 \bibitem[Efron et al., 2004]{efron2004least}
-Efron, B., Hastie, T., Johnstone, I. \& Tibshirani, R. J. (2004).  Diabetes dataset. Available from R package {\it lars}.
+Efron, B., Hastie, T., Johnstone, I., \& Tibshirani, R. J. (2004).  Diabetes dataset. Available from R package {\it lars}.
 
 \bibitem[Friedman{,} Hastie \& Tibshirani, 2010]{friedman2010regularization} 
-Friedman, J.,  Hastie, T. \& Tibshirani, R. J. (2010). Regularization Paths for Generalized Linear Models via Coordinate Descent. {\it Journal of Statistical Software}, 33(1),1--22.
+Friedman, J.,  Hastie, T., \& Tibshirani, R. J. (2010). Regularization Paths for Generalized Linear Models via Coordinate Descent. {\it Journal of Statistical Software}, 33(1),1--22.
 
 \bibitem[Gelman \& Meng, 1998]{gelman1998simulating}
 Gelman, A. \& Meng, X. L. (1998). Simulating normalizing constants: From importance sampling to bridge sampling to path sampling. {\it Statistical Science}, 163--185.
@@ -695,19 +706,21 @@ Knight, K. \& Fu, W. (2000). Asymptotics for lasso-type estimators.
  {\em The Annals of Statistics}, 28(5), 1356--1378.
 
 \bibitem[Lange 2016]{Lange2016}
-Lange, K. (2016). {\em MM Optimization Algorithms}. Vol. 147, SIAM. 
+Lange, K. (2016). {\em MM Optimization Algorithms}. Society for Industrial and Applied Mathematics,
+	Philadelphia, PA.
 
 \bibitem[LeCun{,} Bengio \& Hinton, 2015]{lecun2015deep}
-LeCun, Y., Bengio, Y. \& Hinton, G. (2015). Deep learning. {\it Nature}, 521(7553), 436.
+LeCun, Y., Bengio, Y., \& Hinton, G. (2015). Deep learning. {\it Nature}, 521(7553), 436.
 
 \bibitem[LeCun \& Cortes, 2010]{lecun-mnisthandwrittendigit-2010}
-LeCun, Y. \& Cortes, C. (2010). MNIST handwritten digit database. Retrieved from {\it http://yann.lecun.com/exdb/mnist/}
+LeCun, Y. \& Cortes, C. (2010). MNIST handwritten digit database.  \newline
+ Retrieved from {\it http://yann.lecun.com/exdb/mnist/}
 
 \bibitem[Liang \& Hu, 2015]{liang2015recurrent}
-Liang, M. \& Hu, X. (2015). Recurrent convolutional neural network for object recognition. {\it In Proceedings of the IEEE conference on computer vision and pattern recognition} (pp. 3367-3375).
+Liang, M. \& Hu, X. (2015). Recurrent convolutional neural network for object recognition. {\it In Proceedings of the IEEE conference on computer vision and pattern recognition},  3367-3375.
 
 \bibitem[Lopes{,}  Polson \& Carvalho, 2012]{lopes2012bayesian}
-Lopes, H. F., Polson, N. G., \& Carvalho, C. M. (2012). Bayesian statistics with a smile: a resampling-sampling perspective. {\it Brazilian Journal of Probability and Statistics}, 26(4) 358--371.
+Lopes, H. F., Polson, N. G., \& Carvalho, C. M. (2012). Bayesian statistics with a smile: a resampling-sampling perspective. {\it Brazilian Journal of Probability and Statistics}, 26(4), 358--371.
 
 \bibitem[Lyddon]{lwh2019}
 Lyddon, S., Holmes, C. \& Walker, S. (2019). 
@@ -718,7 +731,7 @@ Generalized Bayesian updating and the loss likelihood bootstrap. {\em Biometrika
 Minsker, S., Srivastava, S.,  Lin, L. \& Dunson, D. (2014). Scalable and robust bayesian inference via the median posterior. {\it International Conference on Machine Learning}, 1656--1664.
 
 \bibitem[Mitchell, 1994]{mitchell1994note}
-Mitchell, A. F. (1994). A note on posterior moments for a normal mean with double- exponential prior. {\it Journal of the Royal Statistical Society. Series B (Methodological)}, 605--610.
+Mitchell, A. F. (1994). A note on posterior moments for a normal mean with double- exponential prior. {\it Journal of the Royal Statistical Society. Series B (Methodological)}, 56(4), 605--610.
 
 \bibitem[MuliereSecchi]{mulieresecchi}
 Muliere, P. \& Secchi, P. (1996). Bayesian nonparametric predictive inference and bootstrap techniques.
@@ -749,7 +762,7 @@ Polson, N. G. \& Scott, J. G. (2015). Mixtures, envelopes and hierarchical duali
 Polson, N. G.,  Scott, J. G., \& Willard, B. T.  (2015). Proximal algorithms in statistics and machine learning. {\it Statistical Science}, 30(4), 559--581.
 
 \bibitem[Polson \& Sokolov, 2017]{polson2017deep}
-Polson, N. G. \& Sokolov, V. (2017). Deep learning: A Bayesian perspective. {\it Bayesian Analysis},12(4), 1275--1304.
+Polson, N. G. \& Sokolov, V. (2017). Deep learning: A Bayesian perspective. {\it Bayesian Analysis}, 12(4), 1275--1304.
 
 \bibitem[Polson \& Sun, 2019]{polson2019bayesian}
 Polson, N. G. \& Sun, L. (2019). Bayesian $l_0$-regularized least squares. {\em Applied Stochastic Models in Business and 
@@ -783,7 +796,7 @@ Introduction to the special issue on sparsity and regularization methods.
 
 
 \bibitem[Wright, 2015]{wright2015}
-Wright, S. J. (2015).  Coordinate descent algorithms. {\it Mathematical Programming},  151(1):3-34.
+Wright, S. J. (2015).  Coordinate descent algorithms. {\it Mathematical Programming},  151(1), 3-34.
 \end{thebibliography}
 
 \begin{appendix}\label{SGD}
@@ -791,7 +804,7 @@ Here we consider how stochastic gradient descent (SGD) may be deployed to
   minimize the penalized loss function, $\sum_{i=1}^n w_i l_i(y_i; \theta) + \lambda w_{0} \phi(\theta)$. The method minimizes the function by taking a negative step along an estimate $g^k$ of the gradient $\nabla\left[\sum_{i=1}^n w_i l_i(y_i; \theta^k) + \lambda w_{0} \phi(\theta^k)\right] $ at iteration $k$. 
 The approximate gradient is estimated by calculating 
 \[
-g^k = \frac{n}{b_k} \sum_{i \in E_k} w_i\nabla  l_i(y_i; \theta^k) +  \lambda w_{0} \frac{n}{b_k}\nabla \phi(\theta^k)
+g^k = \frac{n}{b_k} \sum_{i \in E_k} w_i\nabla  l_i(y_i; \theta^k) +  \lambda w_{0} \frac{n}{b_k}\nabla \phi(\theta^k),
 \]
 where $E_k \subset \{1,\ldots,n \}$ and $b_k = |E_k|$ is the number of elements in $E_k$. When $b_k >1$ the algorithm is called batch SGD and simply SGD otherwise. A usual strategy to choose subset $E$ is to go cyclically and pick consecutive elements of $\{1,\ldots,T \}$, $E_{k+1} = [E_k \mod n]+1$. The approximated direction  $g^k$ is calculated using a 
 chain rule (i.e., back-propagation) for deep learning. It  is an unbiased estimator. Thus, at each iteration, the SGD updates the solution
