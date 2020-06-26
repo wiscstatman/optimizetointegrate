@@ -101,7 +101,7 @@ p <- ggplot(sample_df,aes(x=value,color=method)) +
   facet_grid(variable~., scales="free") + 
   theme_bw() + 
   xlab("coefficient")+
-  theme(text = element_text(size=22))
+  theme(text = element_text(size=21))
 pdf('mcmc.pdf',height = 6,width = 8)
 print(p)
 dev.off()
