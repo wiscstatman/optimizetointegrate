@@ -96,12 +96,11 @@ method = rep(c('WBB','MCMC_L1','MCMC_L0','MCMC_L0_5'),each=5000)
 sample = cbind(method, sample)
 sample_df = melt(sample,id.vars = 'method')
 
-
 p <- ggplot(sample_df,aes(x=value,color=method)) + 
   geom_density() + 
   facet_grid(variable~., scales="free") + 
   theme_bw() + 
-  theme(text = element_text(size=17))
+  theme(text = element_text(size=22))
 pdf('mcmc.pdf',height = 6,width = 8)
 print(p)
 dev.off()
