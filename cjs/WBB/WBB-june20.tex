@@ -391,7 +391,7 @@ effective prior. No such posterior mass is evident in the $L^0$ priors nor possi
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.65]{mcmc}
+\includegraphics[scale=0.55]{mcmc}
 \caption{WBB samples under LASSO penalty, compared with posteriors under  LASSO prior and $L^0$ prior computed by MCMC.}
 \label{mcmc}
 \end{figure}
@@ -609,8 +609,9 @@ $$
 where we manually set $\lambda = 10^{-4}$. 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.7\linewidth]{acc}
-	\caption{Posterior distribution of the classification accuracy. $n=500, \lambda=10^{-4}$.}
+	%\includegraphics[width=0.7\linewidth]{acc}
+	\includegraphics[scale=0.55]{acc}
+	\caption{Posterior distribution of the classification accuracy by WBB. $n=500, \lambda=10^{-4}$.}
 	\label{fig:acc}
 \end{figure}
 Figure~\ref{fig:acc} shows the posterior distribution of the classification accuracy in the test dataset. We see that the test accuracies are centered around 0.75 and the posterior distribution is left-skewed. Furthermore, the accuracy is higher than 0.35 in 99\% of the cases. The 95\% interval is [0.407, 0.893].  Due to the simple 2-layer neural network structure, the classification accuracy is admittedly low compared with the state-of-the-art (e.g., Liang \& Hu,  2015). This illustrative example shows how WBB can be easily implemented in deep learning. Implementing Variational Bayes in deep learning is discussed in Polson \& Sokolov (2017).

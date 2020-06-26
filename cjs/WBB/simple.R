@@ -44,7 +44,7 @@ for(i in 1:length(lambda))
 }
 
 pdf( file="1-simple.pdf" )
-plot(y,y,"n",ylab="posterior mean", cex.axis=1.4 , cex.lab=1.4)
+plot(y,y,"n",ylab="posterior mean", cex.axis=1.4 , cex.lab=1.4, las=1)
 for(i in 1:length(lambda))
 {
   lines(y,post[i,],col=i+1,lwd=2)
