@@ -7,6 +7,7 @@ load("basad_limited.RData")
 
 # load either one of them for RW samples
 load("RW_Lasso.RData")
+load("RW_Lasso_lambmin.RData")
 
 p <- 1024
 B <- nrow(RW_beta)
