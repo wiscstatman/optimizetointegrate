@@ -100,9 +100,9 @@ for(b in 1:B){
   fit_w1 <- glmnet(x = train_list$X, y = train_list$Y, weights = w)
   fit_w3 <- glmnet(x = train_list$X, y = train_list$Y, weights = w, penalty.factor = wp)
   
-  beta_w1[b,] <- as.vector(coef(fit_w1, s = lamb))
-  beta_w2[b,] <- as.vector(coef(fit_w1, s = lamb*wp[1]))
-  beta_w3[b,] <- as.vector(coef(fit_w3, s = lamb*mean(wp)))
+  beta_w1[b,] <- as.vector(coef(fit_w1, s = lamb))[-1]
+  beta_w2[b,] <- as.vector(coef(fit_w1, s = lamb*wp[1]))[-1]
+  beta_w3[b,] <- as.vector(coef(fit_w3, s = lamb*mean(wp)))[-1]
   
   predY_w1[b,] <- test_list$X %*% beta_w1[b,]
   predY_w2[b,] <- test_list$X %*% beta_w2[b,]
