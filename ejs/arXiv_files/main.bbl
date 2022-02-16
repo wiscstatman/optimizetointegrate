@@ -1,0 +1,665 @@
+\begin{thebibliography}{53}
+% BibTex style file: imsart-nameyear.bst, 2017-11-03
+% Default style options (sort=1,type=nameyear).
+% Used options (sort=1,type=nameyear).
+
+\bibitem[\protect\citeauthoryear{Andrews and
+  Mallows}{1974}]{ScaleMixtureNormal}
+\begin{barticle}[author]
+\bauthor{\bsnm{Andrews},~\bfnm{D.~F.}\binits{D.~F.}} \AND
+  \bauthor{\bsnm{Mallows},~\bfnm{C.~L.}\binits{C.~L.}}
+(\byear{1974}).
+\btitle{Scale mixtures of Normal distributions}.
+\bjournal{Journal of Royal Statistical Society Series B (Statistical
+  Methodology)}
+\bvolume{36}
+\bpages{99-102}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Bissiri, Holmes and
+  Walker}{2016}]{Bissiri2016JRSSB}
+\begin{barticle}[author]
+\bauthor{\bsnm{Bissiri},~\bfnm{Pier~Giovanni}\binits{P.~G.}},
+  \bauthor{\bsnm{Holmes},~\bfnm{Christopher~C.}\binits{C.~C.}} \AND
+  \bauthor{\bsnm{Walker},~\bfnm{Stephen~G.}\binits{S.~G.}}
+(\byear{2016}).
+\btitle{A general framework for updating belief distributions}.
+\bjournal{Journal of the Royal Statistical Society Series B (Statistical
+  Methodology)}
+\bvolume{78}
+\bpages{1103-1130}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Camponovo}{2015}]{Camponovo2015}
+\begin{barticle}[author]
+\bauthor{\bsnm{Camponovo},~\bfnm{L.}\binits{L.}}
+(\byear{2015}).
+\btitle{On the validity of the pairs bootstrap for lasso estimators}.
+\bjournal{Biometrika}
+\bvolume{102}
+\bpages{981--987}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Castillo, Schmidt-Hieber and van~der
+  Vaart}{2015}]{Castillo2015}
+\begin{barticle}[author]
+\bauthor{\bsnm{Castillo},~\bfnm{Ismael}\binits{I.}},
+  \bauthor{\bsnm{Schmidt-Hieber},~\bfnm{Johannes}\binits{J.}} \AND
+  \bauthor{\bparticle{van~der} \bsnm{Vaart},~\bfnm{Aad}\binits{A.}}
+(\byear{2015}).
+\btitle{Bayesian linear regression with sparse priors}.
+\bjournal{The Annals of Statistics}
+\bvolume{43}
+\bpages{1986--2018}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Chatterjee and
+  Bose}{2005}]{ChatterjeeBose2005}
+\begin{barticle}[author]
+\bauthor{\bsnm{Chatterjee},~\bfnm{S.}\binits{S.}} \AND
+  \bauthor{\bsnm{Bose},~\bfnm{Arup}\binits{A.}}
+(\byear{2005}).
+\btitle{Generalized bootstrap for estimating equations}.
+\bjournal{The Annals of Statistics}
+\bvolume{33}
+\bpages{414--436}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Chatterjee and Lahiri}{2010}]{Chatterjee2010}
+\begin{barticle}[author]
+\bauthor{\bsnm{Chatterjee},~\bfnm{A.}\binits{A.}} \AND
+  \bauthor{\bsnm{Lahiri},~\bfnm{S.~N.}\binits{S.~N.}}
+(\byear{2010}).
+\btitle{Asymptotic properties of the residual bootstrap for Lasso estimators}.
+\bjournal{Proceedings of the American Mathematical Society}
+\bvolume{138}
+\bpages{4497--4509}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Chatterjee and
+  Lahiri}{2011a}]{Chatterjee2011Jasa}
+\begin{barticle}[author]
+\bauthor{\bsnm{Chatterjee},~\bfnm{A.}\binits{A.}} \AND
+  \bauthor{\bsnm{Lahiri},~\bfnm{S.~N.}\binits{S.~N.}}
+(\byear{2011}a).
+\btitle{Bootstrapping Lasso estimators}.
+\bjournal{Journal of the American Statistical Association}
+\bvolume{106}
+\bpages{608--625}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Chatterjee and
+  Lahiri}{2011b}]{Chatterjee&Lahiri}
+\begin{barticle}[author]
+\bauthor{\bsnm{Chatterjee},~\bfnm{A.}\binits{A.}} \AND
+  \bauthor{\bsnm{Lahiri},~\bfnm{S.~N.}\binits{S.~N.}}
+(\byear{2011}b).
+\btitle{Strong consistency of lasso estimators}.
+\bjournal{Sankhya: The Indian Journal of Statistics, Series A}
+\bvolume{73}
+\bpages{55-78}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Das, Gregory and Lahiri}{2019}]{DasGreg2019}
+\begin{barticle}[author]
+\bauthor{\bsnm{Das},~\bfnm{Debraj}\binits{D.}},
+  \bauthor{\bsnm{Gregory},~\bfnm{Karl}\binits{K.}} \AND
+  \bauthor{\bsnm{Lahiri},~\bfnm{S.~N.}\binits{S.~N.}}
+(\byear{2019}).
+\btitle{Perturbation bootstrap in Adaptive Lasso}.
+\bjournal{The Annals of Statistics}
+\bvolume{47}
+\bpages{2080--2116}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Das and Lahiri}{2019}]{Das2019}
+\begin{barticle}[author]
+\bauthor{\bsnm{Das},~\bfnm{Debraj}\binits{D.}} \AND
+  \bauthor{\bsnm{Lahiri},~\bfnm{S.~N.}\binits{S.~N.}}
+(\byear{2019}).
+\btitle{Distributional consistency of the lasso by perturbation bootstrap}.
+\bjournal{Biometrika}
+\bvolume{106}
+\bpages{957--964}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Durrett}{2010}]{durrett}
+\begin{bbook}[author]
+\bauthor{\bsnm{Durrett},~\bfnm{Rick}\binits{R.}}
+(\byear{2010}).
+\btitle{Probability: Theory and Examples (Cambridge Series in Statistical and
+  Probabilistic Mathematics)},
+\bedition{4th} ed.
+\bpublisher{Cambridge: Cambridge University Press}, \baddress{New York, USA}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Fan and Li}{2001}]{SCAD}
+\begin{barticle}[author]
+\bauthor{\bsnm{Fan},~\bfnm{Jianqing}\binits{J.}} \AND
+  \bauthor{\bsnm{Li},~\bfnm{Runze}\binits{R.}}
+(\byear{2001}).
+\btitle{Variable selection via nonconcave penalized likelihood and its oracle
+  properties}.
+\bjournal{Journal of the American Statistical Association}
+\bvolume{96}
+\bpages{1348-1360}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Ferguson}{1973}]{ferguson1973}
+\begin{barticle}[author]
+\bauthor{\bsnm{Ferguson},~\bfnm{Thomas~S.}\binits{T.~S.}}
+(\byear{1973}).
+\btitle{A Bayesian Analysis of Some Nonparametric Problems}.
+\bjournal{The Annals of Statistics}
+\bvolume{1}
+\bpages{209--230}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Fong, Lyddon and Holmes}{2019}]{Fong2019ICML}
+\begin{binproceedings}[author]
+\bauthor{\bsnm{Fong},~\bfnm{Edwin}\binits{E.}},
+  \bauthor{\bsnm{Lyddon},~\bfnm{Simon}\binits{S.}} \AND
+  \bauthor{\bsnm{Holmes},~\bfnm{Christopher~C.}\binits{C.~C.}}
+(\byear{2019}).
+\btitle{Scalable nonparametric sampling from multimodal posteriors with the
+  posterior bootstrap}.
+In \bbooktitle{Proceedings of the 36th International Conference on Machine
+  Learning (ICML)}.
+\end{binproceedings}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Friedman, Hastie and
+  Tibshirani}{2010}]{glmnet}
+\begin{barticle}[author]
+\bauthor{\bsnm{Friedman},~\bfnm{Jerome}\binits{J.}},
+  \bauthor{\bsnm{Hastie},~\bfnm{Trevor}\binits{T.}} \AND
+  \bauthor{\bsnm{Tibshirani},~\bfnm{Robert}\binits{R.}}
+(\byear{2010}).
+\btitle{Regularization Paths for Generalized Linear Models via Coordinate
+  Descent}.
+\bjournal{Journal of Statistical Software}
+\bvolume{33}
+\bpages{1--22}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Geyer}{1996}]{Geyer1996}
+\begin{bunpublished}[author]
+\bauthor{\bsnm{Geyer},~\bfnm{Charles}\binits{C.}}
+(\byear{1996}).
+\btitle{On the asymptotics of convex stochastic optimization}.
+\bnote{Unpublished manuscript}.
+\end{bunpublished}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Ghosal, Ghosh and
+  Ramamoorthi}{1999}]{ghosal1999}
+\begin{barticle}[author]
+\bauthor{\bsnm{Ghosal},~\bfnm{S.}\binits{S.}},
+  \bauthor{\bsnm{Ghosh},~\bfnm{J.~K.}\binits{J.~K.}} \AND
+  \bauthor{\bsnm{Ramamoorthi},~\bfnm{R.~V.}\binits{R.~V.}}
+(\byear{1999}).
+\btitle{Posterior consistency of Dirichlet mixtures in density estimation}.
+\bjournal{The Annals of Statistics}
+\bvolume{27}
+\bpages{143--158}.
+\bdoi{10.1214/aos/1018031105}
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Ghosal, Ghosh and van~der
+  Vaart}{2000}]{ghosal2000}
+\begin{barticle}[author]
+\bauthor{\bsnm{Ghosal},~\bfnm{Subhashis}\binits{S.}},
+  \bauthor{\bsnm{Ghosh},~\bfnm{Jayanta~K.}\binits{J.~K.}} \AND
+  \bauthor{\bparticle{van~der} \bsnm{Vaart},~\bfnm{Aad~W.}\binits{A.~W.}}
+(\byear{2000}).
+\btitle{Convergence rates of posterior distributions}.
+\bjournal{The Annals of Statistics}
+\bvolume{28}
+\bpages{500--531}.
+\bdoi{10.1214/aos/1016218228}
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Gramacy, Moler and Turlach}{2019}]{monomvn}
+\begin{bmanual}[author]
+\bauthor{\bsnm{Gramacy},~\bfnm{Robert~B.}\binits{R.~B.}},
+  \bauthor{\bsnm{Moler},~\bfnm{Cleve}\binits{C.}} \AND
+  \bauthor{\bsnm{Turlach},~\bfnm{Berwin~A.}\binits{B.~A.}}
+(\byear{2019}).
+\btitle{monomvn: Estimation for MVN and Student-t Data with Monotone
+  Missingness}
+\bnote{R package version 1.9-13}.
+\end{bmanual}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Green}{1995}]{rjmcmc}
+\begin{barticle}[author]
+\bauthor{\bsnm{Green},~\bfnm{Peter~J.}\binits{P.~J.}}
+(\byear{1995}).
+\btitle{Reversible jump Markov chain Monte Carlo computation and Bayesian model
+  determination}.
+\bjournal{Biometrika}
+\bvolume{82}
+\bpages{711--732}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Henderson and Searle}{1981}]{MatrixIdentity}
+\begin{barticle}[author]
+\bauthor{\bsnm{Henderson},~\bfnm{H.~V.}\binits{H.~V.}} \AND
+  \bauthor{\bsnm{Searle},~\bfnm{S.~R.}\binits{S.~R.}}
+(\byear{1981}).
+\btitle{On Deriving the Inverse of a Sum of Matrices}.
+\bjournal{SIAM Review}
+\bvolume{23}
+\bpages{53--60}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Hjort and Ongaro}{2005}]{hjort2005exact}
+\begin{barticle}[author]
+\bauthor{\bsnm{Hjort},~\bfnm{Nils~Lid}\binits{N.~L.}} \AND
+  \bauthor{\bsnm{Ongaro},~\bfnm{Andrea}\binits{A.}}
+(\byear{2005}).
+\btitle{Exact inference for random Dirichlet means}.
+\bjournal{Statistical Inference for Stochastic Processes}
+\bvolume{8}
+\bpages{227--254}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Huber}{1967}]{huber1967}
+\begin{binproceedings}[author]
+\bauthor{\bsnm{Huber},~\bfnm{Peter~J.}\binits{P.~J.}}
+(\byear{1967}).
+\btitle{The behavior of maximum likelihood estimates under nonstandard
+  conditions}.
+In \bbooktitle{Proceedings of the Fifth Berkeley Symposium on Mathematical
+  Statistics and Probability, Volume 1: Statistics}
+\bpages{221--233}.
+\bpublisher{University of California Press}, \baddress{Berkeley, Calif.}
+\end{binproceedings}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Ishwaran and Zarepour}{2002}]{Ishwaran2002}
+\begin{barticle}[author]
+\bauthor{\bsnm{Ishwaran},~\bfnm{Hemant}\binits{H.}} \AND
+  \bauthor{\bsnm{Zarepour},~\bfnm{Mahmoud}\binits{M.}}
+(\byear{2002}).
+\btitle{Exact and approximate sum representations for the Dirichlet process}.
+\bjournal{Canadian Journal of Statistics}
+\bvolume{30}
+\bpages{269-283}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Jin, Ying and Wei}{2001}]{Jin2001}
+\begin{barticle}[author]
+\bauthor{\bsnm{Jin},~\bfnm{Zhezhen}\binits{Z.}},
+  \bauthor{\bsnm{Ying},~\bfnm{Zhiliang}\binits{Z.}} \AND
+  \bauthor{\bsnm{Wei},~\bfnm{Lee-Jen}\binits{L.-J.}}
+(\byear{2001}).
+\btitle{A simple resampling method by perturbing the minimand}.
+\bjournal{Biometrika}
+\bvolume{88}
+\bpages{381--390}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Johnson and Rossell}{2012}]{JohnsonRossell}
+\begin{barticle}[author]
+\bauthor{\bsnm{Johnson},~\bfnm{Valen}\binits{V.}} \AND
+  \bauthor{\bsnm{Rossell},~\bfnm{David}\binits{D.}}
+(\byear{2012}).
+\btitle{Bayesian model selection in high-dimensional settings}.
+\bjournal{Journal of the American Statistical Association}
+\bvolume{107}
+\bpages{649-660}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Kleijn and van~der Vaart}{2012}]{kleijn2012}
+\begin{barticle}[author]
+\bauthor{\bsnm{Kleijn},~\bfnm{B.~J.~K.}\binits{B.~J.~K.}} \AND
+  \bauthor{\bparticle{van~der} \bsnm{Vaart},~\bfnm{A.~W.}\binits{A.~W.}}
+(\byear{2012}).
+\btitle{The Bernstein-Von-Mises theorem under misspecification}.
+\bjournal{Electronic Journal of Statistics}
+\bvolume{6}
+\bpages{354--381}.
+\bdoi{10.1214/12-EJS675}
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Knight and Fu}{2000}]{Knight&Fu}
+\begin{barticle}[author]
+\bauthor{\bsnm{Knight},~\bfnm{Keith}\binits{K.}} \AND
+  \bauthor{\bsnm{Fu},~\bfnm{Wenjiang}\binits{W.}}
+(\byear{2000}).
+\btitle{Asymptotics for lasso-type estimators}.
+\bjournal{The Annals of Statistics}
+\bvolume{28}
+\bpages{1356-1378}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Lai, Robbins and Wei}{1978}]{LSEstrong}
+\begin{barticle}[author]
+\bauthor{\bsnm{Lai},~\bfnm{T.~L.}\binits{T.~L.}},
+  \bauthor{\bsnm{Robbins},~\bfnm{Herbert}\binits{H.}} \AND
+  \bauthor{\bsnm{Wei},~\bfnm{C.~Z.}\binits{C.~Z.}}
+(\byear{1978}).
+\btitle{Strong consistency of least squares estimates in multiple regression}.
+\bjournal{Proceedings of National Academy of Sciences}
+\bvolume{75}
+\bpages{3034 - 3036}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Liu and Yu}{2013}]{Liu&Yu}
+\begin{barticle}[author]
+\bauthor{\bsnm{Liu},~\bfnm{Hanzhong}\binits{H.}} \AND
+  \bauthor{\bsnm{Yu},~\bfnm{Bin}\binits{B.}}
+(\byear{2013}).
+\btitle{Asymptotic properties of Lasso+mLS and Lasso+Ridge in sparse
+  high-dimensional linear regression}.
+\bjournal{Electronic Journal of Statistics}
+\bvolume{7}
+\bpages{3124-3169}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Lyddon, Holmes and
+  Walker}{2019}]{Lyddon2019Biometrika}
+\begin{barticle}[author]
+\bauthor{\bsnm{Lyddon},~\bfnm{S.~P.}\binits{S.~P.}},
+  \bauthor{\bsnm{Holmes},~\bfnm{C.~C.}\binits{C.~C.}} \AND
+  \bauthor{\bsnm{Walker},~\bfnm{S.~G.}\binits{S.~G.}}
+(\byear{2019}).
+\btitle{General Bayesian updating and the loss-likelihood bootstrap}.
+\bjournal{Biometrika}
+\bvolume{106}
+\bpages{465-478}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Lyddon, Walker and
+  Holmes}{2018}]{Lyddon2018NIPS}
+\begin{binproceedings}[author]
+\bauthor{\bsnm{Lyddon},~\bfnm{Simon}\binits{S.}},
+  \bauthor{\bsnm{Walker},~\bfnm{Stephen}\binits{S.}} \AND
+  \bauthor{\bsnm{Holmes},~\bfnm{Chris}\binits{C.}}
+(\byear{2018}).
+\btitle{Nonparametric Learning from Bayesian Models with Randomized Objective
+  Functions}.
+In \bbooktitle{Proceedings of the 32Nd International Conference on Neural
+  Information Processing Systems}.
+\bseries{NIPS'18}
+\bpages{2075--2085}.
+\bpublisher{Curran Associates Inc.}
+\end{binproceedings}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Mason and Newton}{1992}]{mason1992rank}
+\begin{barticle}[author]
+\bauthor{\bsnm{Mason},~\bfnm{David~M.}\binits{D.~M.}} \AND
+  \bauthor{\bsnm{Newton},~\bfnm{Michael~A.}\binits{M.~A.}}
+(\byear{1992}).
+\btitle{A rank statistics approach to the consistency of a general bootstrap}.
+\bjournal{The Annals of Statistics}
+\bvolume{20}
+\bpages{1611--1624}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Minnier, Tian and Cai}{2011}]{Minnier2011}
+\begin{barticle}[author]
+\bauthor{\bsnm{Minnier},~\bfnm{Jessica}\binits{J.}},
+  \bauthor{\bsnm{Tian},~\bfnm{Lu}\binits{L.}} \AND
+  \bauthor{\bsnm{Cai},~\bfnm{Tianxi}\binits{T.}}
+(\byear{2011}).
+\btitle{A perturbation method for inference on regularized regression
+  estimates}.
+\bjournal{Journal of the American Statistical Association}
+\bvolume{106}
+\bpages{1371--1382}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Narisetty and He}{2014}]{NarisettyHe2014}
+\begin{barticle}[author]
+\bauthor{\bsnm{Narisetty},~\bfnm{Naveen~Naidu}\binits{N.~N.}} \AND
+  \bauthor{\bsnm{He},~\bfnm{Xuming}\binits{X.}}
+(\byear{2014}).
+\btitle{Bayesian variable selection with shrinking and diffusing priors}.
+\bjournal{The Annals of Statistics}
+\bvolume{42}
+\bpages{789-817}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Newton, Polson and Xu}{2020}]{WBB}
+\begin{barticle}[author]
+\bauthor{\bsnm{Newton},~\bfnm{Michael}\binits{M.}},
+  \bauthor{\bsnm{Polson},~\bfnm{Nicholas~G.}\binits{N.~G.}} \AND
+  \bauthor{\bsnm{Xu},~\bfnm{Jianeng}\binits{J.}}
+(\byear{2020}).
+\btitle{Weighted Bayesian Bootstrap for Scalable Posterior Distributions}.
+\bjournal{The Canadian Journal of Statistics}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Newton and Raftery}{1994}]{Newton&Raftery}
+\begin{barticle}[author]
+\bauthor{\bsnm{Newton},~\bfnm{Michael~Abbott}\binits{M.~A.}} \AND
+  \bauthor{\bsnm{Raftery},~\bfnm{Adrian}\binits{A.}}
+(\byear{1994}).
+\btitle{Approximate bayesian inference with the weighted likelihood bootstrap}.
+\bjournal{Journal of the Royal Statistical Society Series B (Statistical
+  Methodology)}
+\bvolume{56}
+\bpages{3-48}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Osborne, Presnell and
+  Turlach}{2000}]{Osborne2000}
+\begin{barticle}[author]
+\bauthor{\bsnm{Osborne},~\bfnm{Michael~R.}\binits{M.~R.}},
+  \bauthor{\bsnm{Presnell},~\bfnm{Brett}\binits{B.}} \AND
+  \bauthor{\bsnm{Turlach},~\bfnm{Berwin~A.}\binits{B.~A.}}
+(\byear{2000}).
+\btitle{On the LASSO and Its Dual}.
+\bjournal{Journal of Computational and Graphical Statistics}
+\bvolume{9}
+\bpages{319--337}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Park and Casella}{2008}]{BayesianLasso}
+\begin{barticle}[author]
+\bauthor{\bsnm{Park},~\bfnm{Trevor}\binits{T.}} \AND
+  \bauthor{\bsnm{Casella},~\bfnm{George}\binits{G.}}
+(\byear{2008}).
+\btitle{The Bayesian Lasso}.
+\bjournal{Journal of the American Statistical Association}
+\bvolume{103}
+\bpages{681-686}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Pollard}{1991}]{Pollard1991}
+\begin{barticle}[author]
+\bauthor{\bsnm{Pollard},~\bfnm{David}\binits{D.}}
+(\byear{1991}).
+\btitle{Asymptotics for least absolute deviation regression estimators}.
+\bjournal{Econometric Theory}
+\bvolume{7}
+\bpages{186-199}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Qin et~al.}{2019}]{qin2019convergence}
+\begin{barticle}[author]
+\bauthor{\bsnm{Qin},~\bfnm{Qian}\binits{Q.}},
+  \bauthor{\bsnm{Hobert},~\bfnm{James~P}\binits{J.~P.}} \betal{et~al.}
+(\byear{2019}).
+\btitle{Convergence complexity analysis of Albert and Chib's algorithm for
+  Bayesian probit regression}.
+\bjournal{Annals of Statistics}
+\bvolume{47}
+\bpages{2320--2347}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Rajaratnam and
+  Sparks}{2015}]{rajaratnam2015mcmc}
+\begin{barticle}[author]
+\bauthor{\bsnm{Rajaratnam},~\bfnm{Bala}\binits{B.}} \AND
+  \bauthor{\bsnm{Sparks},~\bfnm{Doug}\binits{D.}}
+(\byear{2015}).
+\btitle{MCMC-based inference in the era of big data: A fundamental analysis of
+  the convergence complexity of high-dimensional chains}.
+\bjournal{arXiv preprint arXiv:1508.00947}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Robert et~al.}{2018}]{robert2018accelerating}
+\begin{barticle}[author]
+\bauthor{\bsnm{Robert},~\bfnm{Christian~P}\binits{C.~P.}},
+  \bauthor{\bsnm{Elvira},~\bfnm{V{\'\i}ctor}\binits{V.}},
+  \bauthor{\bsnm{Tawn},~\bfnm{Nick}\binits{N.}} \AND
+  \bauthor{\bsnm{Wu},~\bfnm{Changye}\binits{C.}}
+(\byear{2018}).
+\btitle{Accelerating MCMC algorithms}.
+\bjournal{Wiley Interdisciplinary Reviews: Computational Statistics}
+\bvolume{10}
+\bpages{e1435}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Sethuraman}{1994}]{Sethuraman1994}
+\begin{barticle}[author]
+\bauthor{\bsnm{Sethuraman},~\bfnm{Jayaram}\binits{J.}}
+(\byear{1994}).
+\btitle{A constructive definition of dirichlet priors}.
+\bjournal{Statistica Sinica}
+\bvolume{4}
+\bpages{639-650}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Shao}{2003}]{junshao}
+\begin{bbook}[author]
+\bauthor{\bsnm{Shao},~\bfnm{Jun}\binits{J.}}
+(\byear{2003}).
+\btitle{Mathematical Statistics (Springer Texts in Statistics)},
+\bedition{2nd} ed.
+\bpublisher{Springer}, \baddress{New York, USA}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{{R Core Team}}{2019}]{R}
+\begin{bmanual}[author]
+\bauthor{\bsnm{{R Core Team}}}
+(\byear{2019}).
+\btitle{R: A Language and Environment for Statistical Computing}
+\bpublisher{R Foundation for Statistical Computing},
+\baddress{Vienna, Austria}.
+\end{bmanual}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Tibshirani}{1996}]{Lasso}
+\begin{barticle}[author]
+\bauthor{\bsnm{Tibshirani},~\bfnm{Robert}\binits{R.}}
+(\byear{1996}).
+\btitle{Regression shrinkage and selection via the lasso}.
+\bjournal{Journal of the Royal Statistical Society Series B (Statistical
+  Methodology)}
+\bvolume{58}
+\bpages{267-288}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Tibshirani}{2013}]{LassoUnique}
+\begin{barticle}[author]
+\bauthor{\bsnm{Tibshirani},~\bfnm{Ryan~J.}\binits{R.~J.}}
+(\byear{2013}).
+\btitle{The lasso problem and uniqueness}.
+\bjournal{Electronic Journal of Statistics}
+\bvolume{7}
+\bpages{1456-1490}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{van~der Vaart}{1998}]{vanderVaartbook}
+\begin{bbook}[author]
+\bauthor{\bparticle{van~der} \bsnm{Vaart},~\bfnm{A.~W.}\binits{A.~W.}}
+(\byear{1998}).
+\btitle{Asymptotic Statistics (Cambridge Series in Statistical and
+  Probabilistic Mathematics)}.
+\bpublisher{Cambridge University Press}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Venables and Ripley}{2002}]{MASS}
+\begin{bbook}[author]
+\bauthor{\bsnm{Venables},~\bfnm{W.~N.}\binits{W.~N.}} \AND
+  \bauthor{\bsnm{Ripley},~\bfnm{B.~D.}\binits{B.~D.}}
+(\byear{2002}).
+\btitle{Modern Applied Statistics with S},
+\bedition{Fourth} ed.
+\bpublisher{Springer}, \baddress{New York}.
+\bnote{ISBN 0-387-95457-0}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Welling and Teh}{2011}]{WellingTeh}
+\begin{barticle}[author]
+\bauthor{\bsnm{Welling},~\bfnm{Max}\binits{M.}} \AND
+  \bauthor{\bsnm{Teh},~\bfnm{Yee~Whye}\binits{Y.~W.}}
+(\byear{2011}).
+\btitle{Bayesian Learning via Stochastic Gradient Langevin Dynamics}.
+\bjournal{Proceedings of International Conference on Machine Learning}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Zhao and Yu}{2006}]{BinYu}
+\begin{barticle}[author]
+\bauthor{\bsnm{Zhao},~\bfnm{Peng}\binits{P.}} \AND
+  \bauthor{\bsnm{Yu},~\bfnm{Bin}\binits{B.}}
+(\byear{2006}).
+\btitle{On model selection consistency of Lasso}.
+\bjournal{Journal of Machine Learning Research}
+\bvolume{7}
+\bpages{2541-2563}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Zou}{2006}]{Zou2006}
+\begin{barticle}[author]
+\bauthor{\bsnm{Zou},~\bfnm{Hui}\binits{H.}}
+(\byear{2006}).
+\btitle{The Adaptive Lasso and Its Oracle Properties}.
+\bjournal{Journal of the American Statistical Association}
+\bvolume{101}
+\bpages{1418--1429}.
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}
