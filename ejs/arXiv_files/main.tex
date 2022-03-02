@@ -17,102 +17,99 @@
 \doi{10.1214/154957804100000000}
 \pubyear{0000}
 \volume{0}
-\firstpage{0}
-\lastpage{0}
+\firstpage{1}
+\lastpage{1}
 %\arxiv{}
 
 \startlocaldefs
-	\DeclareMathOperator*{\argmax}{arg\,max} %argmax
-	\DeclareMathOperator*{\argmin}{arg\,min} %argmin
+\DeclareMathOperator*{\argmax}{arg\,max} %argmax
+\DeclareMathOperator*{\argmin}{arg\,min} %argmin
 
-	\newcommand{\sumin}{\sum_{i=1}^n} % sum from i = 1 to n
-	\newcommand{\CONV}[1]{\stackrel{\text{#1}}{\longrightarrow}} % convergence mode
-	\newcommand{\bnw}{\widehat{\bm{\beta}}_n^w} % weighted lasso estimator
-	\newcommand{\bnwa}{\widehat{\bm{\beta}}_{n(1)}^w} 
-	\newcommand{\bSC}{\widehat{\bm{\beta}}_n^{\text{SC}}} % strongly consistent estimator
-	\newcommand{\bLS}{\widehat{\bm{\beta}}_n^{\text{OLS}}} % LSE 
-	\newcommand{\bMLE}{\widehat{\bm{\beta}}_n^{\text{MLE}}} % MLE
-	\newcommand{\bLAS}{\widehat{\bm{\beta}}_n^{\text{LAS}}} % LASSO
-	\newcommand{\eLS}{\bm{e}_n^{\text{OLS}}} % LSE residual vector
-	\newcommand{\eLAS}{\bm{e}_n^{\text{LAS}}} % Lasso residual vector
+\newcommand{\sumin}{\sum_{i=1}^n} % sum from i = 1 to n
+\newcommand{\CONV}[1]{\stackrel{\text{#1}}{\longrightarrow}} % convergence mode
+\newcommand{\bnw}{\widehat{\bm{\beta}}_n^w} % weighted lasso estimator
+\newcommand{\bnwa}{\widehat{\bm{\beta}}_{n(1)}^w} 
+\newcommand{\bSC}{\widehat{\bm{\beta}}_n^{\text{SC}}} % strongly consistent estimator
+\newcommand{\bLS}{\widehat{\bm{\beta}}_n^{\text{OLS}}} % LSE 
+\newcommand{\bMLE}{\widehat{\bm{\beta}}_n^{\text{MLE}}} % MLE
+\newcommand{\bLAS}{\widehat{\bm{\beta}}_n^{\text{LAS}}} % LASSO
+\newcommand{\eLS}{\bm{e}_n^{\text{OLS}}} % LSE residual vector
+\newcommand{\eLAS}{\bm{e}_n^{\text{LAS}}} % Lasso residual vector
 
-	\newcommand{\cnwa}{C_{n(11)}^w}
-	\newcommand{\cnwb}{C_{n(12)}^w}
-	\newcommand{\cnwc}{C_{n(21)}^w}
-	\newcommand{\cnwd}{C_{n(22)}^w}
-	\newcommand{\znwa}{\bm{Z}_{n(1)}^w}
-	\newcommand{\znwb}{\bm{Z}_{n(2)}^w}
-	\newcommand{\znwc}{\bm{Z}_{n(3)}^w}
-	\newcommand{\huna}{\widehat{\bm{u}}_{n(1)}}
-	\newcommand{\hunb}{\widehat{\bm{u}}_{n(2)}}
-	\newcommand{\cnwas}{C_{n(11*)}^w}
-	\newcommand{\cnwbs}{C_{n(12*)}^w}
-	\newcommand{\cnwcs}{C_{n(21*)}^w}
-	\newcommand{\cnwds}{C_{n(22*)}^w}
-	\newcommand{\znwas}{\bm{Z}_{n(1*)}^w}
-	\newcommand{\znwbs}{\bm{Z}_{n(2*)}^w}
-	\newcommand{\hunas}{\widehat{\bm{u}}_{n(1*)}}
-	\newcommand{\hunbs}{\widehat{\bm{u}}_{n(2*)}}
+\newcommand{\cnwa}{C_{n(11)}^w}
+\newcommand{\cnwb}{C_{n(12)}^w}
+\newcommand{\cnwc}{C_{n(21)}^w}
+\newcommand{\cnwd}{C_{n(22)}^w}
+\newcommand{\znwa}{\bm{Z}_{n(1)}^w}
+\newcommand{\znwb}{\bm{Z}_{n(2)}^w}
+\newcommand{\znwc}{\bm{Z}_{n(3)}^w}
+\newcommand{\huna}{\widehat{\bm{u}}_{n(1)}}
+\newcommand{\hunb}{\widehat{\bm{u}}_{n(2)}}
+\newcommand{\cnwas}{C_{n(11*)}^w}
+\newcommand{\cnwbs}{C_{n(12*)}^w}
+\newcommand{\cnwcs}{C_{n(21*)}^w}
+\newcommand{\cnwds}{C_{n(22*)}^w}
+\newcommand{\znwas}{\bm{Z}_{n(1*)}^w}
+\newcommand{\znwbs}{\bm{Z}_{n(2*)}^w}
+\newcommand{\hunas}{\widehat{\bm{u}}_{n(1*)}}
+\newcommand{\hunbs}{\widehat{\bm{u}}_{n(2*)}}
 
-	\numberwithin{equation}{section}
-	\theoremstyle{plain}
-	\newtheorem{thm}{Theorem}[section]
-	\newtheorem{corollary}{Corollary}[section]
-	\newtheorem{lem}{Lemma}[section] 
-	\newtheorem{proposition}{Proposition}[section]
-	\newtheorem{remark}{Remark}[section]
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lem}{Lemma}[section] 
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{remark}{Remark}[section]
 \endlocaldefs
 
 \begin{document}
 	
-\begin{frontmatter}
+	\begin{frontmatter}
+		
+		\title{Random-weighting in LASSO regression}
+		\runtitle{Random-weighting}
+		
+		\begin{aug}
+			\author{\fnms{Tun Lee} \snm{Ng}\ead[label=e1]{tunlee@stat.wisc.edu}}
+			\and
+			\author{\fnms{Michael A.} \snm{Newton}\ead[label=e2]{newton@stat.wisc.edu}}
+			
+			\address{Department of Statistics \\
+				1300 University Ave, Madison WI 53706 \\
+				\printead{e1,e2}}
+			
+			\runauthor{T.L.Ng and M.A.Newton}
+			
+		\end{aug}
+		
+		\begin{abstract}
+			We  establish statistical properties of random-weighting methods in LASSO regression under different regularization parameters $\lambda_n$ and suitable regularity conditions. The random-weighting methods in view concern  repeated optimization of a randomized objective function,
+			motivated by the need for computationally efficient uncertainty quantification in contemporary estimation settings.  In the context of LASSO regression, we repeatedly assign  analyst-drawn random weights to terms in the objective function, and optimize to obtain a sample of random-weighting estimators. We show that existing approaches  have conditional model selection consistency and conditional asymptotic normality at different growth rates of $\lambda_n$ as $n \to \infty$. We  propose an extension to the available random-weighting methods and establish that the resulting samples attain conditional sparse normality and conditional consistency in a growing-dimension setting.  We illustrate the proposed methodology using synthetic
+			and benchmark data sets, and we discuss the relationship of the results to approximate nonparametric Bayesian analysis and to perturbation bootstrap methods.
+		\end{abstract}
+		
+		\begin{keyword}[class=MSC]
+			\kwd{62F12}
+			\kwd{62F40}
+			\kwd{62F15}
+		\end{keyword}
+		
+		\begin{keyword}
+			\kwd{random weights}
+			\kwd{weighted likelihood bootstrap}
+			\kwd{weighted Bayesian bootstrap}
+			\kwd{LASSO}
+			\kwd{bootstrap}
+			\kwd{perturbation bootstrap}
+			\kwd{consistency}
+			\kwd{model selection consistency}
+		\end{keyword}
+		
+		\tableofcontents
+		
+	\end{frontmatter}
 
-	\title{Random-weighting in LASSO regression}
-	\runtitle{Random-weighting}
-
-	\begin{aug}
-		\author{\fnms{Tun Lee} \snm{Ng}\ead[label=e1]{tunlee@stat.wisc.edu}}
-		\and
-		\author{\fnms{Michael A.} \snm{Newton}\ead[label=e2]{newton@stat.wisc.edu}}
-	
-		\address{Department of Statistics \\
-			1300 University Ave, Madison WI 53706 \\
-			\printead{e1,e2}}
-	
-		\runauthor{T.L.Ng and M.A.Newton}
-	
-		\affiliation{University of Wisconsin-Madison}
-	\end{aug}
-
-	\begin{abstract}
-		We  establish statistical properties of random-weighting methods in LASSO regression under different regularization parameters $\lambda_n$ and suitable regularity conditions. The random-weighting methods in view concern  repeated optimization of a randomized objective function,
-		motivated by the need for computational approximations to
-		Bayesian posterior sampling.  In the context of LASSO regression, we repeatedly assign  analyst-drawn random weights to terms in the objective function (including the penalty terms), and optimize to obtain a sample of random-weighting estimators. We show that existing approaches  have conditional model selection consistency and conditional asymptotic normality at different growth rates of $\lambda_n$ as $n \to \infty$. We  propose an extension to the available random-weighting methods and establish that the resulting samples attain conditional sparse normality and conditional consistency in a growing-dimension setting. We find that random-weighting has both approximate-Bayesian and sampling-theory interpretations. Finally, we illustrate the proposed methodology via extensive simulation studies and a benchmark data example. 
-	\end{abstract}
-
-	\begin{keyword}[class=MSC]
-		\kwd{62F12}
-		\kwd{62F40}
-		\kwd{62F15}
-	\end{keyword}
-
-	\begin{keyword}
-		\kwd{random weights}
-		\kwd{weighted likelihood bootstrap}
-		\kwd{weighted Bayesian bootstrap}
-		\kwd{LASSO}
-		\kwd{bootstrap}
-		\kwd{perturbation bootstrap}
-		\kwd{consistency}
-		\kwd{model selection consistency}
-	\end{keyword}
-
-	% history:
-	% \received{\smonth{1} \syear{0000}}
-
-	\tableofcontents
-	
-\end{frontmatter}
 	
 \section{Introduction}
 
@@ -1238,7 +1235,7 @@ To further illustrate the two-step random-weighting methodology, we apply it to 
 		rad & index of accessibility to radial highways \\
 		tax & full-value property-tax rate per \$10,000 \\
 		ptratio & pupil-teacher ratio by town \\
-		black & proportion of blacks by town \\
+		Black & proportion of Black residents by town \\
 		lstat & lower status of the population (percent) \\
 		\hline
 \end{tabular}
@@ -1251,11 +1248,9 @@ To further illustrate the two-step random-weighting methodology, we apply it to 
 	\label{fig:boston_beta_cdf}
 \end{figure}
 
-Again, we apply Bayesian LASSO as well as the random-weighting approach for all three weighting schemes (\ref{eq.NoWeightPenalty}), (\ref{eq.Bnw.WeightPenalty}) and (\ref{eq.Bnw.WeightPenalty2}) according to Algorithm \ref{alg:ALG_general_2step}, with $B=1000$.  We use the same prior specifications as well as RJMCMC implementation for Bayesian LASSO as we did in our simulation studies. For the random-weighting approach, random weights are drawn from a standard exponential distribution, and the regularization parameter $\lambda_n$ is chosen with cross-validation using \citet{Liu&Yu}'s unweighted LASSO+LS procedure (i.e. 2-step cross-validation). 
+Again, we apply Bayesian LASSO, the random-weighting approach for all three weighting schemes (\ref{eq.NoWeightPenalty}), (\ref{eq.Bnw.WeightPenalty}) and (\ref{eq.Bnw.WeightPenalty2}) according to Algorithm \ref{alg:ALG_general_2step}, as well as the parametric residual bootstrap method \citep{Knight&Fu} with $B=1000$.  We use the same prior specifications as well as RJMCMC implementation for Bayesian LASSO as we did in our simulation studies. For the random-weighting approach, random weights are drawn from a standard exponential distribution, and the regularization parameter is chosen with cross-validation using \citet{Liu&Yu}'s unweighted LASSO+LS procedure (i.e. 2-step cross-validation). Meanwhile, for residual bootstrap, its regularization parameter is chosen via cross-validation using standard LASSO. 
 
-Figure \ref{fig:boston_beta_cdf} shows the marginal posterior distributions of $\bm{\beta}$'s sampled from these four methods. For most of the coefficients, there is very good agreement among the methods. One notable feature is that Bayesian LASSO appears to introduce slightly more sparsity than the random-weighting schemes for the variable \texttt{age}. Besides that, random-weighting with different penalty weights (\ref{eq.Bnw.WeightPenalty2}) appears to produce lower outliers for variables \texttt{crim}, \texttt{indus} and \texttt{ptratio}.     
-
-\appendix
+Figure \ref{fig:boston_beta_cdf} shows the marginal posterior distributions of $\bm{\beta}$'s sampled from MCMC as well as the marginal conditional (on data) distributions of $\bm{\beta}$'s obtained from the random-weighting methods and the parametric residual bootstrap. For most of the coefficients, there is very good agreement among the methods. One notable feature is that the parametric residual bootstrap approach induces the least sparsity among all five methods for variables \texttt{indus} and \texttt{age}. In addition, Bayesian LASSO appears to introduce slightly more sparsity than the random-weighting schemes for the variable \texttt{age}. Besides that, random-weighting with different penalty weights (\ref{eq.Bnw.WeightPenalty2}) appears to produce lower outliers for variables \texttt{crim}, \texttt{indus} and \texttt{ptratio}.\appendix
 
 \section{} \label{sec_Appendix}
 
