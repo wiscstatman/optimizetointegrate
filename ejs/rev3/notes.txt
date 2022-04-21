@@ -1,0 +1,20 @@
+
+Hi Sir,
+
+I have completed the following edits in the EJS_rev3:
+https://www.overleaf.com/project/6259d9ba77155bd6ca56382c
+
+
+(1) I trimmed many steps in the proofs (mostly those steps about satisfying Liapounov sufficient condition), and shortened the Apppendix by 5 pages
+
+(2) I discarded the previous Section 4.2 (previously Simulation part II)
+
+(3) I streamlined the explanations in the Simulation section; we can discuss on whether we still want to retain those total variation results (materials on page 21 and Fig 2 on page 20)
+
+(4) I added a convergence rate result as a corollary at the end of the Appendix section
+
+(5) I already prepared a .tex file 'Response' in the same Overleaf folder/project.
+
+
+Looking forward to discussing these with you.
+
