@@ -1,0 +1,11 @@
+
+
+Page 27, line 5: The Halmos block at the end of the equation is intended to be on a separate line.   It signifies the
+	end of the proof.   At least some space is required after C_{1,1}^{-1}
+
+
+Footnote, page 1: I add a short phrase at the end of the footnote:
+
+"TLN and MAN were supported in part by the University of Wisconsin Institute for
+the Foundations of Data Science through grants from the US National Science Foundation
+(1740707, 2023239) and in part by the National Institutes of Health (P01CA250972)."
