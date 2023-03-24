@@ -5,13 +5,12 @@
 
 set.seed(312345126)
 
-** not working as expected
 
-rbimod <- function(mu, delta=2, sig=(1/2) )
+rbimod <- function(mu, delta=2, sig=(1/4) )
  {
    # make a biomodal draw centered at mu
    sgn <- sample( c(-delta,delta), size=1, prob=c(1/2,1/2) ) 
-   x <- mu + sig*sgn*rnorm(1)
+   x <- mu + sig*(rnorm(1)+sgn)
    x
  }
 
