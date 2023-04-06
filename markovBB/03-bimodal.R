@@ -39,19 +39,29 @@ oo <- order(x.from)
 x.from.o <- x.from[oo]
 x.to.o <- x.to[oo]
 
-tau <- 1/10
+tau <- 1/1000
 env <- outer(x.from.o,x.from.o,function(u,v){ exp( -(1/tau)*(u-v)^2 ) } )
 
 
 # Now we realign to x.to2
 
 oo2 <- order( x.to.o )
+x.to.o2 <- x.to.o[oo2] ## sorted x.to's
+
 env2 <- env[,oo2]
 
 
-#env3 <- env2[oo2,]
+## one case
+w <- env2[200,]/sum( env2[200,] )
+k200 <- density( x.to.o2, weights=w )
 
+#image( x.from.o, x.to.o2, env2 )
+# rank transform
+image( sqrt(env2) )
+
+plot( x.from.o, x.to.o )
+
+## it works
+## to do
+## show how k200, for example, approximates the generative kernel at that x.from position...
 #
-#sx <- sort(x)
-#cmean <- apply( TM, 1, function(p){ sum(p*sx) } )
-#cvar <- apply( TM, 1, function(p){ sum(p*sx^2) - ( sum(p*sx))^2 } )
