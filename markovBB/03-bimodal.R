@@ -7,6 +7,8 @@
 
 # a synthetic example; generated as AR, but with goofy bimodal conditionals
 
+rm( list=ls() )
+
 set.seed(312345126)
 
 
@@ -32,23 +34,22 @@ tfun <- approxfun( density(y) )
 x.from <- x[1:(B-1)]
 x.to <- x[2:B]
 
-tau <- 1/10
-env <- outer(x.from,x.from,function(u,v){ exp( -(1/tau)*(u-v)^2 ) } )
-
+# reordered by response level
 oo <- order(x.from)
-env2 <- env[oo,oo]
+x.from.o <- x.from[oo]
+x.to.o <- x.to[oo]
 
-# now apply this envelope to x.to
+tau <- 1/10
+env <- outer(x.from.o,x.from.o,function(u,v){ exp( -(1/tau)*(u-v)^2 ) } )
 
-x.to2 <- x.to[oo] # tracks the output of each ordered state in x.from
 
 # Now we realign to x.to2
 
-** something's not right...
+oo2 <- order( x.to.o )
+env2 <- env[,oo2]
 
-oo2 <- order( x.to2 )
-#env3 <- env2[,oo2]
-env3 <- env2[oo2,]
+
+#env3 <- env2[oo2,]
 
 #
 #sx <- sort(x)
