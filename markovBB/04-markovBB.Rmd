@@ -7,7 +7,7 @@ output:
       before_body: doc_prefix.tex
 ---
 
-## Markov Bayesian Bootstrap[^1]
+## A Markov Bayesian Bootstrap, with Application (*?maybe?*) to Neural Differential Equations[^1]
 
 [^1]: Technical Report no. supported in part by **
 
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(fig.width=6, fig.height=6, fig.path='Figs/',
 
 #### The setting
 
-Consider temporal `data` recordings $Z_1, Z_2, \cdots, Z_n$ residing in some
+Consider temporal data recordings $Z_1, Z_2, \cdots, Z_n$ residing in some
 low-dimensional Euclidean space (or maybe even a Riemannian manifold), and suppose
 we treat them as the realization of a Markov process governed by some unknown
 generative kernel
@@ -53,7 +53,7 @@ In other words, we may identify a parameter value $\vartheta(F)$ in the finite-d
 parameter space $\Theta$ with any generative $F$, as that point minimizing the Kullback Liebler
 divergence of $F$ from the parametric model. More generally, we may identify parameter
 values relating $F$ to any loss function $l$, and contemporary examples provide a slew of
-options **citations**:
+options (**citations**):
 \begin{eqnarray}
 \label{eq:def}
 \vartheta(F) = \arg \min_{\theta \in \Theta} E_F l(\theta, Z_i).
@@ -61,7 +61,7 @@ options **citations**:
 
 A compelling approach to Bayesian inference (*uncertainty quantification*) is to treat the
 generative distribution $F$ as fully unspecified, though with uncertainty governed by
-a Dirichlet process (DP) prior **citations**.  Then uncertainty about $F$ continues to have
+a Dirichlet process (DP) prior (**citations**).  Then uncertainty about $F$ continues to have
 a DP form in the posterior, reliant on both a prior measure $\alpha_0 F_0$ and the
 empirical measure $\mathbb{F}_n$ of the sample $Z_1, \cdots, Z_n$.  This posterior *induces* a posterior distribution on the feature $\vartheta(F)$ by the functional mapping above.   Notice that this UQ approach is quite different from the conventional model-based Bayesian inference, in which a prior distribution is constructed explicitly on $\mathbf{F}_\Theta$, and from which 
 posterior inferences are derived, usually approximately, via Markov chain Monte Carlo or
@@ -89,16 +89,15 @@ provides a basis for UQ on the target quantity.  As an aside, empirical risk min
 
 #### An aside on urns
 
-The probabilistic machinery through which the Dirichlet Process (DP) calculations are developed rests in part on exchangeability assumptions, reinforcement learning, predictive modeling, and urn sampling.   We refer the reader to **cite** for a lucid development, and we note for our purposes with Markov processes that a simple urn-sampling metaphor is helpful.  Namely, we suppose that prior to data being in hand, there is an urn containing a measure $\alpha_0 F_0$; roughly, this measure is supposed to represent the analyst's uncertainty about any data point $Z_i$, prior to observation.  After seeing $Z_1$, the analyst's mind updates -- specifically the measure goes from $\alpha_i F_0$ to $\alpha_0 F_0 + \delta_{Z_1}$, by adding a point mass at $Z_1$.  Subsequent measurements continue to add mass, until the urn contains measure $\alpha_0 F_0 + n \mathbb{F}_n$ by the end of data collection.  This measure, as it turns out, is the centering measure of the posterior DP.  Random weighting emerges, a posteriori, by sending $\alpha_0 \longrightarrow 0$ to eliminate $F_0$. (Note that urn sampling is like drawing a value from normalized probability distribution residing within the urn; the measure-adding reinforcement conveys how DP analysts learn from data.) (maybe comment on how weights can be generated from the fixed urn at the end of data
-collection)
+The probabilistic machinery through which the Dirichlet Process (DP) calculations are developed rests in part on exchangeability assumptions, reinforcement learning, predictive modeling, and urn sampling.   We refer the reader to **cite** for a lucid development, and we note for our subsequent purposes with Markov processes that a simple urn-sampling metaphor is helpful.  Namely, we suppose that prior to data being in hand, there is an urn $U$ containing a measure $\alpha_0 F_0$; roughly, this measure represents the analyst's uncertainty about any data point $Z_i$, prior to observation (*the urn is metaphorical; it is one and the same thing as the measure; the total mass of the measure is like the number of balls in the urn*).  After seeing $Z_1$, the analyst's mind updates -- specifically the measure goes from $\alpha_0 F_0$ to, $U \leftarrow \alpha_0 F_0 + \delta_{Z_1}$, by adding a point mass at $Z_1$.  Subsequent measurements continue to add mass, until the urn contains measure $U \leftarrow \alpha_0 F_0 + n \mathbb{F}_n$ by the end of data collection.  This measure, as it turns out, is the centering measure of the posterior DP.  Random weighting emerges, a posteriori, by sending $\alpha_0 \longrightarrow 0$ to eliminate $F_0$. (Note that urn sampling is like drawing a value from normalized probability distribution residing within the urn; the measure-adding reinforcement conveys how DP analysts learn from data.) (*comment on how weights can be generated from the fixed urn at the end of data collection*)
 
 #### The Markov case
 
-We are not aware of other attempts to extend the Bayesian bootstrap to the Markov case.   (maybe some cites on partial exchangeability and finite state chains...).   Instead of a single urn with a single measure $\alpha_0 F_0$, as in the i.i.d. case, let us suppose that every point $z$ in the space is associated with a measure-containing urn, say $U_z$, prior to any data coming into
-view.  In the absence of any regularizing assumptions about the kernel $F(z,A)$, we might be obliged to update the urns as follows.   Say with $Z_1$ fixed, let's update urn $U_{Z_1}$ from its original state by adding point mass $\delta_{Z_2}$; likewise at any transition from $Z_i$ to $Z_{i+1}$, update the urn $U_{Z_i}$ from its prior state by adding point mass at $Z_{i+1}$.  For continuous recordings, this approach doesn't get us too far, even after all data are in hand, since we may expect to see single point masses added to $n-1$ of the continuum of urns.  And then any limits we take on $\alpha_0$ will leave us with very little empirical variation (probably just one single trajectory is realizable).
+We are not aware of other attempts to extend the Bayesian bootstrap to the Markov case.   (*maybe some cites on partial exchangeability and finite state chains*).   Instead of a single urn with a single measure $\alpha_0 F_0$, as in the i.i.d. case, let us suppose that every point $z$ in the space is associated with a measure-containing urn, say $U_z$, prior to any data coming into
+view.  All these urns will update during data collection. In the absence of any regularizing assumptions about the kernel $F(z,A)$, we might be obliged to update the urns as follows.   Say with $Z_1$ fixed, let's update urn $U_{Z_1}$ from its original state by adding point mass $\delta_{Z_2}$; likewise at any transition from $Z_i$ to $Z_{i+1}$, update the urn $U_{Z_i}$ from its prior state by adding point mass at $Z_{i+1}$.  For continuous recordings, this approach doesn't get us too far, even after all data are in hand, since we may expect to see single point masses added to $n-1$ of the continuum of urns.  And then any limits we take on $\alpha_0$ will leave us with very little empirical variation (probably just one single trajectory is realizable).
 
-**Regularizing assumption:**  Suppose instead that nearby urns (i.e. urns at nearby state
-space values $z$ and $z'$) tend to be similar, and, further, that all urns share the same support.
+**Regularizing assumption:**  Suppose that nearby urns (i.e., urns at nearby state
+space values $z$ and $z'$) tend to be similar, and, further, that all urn measures share the same support.
 
 The common-support assumption is helpful, since it means that by the end of data collection all urns will include measures having some point mass at each of the observations; subsequent removal of the prior urn measures by sending $\alpha_0$ to zero will mean that all urns will have the same set of support points.   But the interesting thing is that the masses will not be the same over these support points, owing to the first part of the regularizing assumption.  We encode the assumption using the idea of an envelope function, which in experiments we take as:
 \begin{eqnarray*}
@@ -112,7 +111,7 @@ U_z \longleftarrow U_z + e(z,Z_i) \delta_{Z_{i+1}}.
 \end{eqnarray*}
 Thus, urns corresponding to `from` positions $z$ far from the emitting point $Z_i$ are given a low value of the envelope, and a relatively low mass at the support point.   Such transitions have greatest effect on urns near to $Z_i$, and thereby locally reinforce learning about the transition kernel.
 
-**Conjecture:** Letting $n$ get large and for sufficiently large $\tau$, the normalized urns will converge to the generative kernel $F$.
+**Conjecture:** Letting $n$ get large and for sufficiently small $\tau$, the normalized urns will converge to the generative kernel $F$.
 
 ```{r setupsimulate}
 
@@ -143,10 +142,26 @@ y <- x[2:B] - x[1:(B-1)] ## the deviations
 
 tfun <- approxfun( density(y) )
 
-##don't reorder...but keep track of where points go
 
 x.from <- x[1:(B-1)]
 x.to <- x[2:B]
+```
+
+#### Synthetic example
+
+The plot below shows 
+ the realization of an artificial real-valued Markov process over $n=1000$ steps.
+
+```{r}
+plot(x, ylab="z", type="l",  col="blue", las=1)
+
+```
+
+
+We deployed the envelope cacluation with $\tau = 10^{-3}$, and the figure shows a q-q version of the resulting kernel (which shows all the urns, after each is normalized to be a probability measure).
+
+
+```{r makeUrns}
 
 # reordered by response level
 oo <- order(x.from)
@@ -171,12 +186,14 @@ k200 <- density( x.to.o2, weights=w )
 
 #image( x.from.o, x.to.o2, env2 )
 # rank transform
-image( sqrt(env2) )
 
-plot( x.from.o, x.to.o )
+image( sqrt(env2), xlab="from quantile", ylab="to quantile", main="final urns" )
 
-## it works
-## to do
+```
+
+```{r}
+#plot( x.from.o, x.to.o )
+
 ## show how k200, for example, approximates the generative kernel at that x.from position...
 #
 ```
