@@ -1,10 +1,10 @@
 ---
 fontsize: 12pt
 output:
-  html_document: default
   pdf_document:
     includes:
       before_body: doc_prefix.tex
+  html_document: default
 ---
 
 ## A Markov Bayesian Bootstrap, with Application (*?maybe?*) to Neural Differential Equations[^1]
