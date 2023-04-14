@@ -94,7 +94,8 @@ The probabilistic machinery through which the Dirichlet Process (DP) calculation
 #### The Markov case
 
 We are not aware of other attempts to extend the Bayesian bootstrap to the Markov case.   (*maybe some cites on partial exchangeability and finite state chains*).   Instead of a single urn with a single measure $\alpha_0 F_0$, as in the i.i.d. case, let us suppose that every point $z$ in the space is associated with a measure-containing urn, say $U_z$, prior to any data coming into
-view.  All these urns will update during data collection. In the absence of any regularizing assumptions about the kernel $F(z,A)$, we might be obliged to update the urns as follows.   Say with $Z_1$ fixed, let's update urn $U_{Z_1}$ from its original state by adding point mass $\delta_{Z_2}$; likewise at any transition from $Z_i$ to $Z_{i+1}$, update the urn $U_{Z_i}$ from its prior state by adding point mass at $Z_{i+1}$.  For continuous recordings, this approach doesn't get us too far, even after all data are in hand, since we may expect to see single point masses added to $n-1$ of the continuum of urns.  And then any limits we take on $\alpha_0$ will leave us with very little empirical variation (probably just one single trajectory is realizable).
+view.  All these urns will update during data collection. In the absence of any regularizing assumptions about the kernel $F(z,A)$, we might be obliged to update the urns as follows.   Say with $Z_1$ fixed, let's update urn $U_{Z_1}$ from its original state by adding point mass $\delta_{Z_2}$; likewise at any transition from 
+$Z_{i-1}$ to $Z_{i}$, update the urn $U_{Z_{i-1}}$ from its prior state by adding point mass at $Z_{i}$.  For continuous recordings, this approach doesn't get us too far, even after all data are in hand, since we may expect to see single point masses added to $n-1$ of the continuum of urns.  And then any limits we take on $\alpha_0$ will leave us with very little empirical variation (probably just one single trajectory is realizable).
 
 **Regularizing assumption:**  Suppose that nearby urns (i.e., urns at nearby state
 space values $z$ and $z'$) tend to be similar, and, further, that all urn measures share the same support.
@@ -105,11 +106,11 @@ e(z, z') =  \exp\left\{ -d(z,z')/\tau  \right\}
 \end{eqnarray*}
 where $d$ is a distance metric on the space and $\tau >0$ is a scale parameter.   We use this
 envelope to define how much mass to add to the different urns, after having observed data
-point $Z_{i+1}$ emmitted after point $Z_i$:
+point $Z_{i}$ emmitted *from* point $Z_{i-1}$:
 \begin{eqnarray*}
-U_z \longleftarrow U_z + e(z,Z_i) \delta_{Z_{i+1}}.
+U_z \longleftarrow U_z + e(z,Z_{i-1}) \delta_{Z_{i}}.
 \end{eqnarray*}
-Thus, urns corresponding to `from` positions $z$ far from the emitting point $Z_i$ are given a low value of the envelope, and a relatively low mass at the support point.   Such transitions have greatest effect on urns near to $Z_i$, and thereby locally reinforce learning about the transition kernel.
+Thus, urns corresponding to `from` positions $z$ far from the emitting point $Z_{i-1}$ are given a low value of the envelope, and a relatively low mass at the support point.   Such transitions have greatest effect on urns near to $Z_{i-1}$, and thereby locally reinforce learning about the transition kernel.
 
 **Conjecture:** Letting $n$ get large and for sufficiently small $\tau$, the normalized urns will converge to the generative kernel $F$.
 
@@ -131,14 +132,15 @@ rbimod <- function(mu, delta=2, sig=(1/4), phi=.95 )
  }
 
 n <- 1000
-x <- numeric(n)
-x[1] <- rnorm(1)
-for( i in 2:n){ x[i] <- rbimod(x[i-1]) }
+z <- numeric(n)
+z[1] <- rnorm(1)
+for( i in 2:n){ z[i] <- rbimod(z[i-1]) }
 ```
 
 
 
 ```{r}
+x <- z ## don't show, but match paper notation
 B <- n
 y <- x[2:B] - x[1:(B-1)] ## the deviations
 
@@ -154,7 +156,9 @@ The plot below shows
 plot(x, ylab="z", type="l",  col="blue", las=1)
 
 ```
+
 The lag plot hints at bimodality in the conditionals.
+
 ```{r}
 library(hexbin)
 h <- hexbin( cbind(x.from, x.to), xbins=50, xlab="z[from]", ylab="z[to]" )
@@ -192,7 +196,7 @@ image( sqrt(env2), xlab="from quantile", ylab="to quantile", main="final urns" )
 
 ```
 
-The plot below shows one conditional distribution (smoothed) from normalizing urn $U_z$ where $z$ is the 200$th$ order statistic, which
+The plot below shows one conditional distribution (smoothed) from normalizing urn $U_z$ where $z = -0.27$ is the 200$^{\rm th}$ order statistic, which
 looks about right considering the generative mixture of normals.
 
 ```{r oneSlice}
@@ -201,12 +205,47 @@ looks about right considering the generative mixture of normals.
 ## one case
 w <- env2[200,]/sum( env2[200,] )
 k200 <- density( x.to.o2, weights=w ) 
-plot(k200,main="normalized measure at one z[from]", xlab="z[to]")
+plot(k200,main="normalized measure at z[from] = -0.27", xlab="z[to]")
+```
+
+It's helpful to remember that we really have a discrete distributional estimate of the urn $U_{-0.27}$, which was smoothed into the displayed
+kernel density estimate above, but which has uneven masses according to the envelope, as below.
+ 
+
+```{r oneSliceDiscrete}
+plot( x.to.o2, w, type="h", xlab="z[to]", main="discrete view of normalized measure at z[from]=-0.27" ,ylab="normalized envelope", las=1 )
+```
+
+Thinking about the urn-measure representation, 
+we would have something like this for each one of the continuum of urns after sampling, and after limiting to remove the prior mass
+\begin{eqnarray*}
+U_z = \sum_{i=2}^n \delta_{Z_i} \, e( Z_{i-1}, z ).
+\end{eqnarray*}
+Further, the total mass of each urn is 
+\begin{eqnarray*}
+\alpha_{n,z} = \sum_{i=2}^n e(z, Z_{i-1}).
+\end{eqnarray*}
+By our assumptions, every $z$ in the state space has an urn measure after sampling, even though each urn is a discrete measure. 
+
+*Conjecture* [?not sure]: The normalized urn masses converge (as $n \rightarrow \infty$)  to the marginal stationary distribution of the Markov process
+
+
+```{r}
+zgrid <- seq( min(x), max(x), length=200 )
+alpha <- zgrid
+for( j in 1:length(zgrid) )
+ {
+   alpha[j] <-  sum( exp( -(1/tau)*(zgrid[j]-x.from)^2 )  ) 
+ }
+plot( zgrid, alpha, type="l", lwd=2, col="blue", las=1 , xlab="z[from]", ylab="total urn mass" )
+
+
 ```
 
 #### Markov Bayesian Bootstrap 
 
-*how to make the matrix of weights*
+Guided by the i.i.d. case, weighted bootstrapping ought to sample random weight vectors from Dirichlet distributions parameterized by the urn masses.
+In that i.i.d. case, there is just one urn, filled to total mass $n$ and centered on the empirical distribution.  
 
 *identify a target feature; e.g. correlation, or some elaborate conditional probability*
 
