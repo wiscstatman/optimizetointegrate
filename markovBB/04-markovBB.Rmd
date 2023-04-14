@@ -1,10 +1,10 @@
 ---
 fontsize: 12pt
 output:
+  html_document: default
   pdf_document:
     includes:
       before_body: doc_prefix.tex
-  html_document: default
 ---
 
 ## A Markov Bayesian Bootstrap, with Application (*?maybe?*) to Neural Differential Equations[^1]
@@ -131,7 +131,7 @@ rbimod <- function(mu, delta=2, sig=(1/4), phi=.95 )
    x
  }
 
-n <- 1000
+n <- 500
 z <- numeric(n)
 z[1] <- rnorm(1)
 for( i in 2:n){ z[i] <- rbimod(z[i-1]) }
@@ -248,6 +248,25 @@ Guided by the i.i.d. case, weighted bootstrapping ought to sample random weight 
 In that i.i.d. case, there is just one urn, filled to total mass $n$ and centered on the empirical distribution.  
 
 *identify a target feature; e.g. correlation, or some elaborate conditional probability*
+
+
+```{r}
+# generate a weight vector for each 
+
+tmp <- matrix( log(1/runif( (n-1)^2 ) ), n-1, n-1 )
+W <- tmp/rowSums(tmp)
+## power method for stationary distn.
+A <- W
+m <- 50
+for( i in 1:m ){ A <- A %*% W }
+pi <- A[,1]  ## any row, approx stationary distribution
+
+## simplest parameter is correlation
+#
+# E[  (Z_i-mu) * (Z_{i-1}-mu ) ]
+# = E[  (Z_{i-1}-mu) E( (Z_i-mu) | Z_{i-1} ) ] 
+# = \sum_{z_{from}} pi_{z_from} ( z_from - mu ) \sum_{z_to} 
+# 	w_{z.from, z.to} (z_to - mu)
 
 
 ```
