@@ -131,7 +131,7 @@ rbimod <- function(mu, delta=2, sig=(1/4), phi=.95 )
    x
  }
 
-n <- 500
+n <- 750
 z <- numeric(n)
 z[1] <- rnorm(1)
 for( i in 2:n){ z[i] <- rbimod(z[i-1]) }
@@ -150,7 +150,8 @@ x.to <- x[2:B]
 ```
 
 The plot below shows 
- the realization of an artificial real-valued Markov process over $n=1000$ steps.
+ the realization of an artificial real-valued Markov process with $n$ equal to
+`r n`.
 
 ```{r}
 plot(x, ylab="z", type="l",  col="blue", las=1)
@@ -245,21 +246,32 @@ plot( zgrid, alpha, type="l", lwd=2, col="blue", las=1 , xlab="z[from]", ylab="t
 #### Markov Bayesian Bootstrap 
 
 Guided by the i.i.d. case, weighted bootstrapping ought to sample random weight vectors from Dirichlet distributions parameterized by the urn masses.
-In that i.i.d. case, there is just one urn, filled to total mass $n$ and centered on the empirical distribution.  
+In that i.i.d. case, there is just one urn, filled to total mass $n$ and centered on the empirical distribution.   The next code chunk shows how the envelope function now
+prepares us to make random weight matrices, each row of which is a (Dirichlet) draw from the urn associated with that `from` position.   Interestingly, the random weight matrix represents a discrete kernel [i.e., a Markov transition probability matrix].  If we further assume that the Markov chain is stationary, then the stationary (i.e. marginal) distribution of any $z_i$ is readily computed (e.g., by powering up the transition matrix).  With that stationary `pi` and transition matrix `W`, we have  full distribution for the chain, from which various features (parameters) may be extracted. A simple one is the lag-1 autocorrelation.
 
-*identify a target feature; e.g. correlation, or some elaborate conditional probability*
+```{r singleVector, echo=TRUE}
+  W <- matrix(NA,n-1,n-1)
+  # transition matrix
+  for( i in 1:(n-1) ){ W[i,] <- rgamma( n-1, shape=env2[i,] ) }
+  W <- W/rowSums(W)
+  # power method to get stationary dist
+  m <- 20
+  A <- W
+  for( i in 1:m ){ A <- A %*% W }
+  pi <- A[1,]  ## or any row
+  mu <- sum( pi*x.to.o2 )
+  cmeans <- W %*% x.to.o2
+  vv <- sum( pi*(x.to.o2 -mu )^2  )
+  rho <- sum( pi*(x.to.o2-mu)*(cmeans-mu) )/vv
 
+```
+That code computes one value of `rho`, at `r format(rho,digits=3)`, viewed as a draw from
+the (limiting) nonparametric (Bayesian bootstrap) posterior of $\rho$.
+Next we do the embarrassingly parallel version, repeating the above calculation
+to build up a Monte Carlo approximation to the posterior.  The vertical red line is at the empirical lag-1 autocorrelation.
 
-```{r}
-# generate a weight vector for each 
-
-tmp <- matrix( log(1/runif( (n-1)^2 ) ), n-1, n-1 )
-W <- tmp/rowSums(tmp)
-## power method for stationary distn.
-A <- W
-m <- 50
-for( i in 1:m ){ A <- A %*% W }
-pi <- A[,1]  ## any row, approx stationary distribution
+```{r randomWeightingCompute, cache=TRUE}
+# generate a weight vector for each z[from], repeatedly
 
 ## simplest parameter is correlation
 #
@@ -268,5 +280,35 @@ pi <- A[,1]  ## any row, approx stationary distribution
 # = \sum_{z_{from}} pi_{z_from} ( z_from - mu ) \sum_{z_to} 
 # 	w_{z.from, z.to} (z_to - mu)
 
-
+nsim <- 200
+rho <- numeric(nsim)
+mu <- rho; vv <- rho
+for( isim in 1:nsim )
+ {
+  W <- matrix(NA,n-1,n-1)
+  # transition matrix
+  for( i in 1:(n-1) ){ W[i,] <- rgamma( n-1, shape=env2[i,] ) }
+  W <- W/rowSums(W)
+  # power method to get stationary dist
+  m <- 20
+  A <- W
+  for( i in 1:m ){ A <- A %*% W }
+  pi <- A[1,]  ## or any row
+  mu[isim] <- sum( pi*x.to.o2 )
+  cmeans <- W %*% x.to.o2
+  vv[isim] <- sum( pi*(x.to.o2 -mu[isim] )^2  )
+  rho[isim] <- sum( pi*(x.to.o2-mu[isim])*(cmeans-mu[isim]) )/vv[isim]
+ }
 ```
+
+The histogram summarizes `r nsim` draws from
+ the  Markov Bayesian bootstrap distribution of the lag-1 autocorrelation parameter.
+
+```{r randomWeightingPlot}
+hist( rho, 25, xlab="lag-1 autocorrelation", main="" )
+abline( v=cor( x.from.o, x.to.o), col="red" )
+```
+
+*To do; it would be good to explain how the correlation parameter solves a minimization problem for some least-squares objective...*
+
+*It might be interesting also to look at some predictive probabilities and UQ*
