@@ -1,0 +1,16 @@
+
+Hello Prof Newton,
+ 
+Sorry for my late response. I did not feel well for past few days.
+I will be out of Madison next week for my commencement in New York. Would you mind if we meet the week after next week?
+It would be appreciated if you can answer these questions.
+ 
+I have few questions about the calculation involve in the first screenshot. The second screenshot is the formula I derive and try to understand why you calculate the mu. Cmeans, vv, rho is that way.
+I know pi represent the stationary transition probability. So this is clear. But for calculation of correlation, usually the first mu and second mu should be different and should be calculated differently. The way how I understand this is  by ‘Law of large number of Markov Chain’ such that the expectation of Markov chain converge to expectation of stationary state. And then the calculation would make sense for me. Or is there any other way to understand it?
+Cmeans is clear. But if we look at the numerator of calculation of rho, which is sum( pi*(x.to.o2-mu)*(cmeans-mu)). The right hand part  (cmeans-mu) does make sense for me as the formula I derive above. But I am not sure why the left hand part use the x.to.o2 to calculate, instead of using x.from.o as the formula I derive above. My attempt is that E[z_from] = E[z_to] since there is no big difference if we calculate the expectation of z_from and z_to.
+Interesting, when I csimply by treating it as a time-series AR(1) model even though it is not. The autocorrelation exactly fall inside of posterior distribution of rho calculate by repeatedly simulate. Is there any intuition here?
+I do have a question when we do the power method to get stationary distribution. Logically, the rows of env2 are x_from listed from min to max and columns are x_to listed from min to max. But we may need to notice that x_from contain value from x_1 to x_n-1 while x_to contain value x_2 to x_n. So when we keep powering up the transition matrix, it comes up with a problem of inconsistent. The state to state distribution won’t match when we power up the matrix. My attempt here is that the calculate transition matrix is actually a subset of transition function; beside, the offset of x_from and x_to are very small, and the value of transition prob is calculated by envelop function, which mainly depends on the distance between two points. So the little offset does not really influence the final value. Or is there any other way to understand it?
+Above are the questions I currently have. Really thank you if you can answer any of them.  And would you mind if we continue with the talk about why we use rgamma to simulate transition matrix and maybe the idea and further work we can do on this notes the week after next? Currently I just assume the gamma simulation is correct (I mean assume because I have not gone through the proof yet) and will keep working on the notes.
+ 
+Looking forward to your reply.
+Best wish.

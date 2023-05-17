@@ -262,7 +262,9 @@ prepares us to make random weight matrices, each row of which is a (Dirichlet) d
   mu <- sum( pi*x.to.o2 )
   cmeans <- W %*% x.to.o2
   vv <- sum( pi*(x.to.o2 -mu )^2  )
-  rho <- sum( pi*(x.to.o2-mu)*(cmeans-mu) )/vv
+  ##rho <- sum( pi*(x.to.o2-mu)*(cmeans-mu) )/vv
+## Noted by Jiapeng that x.from.o ought to be here
+  rho <- sum( pi*(x.from.o-mu)*(cmeans-mu) )/vv
 
 ```
 That code computes one value of `rho`, at `r format(rho,digits=3)`, viewed as a draw from
@@ -297,7 +299,10 @@ for( isim in 1:nsim )
   mu[isim] <- sum( pi*x.to.o2 )
   cmeans <- W %*% x.to.o2
   vv[isim] <- sum( pi*(x.to.o2 -mu[isim] )^2  )
-  rho[isim] <- sum( pi*(x.to.o2-mu[isim])*(cmeans-mu[isim]) )/vv[isim]
+##  rho[isim] <- sum( pi*(x.to.o2-mu[isim])*(cmeans-mu[isim]) )/vv[isim]
+
+## Noted by Jiapeng that x.from.o ought to be here
+  rho[isim] <- sum( pi*(x.from.o-mu[isim])*(cmeans-mu[isim]) )/vv[isim]
  }
 ```
 
